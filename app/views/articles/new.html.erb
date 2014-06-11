@@ -1,20 +1,25 @@
 <h1>Add new article</h1>
 
 <%= form_for @article do |f| %>
+<<<<<<< HEAD
   <%= f.label :url, "Article link" %>
   <%= f.text_field :url %><br/>  
+=======
+  <%= f.label :url "Article link" %>
+  <%= f.text_field :url %><br/>
+>>>>>>> ea70395f0c48e843ca5405c13492313c23d0e1a5
 
   <%= f.label :headline %>
-  <%= f.text_field :headline %><br/>  
+  <%= f.text_field :headline %><br/>
 
   <%= f.label :publication %>
-  <%= f.text_field :publication %><br/>  
+  <%= f.text_field :publication %><br/>
 
   <%= f.label :extract %>
-  <%= f.text_field :extract %><br/>  
+  <%= f.text_field :extract %><br/>
 
   <%= f.label :date %>
-  <%= f.text_field :date %><br/>  
+  <%= f.text_field :date %><br/>
 
   <%= f.submit %>
 <% end %>
