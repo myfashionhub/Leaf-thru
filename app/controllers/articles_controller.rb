@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.create(article_params)
+    redirect_to articles_path
   end
 
   def show
