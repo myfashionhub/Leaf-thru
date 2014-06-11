@@ -1,1 +1,20 @@
-edit.html.erb
+<h1>Edit article</h1>
+
+<%= form_for @article do |f| %>
+  <%= f.label :url, "Article link" %>
+  <%= f.text_field :url %><br/>  
+
+  <%= f.label :headline %>
+  <%= f.text_field :headline %><br/>
+
+  <%= f.label :publication %>
+  <%= f.text_field :publication %><br/>
+
+  <%= f.label :extract %>
+  <%= f.text_field :extract %><br/>
+
+  <%= f.label :date %>
+  <%= f.text_field :date %><br/>
+
+  <%= f.submit %>
+<% end %>
