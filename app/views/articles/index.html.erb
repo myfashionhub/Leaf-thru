@@ -1,0 +1,12 @@
+
+<h1>Saved articles</h1>
+
+<% @articles.each do |article| %>
+  <p>
+    <a href="<%= article.url %>">
+    <%= article.headline %>
+    </a> <br/>
+    Published by <%= article.publication %> on <%= article.date %><br/>
+    <%= article.extract %>
+  </p>
+<% end %>
