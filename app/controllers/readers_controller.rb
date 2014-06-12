@@ -1,5 +1,6 @@
 class ReadersController < ApplicationController
   before_action :require_login, only: [:profile]
+  before_save params[:email].downcase!
 
   def new
     @reader = Reader.new
