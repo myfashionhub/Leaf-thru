@@ -1,6 +1,6 @@
 class ReadersController < ApplicationController
   before_action :require_login, only: [:profile]
-  before_save params[:email].downcase!
+  #before_save params.require(:reader).permit(:email).downcase!
 
   def new
     @reader = Reader.new
@@ -17,7 +17,7 @@ class ReadersController < ApplicationController
 
   def edit
     # profile route
-    @reader = Reader.find(current_reader.id)
+    @reader = Reader.find(session[:reader_id])
   end
 
   def destroy
