@@ -1,10 +1,10 @@
 <h2>Log in</h2>
 
-<%= form_tag sessions_path do |f| %>
-  <%= f.label :email, "Email:" %>
-  <%= f.text_field :email %>
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
+<%= form_tag sessions_path do %>
+  <%= label_tag :email, "Email:" %>
+  <%= email_field_tag :email %>
+  <%= label_tag :password, "Password:" %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log in" %>
 <% end %>
 

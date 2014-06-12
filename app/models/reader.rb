@@ -1,6 +1,5 @@
 class Reader < ActiveRecord::Base
   authenticates_with_sorcery!
-  has_secure_password
 
   validates_presence_of :password, on: :create
   validates_presence_of :email, on: :create  

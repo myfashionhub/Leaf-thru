@@ -1,6 +1,6 @@
 class ReadersController < ApplicationController
   before_action :require_login, only: [:profile]
-  
+
   def new
     @reader = Reader.new
   end
@@ -16,7 +16,7 @@ class ReadersController < ApplicationController
 
   def edit
     # profile route
-    @reader = Reader.find(session[:reader_id])
+    @reader = Reader.find(current_reader.id)
   end
 
   def destroy
