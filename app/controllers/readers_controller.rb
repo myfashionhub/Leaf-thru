@@ -1,10 +1,6 @@
 class ReadersController < ApplicationController
-  validates :email
-  validates :password, length: {within: 6..16, wrong_length: "Password length does not match requirement"}, :on => :create
-
   before_action :require_login, only: [:profile]
-  before_save :downcase_email
-
+  
   def new
     @reader = Reader.new
   end
@@ -26,9 +22,6 @@ class ReadersController < ApplicationController
   def destroy
   end
 
-  def downcase_email
-    params.require(:reader).permit(:email).downcase!
-  end 
 
   private
   def params_reader
