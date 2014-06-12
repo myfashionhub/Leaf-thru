@@ -34,7 +34,7 @@ group :development, :test do
 end
 
 
-
+gem 'sorcery'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
