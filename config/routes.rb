@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   get 'signup'  => 'readers#new', as: 'signup'
   post 'readers'=> 'readers#create'
-  get 'profile' => 'readers#edit', as: 'profile' 
+  get 'profile' => 'readers#profile', as: 'reader' 
+  post 'profile'=> 'readers#update'
 
   get 'login'   => 'sessions#new', as: 'login'
   post 'sessions'=> 'sessions#create', as: 'sessions'

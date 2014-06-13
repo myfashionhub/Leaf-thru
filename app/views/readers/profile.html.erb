@@ -1,2 +1,17 @@
-<h2>My articles</h2>
+<h2>Edit your profile <%= @reader.email %></h2>
+ 
+<%= form_for @reader do |f| %>
+  <%= f.label :location, "Location:" %>
+  <%= f.text_field :location %>
+  <%= f.submit "Update profile" %>
+<% end %>
 
+
+
+<%= form_for @reader do |f| %>
+  <%= f.label :email, "Email:" %>
+  <%= f.text_field :email %>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Update profile" %>
+<% end %>

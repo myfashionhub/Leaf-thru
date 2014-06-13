@@ -431,7 +431,5 @@ Rails.application.config.sorcery.configure do |config|
     # user.provider_uid_attribute_name =
   end
 
-  # This line must come after the 'user config' block.
-  # Define which model authenticates with sorcery.
   config.user_class = "Reader"
 end

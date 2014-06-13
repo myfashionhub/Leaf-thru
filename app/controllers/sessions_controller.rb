@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     #login form
   end
@@ -6,7 +7,6 @@ class SessionsController < ApplicationController
   def create
     @reader = login(params[:email].downcase, params[:password])
     if @reader
-      #session[:reader_id] = Reader.find(@reader.id)
       redirect_to root_path
     else
       render :new

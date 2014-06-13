@@ -14,14 +14,17 @@ class ReadersController < ApplicationController
     end    
   end
 
-  def edit
-    # profile route
-    @reader = Reader.find(current_reader.id)
-  end
-
   def destroy
+    @reader = Reader.find(current_reader.id)    
   end
 
+  def profile
+    @reader = current_reader
+  end
+
+  def update
+    @reader.update(params_reader)
+  end
 
   private
   def params_reader
