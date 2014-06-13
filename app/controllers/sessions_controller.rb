@@ -18,9 +18,19 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  # Track OAuth
   def log
     data = request.env['omniauth.auth']
-    render :json => data.to_json
+    #binding.pry
+    #render :json => data.to_json
+    current_reader.update({
+      twitter_token: data.extra.access_token.params[:oauth_token],
+      twitter_token_secret: data.extra.access_token.params[:oauth_token_secret]})  
+    twitter_id      = data.extra.access_token.params[:user_id]
+    redirect_to 'twitter'
+#    twitter_handle  = data.info.nickname
+#    twitter_name    = data.info.name
+#    twitter_location= data.info.location
+#    twitter_avatar  = data.info.image
+#    twitter_desc    = data.info.description 
   end
 end

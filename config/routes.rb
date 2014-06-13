@@ -13,5 +13,9 @@ Rails.application.routes.draw do
   get 'logout'  => 'sessions#destroy', as: 'logout' 
 
   get 'about'   => 'welcome#about' 
+  get 'auth/:provider' => 'sessions#authorize'
+  get 'auth/:provider/callback' => 'sessions#log' 
+  
+  get 'twitter' => 'readers#twitter' 
 end
 

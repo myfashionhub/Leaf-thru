@@ -32,6 +32,19 @@ class ReadersController < ApplicationController
     redirect_to profile_path
   end
 
+  def twitter 
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["TWITTER_KEY"]
+      config.consumer_secret     = ENV["TWITTER_SECRET"]
+      config.access_token        = current_reader.twitter_token
+      config.access_token_secret = current_reader.twitter_token_secret
+    end     
+    
+    tweets = client.home_timeline
+    @links = Reader.twitter_feed(tweets)
+    render :json => @links.to_json
+  end
+
   private
   def params_reader
     params.require(:reader).permit(:email, :password, :location)

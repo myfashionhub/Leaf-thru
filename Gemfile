@@ -33,10 +33,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'
 end
 
+gem 'jquery-ui-rails'
 
 gem 'sorcery'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'jquery-ui-rails'
 gem 'twitter'
+
+gem 'nokogiri'
