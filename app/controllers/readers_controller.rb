@@ -21,14 +21,20 @@ class ReadersController < ApplicationController
   def profile
     @reader = current_reader
   end
+  
+  def edit
+    @reader = current_reader
+  end
 
   def update
+    @reader = current_reader
     @reader.update(params_reader)
+    redirect_to profile_path
   end
 
   private
   def params_reader
-    params.require(:reader).permit(:email, :password)
+    params.require(:reader).permit(:email, :password, :location)
   end
 
 end  
