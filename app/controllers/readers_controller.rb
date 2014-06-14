@@ -46,6 +46,9 @@ class ReadersController < ApplicationController
     render :json => data
   end
 
+  def feed
+  end
+
   private
   def params_reader
     params.require(:reader).permit(:email, :password, :location)
