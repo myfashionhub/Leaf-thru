@@ -18,6 +18,13 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def authorize
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["TWITTER_KEY"]
+      config.consumer_secret     = ENV["TWITTER_SECRET"]
+    end
+  end
+
   def log
     data = request.env['omniauth.auth']
     current_reader.update({
@@ -28,8 +35,8 @@ class SessionsController < ApplicationController
       #location:       data.info.location,
       #profile_pic:    data.info.image,
       #tagline:        data.info.description
-    render :json => data.to_json
-    #redirect_to 'twitter'
+    #render :json => data.to_json
+    redirect_to '/twitter'
   end
 
   def logfb

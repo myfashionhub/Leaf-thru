@@ -19,12 +19,27 @@ class Reader < ActiveRecord::Base
     links = tweets.map do |tweet|
       url    = tweet.urls[0]
       if url.nil? == false
-        url.attrs[:expanded_url] 
+        url = url.attrs[:expanded_url] 
         sharer = tweet.user.screen_name
-        { url: url.attrs[:expanded_url], sharer: sharer }
+        { url: url, sharer: sharer }
       end  
     end
-    return links.compact
+    links.compact.delete_if { |link| 
+      link[:url].include?('youtu.be') ||
+      link[:url].include?('youtube.com') || 
+      link[:url].include?('pinterest.com') ||
+      link[:url].include?('pin.it') ||
+      link[:url].include?('vimeo.com') ||
+      link[:url].include?('twitpic.com') ||
+      link[:url].include?('instagram.com') }
   end
 
 end
+=begin
+blacklist: youtu.be, youtube.com, pin.it, pinterest.com, ow.ly,
+=end
+
+=begin
+whitelist: slate.com, slate.me, wsj.com, bit.ly, vogue.cm, esqm.ag, esquire.com, vogue.com, on.mash, nytimes.com, nyti.ms, read.bi
+
+=end

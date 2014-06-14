@@ -24,8 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-gem 'rails_12factor'
+gem 'spring'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'pry'
@@ -42,6 +42,6 @@ gem 'omniauth-facebook'
 
 gem 'twitter'
 
-require 'httparty'
+gem 'httparty'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 
