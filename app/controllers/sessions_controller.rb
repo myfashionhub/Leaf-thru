@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
       #profile_pic:    data.info.image,
       #tagline:        data.info.description 
     #render :json => data.to_json     
-    redirect_to 'twitter'    
+    redirect_to '/twitter'    
   end
 
   def logfb
