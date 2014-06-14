@@ -17,8 +17,12 @@ class Reader < ActiveRecord::Base
 
   def self.twitter_feed(tweets) 
     links = tweets.map do |tweet|
-      url = tweet.urls[0]
-      url.attrs[:expanded_url] unless url.nil?
+      url    = tweet.urls[0]
+      if url.nil? == false
+        url.attrs[:expanded_url] 
+        sharer = tweet.user.screen_name
+        { url: url.attrs[:expanded_url], sharer: sharer }
+      end  
     end
     return links.compact
   end
