@@ -10,11 +10,13 @@ class Article < ActiveRecord::Base
       get_text = "http://access.alchemyapi.com/calls/url/URLGetText"+query
       title = HTTParty.get(get_title)
       text  = HTTParty.get(get_text)['text']
-      text_end = text.index(/\n/).to_i
-      {title: title['title'], url: title['url'], extract: text[0, text_end]}
+      { title: title, text: text }
     end
   end
 
+
+      text_end = text.index(/\n/).to_i
+      {title: title['title'], url: title['url'], extract: text[0, text_end]}
 end
 
 =begin
