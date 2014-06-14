@@ -23,11 +23,11 @@ class SessionsController < ApplicationController
     current_reader.update({
       twitter_token: data.extra.access_token.params[:oauth_token],
       twitter_token_secret: data.extra.access_token.params[:oauth_token_secret], 
-      twitter_handle: data.info.nickname,
-      name:           data.info.name,
+      #twitter_handle: data.info.nickname,
+      #name:           data.info.name,
       #location:       data.info.location,
-      profile_pic:    data.info.image,
-      tagline:        data.info.description})  
+      #profile_pic:    data.info.image,
+      #tagline:        data.info.description})  
     redirect_to 'twitter'    
   end
 
