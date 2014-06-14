@@ -8,11 +8,10 @@ function populateFrontpage () {
   articleView.render()
 }
 
-function setEventHandlers(){
-
-}
+// function setEventHandlers(){
+//   populateFrontpage()
+// }
 
 $(function(){
-  setEventHandlers();
   populateFrontpage();
 })
