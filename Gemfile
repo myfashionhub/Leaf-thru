@@ -41,4 +41,5 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'twitter'
 
-gem 'nokogiri'
+require 'httparty'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
