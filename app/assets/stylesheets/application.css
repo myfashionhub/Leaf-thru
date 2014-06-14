@@ -23,3 +23,9 @@ body {
   background-color: lightgrey;
   margin: 10px 0px 10px 0px;
 }
+
+.article {
+  width: 100%;
+  background-color: grey;
+  margin: 10px;
+}

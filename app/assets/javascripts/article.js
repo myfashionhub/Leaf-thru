@@ -9,10 +9,10 @@ return feed;
 
 function ArticleModel(obj) {
   this.feed = obj;
-  this.title = feed.entries[0].title;
-  this.link = feed.entries[0].link;
-  this.publishedDate = feed.entries[0].publishedDate;
-  this.content = feed.entries[0].content;
+  // this.title = result.feed.entries[0].title;
+  // this.link = feed.entries[0].link;
+  // this.publishedDate = feed.entries[0].publishedDate;
+  // this.content = feed.entries[0].content;
 }
 
 // function ArticleCollection()
@@ -36,10 +36,12 @@ ArticleView.prototype.render = function() {
   function populateFrontpage(result) {
     i = 0;
     for (var i = 0; i < result.feed.entries.length; i++) {
-    $('.frontpage').append('<div class = "date">' + result.feed.entries[i].publishedDate + '</div>');
-    $('.frontpage').append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
-    $('.frontpage').append('<div class = "extract">' + result.feed.entries[i].content + '</div>');
+    $div = $('div').addClass('article')
+    $div.append('<div class = "date">' + result.feed.entries[i].publishedDate + '</div>');
+    $div.append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
+    $div.append('<div class = "extract">' + result.feed.entries[i].content + '</div>');
     }
+    $('.frontpage').append($div)
   }
   this.model.feed.load(populateFrontpage);
 };
