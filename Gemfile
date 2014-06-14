@@ -33,11 +33,15 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'
 end
 
+gem 'jquery-ui-rails'
 
-
+gem 'sorcery'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
-gem 'RubyWeather'
+gem 'twitter'
+
+require 'httparty'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
 

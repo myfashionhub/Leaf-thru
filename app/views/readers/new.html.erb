@@ -1,2 +1,10 @@
 
-<h2>Customize/Edit your profile for better article suggestions</h2>
+<h2>Sign up to use LeafThru</h2>
+
+<%= form_for @reader do |f| %>
+  <%= f.label :email, "Email:" %>
+  <%= f.text_field :email %>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Sign up" %>
+<% end %>

@@ -1,12 +1,10 @@
 <h2>Log in</h2>
 
-<p>
-  <a href="/auth/facebook">
-  With Facebook</a>
-</p>
-
-<p>
-  <a href="/auth/twitter">
-  With Twitter</a>
-</p>
+<%= form_tag sessions_path do %>
+  <%= label_tag :email, "Email:" %>
+  <%= email_field_tag :email %>
+  <%= label_tag :password, "Password:" %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log in" %>
+<% end %>
 
