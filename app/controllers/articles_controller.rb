@@ -16,6 +16,11 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def destroy
+    Article.delete(params[:id])
+    redirect_to articles_path
+  end
+
   private
   def article_params
     params.require(:article).permit(:url, :headline, :publication, :extract, :date)
