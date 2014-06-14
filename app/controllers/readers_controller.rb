@@ -11,17 +11,17 @@ class ReadersController < ApplicationController
       redirect_to login_path
     else
       render :new
-    end    
+    end
   end
 
   def destroy
-    @reader = Reader.find(current_reader.id)    
+    @reader = Reader.find(current_reader.id)
   end
 
   def profile
     @reader = current_reader
   end
-  
+
   def edit
     @reader = current_reader
   end
@@ -32,14 +32,14 @@ class ReadersController < ApplicationController
     redirect_to profile_path
   end
 
-  def twitter 
+  def twitter
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV["TWITTER_KEY"]
-      config.consumer_secret     = ENV["TWITTER_SECRET"]
+      config.consumer_key        = "P69nzcI8IPsCaBy43EzLft5Hq"
+      config.consumer_secret     = "f21dxHv11ByIyctkrtBsVVUMIcuh2hJwbgzv2VeedbkeZnEGdE"
       config.access_token        = current_reader.twitter_token
       config.access_token_secret = current_reader.twitter_token_secret
-    end     
-    
+    end
+
     tweets = client.home_timeline
     links  = Reader.twitter_feed(tweets)
     data   = Article.parse(links)
@@ -54,4 +54,4 @@ class ReadersController < ApplicationController
     params.require(:reader).permit(:email, :password, :location)
   end
 
-end  
+end
