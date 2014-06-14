@@ -30,4 +30,10 @@ class SessionsController < ApplicationController
       tagline:        data.info.description})  
     redirect_to 'twitter'    
   end
+
+  def logfb
+    data = request.env['omniauth.auth']
+    render :json => data.to_json    
+  end
+
 end
