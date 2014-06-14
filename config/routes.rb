@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#log' 
   
   get 'twitter' => 'readers#twitter' 
+  get 'feed'    => 'readers#feed'
 end
 

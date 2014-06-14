@@ -25,10 +25,9 @@ class SessionsController < ApplicationController
       twitter_token_secret: data.extra.access_token.params[:oauth_token_secret], 
       twitter_handle: data.info.nickname,
       name:           data.info.name,
-      location:       data.info.location,
+      #location:       data.info.location,
       profile_pic:    data.info.image,
       tagline:        data.info.description})  
-    twitter_id      = data.extra.access_token.params[:user_id]
     redirect_to 'twitter'    
   end
 end
