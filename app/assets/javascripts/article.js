@@ -2,6 +2,7 @@ function feedItems(){
 var feed = new google.feeds.Feed("http://www.npr.org/rss/rss.php?id=1001");
 feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
 feed.setNumEntries(1)
+debugger;
 return feed;
 }
 
@@ -36,12 +37,13 @@ ArticleView.prototype.render = function() {
   function populateFrontpage(result) {
     i = 0;
     for (var i = 0; i < result.feed.entries.length; i++) {
-    $div = $('div').addClass('article')
-    $div.append('<div class = "date">' + result.feed.entries[i].publishedDate + '</div>');
-    $div.append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
-    $div.append('<div class = "extract">' + result.feed.entries[i].content + '</div>');
+      $div = $('div').addClass('article');
+      $div.append('<div class = "date">' + result.feed.entries[i].publishedDate + '</div>');
+      $div.append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
+      $div.append('<div class = "extract">' + result.feed.entries[i].content + '</div>');
+    $('.frontpage').append($div);
     }
-    $('.frontpage').append($div)
-  }
   this.model.feed.load(populateFrontpage);
+  }
+
 };
