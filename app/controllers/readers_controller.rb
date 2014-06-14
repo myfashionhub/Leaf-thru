@@ -41,9 +41,9 @@ class ReadersController < ApplicationController
     end     
     
     tweets = client.home_timeline
-    article_urls = Reader.twitter_feed(tweets)
-    data = Article.parse(article_urls)
-    render :json => data
+    links  = Reader.twitter_feed(tweets)
+    data   = Article.parse(links)
+    render :json => data.to_json
   end
 
   def feed

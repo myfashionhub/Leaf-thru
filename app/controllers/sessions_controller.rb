@@ -22,12 +22,13 @@ class SessionsController < ApplicationController
     data = request.env['omniauth.auth']
     current_reader.update({
       twitter_token: data.extra.access_token.params[:oauth_token],
-      twitter_token_secret: data.extra.access_token.params[:oauth_token_secret], 
-      twitter_handle: data.info.nickname,
-      name:           data.info.name,
+      twitter_token_secret: data.extra.access_token.params[:oauth_token_secret]}) 
+      #twitter_handle: data.info.nickname,
+      #name:           data.info.name,
       #location:       data.info.location,
-      profile_pic:    data.info.image,
-      tagline:        data.info.description})  
+      #profile_pic:    data.info.image,
+      #tagline:        data.info.description 
+    #render :json => data.to_json     
     redirect_to 'twitter'    
   end
 
