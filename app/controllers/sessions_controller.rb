@@ -29,7 +29,6 @@ class SessionsController < ApplicationController
       #location: data.info.location,
       tagline:  data.info.description })     
     redirect_to '/twitter'    
-  end
 
   def log_facebook
     data = request.env['omniauth.auth']
@@ -40,8 +39,7 @@ class SessionsController < ApplicationController
       #email: data.email,
       #image:  data.image 
       })
-    #render :json => data.to_json
-    redirect_to '/facebook'   
+    render :json => data.to_json
   end
 
 end
