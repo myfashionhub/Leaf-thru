@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       #location:       data.info.location,
       #profile_pic:    data.info.image,
       #tagline:        data.info.description 
-    render :json => data.to_json     
+    #render :json => data.to_json     
     redirect_to 'twitter'    
   end
 
