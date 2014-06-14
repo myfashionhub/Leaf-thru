@@ -73,6 +73,10 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
+    koala (1.10.0rc2)
+      addressable
+      faraday
+      multi_json
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -213,6 +217,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  koala (~> 1.10.0rc)
   omniauth
   omniauth-facebook
   omniauth-twitter

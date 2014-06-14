@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   get 'about'   => 'welcome#about' 
 
   get 'auth/:provider'        => 'sessions#authorize'
-  get 'auth/twitter/callback' => 'sessions#log' 
-  get 'auth/facebook/callback'=> 'sessions#logfb' 
+  get 'auth/twitter/callback' => 'sessions#log_twitter' 
+  get 'auth/facebook/callback'=> 'sessions#log_facebook' 
 
-  get 'twitter' => 'readers#twitter' 
+  get 'twitter' => 'readers#twitter'
+  get 'facebook' => 'readers#facebook' 
   get 'feed'    => 'readers#feed'
 end
 

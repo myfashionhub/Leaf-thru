@@ -24,14 +24,17 @@ class Reader < ActiveRecord::Base
         { url: url, sharer: sharer }
       end  
     end
-    links.compact.delete_if { |link| 
+    links.compact.delete_if { |link|
+      link[:url].empty? || 
       link[:url].include?('youtu.be') ||
       link[:url].include?('youtube.com') || 
       link[:url].include?('pinterest.com') ||
       link[:url].include?('pin.it') ||
       link[:url].include?('vimeo.com') ||
       link[:url].include?('twitpic.com') ||
-      link[:url].include?('instagram.com') }
+      link[:url].include?('instagram.com') ||
+      link[:url].include?('login') ||
+      link[:url].include?('shop') }
   end
 
 end

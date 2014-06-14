@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613160505) do
+ActiveRecord::Schema.define(version: 20140614211157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,14 @@ ActiveRecord::Schema.define(version: 20140613160505) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.string   "twitter"
-    t.string   "facebook"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
+    t.string   "facebook_token"
+    t.string   "name"
+    t.string   "image"
+    t.string   "tagline"
+    t.string   "twitter_handle"
+    t.string   "facebook_uid"
   end
 
   add_index "readers", ["email"], name: "index_readers_on_email", unique: true, using: :btree

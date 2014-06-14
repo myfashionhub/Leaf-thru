@@ -42,9 +42,14 @@ class ReadersController < ApplicationController
     
     tweets = client.home_timeline
     links  = Reader.twitter_feed(tweets)
-    data   = Article.parse(links)
-    render :json => data.to_json
+    @data  = Article.parse(links)
   end
+
+  def facebook
+    graph = Koala::Facebook::API.new(current_reader.facebook_token, ENV['FACEBOOK_SECRET'])
+    @reader = current_reader
+    #render :json => feed.to_json
+  end 
 
   def feed
   end

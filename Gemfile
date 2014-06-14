@@ -41,6 +41,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'twitter'
+gem 'koala', "~> 1.10.0rc"
 
 gem 'httparty'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
