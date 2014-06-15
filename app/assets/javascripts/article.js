@@ -1,3 +1,20 @@
+function loadFeed(url) {
+  var feed = new google.feeds.Feed(url);
+  feed.setNumEntries(1);
+  feed.load();
+  return feed;
+}
+
+//******Model*******
+
+function ArticleModel(obj) {
+  this.feed = obj;
+  // this.title = result.feed.entries[0].title;
+  // this.link = feed.entries[0].link;
+  // this.publishedDate = feed.entries[0].publishedDate;
+  // this.content = feed.entries[0].content;
+}
+
 function ArticleView(model){
   this.model = model;
   this.el = undefined;
