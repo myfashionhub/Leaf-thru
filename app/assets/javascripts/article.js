@@ -1,6 +1,6 @@
 function feedItems(){
-var feed = new google.feeds.Feed("http://www.amny.com/cmlink/1.2427115#");
-feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
+var feed = new google.feeds.Feed("http://rss.nytimes.com/services/xml/rss/nyt/World.xml");
+//feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
 feed.setNumEntries(1)
 return feed;
 }

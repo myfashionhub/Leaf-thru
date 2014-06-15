@@ -1,3 +1,6 @@
-<% @text.each do |text| %>
-  <p><%= text %></p>
+<% @data.each do |data| %>
+  <p>
+    <a href="<%= data[:url] %>"><%= data[:title] %></a><br/>
+    <%= data[:extract] %><br/>
+    Shared by: @<%= data[:sharer] %><br/></p>
 <% end %>

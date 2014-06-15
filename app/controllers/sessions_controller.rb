@@ -18,23 +18,29 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  def log
+  def log_twitter
     data = request.env['omniauth.auth']
     current_reader.update({
       twitter_token: data.extra.access_token.params[:oauth_token],
-      twitter_token_secret: data.extra.access_token.params[:oauth_token_secret]}) 
-      #twitter_handle: data.info.nickname,
-      #name:           data.info.name,
-      #location:       data.info.location,
-      #profile_pic:    data.info.image,
-      #tagline:        data.info.description 
-    #render :json => data.to_json     
-    redirect_to 'twitter'    
+      twitter_token_secret: data.extra.access_token.params[:oauth_token_secret],
+      twitter_handle:data.info.nickname,
+      #name:         data.info.name,
+      image:         data.info.image,
+      location:      data.info.location,
+      tagline:       data.info.description })     
+    redirect_to '/twitter'    
   end
 
-  def logfb
+  def log_facebook
     data = request.env['omniauth.auth']
-    render :json => data.to_json    
+    current_reader.update({
+      facebook_token: data.credentials.token,
+      facebook_uid:   data.uid,
+      name:   data.info.name,
+      #email: data.email,
+      #image:  data.image 
+      })
+    render :json => data.to_json
   end
 
 end
