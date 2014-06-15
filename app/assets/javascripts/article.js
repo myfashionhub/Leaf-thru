@@ -1,5 +1,5 @@
 function feedItems(){
-var feed = new google.feeds.Feed("http://www.npr.org/rss/rss.php?id=1001");
+var feed = new google.feeds.Feed("http://www.amny.com/cmlink/1.2427115#");
 feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
 feed.setNumEntries(1)
 return feed;
@@ -10,6 +10,7 @@ return feed;
 
 function ArticleModel(obj) {
   this.feed = obj;
+
 
   // this.title = result.feed.entries[0].title;
   // this.link = feed.entries[0].link;
@@ -25,10 +26,9 @@ function ArticleView(model){
 }
 
 ArticleView.prototype.render = function() {
-  //var div = $('<div>');
   function populateFrontpage(result) {
     i = 0;
-    for (var i = 0; i < result.feed.entries.length; i++) {
+    // for (var i = 0; i < result.feed.entries.length; i++) {
       $div = $('div').addClass('article');
       $div.append('<div class = "date">' + result.feed.entries[i].publishedDate + '</div>');
       $div.append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
@@ -37,40 +37,57 @@ ArticleView.prototype.render = function() {
       $button.html("Save Article");
       $div.append($button);
       $('.frontpage').append($div);
-
-    }
+    // }
   }
   this.model.feed.load(populateFrontpage);
 };
 
 
+$('.save_article').on('click', function(e){
+  e.preventDefault();
+  console.log('Hello!!!!')
+  saveArticle(this.article);
+  // var newArticle = $('.article').title();
+  // ArticleCollection.create({article/params})
+});
+
+
 //***********Collection*************
 
- function ArticlesCollection(){
+ function ArticleCollection(){
   this.models = {};//empty object...object literal???
   }
 
-ArticlesCollection.prototype.add = function(article){
-  var newArticle = new Article(articleJSON);//what is this? where does it come from.
-  this.models[articleJSON.id] = newArticle;
-  $(this).trigger('addFlare');
-  return this;
-}
-
-ArticlesCollection.prototype.create = function(paramObject){
-  var that = this;
+ArticleCollection.prototype.add = function(article){
+   var that = this;
   $.ajax({
     url: '/articles',
     method: 'post',
     dataType: 'json',
-    data: {article: paramObject},
+    data: {article: article},
     success: function(data){
-      that.add(data);
+      var article = new ArticleModel(data);
+      that.articles[article.id] = article;
+      $(that).trigger('save');
     }
   })
 }
 
-ArticlesCollection.prototype.fetch = function(){
+
+// ArticlesCollection.prototype.create = function(paramObject){
+//   var that = this;
+//   $.ajax({
+//     url: '/articles',
+//     method: 'post',
+//     dataType: 'json',
+//     data: {article: paramObject},
+//     success: function(data){
+//       that.add(data);
+//     }
+//   })
+// }
+
+ArticleCollection.prototype.fetch = function(){
   var that = this;
   $.ajax({
     url: '/articles',
@@ -83,12 +100,5 @@ ArticlesCollection.prototype.fetch = function(){
   })
 };
 
-var articlesCollection = new ArticlesCollection();
 
-$('.save_article').on('click', function(e){
-  //e.preventDefault();
-  console.log("clicky");
-  // var newArticle = $('.article').title();
-  // ArticleCollection.create({article/params})
-})
 

@@ -1,7 +1,7 @@
 <h1>Saved articles</h1>
 
 <% @articles.each do |article| %>
-  <p>
+  <p><%= article.id %>
     <a href="<%= article.url %>">
     <%= article.headline %>
     </a> <br/>

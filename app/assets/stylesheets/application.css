@@ -29,3 +29,7 @@ body {
   background-color: grey;
   margin: 10px;
 }
+
+.save_article {
+  width: 1000px;
+}

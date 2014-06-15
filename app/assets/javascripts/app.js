@@ -1,16 +1,16 @@
-
+var articleCollection = new ArticleCollection();
 
 function populateFrontpage () {
   var articleModel = new ArticleModel(feedItems());
-  debugger;
   var articleView = new ArticleView(articleModel);
-  //$('.frontpage').append(articleView.render());
-  articleView.render()
+  saveArticle();
+  articleView.render();
 }
 
-// function setEventHandlers(){
-//   populateFrontpage()
-// }
+function saveArticle(result){
+  var article = new ArticleModel({url: result});
+  articleCollection.add(article);
+}
 
 $(function(){
   populateFrontpage();
