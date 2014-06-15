@@ -1,8 +1,10 @@
-function feedItems(){
-var feed = new google.feeds.Feed("http://rss.nytimes.com/services/xml/rss/nyt/World.xml");
-//feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
-feed.setNumEntries(1)
-return feed;
+
+function loadFeed(url){
+  var feed = new google.feeds.Feed(url);
+  feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
+  feed.setNumEntries(1)
+  return feed;
+>>>>>>> 1a801c734a5b61415d3260e1c636b227c992fa12
 }
 
 
@@ -25,21 +27,18 @@ function ArticleView(model){
   this.el = undefined;
 }
 
-ArticleView.prototype.render = function() {
-  function populateFrontpage(result) {
-    i = 0;
-    // for (var i = 0; i < result.feed.entries.length; i++) {
-      $div = $('div').addClass('article');
-      $div.append('<div class = "date">' + result.feed.entries[i].publishedDate + '</div>');
-      $div.append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
-      $div.append('<div class = "extract">' + result.feed.entries[i].content + '</div>');
-      $button = $('<button>').addClass('save_article');
-      $button.html("Save Article");
-      $div.append($button);
-      $('.frontpage').append($div);
-    // }
+
+ArticleView.prototype.render = function(result) {
+  for (var i = 0; i < result.feed.entries.length; i++) {
+    var $div = $('<div>');
+    $div = $('div').addClass('article')
+    $div.append('<div class="date">' + result.feed.entries[i].publishedDate + '</div>');
+    $div.append('<a href="'+ result.feed.entries[i].link +'">' + result.feed.entries[i].title + '</a>');
+    $div.append('<div class="extract">' + result.feed.entries[i].content + '</div>');
   }
   this.model.feed.load(populateFrontpage);
+  this.el = $div;
+  return this;
 };
 
 
