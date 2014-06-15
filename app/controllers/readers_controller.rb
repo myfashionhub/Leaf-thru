@@ -34,13 +34,13 @@ class ReadersController < ApplicationController
 
   def twitter
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "P69nzcI8IPsCaBy43EzLft5Hq"
-      config.consumer_secret     = "f21dxHv11ByIyctkrtBsVVUMIcuh2hJwbgzv2VeedbkeZnEGdE"
+      config.consumer_key        = ENV['TWITTER_KEY']
+      config.consumer_secret     = ENV['TWITTER_SECRET']
       config.access_token        = current_reader.twitter_token
       config.access_token_secret = current_reader.twitter_token_secret
     end
 
-    tweets = client.home_timeline
+    tweets = client.home_timeline(options={count: 50})
     links  = Reader.twitter_feed(tweets)
     @data  = Article.parse(links)
   end

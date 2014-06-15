@@ -24,7 +24,7 @@ class Reader < ActiveRecord::Base
         { url: url, sharer: sharer }
       end  
     end
-    links.compact.delete_if { |link|
+    links.compact.delete_if { |link| #regex domain is in?
       link[:url].empty? || 
       link[:url].include?('youtu.be') ||
       link[:url].include?('youtube.com') || 
