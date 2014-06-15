@@ -9,8 +9,6 @@ function populateFrontpage() {
   var feedItem = loadFeed(url);
   var articleModel = new ArticleModel(feedItem);
   var articleView = new ArticleView(articleModel);
-  console.log(articleModel);
-  console.log(articleView);
   //$('.frontpage').append(articleView.render());
   articleView.render();
 }
