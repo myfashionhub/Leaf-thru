@@ -40,7 +40,7 @@ function twitterFeed() {
   })
 }
 
-function socialArticle(data) {
+function displaySocialArticle(data) {
   for (var i = 0; i < data.length; i++) {
     var $article = $('<div>').addClass('article');
     var $title   = $('<h3>').addClass('title').html(data[i].title);

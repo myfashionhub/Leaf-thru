@@ -38,6 +38,7 @@ class Reader < ActiveRecord::Base
   end
 
 end
+
 =begin
 blacklist: youtu.be, youtube.com, pin.it, pinterest.com, ow.ly,
 =end

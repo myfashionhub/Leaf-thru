@@ -3,8 +3,7 @@ class Article < ActiveRecord::Base
   def self.parse(links)
     articles = links.map do |link|
       apikey      = ENV['ALCHEMY_KEY']
-      #{}"b5d30b2a5642232b36da96334f8861205af1f4a8"
-      #ENV.fetch('ALCHEMY_KEY')
+
       url         = link[:url]
       query       = "?apikey=#{apikey}&url=#{url}&outputMode=json"
       get_title = "http://access.alchemyapi.com/calls/url/URLGetTitle"+query
@@ -26,7 +25,4 @@ class Article < ActiveRecord::Base
       article[:title].empty? }
   end
 
-  def self.save(articles)
-
-  end
 end
