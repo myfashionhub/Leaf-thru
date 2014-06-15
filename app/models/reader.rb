@@ -19,9 +19,9 @@ class Reader < ActiveRecord::Base
     links = tweets.map do |tweet|
       url    = tweet.urls[0]
       if url.nil? == false
-        url = url.attrs[:expanded_url] 
-        sharer = tweet.user.screen_name
-        { url: url, sharer: sharer }
+        url       = url.attrs[:expanded_url] 
+        shared_by = tweet.user.screen_name
+        { url: url, shared_by: shared_by }
       end  
     end
     links.compact.delete_if { |link| #regex domain is in?

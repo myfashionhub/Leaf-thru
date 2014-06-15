@@ -1,9 +1,9 @@
 class Article < ActiveRecord::Base
+  validates :url, uniqueness: true
 
   def self.parse(links)
     articles = links.map do |link|
       apikey      = ENV['ALCHEMY_KEY']
-
       url         = link[:url]
       query       = "?apikey=#{apikey}&url=#{url}&outputMode=json"
       get_title = "http://access.alchemyapi.com/calls/url/URLGetTitle"+query
@@ -14,10 +14,10 @@ class Article < ActiveRecord::Base
       if text_end <= 60
         text_end = text.index('.').to_i + 1
       end
-      { title:   title['title'], 
-        url:     title['url'], 
-        extract: text[0, text_end],
-        sharer:  link[:sharer] }      
+      { title:     title['title'], 
+        url:       title['url'], 
+        extract:   text[0, text_end],
+        shared_by: link[:shared_by] }      
     end
 
     articles.delete_if { |article| 

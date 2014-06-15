@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615212942) do
+ActiveRecord::Schema.define(version: 20140615213820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20140615212942) do
     t.string   "url"
     t.string   "title"
     t.string   "publication"
-    t.string   "extract"
     t.string   "date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "shared_by"
+    t.text     "extract"
   end
 
   create_table "interests", force: true do |t|

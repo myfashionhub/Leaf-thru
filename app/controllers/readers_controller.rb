@@ -40,16 +40,10 @@ class ReadersController < ApplicationController
       config.access_token_secret = current_reader.twitter_token_secret
     end
 
-    tweets       = client.home_timeline(options={count: 50})
-    links        = Reader.twitter_feed(tweets)
-    article_data = Article.parse(links)
-    article_data.each do |article|
-      Article.create({
-        url:      article[:url],
-        headline: article[:title],
-        })
-    end
-    @articles    = Article.find_each(batch_size: 30) 
+    tweets    = client.home_timeline(options={count: 10})
+    links     = Reader.twitter_feed(tweets)
+    @articles = Article.parse(links)
+    
     respond_to do |format| 
       format.html
       format.json { render :json => @articles.to_json }
