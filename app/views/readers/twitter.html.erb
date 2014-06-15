@@ -2,5 +2,6 @@
   <p>
     <a href="<%= data[:url] %>"><%= data[:title] %></a><br/>
     <%= data[:extract] %><br/>
-    Shared by: @<%= data[:sharer] %><br/></p>
+    Shared by: <a href="http://twitter.com/<%= data[:sharer] %>">@<%= data[:sharer] %></a>
+  </p>
 <% end %>

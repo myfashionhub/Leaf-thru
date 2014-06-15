@@ -33,8 +33,8 @@ class Reader < ActiveRecord::Base
       link[:url].include?('vimeo.com') ||
       link[:url].include?('twitpic.com') ||
       link[:url].include?('instagram.com') ||
-      link[:url].include?('login') ||
-      link[:url].include?('shop') }
+      link[:url].include?('video') ||
+      link[:url].include?('vine.co') }
   end
 
 end

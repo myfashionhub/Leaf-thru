@@ -4,10 +4,6 @@
 //= require_tree .
 
 
-function twitterFeed() {
-  
-}
-
 $(function(){
   rssFeed();
   twitterFeed();

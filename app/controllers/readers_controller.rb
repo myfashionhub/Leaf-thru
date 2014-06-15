@@ -43,6 +43,11 @@ class ReadersController < ApplicationController
     tweets = client.home_timeline(options={count: 50})
     links  = Reader.twitter_feed(tweets)
     @data  = Article.parse(links)
+    respond_to do |format| 
+      format.html
+      format.json { render :json => @data.to_json }
+    end
+    
   end
 
   def facebook
@@ -57,7 +62,7 @@ class ReadersController < ApplicationController
 
   private
   def params_reader
-    params.require(:reader).permit(:email, :password, :location)
+    params.require(:reader).permit(:email, :password)
   end
 
 end

@@ -2,8 +2,8 @@ class Article < ActiveRecord::Base
 
   def self.parse(links)
     articles = links.map do |link|
-      apikey      = 
-      "b5d30b2a5642232b36da96334f8861205af1f4a8"
+      apikey      = ENV['ALCHEMY_KEY']
+      #{}"b5d30b2a5642232b36da96334f8861205af1f4a8"
       #ENV.fetch('ALCHEMY_KEY')
       url         = link[:url]
       query       = "?apikey=#{apikey}&url=#{url}&outputMode=json"
@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
       text_end = text.index(/\n/).to_i
       if text_end <= 60
         text_end = text.index('.').to_i + 1
-      end        
+      end
       { title:   title['title'], 
         url:     title['url'], 
         extract: text[0, text_end],
@@ -22,9 +22,11 @@ class Article < ActiveRecord::Base
     end
 
     articles.delete_if { |article| 
-      article[:url].empty? || article[:extract].empty? ||
+      article[:url].empty? || article[:extract].length <= 60 || 
       article[:title].empty? }
   end
 
+  def self.save(articles)
 
+  end
 end
