@@ -52,6 +52,7 @@ class ReadersController < ApplicationController
   end 
 
   def feed
+    #@feeds = current_reader.interests.all
   end
 
   private

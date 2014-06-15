@@ -1,5 +1,5 @@
 interests = ['International News', 'http://feeds.theguardian.com/theguardian/world/rss', 'http://america.aljazeera.com/content/ajam/articles.rss','http://rss.nytimes.com/services/xml/rss/nyt/World.xml'],
-            ['Local News'.'http://nypost.com/feed/','http://www.thelmagazine.com/newyork/Rss.xml', 'http://www.amny.com/cmlink/1.2427115']
+            ['Local News','http://nypost.com/feed/','http://www.thelmagazine.com/newyork/Rss.xml', 'http://www.amny.com/cmlink/1.2427115']
             ['Science and Technology', 'http://news.sciencemag.org/rss/current.xml','http://feeds.popsci.com/c/34567/f/632419/index.rss' ]
             ['Politics & Activism','http://harpers.org/feed/','http://www.empowermagazine.com/feed/', 'http://www.teapartyreview.com/feed/']
             ['Sports & Recreation', 'http://sports.espn.go.com/espn/rss/news', 'http://www.outsideonline.com/feeds/all.rss', 'http://rodeo.net/feed/']
