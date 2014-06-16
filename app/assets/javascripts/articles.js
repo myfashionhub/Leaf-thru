@@ -1,6 +1,5 @@
 $(window).load(function() {
   $('.save-article').on('click', function(e) { 
-    var article = $(e.target).parent().parent(); 
     saveArticle(e);
     articleAction('.save-article');
   })
@@ -12,6 +11,9 @@ $(window).load(function() {
 
 function articleAction(buttonSelector) {
   $(buttonSelector).on('click', function(e) {
+    if (buttonSelector === '.save-article') {
+      saveArticle(e);      
+    }
     var article = $(e.target).parent().parent(); 
     article.toggle('drop', 500, function(){ article.remove(); });
     });         
@@ -30,7 +32,7 @@ function saveArticle(e) {
     dataType: 'json',
     data: { article: {title: title, url: url, extract: extract, publication: source} },    
     success: function(data) {
-      console.log(data);
+      console.log('saving');
     }
   })
 }
