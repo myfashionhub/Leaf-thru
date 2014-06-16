@@ -1,13 +1,8 @@
 //= require feed
 //= require articles
 
-$(function(){
+$(document).ready(function(){   
   rssFeed();
   twitterFeed();
-  $('.save-article').on('click', function(e) { 
-    saveArticle(e);
-    console.log('click');
-  })
-
 })
 

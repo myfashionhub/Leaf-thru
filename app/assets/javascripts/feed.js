@@ -59,3 +59,10 @@ function displaySocialArticle(data) {
   }  
 }
 
+
+function generateButtons() {
+  var saveButton    = $('<button>').addClass('save-article').html('Save article');
+  var discardButton = $('<button>').addClass('discard-article').html('Not interested');
+  var buttons       = $('<div>').addClass('buttons').append(saveButton).append(discardButton);
+  return buttons;
+}

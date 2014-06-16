@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
       facebook_token: data.credentials.token,
       facebook_uid:   data.uid,
       name:           data.info.name,
-      #email:          data.email,
+      #email:          data.info.email,
       image:          data.info.image 
       })
     #render :json => data.to_json
