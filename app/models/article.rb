@@ -20,16 +20,13 @@ class Article < ActiveRecord::Base
       else
         text_end = 0          
       end  
-
       { title:     title['title'], 
         url:       title['url'], 
         extract:   text[0, text_end],
-        shared_by: link[:shared_by] }      
+        shared_by: link[:shared_by] }         
     end
 
     articles.delete_if { |article| 
       article[:url].empty? || article[:extract].length <= 80 || 
       article[:title].empty? }
   end
-
-end

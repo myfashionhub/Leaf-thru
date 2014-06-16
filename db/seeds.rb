@@ -1,3 +1,6 @@
+interests.each do |interest|
+  Interest.create({topic: interest});
+
 interests = ['International News', 'http://feeds.theguardian.com/theguardian/world/rss', 'http://america.aljazeera.com/content/ajam/articles.rss','http://rss.nytimes.com/services/xml/rss/nyt/World.xml'],
             ['Local News','http://nypost.com/feed/','http://www.thelmagazine.com/newyork/Rss.xml', 'http://www.amny.com/cmlink/1.2427115']
             ['Science and Technology', 'http://news.sciencemag.org/rss/current.xml','http://feeds.popsci.com/c/34567/f/632419/index.rss' ]
@@ -11,4 +14,5 @@ interests = ['International News', 'http://feeds.theguardian.com/theguardian/wor
 
 interests.each do |interest, url1, url2, url3|
   Interest.create({topic: interest, url1: url1, url2: url2, url3: url3});
+
 end

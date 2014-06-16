@@ -20,13 +20,16 @@ class ReadersController < ApplicationController
 
   def profile
     @reader = current_reader
+    @interests = Interest.all
   end
 
   def edit
     @reader = current_reader
+    @interests = Interest.all
   end
 
   def update
+    binding.pry
     @reader = current_reader
     @reader.update(params_reader)
     redirect_to profile_path
@@ -40,29 +43,48 @@ class ReadersController < ApplicationController
       config.access_token_secret = current_reader.twitter_token_secret
     end
 
+<<<<<<< HEAD
+    tweets = client.home_timeline(options={count: 50})
+    links  = Reader.twitter_feed(tweets)
+    @data  = Article.parse(links)
+  end
+
+  def facebook
+    graph = Koala::Facebook::API.new(current_reader.facebook_token, ENV['FACEBOOK_SECRET'])
+    @reader = current_reader
+    #render :json => feed.to_json
+  end 
+
+  def feed
+=======
     tweets    = client.home_timeline(options={count: 10})
     links     = Reader.twitter_feed(tweets)
     @articles = Article.parse(links)
 
-    respond_to do |format| 
+    respond_to do |format|
       format.html
       format.json { render :json => @articles.to_json }
-    end   
+    end
   end
 
   def facebook
     @reader = current_reader
     #render :json => data.to_json
-  end 
+  end
 
   def feed
     #@feeds = current_reader.interests.all
 
+>>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
   end
 
   private
   def params_reader
+<<<<<<< HEAD
+    params.require(:reader).permit(:email, :password, :location)
+=======
     params.require(:reader).permit(:email, :password)
+>>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
   end
 
 end

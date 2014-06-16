@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   get 'signup'  => 'readers#new', as: 'signup'
   post 'readers'=> 'readers#create'
   get 'profile' => 'readers#profile', as: 'profile'
+  post 'profile' => 'readers#update', as: 'update_reader'
   get 'profile/edit' => 'readers#edit', as: 'reader'
   patch 'profile'=> 'readers#update'
+
+
 
   get 'login'   => 'sessions#new', as: 'login'
   post 'sessions'=> 'sessions#create', as: 'sessions'
