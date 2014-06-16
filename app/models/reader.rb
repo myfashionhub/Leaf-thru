@@ -6,9 +6,11 @@ class Reader < ActiveRecord::Base
   validates_uniqueness_of :email
   #validates :email, email: true
   validates :password, length: {within: 6..16, wrong_length: "Password length does not match requirement"}, :on => :create
-
   before_save :downcase_email
-
+  
+  has_many :reader_article_joins
+  has_many :articles, through: :reader_article_joins
+  
 
   def downcase_email
     self.email.downcase!

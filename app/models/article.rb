@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
   validates :url, uniqueness: true
+  has_many :reader_article_joins
+  has_many :readers, through: :reader_article_joins
 
   def self.parse(links)
     articles = links.map do |link|
