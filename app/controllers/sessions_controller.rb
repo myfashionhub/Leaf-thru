@@ -36,9 +36,9 @@ class SessionsController < ApplicationController
     current_reader.update({
       facebook_token: data.credentials.token,
       facebook_uid:   data.uid,
-      name:           data.info.name
-      email:          data.email,
-      image:          data.image 
+      name:           data.info.name,
+      #email:          data.info.email,
+      image:          data.info.image 
       })
     #render :json => data.to_json
     redirect_to '/facebook'

@@ -3,7 +3,7 @@
 <% @articles.each do |article| %>
   <p><%= article.id %>
     <a href="<%= article.url %>">
-    <%= article.headline %>
+    <%= article.title %>
     </a> <br/>
     Published by <%= article.publication %> on <%= article.date %><br/>
     <%= article.extract %>

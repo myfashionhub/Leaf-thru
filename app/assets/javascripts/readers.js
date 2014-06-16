@@ -1,9 +1,8 @@
 //= require feed
 //= require articles
 
-$(function(){
+$(document).ready(function(){   
   rssFeed();
   twitterFeed();
-  articleAction();
 })
 
