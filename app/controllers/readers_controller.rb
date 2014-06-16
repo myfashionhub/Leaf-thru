@@ -63,6 +63,7 @@ class ReadersController < ApplicationController
   end
 
   private
+  def params_reader
     params.require(:reader).permit(:email, :password)
   end
 
