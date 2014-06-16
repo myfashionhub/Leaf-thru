@@ -1,8 +1,8 @@
 function loadFeed(url) {
   var feed = new google.feeds.Feed(url);
   feed.setNumEntries(3);
-  feed.load(function(data){ 
-    displayFeedArticle(data); 
+  feed.load(function(data){
+    displayFeedArticle(data);
   });
 }
 
@@ -19,15 +19,16 @@ function displayFeedArticle(data) {
     //$extract     = $extract.contents().first();
     $article.append($title).append($extract).append($publisher).append(generateButtons());
     $('.rss-feed').append($article);
-  }    
+  }
 }
 
+//need to add feed selection logic
 function rssFeed() {
   // var feed_urls = $('.rss-feed').attr('feed-data');
   var feed_urls = ['http://sports.espn.go.com/espn/rss/news',
   'http://rss.nytimes.com/services/xml/rss/nyt/World.xml'];
   for (var i = 0; i < feed_urls.length; i++) {
-    loadFeed(feed_urls[i]);    
+    loadFeed(feed_urls[i]);
   }
 }
 
@@ -54,6 +55,6 @@ function displaySocialArticle(data) {
     $title.wrapInner($url);
     $article.append($title).append($extract).append($sharedBy).append(generateButtons());
     $('.twitter-feed').append($article);
-  }  
+  }
 }
 
