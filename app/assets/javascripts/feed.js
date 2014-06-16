@@ -14,17 +14,18 @@ function displayFeedArticle(data) {
     var $url     = $('<a>').attr('href', data.feed.entries[i].link);
     var $title   = $('<h3>').addClass('title').append(data.feed.entries[i].title);
     var $extract = $('<p>').addClass('extract').html(data.feed.entries[i].content);
-    var $publisher= $('<p>').addClass('publisher').html('Published by: '+data.feed.title);
+    var $publisher= $('<p>').addClass('publisher').attr('data', data.feed.title).html('Published by: '+data.feed.title);
     $title.wrapInner($url);
-    $extract     = $extract.contents().first();
-    $article.append($title).append($extract).append($publisher);
+    //$extract     = $extract.contents().first();
+    $article.append($title).append($extract).append($publisher).append(generateButtons());
     $('.rss-feed').append($article);
   }    
 }
 
 function rssFeed() {
   // var feed_urls = $('.rss-feed').attr('feed-data');
-  var feed_urls = ['http://sports.espn.go.com/espn/rss/news'];
+  var feed_urls = ['http://sports.espn.go.com/espn/rss/news',
+  'http://rss.nytimes.com/services/xml/rss/nyt/World.xml'];
   for (var i = 0; i < feed_urls.length; i++) {
     loadFeed(feed_urls[i]);    
   }
@@ -46,12 +47,13 @@ function displaySocialArticle(data) {
     var $title   = $('<h3>').addClass('title').html(data[i].title);
     var $url     = $('<a>').attr('href', data[i].url);
     var $extract = $('<p>').addClass('extract').html(data[i].extract);
-    var $sharedBy= $('<p>').addClass('shared-by').html('Shared by: ');
+    var $sharedBy= $('<p>').addClass('shared-by').attr('data', data[i].shared_by).html('Shared by: ');
     var $sharer  = $("<a href='http://twitter.com/"+data[i].shared_by+"' >@"+data[i].shared_by+"</a>");
     $sharedBy.append($sharer);
 
     $title.wrapInner($url);
-    $article.append($title).append($extract).append($sharedBy);
+    $article.append($title).append($extract).append($sharedBy).append(generateButtons());
     $('.twitter-feed').append($article);
   }  
 }
+

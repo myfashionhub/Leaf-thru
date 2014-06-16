@@ -4,7 +4,6 @@ class Reader < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates_presence_of :email, on: :create  
   validates_uniqueness_of :email
-
   #validates :email, email: true
   validates :password, length: {within: 6..16, wrong_length: "Password length does not match requirement"}, :on => :create
 
