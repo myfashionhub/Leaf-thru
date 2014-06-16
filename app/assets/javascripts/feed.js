@@ -14,9 +14,11 @@ function displayFeedArticle(data) {
     var $url     = $('<a>').attr('href', data.feed.entries[i].link);
     var $title   = $('<h3>').addClass('title').append(data.feed.entries[i].title);
     var $extract = $('<p>').addClass('extract').html(data.feed.entries[i].content);
+    if ($url.attr('href').indexOf('nytimes') > -1) {
+      $extract.html($extract.contents().first());
+    } 
     var $publisher= $('<p>').addClass('publisher').attr('data', data.feed.title).html('Published by: '+data.feed.title);
     $title.wrapInner($url);
-    //$extract     = $extract.contents().first();
     $article.append($title).append($extract).append($publisher).append(generateButtons());
     $('.rss-feed').append($article);
   }    
