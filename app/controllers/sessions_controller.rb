@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       twitter_token: data.extra.access_token.params[:oauth_token],
       twitter_token_secret: data.extra.access_token.params[:oauth_token_secret],
       twitter_handle:data.info.nickname,
-      #name:         data.info.name,
+      name:          data.info.name,
       image:         data.info.image,
       location:      data.info.location,
       tagline:       data.info.description })     
@@ -36,11 +36,12 @@ class SessionsController < ApplicationController
     current_reader.update({
       facebook_token: data.credentials.token,
       facebook_uid:   data.uid,
-      name:   data.info.name,
-      #email: data.email,
-      #image:  data.image 
+      name:           data.info.name
+      email:          data.email,
+      image:          data.image 
       })
-    render :json => data.to_json
+    #render :json => data.to_json
+    redirect_to '/facebook'
   end
 
 end

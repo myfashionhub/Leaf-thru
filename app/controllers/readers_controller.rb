@@ -40,23 +40,29 @@ class ReadersController < ApplicationController
       config.access_token_secret = current_reader.twitter_token_secret
     end
 
-    tweets = client.home_timeline(options={count: 50})
-    links  = Reader.twitter_feed(tweets)
-    @data  = Article.parse(links)
+    tweets    = client.home_timeline(options={count: 10})
+    links     = Reader.twitter_feed(tweets)
+    @articles = Article.parse(links)
+
+    respond_to do |format| 
+      format.html
+      format.json { render :json => @articles.to_json }
+    end   
   end
 
   def facebook
-    graph = Koala::Facebook::API.new(current_reader.facebook_token, ENV['FACEBOOK_SECRET'])
     @reader = current_reader
-    #render :json => feed.to_json
+    #render :json => data.to_json
   end 
 
   def feed
+    #@feeds = current_reader.interests.all
+
   end
 
   private
   def params_reader
-    params.require(:reader).permit(:email, :password, :location)
+    params.require(:reader).permit(:email, :password)
   end
 
 end
