@@ -20,13 +20,16 @@ class ReadersController < ApplicationController
 
   def profile
     @reader = current_reader
+    @interests = Interest.all
   end
 
   def edit
     @reader = current_reader
+    @interests = Interest.all
   end
 
   def update
+    binding.pry
     @reader = current_reader
     @reader.update(params_reader)
     redirect_to profile_path
@@ -44,16 +47,16 @@ class ReadersController < ApplicationController
     links     = Reader.twitter_feed(tweets)
     @articles = Article.parse(links)
 
-    respond_to do |format| 
+    respond_to do |format|
       format.html
       format.json { render :json => @articles.to_json }
-    end   
+    end
   end
 
   def facebook
     @reader = current_reader
     #render :json => data.to_json
-  end 
+  end
 
   def feed
     #@feeds = current_reader.interests.all

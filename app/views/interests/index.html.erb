@@ -2,6 +2,12 @@ Admins Only!
 <h1>Interests</h1>
 <ul>
 <% @interests.each do |interest| %>
-  <li><%= interest.topic %></li>
+  <li><%= interest.topic %>
+    <ul>
+      <li><%= interest.url1 %></li>
+      <li><%= interest.url2 %></li>
+      <li><%= interest.url3 %></li>
+    </ul>
+  </li>
 <% end %>
 </ul>
