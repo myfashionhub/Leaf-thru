@@ -30,3 +30,4 @@ class Article < ActiveRecord::Base
       article[:url].empty? || article[:extract].length <= 80 || 
       article[:title].empty? }
   end
+end
