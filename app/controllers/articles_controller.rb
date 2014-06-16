@@ -9,8 +9,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params)
-    redirect_to articles_path
+    article = Article.create(article_params)
+    current_reader.articles << article
+    # pop up announcement
   end
 
   def show
@@ -23,6 +24,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:url, :headline, :publication, :extract, :date)
+    params.require(:article).permit(:url, :title, :publication, :extract, :date)
   end
 end

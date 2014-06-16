@@ -15,10 +15,6 @@ Bundler.require(*Rails.groups)
 
 module Leafthru
   class Application < Rails::Application
-<<<<<<< HEAD
-
-=======
-    config.assets.precompile += %w( readers.js )
->>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
+  config.assets.precompile += %w( readers.js )
   end
 end

@@ -22,9 +22,8 @@ interests = ['International News', 'http://feeds.theguardian.com/theguardian/wor
             ['Finance & Business', 'http://www.wired.com/feed', 'http://fortune.com/feed/', 'http://www.forbes.com/forbes/feed/']
             ['Education',' http://www.edweek.org/ew/section/feeds/index.html', 'http://chronicle.com/section/News/6/rss', '']
             ['Lifestyle & Culture','http://www.vanityfair.com/rss', 'https://atavist.com/feed/', 'http://www.gq.com/services/rss/feeds/latest.xml' ]
-            ['Pets & Animals', 'http://pugofmyheart.wordpress.com/feed/','http://www.petage.com/feed/','www.herpnation.com/feed/']
+            ['Pets & Animals', 'http://pugofmyheart.wordpress.com/feed/','http://www.petage.com/feed/','http://www.vetstreet.com/rss/']
             ['Parenting & Family', 'http://www.fitparentmagazine.com/feed/', 'http://yourteenmag.com/feed/', 'http://www.autismparentingmagazine.com/feed/',]
-
 
 interests.each do |interest, url1, url2, url3|
   Interest.create({topic: interest, url1: url1, url2: url2, url3: url3});

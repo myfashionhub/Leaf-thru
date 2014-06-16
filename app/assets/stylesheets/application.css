@@ -1,4 +1,5 @@
 /*
+ *= require jquery.ui.all
  *= require_tree .
  *= require_self
  */
@@ -15,4 +16,8 @@ body {
 .article {
   width: 100%;
   margin: 10px;
+}
+
+.save_article {
+  width: 1000px;
 }

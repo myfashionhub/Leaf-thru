@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
       facebook_token: data.credentials.token,
       facebook_uid:   data.uid,
 <<<<<<< HEAD
+<<<<<<< HEAD
       name:   data.info.name,
       #email: data.email,
       #image:  data.image 
@@ -50,6 +51,11 @@ class SessionsController < ApplicationController
       name:           data.info.name
       email:          data.email,
       image:          data.image 
+=======
+      name:           data.info.name,
+      #email:          data.info.email,
+      image:          data.info.image 
+>>>>>>> e367bc11acbc39a7bd7d8f4c99ac1b959de8c127
       })
     #render :json => data.to_json
     redirect_to '/facebook'

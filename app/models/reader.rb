@@ -10,9 +10,11 @@ class Reader < ActiveRecord::Base
 >>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
   #validates :email, email: true
   validates :password, length: {within: 6..16, wrong_length: "Password length does not match requirement"}, :on => :create
-
   before_save :downcase_email
-
+  
+  has_many :reader_article_joins
+  has_many :articles, through: :reader_article_joins
+  
 
   def downcase_email
     self.email.downcase!

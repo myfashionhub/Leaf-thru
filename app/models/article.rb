@@ -8,6 +8,8 @@ class Article < ActiveRecord::Base
       #ENV.fetch('ALCHEMY_KEY')
 =======
   validates :url, uniqueness: true
+  has_many :reader_article_joins
+  has_many :readers, through: :reader_article_joins
 
   def self.parse(links)
     articles = links.map do |link|
@@ -19,6 +21,7 @@ class Article < ActiveRecord::Base
       get_text = "http://access.alchemyapi.com/calls/url/URLGetText"+query
       title = HTTParty.get(get_title)
       text  = HTTParty.get(get_text)['text']
+<<<<<<< HEAD
       text_end = text.index(/\n/).to_i
       if text_end <= 60
         text_end = text.index('.').to_i + 1
@@ -38,6 +41,17 @@ class Article < ActiveRecord::Base
 
 =======
       end
+=======
+      if text.nil? == false
+        text_end = text.index(/\n/).to_i
+        if text_end <= 60
+          text_end = text.index('.').to_i + 1
+        end
+      else
+        text_end = 0          
+      end  
+
+>>>>>>> e367bc11acbc39a7bd7d8f4c99ac1b959de8c127
       { title:     title['title'], 
         url:       title['url'], 
         extract:   text[0, text_end],
