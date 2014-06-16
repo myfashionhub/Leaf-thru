@@ -1,23 +1,21 @@
-<h2>Hello Leafers</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<ul id="nav">
+<li>Leafthru</li>
+<li>Hi, <%= Reader.name %></li>
+<li>Local Time: <%= Time.now %></br>Date</li>
+<li>Temperature></br>
+72 degrees</li>
+<li><a href="/profile">Edit My Profile</a></li>
+</ul>
 
 
-<p>temperature</p>
-<p>branding</p>
+<ul>
+<li><a href="/signup">Sign up</li>
+<li><a href="/login">Log in</a></li>
+<li><a href="/logout">Log out</a></li>
+<li><a href="/auth/facebook">Link your Facebook account</a></li>
+<li><a href="/auth/twitter">Link your Twitter account</a></li>
+</ul>
 
-
-<h3><a href="/feed">News feed!</a></h3>
-
-
-<p><a href="/signup">Sign up</a> <br/>
-<a href="/login">Log in</a> <br/>
-<a href="/logout">Log out</a> <br/>
-<a href="/profile">Profile</a> <br/>(Reader can edit profile/interests after logging in) <br/>
-
-<a href="/auth/facebook">Link your Facebook account</a> <br/>
-<a href="/auth/twitter">Link your Twitter account</a>
-</p>
+<h2><a href="/feed">Your News Feed</a></h2>
 
 <div class = "frontpage"></div>
