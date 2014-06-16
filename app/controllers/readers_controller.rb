@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class ReadersController < ApplicationController
   before_action :require_login, only: [:profile]
 

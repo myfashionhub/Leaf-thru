@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
     end
 
     articles.delete_if { |article| 
-      article[:url].empty? || article[:extract].length <= 60 || 
+      article[:url].empty? || article[:extract].length <= 80 || 
       article[:title].empty? }
   end
 
