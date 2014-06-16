@@ -5,17 +5,14 @@ function generateButtons() {
   return buttons;
 }
 
-function articleAction() {
-  $('.save-article').on('click', function(e) {
-    var article = $(e.target).parent().parent();
-    var title   = article.children().first().children().html();
-    var url     = article.children().first().children().attr('href');
-    var extract = $(article.children()[1]).html();
-    var source  = $(article.children()[2]).attr('data');
-    saveArticle(title, url, extract, source);
-  })
+function saveArticle(e) {
+  var article = $(e.target).parent().parent();
+  console.log('Clicked');  
+  var title   = article.children().first().children().html();
+  var url     = article.children().first().children().attr('href');
+  var extract = $(article.children()[1]).html();
+  var source  = $(article.children()[2]).attr('data');
+  saveArticle(title, url, extract, source);
+  console.log(title);
 }
 
-function saveArticle(title, url, extract, source) {
-  
-}

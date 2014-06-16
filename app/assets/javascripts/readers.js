@@ -4,6 +4,10 @@
 $(function(){
   rssFeed();
   twitterFeed();
-  articleAction();
+  $('.save-article').on('click', function(e) { 
+    saveArticle(e);
+    console.log('click');
+  })
+
 })
 
