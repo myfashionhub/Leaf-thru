@@ -21,9 +21,6 @@ class Reader < ActiveRecord::Base
     links = tweets.map do |tweet|
       url    = tweet.urls[0]
       if url.nil? == false
-        url = url.attrs[:expanded_url]
-        sharer = tweet.user.screen_name
-        { url: url, sharer: sharer }
         url       = url.attrs[:expanded_url]
         shared_by = tweet.user.screen_name
         { url: url, shared_by: shared_by }
@@ -41,10 +38,7 @@ class Reader < ActiveRecord::Base
       link[:url].include?('login') ||
       link[:url].include?('shop') }
   end
-end
-      link[:url].include?('video') ||
-      link[:url].include?('vine.co') }
-  end
+
 end
 
 =begin
