@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+<<<<<<< HEAD
 //= require_tree .
 
 function loadFeed(url) {
@@ -35,3 +36,9 @@ function populateFrontpage() {
 $(function(){
   populateFrontpage();
 })
+=======
+//= require_self
+// remove require_tree .
+
+
+>>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5

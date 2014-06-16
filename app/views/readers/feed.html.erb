@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 <h2>RSS feed</h2>
 
 <div class="frontpage"></div>
+=======
+<!-- readers.js only loaded on this page -->
+<%= javascript_include_tag 'readers' %>
+
+<div class="frontpage">
+  <h2>RSS feed</h2>
+  <div class="rss-feed" feed-data="http://something.com"></div>
+  <!-- Change feed-data value to <%= @feeds %> -->
+
+  <h2>Social feed</h2>
+  <div class="twitter-feed"></div>
+</div>
+>>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
 
 
