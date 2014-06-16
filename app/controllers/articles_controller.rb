@@ -1,24 +1,26 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all
-  end
-
-  def new
-    @article = Article.new
+    reader_article_joins = ReaderArticleJoin.where(reader_id: current_reader.id.to_s)
+    @articles   = reader_article_joins.map do |reader_article_join|
+      Article.find(reader_article_join.article_id)
+    end
   end
 
   def create
-    article = Article.create(article_params)
+    #unless Article.exists?(url: params[:url])
+    article = Article.create(article_params) 
     current_reader.articles << article
-    # pop up announcement
+    redirect_to articles_path
   end
 
   def show
   end
 
   def destroy
-    Article.delete(params[:id])
+    #Delete from join table
+    id = ReaderArticleJoin.find_by(article_id: params[:id].to_s)
+    ReaderArticleJoin.delete(id)
     redirect_to articles_path
   end
 

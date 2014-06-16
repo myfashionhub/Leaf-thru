@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  validates :url, uniqueness: true
+  validates :url, uniqueness: true, on: :create
   has_many :reader_article_joins
   has_many :readers, through: :reader_article_joins
 

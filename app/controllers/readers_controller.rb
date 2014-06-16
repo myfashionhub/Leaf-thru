@@ -1,5 +1,5 @@
 class ReadersController < ApplicationController
-  before_action :require_login, only: [:profile]
+  before_action :require_login, on: :profile
 
   def new
     @reader = Reader.new

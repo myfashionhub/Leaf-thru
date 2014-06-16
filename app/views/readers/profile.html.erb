@@ -34,7 +34,7 @@
 <!-- //this is really lazy. We should probably write a loop so that we can run through the seed and make a form from that. But just trying to get it up and running for the moment. -->
 <div class = 'edit_news_preferences'>
   <%= form_for @reader_interest_join do |f| %>
-  <%= hidden%>
+  <%= hidden %>
   <h4>International</h4>
     <%= f.check_box_tag(:interest_id) %>
     <%= f.label_tag(:interest_id, "The Guardian") %>
@@ -49,7 +49,7 @@
     <%= f.label_tag(:interest_id, "The L Magazine") %>
     <%= f.check_box_tag(:interest_id) %>
     <%= f.label_tag(:interest_id, "AM NY") %>
-    <h4>Science and Technology</h4>
+  <h4>Science and Technology</h4>
 
   <% end %>
 </div>
