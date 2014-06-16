@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :articles
+  resources :articles, only: [:index, :create, :show, :destroy]
   resources :reader_article_join
   resources :reader_interest_join
   resources :interests

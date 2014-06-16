@@ -6,6 +6,7 @@ class ReaderInterestJoinsController < ApplicationController
 
   def new
     @reader_interest_join = ReaderInterestJoin.new
+    binding.pry
   end
 
   def create

@@ -1,38 +1,27 @@
 <h2>Edit your profile <%= @reader.email %></h2>
 
-<p>(Allow reader to edit preferences & sources, which involves join tables)</p>
-<ul>
-  <li>Twitter handle</li>
-  <li>Facebook username</li>
-  <li>Topics of interests</li>
-  <li>Favorite news sources</li>
-</ul>
-  <%= form_for @reader do |f| %>
-    <%#= f.label :twitter, "Twitter handle:" %>
-    <%#= f.text_field :twitter %>
-    <%#= f.label :facebook, "Facebook username:" %>
-    <%#= f.text_field :facebook %>
-    <%#= f.submit "Update profile" %>
-  <% end %>
-
-<p>Edit email/pw and location only show on click</p>
-<h3 class='edit_reader'>Edit your info</h3>
-
-<div class="edit_reader_form">
-  <%= form_for @reader do |f| %>
-    <%= f.label :location, "Location:" %>
-    <%= f.text_field :location %>
-    <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %>
-    <%= f.label :password, "Password:" %>
-    <%= f.password_field :password %>
-    <%= f.submit "Update profile" %>
-  <% end %>
-</div>
-
 <h3>Choose your News Preferences</h3>
 <!-- //this is pretty shitty, Matt told me that maybe we should rebuild our data structure around periodical lists and assign them topics. We could pull be .find_by_topic then, I suppose. -->
+
 <div class = 'edit_news_preferences'>
+  <%= form_for @reader_interest_join do |f| %>
+  <%= hidden %>
+  <h4>International</h4>
+    <%= f.check_box_tag(:interest_id) %>
+    <%= f.label_tag(:interest_id, "The Guardian") %>
+    <%= f.check_box_tag(:interest_id) %>
+    <%= f.label_tag(:interest_id, "Al Jazeera") %>
+    <%= f.check_box_tag(:interest_id) %>
+    <%= f.label_tag(:interest_id, "New York Times: World") %>
+  <h4>Local</h4>
+    <%= f.check_box_tag(:interest_id) %>
+    <%= f.label_tag(:interest_id, "New York Post") %>
+    <%= f.check_box_tag(:interest_id) %>
+    <%= f.label_tag(:interest_id, "The L Magazine") %>
+    <%= f.check_box_tag(:interest_id) %>
+    <%= f.label_tag(:interest_id, "AM NY") %>
+  <h4>Science and Technology</h4>
+
   <%= form_tag do %>
     <% @interests.each do |interest| %>
       <h1><%= interest.topic %></h1>
@@ -44,6 +33,7 @@
       <%= check_box_tag "urls[#{interest}][3]", interest.url3 %>
     <% end %>
   <%= submit_tag ("Update Preferences")%>
+
   <% end %>
 
 </div>

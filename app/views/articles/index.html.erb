@@ -1,11 +1,23 @@
 <h1>Saved articles</h1>
 
+
 <% @articles.each do |article| %>
-  <p><%= article.id %>
-    <a href="<%= article.url %>">
+  <div class="saved-article">
+  <p><a href="<%= article.url %>">
     <%= article.title %>
     </a> <br/>
-    Published by <%= article.publication %> on <%= article.date %><br/>
+    <% if article.publication.nil? %>
+      Shared by <%= article.shared_by %>
+    <% else %>  
+      Published by <%= article.publication %> on <%= article.date %><br/>
+    <% end %> 
     <%= article.extract %>
   </p>
+  
+  <form action="/articles/<%= article.id %>" method='post'>
+    <%= token_tag %>
+    <input type="hidden" name='_method' value='delete'>
+    <button class='delete'>Delete</button>
+  </form>
+  </div>
 <% end %>

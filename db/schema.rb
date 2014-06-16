@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615213820) do
+ActiveRecord::Schema.define(version: 20140616193117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
-    t.string   "url"
     t.string   "title"
     t.string   "publication"
     t.string   "date"
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140615213820) do
     t.datetime "updated_at"
     t.string   "shared_by"
     t.text     "extract"
+    t.text     "url"
   end
 
   create_table "interests", force: true do |t|
@@ -59,8 +59,6 @@ ActiveRecord::Schema.define(version: 20140615213820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.string   "twitter"
-    t.string   "facebook"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
     t.string   "facebook_token"
