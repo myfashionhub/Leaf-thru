@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class ReadersController < ApplicationController
   before_action :require_login, only: [:profile]
 
@@ -43,7 +45,7 @@ class ReadersController < ApplicationController
     tweets    = client.home_timeline(options={count: 10})
     links     = Reader.twitter_feed(tweets)
     @articles = Article.parse(links)
-    
+
     respond_to do |format| 
       format.html
       format.json { render :json => @articles.to_json }
@@ -51,13 +53,13 @@ class ReadersController < ApplicationController
   end
 
   def facebook
-    graph = Koala::Facebook::API.new(current_reader.facebook_token, ENV['FACEBOOK_SECRET'])
     @reader = current_reader
-    #render :json => feed.to_json
+    #render :json => data.to_json
   end 
 
   def feed
     #@feeds = current_reader.interests.all
+
   end
 
   private
