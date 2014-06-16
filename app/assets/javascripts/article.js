@@ -1,12 +1,10 @@
 
-function loadFeed(url){
+function loadFeed(url) {
   var feed = new google.feeds.Feed(url);
   feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
   feed.setNumEntries(1)
   return feed;
->>>>>>> 1a801c734a5b61415d3260e1c636b227c992fa12
 }
-
 
 //******Model*******
 
