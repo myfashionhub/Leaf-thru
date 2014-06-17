@@ -1,38 +1,4 @@
-<div class="menu">
-  <div>Leafthru LOGO</div>
-  <div>
-    <%= formatted_date_time(Time.now) %></br>
-    Temperature: 72 degrees
-  </div>
-  <div>
-    Hi, <%= @greeting %></br>
-    I'm Feeling...
-  </div>  
-
-  <div id='arrow'>
-    <i class="fa fa-chevron-down"></i> <br/>
-    Menu
-  </div>
-
-  <ul class="nav">
-    <li>
-        <a href="/articles">Read Later</a>
-    </li>
-    <%if current_reader %>
-    <li>
-      <a href="/profile">Edit My Profile</a>
-    </li>  
-    <li>
-      <a href="/feed">View My News</a>
-    </li>  
-    <li>
-      <a href="/logout">Log out</a>
-    </li>
-      <% end %>
-  </ul>
-  
-</div>
-
+<%= render 'nav' %>
 
 <h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>
 
