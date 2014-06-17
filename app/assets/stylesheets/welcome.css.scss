@@ -11,16 +11,30 @@
   overflow: auto;
   color: #fff;
   padding: 10px;
-  div {
-    width: 25%;
-    display: inline-block;
+  > div {
     float: left;
   }
+  .logo {
+    width: 35%;
+  }
+  .location {
+    width: 27%;
+  }
+  .profile {
+    width: 23%;
+    span, img {
+      display: inline-block; 
+      vertical-align: middle;
+    }
+    img {
+      width: 40px;
+    }
+  }
   #arrow {
+    width: 100px;
+    margin: 12px 3% 0 0;
+    float: right;
     text-align: right;
-    width: 20%;
-    margin-right: 5%;
-    padding-bottom: 6px;
   }
 }
 

@@ -1,14 +1,16 @@
 <div class="menu">
-  <div>Leafthru LOGO</div>
-  <div>
+  <div class='logo'>Leafthru LOGO</div>
+  <div class='location'>
     <%= formatted_date_time(Time.now) %></br>
     72 &deg;F, New York, NY 
   </div>
  
 
-  <div id='arrow'>
-  <div>
+  <div class='profile'>
     <% if current_reader %>
+      <% if current_reader.image %>
+        <img src="<%= current_reader.image %>" alt="profile-image" />
+      <% end %>    
       <% if current_reader.name %>
         <span>Hi, <%= current_reader.name %></span>
       <% else %>
@@ -16,13 +18,11 @@
       <% end %> 
     <% else %>  
       <span>Hi, Reader</span>
-    <% end %>     
-    <br/>
-    <span>I'm Feeling...</span>
-  </div> 
-      
-    <i class="fa fa-chevron-down"></i> <br/>
-    Menu
+    <% end %>  
+  </div>  
+
+  <div id='arrow'>       
+    Menu &nbsp; <i class="fa fa-chevron-down"></i> 
   </div>
 
   <ul class="nav">
