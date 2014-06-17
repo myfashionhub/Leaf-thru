@@ -6,10 +6,9 @@ class ReadersController < ApplicationController
 #  end
 
   def create
-    if current_reader.nil? == false
+    if current_reader
       flash[:notice] = 'You must log out to create a new account'
     end
-    binding.pry
 
     @reader = Reader.create(reader_params)
     if @reader.save
@@ -28,7 +27,6 @@ class ReadersController < ApplicationController
     @reader = current_reader
     @publications = Publication.all
     @subscription = Subscription.new
-    binding.pry
   end
 
   def edit

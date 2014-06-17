@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create]
 
-  get 'signup'  => 'readers#new', as: 'signup'
   post 'readers'=> 'readers#create'
   get 'profile' => 'readers#profile', as: 'profile'
   post 'profile' => 'readers#update', as: 'update_reader'
