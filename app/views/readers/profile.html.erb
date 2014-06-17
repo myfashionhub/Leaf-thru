@@ -1,8 +1,8 @@
 <% if @reader.name %>
   <h2>Customize your profile <%= @reader.name %></h2>
-<% else %>  
+<% else %>
   <h2>Customize your profile <%= @reader.email %></h2>
-<% end %>   
+<% end %>
 
 <div class="social">
   <a href="/auth/facebook">Link your Facebook account</a>
@@ -12,10 +12,10 @@
 <div class="preference">
 <h3>Choose your News Preferences</h3>
   <%= form_for @subscription do |f| %>
-    <%= collection_check_boxes(:subscription, :publication_id, @publications, :id, :name, {}) %>
+    <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
     <%= f.submit %>
   <% end %>
-</div>
+
 
 
 <div class="profile">
@@ -28,4 +28,6 @@
     <%= f.submit "Update profile" %>
   <% end %>
 </div>
+
+
 
