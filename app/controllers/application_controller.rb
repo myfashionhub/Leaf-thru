@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def formatted_date_time(object)
-    object.strftime("%B %d, %Y | %I:%M %p")
+    object.strftime("%B %d, %Y")
   end
 
 end

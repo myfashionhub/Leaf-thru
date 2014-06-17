@@ -2,22 +2,25 @@
   <div>Leafthru LOGO</div>
   <div>
     <%= formatted_date_time(Time.now) %></br>
-    Temperature: 72 degrees
+    72 &deg;F, New York, NY 
   </div>
+ 
+
+  <div id='arrow'>
   <div>
     <% if current_reader %>
       <% if current_reader.name %>
-        <p>Hi, <%= current_reader.name %></p>
+        <span>Hi, <%= current_reader.name %></span>
       <% else %>
-        <p>Hi, <%= current_reader.email %></p>
+        <span>Hi, <%= current_reader.email %></span>
       <% end %> 
     <% else %>  
-      <p>Hi, Reader</p>
+      <span>Hi, Reader</span>
     <% end %>     
-    <p>I'm Feeling...</p>
-  </div>  
-
-  <div id='arrow'>
+    <br/>
+    <span>I'm Feeling...</span>
+  </div> 
+      
     <i class="fa fa-chevron-down"></i> <br/>
     Menu
   </div>
