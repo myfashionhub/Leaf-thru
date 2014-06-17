@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   get 'profile/edit' => 'readers#edit', as: 'reader'
   patch 'profile/edit'=> 'readers#update'
 
-
-
-  get 'login'   => 'sessions#new', as: 'login'
   post 'sessions'=> 'sessions#create', as: 'sessions'
   get 'logout'  => 'sessions#destroy', as: 'logout'
 

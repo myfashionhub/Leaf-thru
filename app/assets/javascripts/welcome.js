@@ -1,14 +1,5 @@
-function toggleForm(formSelector) {
-  $('.form')
-  var display = $(formSelector).attr('display');
-  if (display === 'none') {
-    display = 'block';
-  } else {
-    display = 'none';
-  }
-}
 
-$(window).load(function() {
+$(document).ready(function() {
   $('.signup').hide();
   //$('.login').hide();
 

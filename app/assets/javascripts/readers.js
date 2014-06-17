@@ -1,13 +1,11 @@
 //= require feed
 //= require articles
 
-$(document).ready(function(){   
+$(window).load(function(){   
   rssFeed();
-  twitterFeed();
-       
+  twitterFeed();       
 })
 
-$(window).load(function() {
-    
-})
+
+
 

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
     #login form
   end
@@ -7,15 +6,15 @@ class SessionsController < ApplicationController
   def create
     @reader = login(params[:email].downcase, params[:password])
     if @reader
-      redirect_to root_path
+      redirect_to '/feed'
     else
-      render :new
+      flash[:notice] = 'Log in failed. Try again'
     end
   end
 
   def destroy
-    logout
-    redirect_to root_path
+    session[:user_id] = nil
+    redirect_to root_path, notice: "You have successfully logged out."
   end
 
   def log_twitter
