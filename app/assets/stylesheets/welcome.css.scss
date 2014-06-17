@@ -1,5 +1,19 @@
 
 #nav {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 75px;
+  float: left;
+  margin: 0 0 3em 0;
+  padding: 0;
+  padding-bottom: 50px;
+  list-style: none;
+  text-align: center;
+  font-size: 16px;
   z-index: 1;
   width: 100%;
   height: 40px;
@@ -8,11 +22,28 @@
   list-style: none;
   font-size: 18px;
   font-family: Helvetica;
-  color: white;
+  color: black;
   background-color: #49708A;
 }
 
 #nav li {
+
+  float: left;
+  padding: 125 125 125 125px;
+  line-height: 125%;
+
+}
+
+#nav li a {
+
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+
+  }
+
   padding: 10px;
   line-height: 1.5em;
   display: inline-block;
@@ -24,6 +55,7 @@
   font-weight: bold;
   color: white;
 }
+
 
 #nav li a:hover {
   color: white;
@@ -41,8 +73,16 @@
   width: 100%;
   clear: both;
   display: block;
-  height: 1px;  
+  height: 1px;
 }
+
+
+#nav li ul {
+
+  display: none;
+  width: 10em; /* Width to help Opera out */
+  background-color: #49708A;
+
 
 .form {
   width: 320px;
@@ -59,6 +99,7 @@
     margin: 10px auto;
     padding: 5px;
   }
+
 }
 
   h3 {
@@ -67,6 +108,6 @@
   }
 
   #signup:hover, #login:hover {
-    cursor: pointer; 
-    color: limegreen; 
-  }   
+    cursor: pointer;
+    color: limegreen;
+  }
