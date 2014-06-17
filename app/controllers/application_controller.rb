@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_reader
+  helper_method :current_reader, :formatted_date_time
 
   def current_reader
     current_user
@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_path
   end
+
+  def formatted_date_time(object)
+    object.strftime("%B %d, %Y at %I:%M %p")
+  end
+
 end

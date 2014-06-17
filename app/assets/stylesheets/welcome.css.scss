@@ -6,21 +6,32 @@ body {
   overflow: auto;
 }
 
+
 #nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
   width: 100%;
-  padding: 5px;
-  overflow: auto;
+  height: 40px;
+  float: left;
   margin: 0 0 3em 0;
+  padding: 10px;
   list-style: none;
   font-size: 18px;
   font-family: Helvetica;
   color: white;
   background-color: #49708A;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
+
+
 
 #nav li {
   float: left;
   padding: 10px;
+  line-height: 200%;
 }
 
 #nav li a {

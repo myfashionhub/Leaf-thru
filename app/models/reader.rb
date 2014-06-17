@@ -1,6 +1,7 @@
 class Reader < ActiveRecord::Base
 has_many :articles
-has_many :publications
+has_many :subscriptions
+has_many :publications, through: :subscriptions
 
   authenticates_with_sorcery!
 
@@ -15,10 +16,6 @@ has_many :publications
   has_many :reader_article_joins
   has_many :articles, through: :reader_article_joins
 
-
-  def my_formated_date_time
-    created_at.strftime("%B %d, %Y at %I:%M %p")
-  end
 
 
   def downcase_email

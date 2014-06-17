@@ -21,22 +21,21 @@ class ReadersController < ApplicationController
   def profile
     @reader = current_reader
     @publications = Publication.all
+    @subscription = Subscription.new
   end
 
   def edit
 
     @reader = current_reader
     @publications = Publication.all
-    #show the ch
+
   end
 
   def update
-    #delete all associations
-    #get params from checked boxes
-    #create a row line in a table for each
-    @reader = current_reader
-    @reader.update(params_reader)
+
     binding.pry
+    #where publication id = true
+    #update reader_publication w. reader[id]_publication[id]
   end
 
   def twitter
@@ -67,8 +66,8 @@ class ReadersController < ApplicationController
   end
 
   private
-  def params_reader
-    params.require(:reader).permit(:email, :password)
+  def reader_params
+    params.require(:reader).permit(:email, :password, :location, :preferences)
   end
 
 end

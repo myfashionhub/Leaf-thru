@@ -14,14 +14,34 @@
     <%= f.submit "Update profile" %>
   <% end %>
 </div>
-
+<!--
 <h3>Choose your News Preferences</h3>
   <%= form_for @reader do |f| %>
     <% @publications.each do |publication| %>
       <%= label_tag publication.name %>
-      <%= check_box_tag publication.url %>
+      <%= check_box_tag :publication_id => publication.id %>
     <% end %>
   <%= submit_tag ("Update Preferences")%>
 <% end %>
 
+
+<%= form_for @reader do |f| %>
+    <% @publications.each do |publication| %>
+      <%= label_tag publication.name %>
+      <%= check_box_tag :publication_id => publication.id %>
+    <% end %>
+  <%= submit_tag ("Update Preferences")%>
+<% end %>
+ -->
+
+
+
+<h3>Choose your News Preferences</h3>
+  <%= form_for @subscription do |f| %>
+    <%= collection_check_boxes(:subscription, :publication_id, @publications, :id, :name, {}) %>
+    <%= f.submit %>
+  <% end %>
+
 </div>
+
+
