@@ -1,16 +1,32 @@
 <%= javascript_include_tag 'welcome' %>
 
 <ul id="nav">
-<li>Leafthru</li>
-
-<li><%= formatted_date_time(Time.now) %></br>
+  <li>Leafthru</li>
+  <li><%= formatted_date_time(Time.now) %></br>
 Temperature: 72 degrees</br>
-</li>
-<li>Hi, <%= Reader.name %></br>
+  </li>
+  <li>Hi, <%= Reader.name %></br>
   I'm Feeling...</li>
-<a href="/profile">Menu</a></br>
-</li>
+  <li><a href="/profile">Menu</a></ul>
+    <li><a href="/articles">Read Later</a></li>
+    <!-- <li><a href="/auth/facebook">Link your Facebook account</a></li> -->
+    <li><a href="/auth/twitter">Link your Twitter account</a></li>
+    <li><a href="/logout">Log out</a></li></ul>
+  </li>
 </ul>
+
+
+<!-- <ul id="navbar">
+  <li><a href="#">Item One</a><ul>
+    <li><a href="#">Subitem One</a></li>
+    <li><a href="#">Second Subitem</a></li>
+    <li><a href="#">Numero Tres</a></li></ul>
+  </li>
+  <!-- ... and so on ... -->
+<!-- </ul -->
+
+
+
 
 <h2>Sign up or Log in</h2>
 
@@ -34,17 +50,6 @@ Temperature: 72 degrees</br>
   <%= submit_tag "Log in" %>
 <% end %>
 </div>
-
-
-
-<ul id ="menu">
-<!-- <li><a href="/signup">Sign up</li>
-<li><a href="/login">Log in</a></li> -->
-<li><a href="/logout">Log out</a></li>
-<li><a href="/saved">Read Later</a></li>
-<li><a href="/auth/facebook">Link your Facebook account</a></li>
-<li><a href="/auth/twitter">Link your Twitter account</a></li>
-</ul>
 
 
 
