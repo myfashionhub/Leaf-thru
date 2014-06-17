@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140616212223) do
+=======
+ActiveRecord::Schema.define(version: 20140616193117) do
+>>>>>>> 5ca5711974dcc6873cd194445c552dd566040c6f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
-    t.string   "url"
     t.string   "title"
     t.string   "publication"
     t.string   "date"
@@ -25,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140616212223) do
     t.datetime "updated_at"
     t.string   "shared_by"
     t.text     "extract"
+    t.text     "url"
   end
 
   create_table "interests", force: true do |t|

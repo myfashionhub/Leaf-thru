@@ -1,5 +1,5 @@
 class ReadersController < ApplicationController
-  before_action :require_login, only: [:profile]
+  before_action :require_login, on: :profile
 
   def new
     @reader = Reader.new
@@ -64,14 +64,11 @@ class ReadersController < ApplicationController
 
   def feed
     #@feeds = current_reader.interests.all
-
-
   end
 
   private
   def params_reader
     params.require(:reader).permit(:email, :password)
-
   end
 
 end

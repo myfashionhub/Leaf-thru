@@ -1,20 +1,5 @@
 <h2>Edit your profile <%= @reader.email %></h2>
 
-<p>(Allow reader to edit preferences & sources, which involves join tables)</p>
-<ul>
-  <li>Twitter handle</li>
-  <li>Facebook username</li>
-  <li>Topics of interests</li>
-  <li>Favorite news sources</li>
-</ul>
-  <%= form_for @reader do |f| %>
-    <%#= f.label :twitter, "Twitter handle:" %>
-    <%#= f.text_field :twitter %>
-    <%#= f.label :facebook, "Facebook username:" %>
-    <%#= f.text_field :facebook %>
-    <%#= f.submit "Update profile" %>
-  <% end %>
-
 <p>Edit email/pw and location only show on click</p>
 <h3 class='edit_reader'>Edit your info</h3>
 

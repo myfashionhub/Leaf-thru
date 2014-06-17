@@ -20,22 +20,14 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-<<<<<<< HEAD
-  config.serve_static_assets = false
-=======
   config.serve_static_assets = true
->>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-<<<<<<< HEAD
-  config.assets.compile = false
-=======
   config.assets.compile = true
->>>>>>> 84aef86727a9f8443bd6ac6e992193f6ae8bc6d5
 
   # Generate digests for assets URLs.
   config.assets.digest = true

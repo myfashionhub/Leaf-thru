@@ -16,6 +16,11 @@ has_many :publications
   has_many :articles, through: :reader_article_joins
 
 
+  def my_formated_date_time
+    created_at.strftime("%B %d, %Y at %I:%M %p")
+  end
+
+
   def downcase_email
     self.email.downcase!
   end
@@ -24,9 +29,9 @@ has_many :publications
     links = tweets.map do |tweet|
       url    = tweet.urls[0]
       if url.nil? == false
-        url = url.attrs[:expanded_url]
-        sharer = tweet.user.screen_name
-        { url: url, sharer: sharer }
+        url       = url.attrs[:expanded_url]
+        shared_by = tweet.user.screen_name
+        { url: url, shared_by: shared_by }
       end
     end
     links.compact.delete_if { |link| #regex domain is in?
@@ -41,8 +46,6 @@ has_many :publications
       link[:url].include?('login') ||
       link[:url].include?('shop') }
   end
-
-
 
 end
 
