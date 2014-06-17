@@ -5,6 +5,7 @@ class CreateReaders < ActiveRecord::Migration
       t.string :email_validate
       t.string :password
       t.string :location
+      t.string :preferences
 
       t.timestamps
     end

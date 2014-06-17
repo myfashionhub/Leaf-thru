@@ -31,19 +31,12 @@
 </div>
 
 <h3>Choose your News Preferences</h3>
-<!-- //this is pretty shitty, Matt told me that maybe we should rebuild our data structure around periodical lists and assign them topics. We could pull be .find_by_topic then, I suppose. -->
-<div class = 'edit_news_preferences'>
-  <%= form_tag do %>
-    <% @interests.each do |interest| %>
-      <h1><%= interest.topic %></h1>
-      <%= label_tag interest.url1 %>
-      <%= check_box_tag "urls[#{interest}][1]", interest.url1 %>
-      <%= label_tag interest.url2 %>
-      <%= check_box_tag "urls[#{interest}][2]", interest.url2 %>
-      <%= label_tag interest.url3 %>
-      <%= check_box_tag "urls[#{interest}][3]", interest.url3 %>
+  <%= form_for @reader do |f| %>
+    <% @publications.each do |publication| %>
+      <%= label_tag publication.name %>
+      <%= check_box_tag publication.url %>
     <% end %>
   <%= submit_tag ("Update Preferences")%>
-  <% end %>
+<% end %>
 
 </div>

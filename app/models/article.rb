@@ -1,9 +1,10 @@
 class Article < ActiveRecord::Base
+  has_many readers
 <<<<<<< HEAD
 
   def self.parse(links)
     articles = links.map do |link|
-      apikey      = 
+      apikey      =
       "b5d30b2a5642232b36da96334f8861205af1f4a8"
       #ENV.fetch('ALCHEMY_KEY')
 =======
@@ -26,14 +27,14 @@ class Article < ActiveRecord::Base
       if text_end <= 60
         text_end = text.index('.').to_i + 1
 <<<<<<< HEAD
-      end        
-      { title:   title['title'], 
-        url:     title['url'], 
+      end
+      { title:   title['title'],
+        url:     title['url'],
         extract: text[0, text_end],
-        sharer:  link[:sharer] }      
+        sharer:  link[:sharer] }
     end
 
-    articles.delete_if { |article| 
+    articles.delete_if { |article|
       article[:url].empty? || article[:extract].empty? ||
       article[:title].empty? }
   end
@@ -48,18 +49,18 @@ class Article < ActiveRecord::Base
           text_end = text.index('.').to_i + 1
         end
       else
-        text_end = 0          
-      end  
+        text_end = 0
+      end
 
 >>>>>>> e367bc11acbc39a7bd7d8f4c99ac1b959de8c127
-      { title:     title['title'], 
-        url:       title['url'], 
+      { title:     title['title'],
+        url:       title['url'],
         extract:   text[0, text_end],
-        shared_by: link[:shared_by] }      
+        shared_by: link[:shared_by] }
     end
 
-    articles.delete_if { |article| 
-      article[:url].empty? || article[:extract].length <= 80 || 
+    articles.delete_if { |article|
+      article[:url].empty? || article[:extract].length <= 80 ||
       article[:title].empty? }
   end
 
