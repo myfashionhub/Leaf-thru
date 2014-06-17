@@ -34,6 +34,7 @@ group :development, :test do
 end
 
 gem 'jquery-ui-rails'
+gem 'font-awesome-sass'
 
 gem 'sorcery'
 gem 'omniauth'
