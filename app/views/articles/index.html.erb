@@ -3,14 +3,22 @@
 
 <% @articles.each do |article| %>
   <div class="saved-article">
-  <p><a href="<%= article.url %>">
-    <%= article.title %>
-    </a> <br/>
+  <p class='title'>
+    <a href="<%= article.url %>">
+      <%= article.title %>
+    </a> 
+
     <% if article.publication.nil? %>
-      Shared by <%= article.shared_by %>
-    <% else %>  
-      Published by <%= article.publication %> on <%= article.date %><br/>
+      <span class='source'>
+        Shared by <%= article.shared_by %>
+      </span>
+    <% else %> 
+      <span class='source'> 
+        Published by <%= article.publication %>
+      </span>  
     <% end %> 
+  </p>
+  <p>  
     <%= article.extract %>
   </p>
   

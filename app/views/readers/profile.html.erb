@@ -21,7 +21,7 @@
     <%= f.check_box_tag(:interest_id) %>
     <%= f.label_tag(:interest_id, "AM NY") %>
   <h4>Science and Technology</h4>
-
+  <% end %>
   <%= form_tag do %>
     <% @interests.each do |interest| %>
       <h1><%= interest.topic %></h1>

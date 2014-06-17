@@ -4,5 +4,10 @@
 $(document).ready(function(){   
   rssFeed();
   twitterFeed();
+       
+})
+
+$(window).load(function() {
+    
 })
 

@@ -20,8 +20,15 @@ function displayFeedArticle(data) {
     var $publisher= $('<p>').addClass('publisher').attr('data', data.feed.title).html('Published by: '+data.feed.title);
     $title.wrapInner($url);
     $article.append($title).append($extract).append($publisher).append(generateButtons());
-    $('.rss-feed').append($article);
+    $('.rss').append($article);
   }
+  $('.rss .save-article').on('click', function(e) { 
+    articleAction('.save-article', e);
+  });
+
+  $('.rss .discard-article').on('click', function(e) {
+    articleAction('.discard-article', e);
+  });   
 }
 
 //need to add feed selection logic
@@ -56,8 +63,15 @@ function displaySocialArticle(data) {
 
     $title.wrapInner($url);
     $article.append($title).append($extract).append($sharedBy).append(generateButtons());
-    $('.twitter-feed').append($article);
+    $('.twitter').append($article);
   }
+  $('.twitter .save-article').on('click', function(e) { 
+    articleAction('.save-article', e);
+  });
+
+  $('.twitter .discard-article').on('click', function(e) {
+    articleAction('.discard-article', e);
+  });  
 }
 
 
