@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
 
   def index
-    reader_article_joins = ReaderArticleJoin.where(reader_id: current_reader.id.to_s)
-    @articles   = reader_article_joins.map do |reader_article_join|
-      Article.find(reader_article_join.article_id)
+    bookmarks = Bookmark.where(reader_id: current_reader.id.to_s)
+    @articles   = bookmarks.map do |bookmark|
+      Article.find(bookmark.article_id)
     end
   end
 
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
       current_reader.articles << article 
     else
       article = Article.find_by(url: params[:article][:url])
-      if ReaderArticleJoin.exists?(article_id: article.id.to_s, reader_id: current_reader.id.to_s)
+      if Bookmark.exists?(article_id: article.id.to_s, reader_id: current_reader.id.to_s)
         flash[:notice] = 'Already saved!'
       else          
         current_reader.articles << article         
@@ -27,8 +27,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     #Delete from join table
-    id = ReaderArticleJoin.find_by(article_id: params[:id].to_s)
-    ReaderArticleJoin.delete(id)
+    id = Bookmark.find_by(article_id: params[:id].to_s)
+    Bookmark.delete(id)
     redirect_to articles_path
   end
 

@@ -5,7 +5,10 @@
  */
 
 body {
+  overflow: auto;
   margin: 0;
+  color: #444;
+  font-family: 'Helvetica';
 }
 
 .checkbox_container{

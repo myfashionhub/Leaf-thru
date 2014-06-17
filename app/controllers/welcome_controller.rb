@@ -1,10 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    if current_reader
-      @reader  = current_reader
-    else  
-      @reader = 'Reader'
-    end  
+    @reader = Reader.new  
   end
 
   def about

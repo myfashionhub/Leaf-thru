@@ -1,3 +1,4 @@
+//= require feed
 
 function articleAction(buttonSelector, e) {
   if (buttonSelector === '.save-article') {

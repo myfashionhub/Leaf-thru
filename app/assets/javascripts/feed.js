@@ -31,7 +31,6 @@ function displayFeedArticle(data) {
   });   
 }
 
-//need to add feed selection logic
 function rssFeed() {
   // var feed_urls = $('.rss-feed').attr('feed-data');
   var feed_urls = ['http://sports.espn.go.com/espn/rss/news',

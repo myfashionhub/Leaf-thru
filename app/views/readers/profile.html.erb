@@ -1,12 +1,26 @@
-<h2>Edit your profile <%= @reader.email %></h2>
+<% if @reader.name %>
+  <h2>Customize your profile <%= @reader.name %></h2>
+<% else %>
+  <h2>Customize your profile <%= @reader.email %></h2>
+<% end %>
 
-<p>Edit email/pw and location only show on click</p>
-<h3 class='edit_reader'>Edit your info</h3>
+<div class="social">
+  <a href="/auth/facebook">Link your Facebook account</a>
+  <a href="/auth/twitter">Link your Twitter account</a>
+</div>
 
-<div class="edit_reader_form">
+<div class="preference">
+<h3>Choose your News Preferences</h3>
+  <%= form_for @subscription do |f| %>
+    <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
+    <%= f.submit %>
+  <% end %>
+
+
+
+<div class="profile">
+  <h3>Edit profile</h3>
   <%= form_for @reader do |f| %>
-    <%= f.label :location, "Location:" %>
-    <%= f.text_field :location %>
     <%= f.label :email, "Email:" %>
     <%= f.text_field :email %>
     <%= f.label :password, "Password:" %>
@@ -15,12 +29,5 @@
   <% end %>
 </div>
 
-
-<h3>Choose your News Preferences</h3>
-  <%= form_for @subscription do |f| %>
-    <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
-    #if publication in join table it should remain checked
-    <%= f.submit %>
-  <% end %>
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617094523) do
+ActiveRecord::Schema.define(version: 20140617202407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20140617094523) do
     t.string   "shared_by"
     t.text     "extract"
     t.text     "url"
+  end
+
+  create_table "bookmarks", force: true do |t|
+    t.integer "reader_id"
+    t.integer "article_id"
+    t.integer "match_score"
+    t.integer "reader_ranking"
   end
 
   create_table "interests", force: true do |t|
@@ -44,15 +51,6 @@ ActiveRecord::Schema.define(version: 20140617094523) do
     t.datetime "updated_at"
   end
 
-  create_table "reader_article_joins", force: true do |t|
-    t.string   "reader_id"
-    t.string   "article_id"
-    t.string   "match_score"
-    t.string   "reader_ranking"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "reader_interest_joins", force: true do |t|
     t.string   "reader_id"
     t.string   "interest_id"
@@ -67,6 +65,8 @@ ActiveRecord::Schema.define(version: 20140617094523) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
+    t.string   "twitter"
+    t.string   "facebook"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
     t.string   "facebook_token"

@@ -1,21 +1,3 @@
-<%= javascript_include_tag 'welcome' %>
-
-<ul id="nav">
-<li>Leafthru</li>
-
-<li>
-  <%= formatted_date_time(Time.now) %></br>
-  Temperature: 72 degrees</br>
-</li>
-
-<li>Hi, <%= Reader.name %></br>
-  I'm Feeling...</li>
-<a href="/profile">Menu</a></br>
-</li>
-</ul>
-
-<div class="clear"></div>
-
 
 <h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>
 
@@ -23,25 +5,17 @@
   <div class="signup">
   <%= form_for @reader do |f| %>
     <%= f.text_field :email, placeholder: 'Email' %>
-    <%= f.password_field :password, placeholder: 'Password' %> 
+    <%= f.password_field :password, placeholder: 'Password' %>
     <%= f.submit "Sign up" %>
   <% end %>
-  </div>  
+  </div>
 
   <div class="login">
   <%= form_tag '/sessions', method: :post do %>
     <%= text_field_tag :email, nil, placeholder: 'Email' %>
-    <%= password_field_tag :password, nil, placeholder: 'Password' %> 
+    <%= password_field_tag :password, nil, placeholder: 'Password' %>
     <%= submit_tag "Log in" %>
   <% end %>
   </div>
 
 </div>
-
-
-
-<ul id ="menu">
-<li><a href="/logout">Log out</a></li>
-<li><a href="/auth/facebook">Link your Facebook account</a></li>
-<li><a href="/auth/twitter">Link your Twitter account</a></li>
-</ul>
