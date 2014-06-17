@@ -3,20 +3,23 @@
 <ul id="nav">
 <li>Leafthru</li>
 
-<li><%= formatted_date_time(Time.now) %></br>
-Temperature: 72 degrees</br>
+<li>
+  <%= formatted_date_time(Time.now) %></br>
+  Temperature: 72 degrees</br>
 </li>
+
 <li>Hi, <%= Reader.name %></br>
   I'm Feeling...</li>
 <a href="/profile">Menu</a></br>
 </li>
 </ul>
 
+<div class="clear"></div>
+
 
 <h3 id='choose'></h3>
 
 <div class="form">
-
   <div class="signup">
   <%= form_for @reader do |f| %>
     <%= f.text_field :email, placeholder: 'Email' %>

@@ -12,7 +12,7 @@ $(window).load(function() {
   $('#choose').html('Sign up');
   $('.signup').hide();
 
-  $('#choose').click({
+  $('#choose').click(function() {
     toggleForm('.signup');
     toggleForm('.login');
   })   
