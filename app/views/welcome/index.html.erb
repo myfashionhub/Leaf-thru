@@ -1,20 +1,23 @@
 <%= javascript_include_tag 'welcome' %>
 
 <ul id="nav">
-  <li>Leafthru</li>
-  <li><%= formatted_date_time(Time.now) %></br>
-Temperature: 72 degrees</br>
-  </li>
-  <li>Hi, <%= Reader.name %></br>
+<li>Leafthru</li>
+
+<li>
+  <%= formatted_date_time(Time.now) %></br>
+  Temperature: 72 degrees</br>
+</li>
+
+<li>Hi, <%= @greeting %></br>
   I'm Feeling...</li>
   <li><a href="/profile">Menu</a></ul>
     <li><a href="/article">Read Later</a></li>
     <!-- <li><a href="/auth/facebook">Link your Facebook account</a></li> -->
     <li><a href="/auth/twitter">Link your Twitter account</a></li>
+    <li><a href="/articles">Read Later</a></li>
     <li><a href="/logout">Log out</a></li></ul>
   </li>
 </ul>
-
 
 
 <!-- <ul id="navbar">
@@ -25,13 +28,6 @@ Temperature: 72 degrees</br>
   </li>
   <!... and so on ... -->
 <!-- </ul -->
-
-
-
-
-<h2>Sign up or Log in</h2>
-
-<div class="clear"></div>
 
 
 
@@ -55,12 +51,3 @@ Temperature: 72 degrees</br>
   </div>
 
 </div>
-
-
-
-
-
-<h2><a href="/feed">Your News Feed</a></h2>
-
-<div class = "frontpage"></div>
-

@@ -1,16 +1,21 @@
 class ReadersController < ApplicationController
   before_action :require_login, on: :profile
 
-  def new
-    @reader = Reader.new
-  end
+#  def new
+#    @reader = Reader.new  #in welcome index
+#  end
 
   def create
-    @reader = Reader.create(params_reader)
+    if current_reader
+      flash[:notice] = 'You must log out to create a new account'
+    end
+
+    @reader = Reader.create(reader_params)
     if @reader.save
-      redirect_to login_path
+      current_reader = login(params[:reader][:email], params[:reader][:password])  
+      redirect_to '/profiles', notice: 'Successfully signed up.'
     else
-      render :new
+      redirect_to root_path, alert: 'Sign up failed. Try again.'
     end
   end
 
@@ -22,7 +27,6 @@ class ReadersController < ApplicationController
     @reader = current_reader
     @publications = Publication.all
     @subscription = Subscription.new
-    binding.pry
   end
 
   def edit

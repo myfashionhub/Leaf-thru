@@ -7,6 +7,5 @@ class SubscriptionsController < ApplicationController
         publication_id: pub_id
       })
     end
-    binding.pry
   end
 end
