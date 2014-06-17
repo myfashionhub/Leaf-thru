@@ -2,20 +2,25 @@ function toggleForm(formSelector) {
   $('.form')
   var display = $(formSelector).attr('display');
   if (display === 'none') {
-    display = '';
+    display = 'block';
   } else {
     display = 'none';
   }
 }
 
 $(window).load(function() {
-  $('#choose').html('Sign up');
   $('.signup').hide();
+  //$('.login').hide();
 
-  $('#choose').click(function() {
-    toggleForm('.signup');
-    toggleForm('.login');
-  })   
+  $('#signup').click(function() {
+    $('.signup').toggle('drop', 600);
+    $('.login').hide();
+  }) 
+
+  $('#login').click(function() {
+    $('.login').toggle('drop', 600);
+    $('.signup').hide();
+  })     
 })
 
 
