@@ -1,3 +1,57 @@
+/* NAV DROP DOWN */
+
+#arrow {
+  cursor: pointer;
+}
+
+
+.menu {
+  width: 100%;
+  background-color: #49708A;
+  overflow: auto;
+  color: #fff;
+  padding: 10px;
+  div {
+    width: 25%;
+    display: inline-block;
+    float: left;
+  }
+  #arrow {
+    text-align: right;
+    width: 20%;
+    margin-right: 5%;
+    padding-bottom: 6px;
+  }
+}
+
+
+.nav {
+  width: 150px;
+  padding: 0px;
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+  margin-top: 45px;
+  text-align: right;
+  color: #fff;
+  background-color: rgba(73, 112, 138, .7);
+}
+
+
+.nav li {
+  display: block;
+  line-height: 2em;
+  padding: 10px;
+  a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  }
+}
+
+.nav li:hover {
+  background-color: rgba(73, 112, 138, 1);
+}
 
 #nav {
 
@@ -15,14 +69,11 @@
   text-align: center;
   font-size: 16px;
   z-index: 1;
-  width: 100%;
-  height: 40px;
   margin: 0 0 3em 0;
   padding: 10px;
   list-style: none;
   font-size: 18px;
   font-family: Helvetica;
-  color: black;
   background-color: #49708A;
 }
 
@@ -41,15 +92,7 @@
     text-decoration: none;
     font-weight: bold;
     color: white;
-
-
   }
-
-/*
-  padding: 10px;
-  line-height: 1.5em;
-  display: inline-block;
-}*/
 
 #nav li a {
   padding: 8px 15px;
@@ -59,10 +102,8 @@
 }
 
 
-#nav li a:hover {
-  color: white;
-  background-color: #7AB317;
-  border-radius: 10px;
+a:hover {
+  color: limegreen;
 }
 
 @media screen {
@@ -113,3 +154,4 @@
     cursor: pointer;
     color: limegreen;
   }
+

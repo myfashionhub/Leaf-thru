@@ -13,7 +13,7 @@ class ReadersController < ApplicationController
     @reader = Reader.create(reader_params)
     if @reader.save
       current_reader = login(params[:reader][:email], params[:reader][:password])  
-      redirect_to '/profiles', notice: 'Successfully signed up.'
+      redirect_to '/profile', notice: 'Successfully signed up.'
     else
       redirect_to root_path, alert: 'Sign up failed. Try again.'
     end

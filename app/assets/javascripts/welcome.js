@@ -11,7 +11,13 @@ $(document).ready(function() {
   $('#login').click(function() {
     $('.login').slideDown();
     $('.signup').hide();
-  })     
+  })
+
+  $('.nav').hide();
+  $('#arrow').click(function() {
+    $('.nav').toggle();
+  })
+
 })
 
 
