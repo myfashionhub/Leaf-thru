@@ -20,19 +20,23 @@ class ReadersController < ApplicationController
 
   def profile
     @reader = current_reader
-    @interests = Interest.all
+    @publications = Publication.all
   end
 
   def edit
+
     @reader = current_reader
-    @interests = Interest.all
+    @publications = Publication.all
+    #show the ch
   end
 
   def update
-    binding.pry
+    #delete all associations
+    #get params from checked boxes
+    #create a row line in a table for each
     @reader = current_reader
     @reader.update(params_reader)
-    redirect_to profile_path
+    binding.pry
   end
 
   def twitter

@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20140616212223) do
+=======
 ActiveRecord::Schema.define(version: 20140616193117) do
+>>>>>>> 5ca5711974dcc6873cd194445c552dd566040c6f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +38,14 @@ ActiveRecord::Schema.define(version: 20140616193117) do
     t.string   "url1"
     t.string   "url2"
     t.string   "url3"
+  end
+
+  create_table "publications", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "topic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reader_article_joins", force: true do |t|

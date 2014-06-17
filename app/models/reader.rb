@@ -1,4 +1,7 @@
 class Reader < ActiveRecord::Base
+has_many :articles
+has_many :publications
+
   authenticates_with_sorcery!
 
   validates_presence_of :password, on: :create
@@ -16,6 +19,7 @@ class Reader < ActiveRecord::Base
   def my_formated_date_time
     created_at.strftime("%B %d, %Y at %I:%M %p")
   end
+
 
   def downcase_email
     self.email.downcase!

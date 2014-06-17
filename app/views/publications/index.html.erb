@@ -1,0 +1,8 @@
+Admins Only!
+<h1>Publications</h1>
+
+<ul>
+<% @publications.each do |publication| %>
+  <li><%= publication.name %> <%= publication.url %></li>
+<% end %>
+</ul>

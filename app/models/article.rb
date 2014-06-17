@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
-  validates :url, uniqueness: true, on: :create
+  has_many :readers
+
+  validates :url, uniqueness: true
   has_many :reader_article_joins
   has_many :readers, through: :reader_article_joins
 
@@ -12,22 +14,24 @@ class Article < ActiveRecord::Base
       get_text = "http://access.alchemyapi.com/calls/url/URLGetText"+query
       title = HTTParty.get(get_title)
       text  = HTTParty.get(get_text)['text']
-      if text.nil? == false
+       if text.nil? == false
         text_end = text.index(/\n/).to_i
         if text_end <= 60
           text_end = text.index('.').to_i + 1
         end
       else
-        text_end = 0          
-      end  
-      { title:     title['title'], 
-        url:       title['url'], 
+        text_end = 0
+      end
+     { title:     title['title'],
+        url:       title['url'],
         extract:   text[0, text_end],
-        shared_by: link[:shared_by] }         
+        shared_by: link[:shared_by] }
     end
 
-    articles.delete_if { |article| 
-      article[:url].empty? || article[:extract].length <= 80 || 
+     articles.delete_if { |article|
+      article[:url].empty? || article[:extract].length <= 80 ||
       article[:title].empty? }
   end
+
+
 end

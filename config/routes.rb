@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :create, :show, :destroy]
   resources :reader_article_join
   resources :reader_interest_join
-  resources :interests
+  resources :publications
 
   get 'signup'  => 'readers#new', as: 'signup'
   post 'readers'=> 'readers#create'
