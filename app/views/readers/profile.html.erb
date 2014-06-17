@@ -16,13 +16,11 @@
 </div>
 
 
-
 <h3>Choose your News Preferences</h3>
   <%= form_for @subscription do |f| %>
-    <%= collection_check_boxes(:subscription, :publication_id, @publications, :id, :name, {}) %>
+    <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
+    #if publication in join table it should remain checked
     <%= f.submit %>
   <% end %>
-
-</div>
 
 

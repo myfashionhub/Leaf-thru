@@ -9,6 +9,9 @@ body {
   font-family: 'Helvetica';
 }
 
+.checkbox_container{
+  background-color: grey;
+}
 
 #nav {
   z-index: 1;
@@ -52,7 +55,7 @@ body {
   width: 100%;
   clear: both;
   display: block;
-  height: 1px;  
+  height: 1px;
 }
 
 .form {
@@ -78,6 +81,6 @@ body {
   }
 
   #signup:hover, #login:hover {
-    cursor: pointer; 
-    color: limegreen; 
-  }   
+    cursor: pointer;
+    color: limegreen;
+  }
