@@ -16,13 +16,14 @@ Temperature: 72 degrees</br>
 </ul>
 
 
+
 <!-- <ul id="navbar">
   <li><a href="#">Item One</a><ul>
     <li><a href="#">Subitem One</a></li>
     <li><a href="#">Second Subitem</a></li>
     <li><a href="#">Numero Tres</a></li></ul>
   </li>
-  <!-- ... and so on ... -->
+  <!... and so on ... -->
 <!-- </ul -->
 
 
@@ -30,27 +31,30 @@ Temperature: 72 degrees</br>
 
 <h2>Sign up or Log in</h2>
 
-<div class="signup">
-<%= form_for @reader do |f| %>
-  <%= f.label :email, "Email:" %>
-  <%= f.text_field :email %>
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %>
-  <%= f.submit "Sign up" %>
-<% end %>
+<div class="clear"></div>
+
+
+
+<h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>
+
+<div class="form">
+  <div class="signup">
+  <%= form_for @reader do |f| %>
+    <%= f.text_field :email, placeholder: 'Email' %>
+    <%= f.password_field :password, placeholder: 'Password' %>
+    <%= f.submit "Sign up" %>
+  <% end %>
+  </div>
+
+  <div class="login">
+  <%= form_tag '/sessions', method: :post do %>
+    <%= text_field_tag :email, nil, placeholder: 'Email' %>
+    <%= password_field_tag :password, nil, placeholder: 'Password' %>
+    <%= submit_tag "Log in" %>
+  <% end %>
+  </div>
+
 </div>
-
-
-<div class="login">
-<%= form_tag '/sessions', method: :post do %>
-  <%= label_tag :email, "Email:" %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password, "Password:" %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Log in" %>
-<% end %>
-</div>
-
 
 
 

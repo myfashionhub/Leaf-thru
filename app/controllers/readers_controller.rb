@@ -22,20 +22,16 @@ class ReadersController < ApplicationController
     @reader = current_reader
     @publications = Publication.all
     @subscription = Subscription.new
+    binding.pry
   end
 
   def edit
-
     @reader = current_reader
     @publications = Publication.all
-
   end
 
   def update
 
-    binding.pry
-    #where publication id = true
-    #update reader_publication w. reader[id]_publication[id]
   end
 
   def twitter
@@ -62,12 +58,21 @@ class ReadersController < ApplicationController
   end
 
   def feed
-    #@feeds = current_reader.interests.all
+    subscriptions = current_reader.subscriptions
+    feeds = []
+    subscriptions.each do |subscription|
+      id = subscription.publication_id
+      if id != nil
+        publication = Publication.find(id)
+        feeds << publication.url
+      end
+    end
+    return feeds.uniq
   end
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :location, :preferences)
+    params.require(:reader).permit(:email, :password, :preferences)
   end
 
 end

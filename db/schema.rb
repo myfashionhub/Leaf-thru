@@ -67,8 +67,6 @@ ActiveRecord::Schema.define(version: 20140617094523) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.string   "twitter"
-    t.string   "facebook"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
     t.string   "facebook_token"

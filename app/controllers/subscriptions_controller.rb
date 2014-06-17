@@ -1,6 +1,5 @@
 class SubscriptionsController < ApplicationController
   def create
-    puts params
     pub_ids = params[:subscription][:publication_id]
     pub_ids.each do |pub_id|
       Subscription.create({
