@@ -15,10 +15,7 @@ class ReaderInterestJoinsController < ApplicationController
   end
 
 
-
-
-private
-
+  private
   def reader_interest_join_params
     params.require(:reader_interest_join).permit(:reader_id, :interest_id)
   end

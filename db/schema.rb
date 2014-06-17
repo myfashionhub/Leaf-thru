@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617094523) do
+ActiveRecord::Schema.define(version: 20140617202407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20140617094523) do
     t.text     "url"
   end
 
+  create_table "bookmarks", force: true do |t|
+    t.integer "reader_id"
+    t.integer "article_id"
+    t.integer "match_score"
+    t.integer "reader_ranking"
+  end
+
   create_table "interests", force: true do |t|
     t.string   "topic"
     t.datetime "created_at"
@@ -40,15 +47,6 @@ ActiveRecord::Schema.define(version: 20140617094523) do
     t.string   "name"
     t.string   "url"
     t.string   "topic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "reader_article_joins", force: true do |t|
-    t.string   "reader_id"
-    t.string   "article_id"
-    t.string   "match_score"
-    t.string   "reader_ranking"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

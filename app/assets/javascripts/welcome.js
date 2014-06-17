@@ -12,10 +12,12 @@ $(document).ready(function() {
     $('.signup').hide();
   })
 
-$('.nav').hide();
-$('#arrow').click(function) {
-  $('.nav').toggle();
-}
+
+  $('.nav').hide();
+  $('#arrow').click(function() {
+    $('.nav').toggle();
+  })
+
 
 })
 

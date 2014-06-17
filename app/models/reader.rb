@@ -1,7 +1,8 @@
 class Reader < ActiveRecord::Base
-has_many :articles
-has_many :subscriptions
-has_many :publications, through: :subscriptions
+  has_many :subscriptions
+  has_many :publications, through: :subscriptions
+  has_many :readers_articles, class_name: Bookmark
+  has_many :articles, through: :bookmarks
 
   authenticates_with_sorcery!
 
@@ -12,10 +13,6 @@ has_many :publications, through: :subscriptions
   #validates :email, email: true
   validates :password, length: {within: 6..16, wrong_length: "Password length does not match requirement"}, :on => :create
   before_save :downcase_email
-
-  has_many :reader_article_joins
-  has_many :articles, through: :reader_article_joins
-
 
 
   def downcase_email

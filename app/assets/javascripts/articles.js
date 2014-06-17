@@ -1,10 +1,5 @@
 //= require feed
 
-$(window).load(function(){   
-  rssFeed();
-  twitterFeed();       
-})
-
 function articleAction(buttonSelector, e) {
   if (buttonSelector === '.save-article') {
     saveArticle(e);      
