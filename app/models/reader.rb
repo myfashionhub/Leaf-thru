@@ -1,4 +1,8 @@
 class Reader < ActiveRecord::Base
+has_many :articles
+has_many :subscriptions
+has_many :publications, through: :subscriptions
+
   authenticates_with_sorcery!
 
   validates_presence_of :password, on: :create
@@ -11,6 +15,7 @@ class Reader < ActiveRecord::Base
 
   has_many :reader_article_joins
   has_many :articles, through: :reader_article_joins
+
 
 
   def downcase_email

@@ -20,19 +20,22 @@ class ReadersController < ApplicationController
 
   def profile
     @reader = current_reader
-    @interests = Interest.all
+    @publications = Publication.all
+    @subscription = Subscription.new
   end
 
   def edit
+
     @reader = current_reader
-    @interests = Interest.all
+    @publications = Publication.all
+
   end
 
   def update
+
     binding.pry
-    @reader = current_reader
-    @reader.update(params_reader)
-    redirect_to profile_path
+    #where publication id = true
+    #update reader_publication w. reader[id]_publication[id]
   end
 
   def twitter
@@ -63,8 +66,8 @@ class ReadersController < ApplicationController
   end
 
   private
-  def params_reader
-    params.require(:reader).permit(:email, :password)
+  def reader_params
+    params.require(:reader).permit(:email, :password, :location, :preferences)
   end
 
 end

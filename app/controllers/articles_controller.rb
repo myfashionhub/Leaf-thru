@@ -8,10 +8,18 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    #unless Article.exists?(url: params[:url])
     article = Article.create(article_params) 
-    current_reader.articles << article
-    redirect_to articles_path
+    if article.save
+      current_reader.articles << article 
+    else
+      article = Article.find_by(url: params[:article][:url])
+      if ReaderArticleJoin.exists?(article_id: article.id.to_s, reader_id: current_reader.id.to_s)
+        flash[:notice] = 'Already saved!'
+      else          
+        current_reader.articles << article         
+      end
+    end  
+    redirect_to '/feed'
   end
 
   def show
@@ -26,6 +34,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:url, :title, :publication, :extract, :date)
+    params.require(:article).permit(:url, :title, :publication, :shared_by, :extract, :date)
   end
 end

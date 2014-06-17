@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616193117) do
+
+ActiveRecord::Schema.define(version: 20140617094523) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +36,14 @@ ActiveRecord::Schema.define(version: 20140616193117) do
     t.string   "url1"
     t.string   "url2"
     t.string   "url3"
+  end
+
+  create_table "publications", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "topic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reader_article_joins", force: true do |t|
@@ -59,8 +69,6 @@ ActiveRecord::Schema.define(version: 20140616193117) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.string   "twitter"
-    t.string   "facebook"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
     t.string   "facebook_token"
@@ -72,5 +80,12 @@ ActiveRecord::Schema.define(version: 20140616193117) do
   end
 
   add_index "readers", ["email"], name: "index_readers_on_email", unique: true, using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "reader_id"
+    t.integer  "publication_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -3,14 +3,16 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :create, :show, :destroy]
   resources :reader_article_join
   resources :reader_interest_join
-  resources :interests
+  resources :publications
+
+  resources :subscriptions, only: [:create]
 
   get 'signup'  => 'readers#new', as: 'signup'
   post 'readers'=> 'readers#create'
   get 'profile' => 'readers#profile', as: 'profile'
   post 'profile' => 'readers#update', as: 'update_reader'
   get 'profile/edit' => 'readers#edit', as: 'reader'
-  patch 'profile'=> 'readers#update'
+  patch 'profile/edit'=> 'readers#update'
 
 
 

@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'welcome' %>
+
 <ul id="nav">
 <li>Leafthru</li>
 
@@ -10,6 +12,28 @@ Temperature: 72 degrees</br>
 </li>
 </ul>
 
+<h2>Sign up or Log in</h2>
+
+<div class="signup">
+<%= form_for @reader do |f| %>
+  <%= f.label :email, "Email:" %>
+  <%= f.text_field :email %>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Sign up" %>
+<% end %>
+</div>
+
+
+<div class="login">
+<%= form_tag '/sessions', method: :post do %>
+  <%= label_tag :email, "Email:" %>
+  <%= text_field_tag :email %>
+  <%= label_tag :password, "Password:" %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log in" %>
+<% end %>
+</div>
 
 
 
@@ -26,6 +50,8 @@ Temperature: 72 degrees</br>
 
 
 
+
 <h2><a href="/feed">Your News Feed</a></h2>
 
 <div class = "frontpage"></div>
+
