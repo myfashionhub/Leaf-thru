@@ -32,11 +32,10 @@ function displayFeedArticle(data) {
 }
 
 function rssFeed() {
-  // var feed_urls = $('.rss-feed').attr('feed-data');
-  var feed_urls = ['http://sports.espn.go.com/espn/rss/news',
-  'http://rss.nytimes.com/services/xml/rss/nyt/World.xml'];
+  var feed_urls = $('.rss.feed').children();
   for (var i = 0; i < feed_urls.length; i++) {
-    loadFeed(feed_urls[i]);
+    url = $(feed_urls[i]).attr('data-feed');
+    loadFeed(url);
   }
 }
 

@@ -63,13 +63,13 @@ class ReadersController < ApplicationController
 
   def feed
     subscriptions = current_reader.subscriptions
-    feeds = []
+    @feeds = []
     subscriptions.each do |subscription|
       id = subscription.publication_id
       publication = Publication.find(id)
-      feeds << publication.url
+      @feeds << publication.url
     end
-    return feeds
+    return @feeds
   end
 
   private

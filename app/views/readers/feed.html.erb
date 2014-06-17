@@ -1,5 +1,4 @@
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">google.load("feeds", "1");</script>
+
 <script>
   $(window).load(function(){   
     rssFeed();
@@ -9,8 +8,11 @@
 
 <div class="frontpage">
   <h2>RSS feed</h2>
-  <div class="rss feed" feed-data="http://something.com"></div>
-  <!-- Change feed-data value to <%= @feeds %> -->
+  <div class="rss feed" >
+    <% @feeds.each do |feed| %>
+      <div data-feed="<%= feed %>"></div>
+    <% end %>
+  </div>
 
   <h2>Social feed</h2>
   <div class="twitter feed"></div>

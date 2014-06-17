@@ -1,15 +1,19 @@
+body {
+  background-color: #fff;
+  min-height: 100%;
+}
+
 /* NAV DROP DOWN */
 
 #arrow {
   cursor: pointer;
 }
 
-
 .menu {
   width: 100%;
-  background-color: #49708A;
+  background-color: #D0E0EB;
   overflow: auto;
-  color: #fff;
+  color: #444;
   padding: 10px;
   > div {
     float: left;
@@ -66,63 +70,11 @@
   background-color: rgba(73, 112, 138, 1);
 }
 
-#nav {
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  width: 100%;
-  height: 75px;
-  float: left;
-  margin: 0 0 3em 0;
-  padding: 0;
-  padding-bottom: 50px;
-  list-style: none;
-  text-align: center;
-  font-size: 16px;
-  z-index: 1;
-  margin: 0 0 3em 0;
-  padding: 10px;
-  list-style: none;
-  font-size: 18px;
-  font-family: Helvetica;
-  background-color: #49708A;
-}
-
-#nav li {
-
-  float: left;
-  padding: 125 125 125 125px;
-  line-height: 125%;
-
-}
-
-#nav li a {
-
-    display: inline-block;
-    padding: 8px 15px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-}
-
-#nav li a {
-  padding: 8px 15px;
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-}
-
-
 a:hover {
   color: limegreen;
 }
 
 @media screen {
-  #nav {
-    #font-size: 14px;
-  }
 }
 
 .clear {
@@ -130,17 +82,8 @@ a:hover {
   clear: both;
   display: block;
   height: 1px;
-<<<<<<< HEAD
-=======
 }
 
-
-#nav li ul {
-
-  display: none;
-  width: 10em; /* Width to help Opera out */
-  background-color: #49708A;
-}
 
 .form {
   width: 320px;
@@ -168,3 +111,9 @@ a:hover {
     cursor: pointer;
     color: limegreen;
   }
+
+.form-wrapper {
+  width: 300px;
+  margin: 10% auto 0 auto;
+  text-align: center;
+}
