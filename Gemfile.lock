@@ -54,6 +54,8 @@ GEM
     execjs (2.2.0)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
+    font-awesome-sass (4.1.0)
+      sass (~> 3.2)
     hashie (2.1.2)
     hike (1.2.3)
     http (0.5.1)
@@ -209,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   alchemy-api-rb
   coffee-rails (~> 4.0.0)
+  font-awesome-sass
   httparty
   jbuilder (~> 2.0)
   jquery-rails

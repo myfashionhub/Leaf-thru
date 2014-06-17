@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @reader
       redirect_to '/feed'
     else
-      flash[:notice] = 'Log in failed. Try again'
+      redirect_to root_path, notice: 'Log in failed. Try again'
     end
   end
 
