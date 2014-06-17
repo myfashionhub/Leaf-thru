@@ -1,9 +1,9 @@
 class ReadersController < ApplicationController
   before_action :require_login, on: :profile
 
-#  def new
-#    @reader = Reader.new  #in welcome index
-#  end
+ def new
+   @reader = Reader.new  #in welcome index
+ end
 
   def create
     if current_reader
@@ -12,8 +12,8 @@ class ReadersController < ApplicationController
 
     @reader = Reader.create(reader_params)
     if @reader.save
-      current_reader = login(params[:reader][:email], params[:reader][:password])  
-      redirect_to '/profiles', notice: 'Successfully signed up.'
+      current_reader = login(params[:reader][:email], params[:reader][:password])
+      redirect_to '/profile', notice: 'Successfully signed up.'
     else
       redirect_to root_path, alert: 'Sign up failed. Try again.'
     end

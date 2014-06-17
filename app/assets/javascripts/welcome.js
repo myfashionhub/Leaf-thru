@@ -1,17 +1,22 @@
-
 $(document).ready(function() {
   $('.signup').hide();
   //$('.login').hide();
 
   $('#signup').click(function() {
-    $('.signup').toggle('drop', 600);
+    $('.signup').fadeIn();
     $('.login').hide();
-  }) 
+  })
 
   $('#login').click(function() {
-    $('.login').toggle('drop', 600);
+    $('.login').slideDown();
     $('.signup').hide();
-  })     
+  })
+
+$('.nav').hide();
+$('#arrow').click(function) {
+  $('.nav').toggle();
+}
+
 })
 
 
