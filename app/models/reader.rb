@@ -17,10 +17,6 @@ has_many :publications, through: :subscriptions
   has_many :articles, through: :reader_article_joins
 
 
-  def my_formated_date_time
-    created_at.strftime("%B %d, %Y at %I:%M %p")
-  end
-
 
   def downcase_email
     self.email.downcase!

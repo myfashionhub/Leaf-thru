@@ -2,39 +2,45 @@
 
 <ul id="nav">
 <li>Leafthru</li>
-<li>Local Time: <%= Time.now %></br>Date</li>
-<li>Temperature</br>
-72 degrees</li>
-<li>Hi, <%= Reader.name %></li>
-<li><a href="/profile">Edit My Profile</a></li>
+
+<li>
+  <%= formatted_date_time(Time.now) %></br>
+  Temperature: 72 degrees</br>
+</li>
+
+<li>Hi, <%= Reader.name %></br>
+  I'm Feeling...</li>
+<a href="/profile">Menu</a></br>
+</li>
 </ul>
 
-<h2>Sign up or Log in</h2>
+<div class="clear"></div>
 
-<div class="signup">
-<%= form_for @reader do |f| %>
-  <%= f.label :email, "Email:" %>
-  <%= f.text_field :email %>
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %>
-  <%= f.submit "Sign up" %>
-<% end %>
+
+<h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>
+
+<div class="form">
+  <div class="signup">
+  <%= form_for @reader do |f| %>
+    <%= f.text_field :email, placeholder: 'Email' %>
+    <%= f.password_field :password, placeholder: 'Password' %> 
+    <%= f.submit "Sign up" %>
+  <% end %>
+  </div>  
+
+  <div class="login">
+  <%= form_tag '/sessions', method: :post do %>
+    <%= text_field_tag :email, nil, placeholder: 'Email' %>
+    <%= password_field_tag :password, nil, placeholder: 'Password' %> 
+    <%= submit_tag "Log in" %>
+  <% end %>
+  </div>
+
 </div>
 
 
-<div class="login">
-<%= form_tag '/sessions', method: :post do %>
-  <%= label_tag :email, "Email:" %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password, "Password:" %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Log in" %>
-<% end %>
-</div>
 
-<ul>
-<li><a href="/signup">Sign up</li>
-<li><a href="/login">Log in</a></li>
+<ul id ="menu">
 <li><a href="/logout">Log out</a></li>
 <li><a href="/auth/facebook">Link your Facebook account</a></li>
 <li><a href="/auth/twitter">Link your Twitter account</a></li>

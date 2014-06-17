@@ -72,7 +72,7 @@ class ReadersController < ApplicationController
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :location, :preferences)
+    params.require(:reader).permit(:email, :password, :preferences)
   end
 
 end
