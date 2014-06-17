@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140616212223) do
-=======
-ActiveRecord::Schema.define(version: 20140616193117) do
->>>>>>> 5ca5711974dcc6873cd194445c552dd566040c6f
+ActiveRecord::Schema.define(version: 20140617094523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,5 +80,12 @@ ActiveRecord::Schema.define(version: 20140616193117) do
   end
 
   add_index "readers", ["email"], name: "index_readers_on_email", unique: true, using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "reader_id"
+    t.integer  "publication_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

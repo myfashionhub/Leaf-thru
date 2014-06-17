@@ -1,6 +1,7 @@
 class Reader < ActiveRecord::Base
 has_many :articles
-has_many :publications
+has_many :subscriptions
+has_many :publications, through: :subscriptions
 
   authenticates_with_sorcery!
 
