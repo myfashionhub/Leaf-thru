@@ -1,9 +1,7 @@
 class Article < ActiveRecord::Base
-  has_many :readers
-
+  has_many :readers_articles, class_name: Bookmark
+  has_many :readers, through: :bookmarks
   validates :url, uniqueness: true
-  has_many :reader_article_joins
-  has_many :readers, through: :reader_article_joins
 
   def self.parse(links)
     articles = links.map do |link|
