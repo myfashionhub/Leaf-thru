@@ -19,26 +19,34 @@ $(document).ready(function() {
   $('.nav').children().click(function() {
     $('.nav').hide();
   })
+})
 
-$('#unlink-fb').click(function() {
+
+
+function unlinkFb() {
   $.ajax({
-    url: '/readers/facebook',
+    url: '/logout/facebook',
     method: 'post',
-    data: { reader: { facebook_token: 'nil' } },
     dataType: 'json', 
-    success: function() {}
-  })
-})
+    success: function() {
+      $('.notify').html("<%= flash[:notice] %>");
+      setTimeout(function() {
+        $('.notify').empty();
+      }, 400);      
+    }
+  });
+}
 
-$('#unlink-tw').click(function() {
+function unlinkTw() {
   $.ajax({
-    url: '/readers/twitter',
+    url: '/logout/twitter',
     method: 'post',    
-    data: { reader: { twitter_token: nil, twitter_token_secret: nil } },
     dataType: 'json', 
-    success: function() {}
-  })  
-})
-
-})
-
+    success: function() {
+      $('.notify').html("<%= flash[:notice] %>");
+      setTimeout(function() {
+        $('.notify').fadeOut().remove();
+      }, 120);
+    }
+  });  
+}

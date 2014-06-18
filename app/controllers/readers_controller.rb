@@ -6,15 +6,18 @@ class ReadersController < ApplicationController
  end
 
   def create
-    if current_reader
-      flash[:notice] = 'You must log out to create a new account'
-    end
     @reader = Reader.create(reader_params)
+    if current_reader
+      redirect_to root_path
+      flash[:alert] = 'You must log out to create a new account'
+    end    
     if @reader.save
       current_reader = login(params[:reader][:email], params[:reader][:password])
-      redirect_to '/profile', notice: 'Successfully signed up.'
+      redirect_to '/profile'
+      flash[:notice] = 'Successfully signed up.'
     else
-      redirect_to root_path, alert: 'Sign up failed. Try again.'
+      redirect_to root_path
+      flash[:alert] = 'Sign up failed. Try again.'
     end
   end
 
@@ -37,6 +40,7 @@ class ReadersController < ApplicationController
     @reader = current_reader
     @reader.update(reader_params)
     redirect_to profile_path
+    flash[:notice] = "You have successfully updated your profile."
   end
 
   def twitter

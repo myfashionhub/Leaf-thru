@@ -1,36 +1,55 @@
+<script>
+  $(document).ready(function() {
+    $('#unlink-fb').click(unlinkFb);  
+    $('#unlink-tw').click(unlinkTw);
+  });  
+</script>
+
+
 <div class="wrapper">
 
-<h3>Customize your profile</h3?
+  <h3>Customize your profile</h3>  
 
-<div class="preference">
-<h4>Choose your News Preferences</h4>
-  <%= form_for @subscription do |f| %>
-    <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
-    <%= f.submit 'Update preference' %>
+  <div class="notify"></div>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>  
+
+  <div class="preference">
+  <h4>Choose your news subscriptions</h4>
+    <%= form_for @subscription do |f| %>
+      <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
+      <%= f.submit 'Update preference' %>
+    <% end %>
+  </div>  
+
+  <div class="social">
+  <h4>Social subscription</h4>
+  <% if @reader.facebook_token %>
+    <a href='#' id='unlink-fb'>Disconnect from Facebook</a>    
+  <% else %>
+    <a href="/auth/facebook">Connect with Facebook</a>
+  <% end %>  
+  <% if @reader.twitter_token %>
+    <a href='#' id='unlink-tw'>Disconnect from Twitter</a>   
+  <% else %>   
+    <a href="/auth/twitter">Connect with Twitter</a>   
   <% end %>
+  </div>  
 
-<div class="social">
-  <a href="/auth/facebook">Connect with Facebook</a>
-  <a href="/auth/twitter">Connect with Twitter</a>
-</div>
-
-<div class="profile">
-  <h4>Edit profile</h4>
-  <%= form_for @reader do |f| %>
-    <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %>
-    <%= f.label :password, "Password:" %>
-    <%= f.password_field :password %>
-    <%= f.label :name, "Name:" %>
-    <%= f.text_field :name %>
-    <%= f.label :image, "Profile pic:" %>
-    <%= f.text_field :image %>   
-    <%= f.submit "Update profile" %>
-  <% end %>
-
-  <button id='unlink-fb'>Unlink Facebook account</button>
-  <button id='unlink-tw'>Unlink Twitter account</button>
-</div>
-
+  <div class="profile">
+    <h4>Edit profile</h4>
+    <%= form_for @reader do |f| %>
+      <%= f.label :email, "Email:" %>
+      <%= f.text_field :email %><br/>
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password %> <br/>
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name %> <br/>
+      <%= f.label :image, "Profile pic:" %>
+      <%= f.text_field :image %><br/>    
+      <%= f.submit "Update profile" %>
+    <% end %>
+  </div>
 
 </div>

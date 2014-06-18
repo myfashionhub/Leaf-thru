@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post 'readers'=> 'readers#create'
   get 'profile' => 'readers#profile', as: 'profile'
-  post 'profile' => 'readers#update', as: 'update_reader'
+  post 'profile' => 'readers#update'
   get 'profile/edit' => 'readers#edit', as: 'reader'
   patch 'profile/edit'=> 'readers#update'
 
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'auth/:provider'        => 'sessions#authorize'
   get 'auth/twitter/callback' => 'sessions#log_twitter'
   get 'auth/facebook/callback'=> 'sessions#log_facebook' 
+  post 'logout/facebook'       => 'sessions#logout_fb'
+  post 'logout/twitter'        => 'sessions#logout_tw'
 
   get 'twitter' => 'readers#twitter'
   get 'facebook' => 'readers#facebook'

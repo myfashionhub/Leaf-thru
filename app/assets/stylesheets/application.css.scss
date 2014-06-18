@@ -15,8 +15,16 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: ''
+  font-family: 'Oswald';
 }
+
+h4 {
+  font-family: 'Hammersmith One';  
+}
+
+@media screen {
+}
+
 
 /* NAV DROP DOWN */
 
@@ -68,8 +76,6 @@ h1, h2, h3 {
   background-color: #D0E0EB;
 }
 
-
-
 .nav li {
   display: block;
   line-height: 2em;
@@ -92,17 +98,21 @@ a:hover {
   color: limegreen;
 }
 
-.checkbox_container{
-  background-color: blue;
-}
-
-.frontpage {
+/* NOTICE MESSAGE */
+.notice {
   width: 100%;
-  margin: 10px 0px 10px 0px;
+  margin: 20px 0;
+  padding: 10px 0 10px 20px;
+  background-color: rgba(173,216,230, 0.3);
+  border: 1px solid rgba(173,216,230, 0.6);
+  border-radius: 3px;
 }
 
-.article {
+.alert {
   width: 100%;
-  margin: 10px;
+  margin: 20px 0;
+  padding: 10px 0 10px 20px;
+  background-color: rgba(253,201,122, 0.4);
+  border: 1px solid rgba(253,201,122, 0.7);
+  border-radius: 3px;
 }
-
