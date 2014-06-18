@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 @media screen {
@@ -18,6 +19,8 @@
   background-color: #49708A;
 
 }
+
+/* WELCOME INDEX */
 
 .form {
   width: 320px;
@@ -72,12 +75,13 @@
 .wrapper {
   width: 90%;
   min-width: 600px;
-  margin: 20px auto 0 auto;
+  max-width: 800px;
+  margin: 20px auto 30px auto;
+  overflow: hidden;
   h3 {
     text-align: left;
-  }
-  h4 {
     font-size: 24px;
+    margin-bottom: .5em;
   }
 }
 
@@ -99,40 +103,91 @@
   a:hover {
     background-color: limegreen;
     color: #fff;
+    }
+
+.subscription {
+  width: 580px;
+  margin: 0 auto 1em auto;
+  line-height: 1.7em;
+  :nth-child(2n+1) {
+    margin-right: 40px;
+  }
+  input[type='submit'] {
+    margin: .7em 0 0 0;
+  }
+  input[type='submit']:focus {
+    border: 0;
   }
 }
 
-.preference input[type='submit'],
-.profile input[type='submit'] {
+.subscription input[type='submit'],
+.profile-edit input[type='submit'] {
   background-color: transparent;
   border: 0;
   font-size: 19px;
   font-family: 'Hammersmith One';
-  color: #444;
+  color: #5687a8;
 }
 
-.preference input[type='submit']:hover,
-.profile input[type='submit']:hover {
+.subscription input[type='submit']:hover,
+.profile-edit input[type='submit']:hover {
   background-color: transparent;
   font-family: 'Hammersmith One';
   color: limegreen;
   cursor: pointer;
 }
 
-.profile {
-  width: 380px;
+.social {
+  width: 42%;
+  margin: 0 0 0 5%;
+  min-width: 300px;
+  float: left;
+  a {
+    color: #5687a8;
+    text-decoration: none;
+    text-align: left;
+    font-weight: bold;
+    display: block;
+    background-color: transparent;
+    padding: 8px 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+  }
+  a:hover {
+    background-color: limegreen;
+    color: #fff;
+  }
+  p {
+    font-family: 'Oswald';
+    color: #555;
+  }
+}
+
+.profile-edit {
+  float:left;
+  width: 43%;
+  min-width: 380px;
+  margin: 0 0 0 5%;
   input[type='text'],
   input[type='password'] {
     border: 0;
     background-color: transparent;
     font-size: 17px;
-    padding: 8px 10px;
-    text-align:right;
+    padding: 5px 8px;
+    color: #333;
+  }
+  label {
+    min-width: 5em;
   }
   input[type='text']:active,
   input[type='password']:active,
   input[type='text']:focus,
   input[type='password']:focus {
     background-color: #fff;
+    color: #5687a8 ;
+  }
+  input[type='submit'] {
+    margin: 15px 0 0 0;
+    padding: 0;
   }
 }

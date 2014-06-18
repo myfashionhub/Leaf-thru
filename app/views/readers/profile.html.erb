@@ -1,44 +1,49 @@
-<script>
-  $(document).ready(function() {
-    $('#unlink-fb').click(unlinkFb);  
-    $('#unlink-tw').click(unlinkTw);
-  });  
-</script>
-
-
 <div class="wrapper">
-
-  <h3>Customize your profile</h3>  
-
   <div class="notify"></div>
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>  
 
-  <div class="preference">
-  <h4>Choose your news subscriptions</h4>
+
+  <div class="subscription">
+  <h3>Choose your news subscriptions</h3>
     <%= form_for @subscription do |f| %>
-      <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
+      <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name) %>
       <%= f.submit 'Update preference' %>
     <% end %>
   </div>  
 
+
   <div class="social">
-  <h4>Social subscription</h4>
+  <h3>Social subscription</h3>
   <% if @reader.facebook_token %>
-    <a href='#' id='unlink-fb'>Disconnect from Facebook</a>    
+    <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
+      Disconnect from Facebook
+    </a>    
   <% else %>
-    <a href="/auth/facebook">Connect with Facebook</a>
+    <a href="/auth/facebook">
+      <i class="fa fa-facebook"></i> Connect with Facebook
+    </a>
   <% end %>  
   <% if @reader.twitter_token %>
-    <a href='#' id='unlink-tw'>Disconnect from Twitter</a>   
+    <a href='/logout/twitter' id='unlink-tw'>
+      <i class="fa fa-twitter"></i>
+      Disconnect from Twitter
+    </a>   
   <% else %>   
-    <a href="/auth/twitter">Connect with Twitter</a>   
+    <a href="/auth/twitter">
+      <i class="fa fa-twitter"></i>
+      Connect with Twitter
+    </a>   
   <% end %>
+
+  <p>* Connect with Facebook/Twitter to get<br/> 
+  articles shared by your social network.</p>    
   </div>  
 
-  <div class="profile">
-    <h4>Edit profile</h4>
+
+  <div class="profile-edit">
+    <h3>Edit profile</h3>
     <%= form_for @reader do |f| %>
       <%= f.label :email, "Email:" %>
       <%= f.text_field :email %><br/>
