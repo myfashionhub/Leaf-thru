@@ -45,6 +45,7 @@ function twitterFeed() {
     url     : '/twitter',
     dataType: 'json',
     success : function(data){
+      $('#loader').hide();
       displaySocialArticle(data);
     }
   })

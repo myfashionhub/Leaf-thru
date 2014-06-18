@@ -1,9 +1,12 @@
 class ReadersController < ApplicationController
   before_action :require_login, only: :profile
 
- def new
-   @reader = Reader.new  #in welcome index
- end
+  def index
+    readers = Reader.all
+    @supscriptions = readers.map do |reader| 
+      
+    end
+  end
 
   def create
     @reader = Reader.create(reader_params)

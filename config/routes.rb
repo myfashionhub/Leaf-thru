@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   patch 'profile/edit'=> 'readers#update'
 
   post 'sessions'=> 'sessions#create', as: 'sessions'
-  get 'logout'  => 'sessions#destroy', as: 'logout'
-
-  get 'about'   => 'welcome#about'
+  get 'logout'  => 'sessions#destroy', as: 'logout' 
 
   get 'auth/:provider'        => 'sessions#authorize'
   get 'auth/twitter/callback' => 'sessions#log_twitter'
@@ -23,8 +21,9 @@ Rails.application.routes.draw do
   get 'logout/facebook'       => 'sessions#logout_fb'
   get 'logout/twitter'        => 'sessions#logout_tw'
 
+  get 'about'   => 'welcome#about'
   get 'twitter' => 'readers#twitter'
-  get 'facebook' => 'readers#facebook'
   get 'feed'    => 'readers#feed'
+  get 'readers' => 'readers#index'
 end
 

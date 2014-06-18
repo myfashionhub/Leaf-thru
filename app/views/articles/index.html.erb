@@ -1,23 +1,24 @@
 <div class="wrapper">
-<h2>Saved articles</h2>
+<h2>My Bookmarks</h2>
 
 <% @articles.each do |article| %>
   <div class="saved-article">
-  <p class='title'>
+  <h3 class='title'>
     <a href="<%= article.url %>">
       <%= article.title %>
     </a> 
 
     <% if article.publication.nil? %>
       <span class='source'>
-        Shared by <%= article.shared_by %>
+        Shared by <a target='_blank' href="http://twitter.com/<%= article.shared_by %>">
+        @<%= article.shared_by %></a>
       </span>
     <% else %> 
       <span class='source'> 
         Published by <%= article.publication %>
       </span>  
     <% end %> 
-  </p>
+  </h3>
   <p>  
     <%= article.extract %>
   </p>
@@ -25,7 +26,7 @@
   <form action="/articles/<%= article.id %>" method='post'>
     <%= token_tag %>
     <input type="hidden" name='_method' value='delete'>
-    <button class='delete'>Delete</button>
+    <button class='delete'><i class="fa fa-trash-o"></i> Delete bookmark</button>
   </form>
   </div>
 <% end %>
