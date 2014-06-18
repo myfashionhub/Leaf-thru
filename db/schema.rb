@@ -34,26 +34,10 @@ ActiveRecord::Schema.define(version: 20140617202407) do
     t.integer "reader_ranking"
   end
 
-  create_table "interests", force: true do |t|
-    t.string   "topic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "url1"
-    t.string   "url2"
-    t.string   "url3"
-  end
-
   create_table "publications", force: true do |t|
     t.string   "name"
     t.string   "url"
     t.string   "topic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "reader_interest_joins", force: true do |t|
-    t.string   "reader_id"
-    t.string   "interest_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

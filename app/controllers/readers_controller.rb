@@ -3,23 +3,21 @@ class ReadersController < ApplicationController
 
   def index
     readers = Reader.all
-    @supscriptions = readers.map do |reader| 
-      
+    @supscriptions = readers.map do |reader|
+
     end
   end
 
   def create
-    @reader = Reader.create(reader_params)
+    @reader = Reader.new(reader_params)
     if current_reader
       redirect_to root_path
       flash[:alert] = 'You must log out to create a new account'
     end
-    if @reader.save
-      if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
+    if @reader.save!  && passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
         current_reader = login(params[:reader][:email], params[:reader][:password])
         redirect_to '/profile'
         flash[:notice] = 'Successfully signed up. Please log in for access.'
-      # end
     else
       redirect_to '/profile'
       flash[:alert] = 'Sign up failed. Try again.'
@@ -86,19 +84,19 @@ class ReadersController < ApplicationController
     if password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
       return true
     else
-      flash[:notice] = "Password must be greater than 6 characters, contain one capital letter, and one number. Please check your entry and try again."
+      flash[:notice] = "Password must be between 6 to 20 characters, contain one capital letter, and one number. Please check your entry and try again."
       return false
     end
   end
 
-def emailValidate(email)
+  def emailValidate(email)
     if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       return true
     else
      flash[:notice] = "Invalid email."
      return false
     end
-end
+  end
 
   private
   def reader_params
