@@ -10,13 +10,15 @@ class ReadersController < ApplicationController
     if current_reader
       redirect_to root_path
       flash[:alert] = 'You must log out to create a new account'
-    end    
+    end
     if @reader.save
-      current_reader = login(params[:reader][:email], params[:reader][:password])
-      redirect_to '/profile'
-      flash[:notice] = 'Successfully signed up.'
+      if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
+        current_reader = login(params[:reader][:email], params[:reader][:password])
+        redirect_to '/profile'
+        flash[:notice] = 'Successfully signed up. Please log in for access.'
+      # end
     else
-      redirect_to root_path
+      redirect_to '/profile'
       flash[:alert] = 'Sign up failed. Try again.'
     end
   end
@@ -38,9 +40,11 @@ class ReadersController < ApplicationController
 
   def update
     @reader = current_reader
-    @reader.update(reader_params)
-    redirect_to profile_path
-    flash[:notice] = "You have successfully updated your profile."
+    # if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
+      @reader.update(reader_params)
+      redirect_to profile_path
+      flash[:notice] = "You have successfully updated your profile."
+    # end
   end
 
   def twitter
@@ -74,6 +78,24 @@ class ReadersController < ApplicationController
       @feeds << publication.url
     end
   end
+
+  def passwordValidate(password)
+    if password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
+      return true
+    else
+      flash[:notice] = "Password must be greater than 6 characters, contain one capital letter, and one number. Please check your entry and try again."
+      return false
+    end
+  end
+
+def emailValidate(email)
+    if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+      return true
+    else
+     flash[:notice] = "Invalid email."
+     return false
+    end
+end
 
   private
   def reader_params
