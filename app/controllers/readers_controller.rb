@@ -16,8 +16,6 @@ class ReadersController < ApplicationController
       end  
       publications = Subscription.where(reader_id: reader.id)    
       {reader: reader_info}
-    @supscriptions = readers.map do |reader|
-
     end
   end
 

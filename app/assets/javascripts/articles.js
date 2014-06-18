@@ -2,14 +2,14 @@
 
 function articleAction(buttonSelector, e) {
   if (buttonSelector === '.save-article') {
-    saveArticle(e);      
+    saveArticle(e);
   }
-  var article = $(e.target).parent().parent(); 
+  var article = $(e.target).parent().parent();
   article.toggle('drop', 500, function(){ article.remove(); });
 }
 
-function saveArticle(e) { 
-  var article = $(e.target).parent().parent(); 
+function saveArticle(e) {
+  var article = $(e.target).parent().parent();
   var title   = article.children().first().children().html();
   var url     = article.children().first().children().attr('href');
   var extract = $(article.children()[1]).html();
@@ -18,7 +18,7 @@ function saveArticle(e) {
   var shared_by   = undefined;
   if (source.text().indexOf('Published') > -1 === false) {
     shared_by   = source.attr('data');
-  } else { 
+  } else {
     publication = source.attr('data');
   }
 
@@ -26,7 +26,7 @@ function saveArticle(e) {
     url: '/articles',
     method: 'post',
     dataType: 'json',
-    data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },    
+    data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },
     success: function(data) {
       console.log('saving');
     }
@@ -36,7 +36,7 @@ function saveArticle(e) {
 function noArticle() {
   if ($('.rss').children() === 0) {
     $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
-  } 
+  }
   if ($('.twitter').children() === 0) {
     $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
   }
@@ -45,12 +45,11 @@ function noArticle() {
 function deleteArticle(e) {
   var button = $(e.target);
   button.parent().toggle('puff');
-
   $.ajax({
     url: button.attr('data'),
     method: 'delete',
     success: function() {
-      button.parent().remove();     
+      button.parent().remove();
     }
   });
 }

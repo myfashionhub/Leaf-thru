@@ -6,27 +6,27 @@
   <h3 class='title'>
     <a href="<%= article.url %>">
       <%= article.title %>
-    </a> 
+    </a>
 
     <% if article.publication.nil? %>
       <span class='source'>
         Shared by <a target='_blank' href="http://twitter.com/<%= article.shared_by %>">
         @<%= article.shared_by %></a>
       </span>
-    <% else %> 
-      <span class='source'> 
+    <% else %>
+      <span class='source'>
         Published by <%= article.publication %>
-      </span>  
-    <% end %> 
+      </span>
+    <% end %>
   </h3>
-  <p>  
+  <p>
     <%= article.extract %>
   </p>
-  
-  <button class='delete' data="/articles/<%= article.id %>">
+
+  <button class='delete' data="/articleps/<%= article.id %>">
     <i class="fa fa-trash-o"></i> Delete bookmark
   </button>
-  
+
   </div>
 <% end %>
 
