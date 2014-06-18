@@ -2,6 +2,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     Subscription.destroy_all(:reader_id => current_reader.id)
+
     #clear out all subscribers to keep from keeping feeds readers don't want
     pub_ids = params[:reader][:publication_ids]
     pub_ids.each do |pub_id|
@@ -12,6 +13,6 @@ class SubscriptionsController < ApplicationController
           })
       end
     end
-    redirect_to profile_path
+    redirect_to '/feed'
   end
 end
