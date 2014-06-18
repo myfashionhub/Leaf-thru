@@ -12,6 +12,7 @@ class SubscriptionsController < ApplicationController
       end
     end
     redirect_to profile_path
+    flash[:notice] = "You have successfully updated your subscriptions."
   end
 
 end

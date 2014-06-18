@@ -29,7 +29,7 @@ function unlinkFb() {
     method: 'post',
     dataType: 'json', 
     success: function() {
-      $('.notify').append('Successfully disconnect from Twitter');
+      $('.notify').html("<%= flash[:notice] %>");
       setTimeout(function() {
         $('.notify').empty();
       }, 400);      
@@ -43,7 +43,7 @@ function unlinkTw() {
     method: 'post',    
     dataType: 'json', 
     success: function() {
-      $('.notify').append('Successfully disconnect from Twitter');
+      $('.notify').html("<%= flash[:notice] %>");
       setTimeout(function() {
         $('.notify').fadeOut().remove();
       }, 120);
