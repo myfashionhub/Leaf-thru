@@ -1,32 +1,56 @@
-/* PROFILE PAGE */
-.wrapper {
-  width: 90%;
-  min-width: 600px;
-  margin: 20px auto 0 auto;
-  h3 {
-    text-align: left;
-  }
-  h4 {
-    font-size: 20px;
-  }
+/* FEED */
+
+.twitter, .rss {
+  width: 45%;
+  float: left;
+  margin: 20px 3% 30px 2%;  
 }
 
-.social {
+.rss {
   a {
-    width: 230px;
-    color: #fff;
-    text-decoration: none;
-    background-color: #88ABC2;
-    padding: 8px 10px;
-    border-radius: 3px;
-    text-align: center;
-    display: block;   
-    margin: 7px auto 0 auto; 
+    color: limegreen;
   }
   a:hover {
-    background-color: limegreen;
-    color: #fff;
+    color: #5687a8;
+  }  
+}
+
+.twitter {
+  a {
+    color: #5687a8;
+    text-decoration: none;
+  }  
+}
+
+.rss h3, .twitter h3 {
+  font-size: 20px;
+  a {
+    text-decoration: none;
   }
 }
 
-/* FEED */
+.article {
+  margin-bottom: 2em;
+  h3 {
+    margin: 0;
+    text-align: left;
+  }
+
+  p {
+    margin: .5em 0; 
+  }
+}
+
+.save-article, .discard-article {
+  font-size: 19px;
+  font-family: 'Hammersmith One';
+  background-color: transparent;
+  border: 0;
+  color: #444;
+}
+
+.save-article:hover, 
+.discard-article:hover {
+  color: #666;
+  cursor: pointer;
+}

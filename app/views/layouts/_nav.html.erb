@@ -30,20 +30,23 @@
   </div>
 
   <ul class="nav">
+  <% if current_reader %>
     <li>
-        <a href="/articles">Read Later</a>
-    </li>
-    <%if current_reader %>
+      <a href="/feed">My News Feed</a>
+    </li>     
     <li>
-      <a href="/profile">Edit My Profile</a>
-    </li>  
+        <a href="/articles">My Bookmarks</a>
+    </li> 
     <li>
-      <a href="/feed">View My News</a>
+        <a href="/readers">What friends are reading</a>
+    </li> 
+    <li>      
+      <a href="/profile">Edit Profile</a>
     </li>  
     <li>
       <a href="/logout">Log out</a>
     </li>
-      <% end %>
+   <% end %>
   </ul>
   
 </div>

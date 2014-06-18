@@ -1,3 +1,11 @@
+function rssFeed() {
+  var feed_urls = $('.rss.feed').children();
+  for (var i = 0; i < feed_urls.length; i++) {
+    url = $(feed_urls[i]).attr('data-feed');
+    loadFeed(url);
+  }
+}
+
 function loadFeed(url) {
   var feed = new google.feeds.Feed(url);
   feed.setNumEntries(3);
@@ -31,13 +39,6 @@ function displayFeedArticle(data) {
   });   
 }
 
-function rssFeed() {
-  var feed_urls = $('.rss.feed').children();
-  for (var i = 0; i < feed_urls.length; i++) {
-    url = $(feed_urls[i]).attr('data-feed');
-    loadFeed(url);
-  }
-}
 
 function twitterFeed() {
   $.ajax({
@@ -56,7 +57,7 @@ function displaySocialArticle(data) {
     var $url     = $('<a>').attr('href', data[i].url);
     var $extract = $('<p>').addClass('extract').html(data[i].extract);
     var $sharedBy= $('<p>').addClass('shared-by').attr('data', data[i].shared_by).html('Shared by: ');
-    var $sharer  = $("<a href='http://twitter.com/"+data[i].shared_by+"' >@"+data[i].shared_by+"</a>");
+    var $sharer  = $("<a target='_blank' href='http://twitter.com/"+data[i].shared_by+"' >@"+data[i].shared_by+"</a>");
     $sharedBy.append($sharer);
 
     $title.wrapInner($url);
@@ -74,8 +75,8 @@ function displaySocialArticle(data) {
 
 
 function generateButtons() {
-  var saveButton    = $('<button>').addClass('save-article').html('Save article');
-  var discardButton = $('<button>').addClass('discard-article').html('Not interested');
+  var saveButton    = $('<button>').addClass('save-article').html('<i class="fa fa-bookmark-o"></i> Bookmark');
+  var discardButton = $('<button>').addClass('discard-article').html('<i class="fa fa-trash-o"></i> Not interested');
   var buttons       = $('<div>').addClass('buttons').append(saveButton).append(discardButton);
   return buttons;
 }

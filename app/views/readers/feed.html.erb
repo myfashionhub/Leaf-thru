@@ -11,13 +11,17 @@
 </script>
 
 <div class="frontpage">
-  <h2>RSS feed</h2>
+  
   <div class="rss feed" >
+  <h2>RSS feed</h2>
+    
     <% @feeds.each do |feed| %>
       <div data-feed="<%= feed %>"></div>
     <% end %>
   </div>
 
-  <h2>Social feed</h2>
-  <div class="twitter feed"></div>
+  
+  <div class="twitter feed">
+    <h2>Social feed</h2>
+  </div>
 </div>
