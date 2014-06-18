@@ -1,3 +1,21 @@
+<script>
+$(document).ready(function() {
+  $('.signup').hide();
+
+  $('#signup').click(function() {
+    $('.signup').fadeIn('slow');
+    $('.login').hide();
+  })
+
+  $('#login').click(function() {
+    $('.login').fadeIn('slow');
+    $('.signup').hide();
+  })
+
+})
+</script>
+
+
 <div class="form-wrapper">
   <h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>  
 

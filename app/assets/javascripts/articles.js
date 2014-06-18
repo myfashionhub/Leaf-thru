@@ -33,3 +33,12 @@ function saveArticle(e) {
     }
   })
 }
+
+function noArticle() {
+  if ($('.rss').children() === 0) {
+    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles ></a>");
+  } 
+  if ($('.twitter').children() === 0) {
+    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles ></a>");
+  }
+}

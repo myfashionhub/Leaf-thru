@@ -1,7 +1,9 @@
+<div class="wrapper">
+
 <% if @reader.name %>
-  <h2>Customize your profile <%= @reader.name %></h2>
+  <h3>Customize your profile, <%= @reader.name %></h3>
 <% else %>
-  <h2>Customize your profile <%= @reader.email %></h2>
+  <h3>Customize your profile, <%= @reader.email %></h3>
 <% end %>
 
 <div class="social">
@@ -10,16 +12,16 @@
 </div>
 
 <div class="preference">
-<h3>Choose your News Preferences</h3>
+<h4>Choose your News Preferences</h4>
   <%= form_for @subscription do |f| %>
     <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
-    <%= f.submit %>
+    <%= f.submit 'Update preference' %>
   <% end %>
 
 
 
 <div class="profile">
-  <h3>Edit profile</h3>
+  <h4>Edit profile</h4>
   <%= form_for @reader do |f| %>
     <%= f.label :email, "Email:" %>
     <%= f.text_field :email %>
@@ -30,4 +32,4 @@
 </div>
 
 
-
+</div>

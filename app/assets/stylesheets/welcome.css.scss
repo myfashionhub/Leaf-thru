@@ -1,78 +1,9 @@
 body {
-  background-color: #fff;
+  background-color: #f5f5f5;
   min-height: 100%;
 }
 
-/* NAV DROP DOWN */
 
-#arrow {
-  cursor: pointer;
-}
-
-.menu {
-  width: 100%;
-  background-color: #D0E0EB;
-  overflow: auto;
-  color: #444;
-  padding: 10px;
-  > div {
-    float: left;
-  }
-  .logo {
-    width: 35%;
-  }
-  .location {
-    width: 27%;
-  }
-  .profile {
-    width: 23%;
-    span, img {
-      display: inline-block; 
-      vertical-align: middle;
-    }
-    img {
-      width: 40px;
-    }
-  }
-  #arrow {
-    width: 100px;
-    margin: 12px 3% 0 0;
-    float: right;
-    text-align: right;
-  }
-}
-
-.nav {
-  width: 150px;
-  padding: 0px;
-  position: absolute;
-  right: 10px;
-  z-index: 1;
-  margin-top: 45px;
-  text-align: right;
-  color: #fff;
-  background-color: rgba(73, 112, 138, .7);
-}
-
-
-.nav li {
-  display: block;
-  line-height: 2em;
-  padding: 10px;
-  a {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  }
-}
-
-.nav li:hover {
-  background-color: rgba(73, 112, 138, 1);
-}
-
-a:hover {
-  color: limegreen;
-}
 
 @media screen {
 }
@@ -84,10 +15,12 @@ a:hover {
   height: 1px;
 }
 
-
 .form {
   width: 320px;
-  margin: 30px auto;
+  margin: 30px auto;  
+  input {
+    font-size: 16px;
+  }
   input[type='text'], input[type='password'] {
     width: 200px;
     display: block;
@@ -98,7 +31,15 @@ a:hover {
     width: 215px;
     display: block;
     margin: 10px auto;
-    padding: 5px;
+    padding: 7px;
+    color: #fff;
+    background-color: #88ABC2;
+    border: 0;
+    border-radius: 3px;
+  }
+  input[type='submit']:hover {
+    background-color: #49708A;
+    cursor: pointer;
   }
 }
 
@@ -115,5 +56,5 @@ a:hover {
 .form-wrapper {
   width: 300px;
   margin: 10% auto 0 auto;
-  text-align: center;
+  text-align: center;  
 }

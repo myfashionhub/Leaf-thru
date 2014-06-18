@@ -58,7 +58,6 @@ class ReadersController < ApplicationController
 
   def facebook
     @reader = current_reader
-    #render :json => data.to_json
   end
 
   def feed
@@ -69,7 +68,6 @@ class ReadersController < ApplicationController
       publication = Publication.find(id)
       @feeds << publication.url
     end
-    return @feeds
   end
 
   private
