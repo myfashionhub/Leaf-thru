@@ -34,7 +34,9 @@ class ReadersController < ApplicationController
   end
 
   def update
-
+    @reader = current_reader
+    @reader.update(reader_params)
+    redirect_to profile_path
   end
 
   def twitter
@@ -57,23 +59,21 @@ class ReadersController < ApplicationController
 
   def facebook
     @reader = current_reader
-    #render :json => data.to_json
   end
 
   def feed
     subscriptions = current_reader.subscriptions
-    feeds = []
+    @feeds = []
     subscriptions.each do |subscription|
       id = subscription.publication_id
       publication = Publication.find(id)
-      feeds << publication.url
+      @feeds << publication.url
     end
-    return feeds
   end
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :preferences)
+    params.require(:reader).permit(:email, :password, :preferences, :name, :image)
   end
 
 end

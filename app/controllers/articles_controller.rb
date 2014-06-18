@@ -10,13 +10,13 @@ class ArticlesController < ApplicationController
   def create
     article = Article.create(article_params) 
     if article.save
-      current_reader.articles << article 
+      Bookmark.create(reader_id: current_reader.id, article_id: article.id) 
     else
       article = Article.find_by(url: params[:article][:url])
       if Bookmark.exists?(article_id: article.id.to_s, reader_id: current_reader.id.to_s)
         flash[:notice] = 'Already saved!'
       else          
-        current_reader.articles << article         
+        Bookmark.create(reader_id: current_reader.id, article_id: article.id)        
       end
     end  
     redirect_to '/feed'

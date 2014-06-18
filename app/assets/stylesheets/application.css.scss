@@ -1,0 +1,108 @@
+/*
+ *= require jquery.ui.all
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+
+body {
+  overflow: auto;
+  margin: 0;
+  color: #444;
+  font-family: 'Helvetica';
+  background-color: #f5f5f5;
+  min-height: 100%;  
+}
+
+h1, h2, h3 {
+  font-family: ''
+}
+
+/* NAV DROP DOWN */
+
+#arrow {
+  cursor: pointer;
+}
+
+.menu {
+  width: 100%;
+  background-color: #D0E0EB;
+  overflow: auto;
+  color: #444;
+  padding: 10px;
+  > div {
+    float: left;
+  }
+  .logo {
+    width: 35%;
+  }
+  .location {
+    width: 27%;
+  }
+  .profile {
+    width: 23%;
+    span, img {
+      display: inline-block; 
+      vertical-align: middle;
+    }
+    img {
+      width: 40px;
+    }
+  }
+  #arrow {
+    width: 100px;
+    margin: 12px 3% 0 0;
+    float: right;
+    text-align: right;
+  }
+}
+
+.nav {
+  width: 180px;
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+  padding: 0px;
+  margin-top: 45px;
+  text-align: right;
+  background-color: #D0E0EB;
+}
+
+
+
+.nav li {
+  display: block;
+  line-height: 2em;
+  padding: 8px 20px 8px 10px;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  a {
+  display: block;
+  color: #444;
+  text-decoration: none;
+  }
+}
+
+.nav li:hover {
+  background-color: #acc8dc;
+}
+
+a:hover {
+  color: limegreen;
+}
+
+.checkbox_container{
+  background-color: blue;
+}
+
+.frontpage {
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+
+.article {
+  width: 100%;
+  margin: 10px;
+}
+

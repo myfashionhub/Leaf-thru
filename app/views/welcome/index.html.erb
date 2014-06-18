@@ -1,21 +1,40 @@
+<script>
+$(document).ready(function() {
+  $('.signup').hide();
 
-<h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>
+  $('#signup').click(function() {
+    $('.signup').fadeIn('slow');
+    $('.login').hide();
+  })
 
-<div class="form">
-  <div class="signup">
-  <%= form_for @reader do |f| %>
-    <%= f.text_field :email, placeholder: 'Email' %>
-    <%= f.password_field :password, placeholder: 'Password' %>
-    <%= f.submit "Sign up" %>
-  <% end %>
-  </div>
+  $('#login').click(function() {
+    $('.login').fadeIn('slow');
+    $('.signup').hide();
+  })
 
-  <div class="login">
-  <%= form_tag '/sessions', method: :post do %>
-    <%= text_field_tag :email, nil, placeholder: 'Email' %>
-    <%= password_field_tag :password, nil, placeholder: 'Password' %>
-    <%= submit_tag "Log in" %>
-  <% end %>
+})
+</script>
+
+
+<div class="form-wrapper">
+  <h3><span id='signup'>Sign up</span> or <span id='login'>Log in</span></h3>  
+
+  <div class="form">
+    <div class="signup">
+    <%= form_for @reader do |f| %>
+      <%= f.text_field :email, placeholder: 'Email' %>
+      <%= f.password_field :password, placeholder: 'Password' %>
+      <%= f.submit "Sign up" %>
+    <% end %>
+    </div>  
+
+    <div class="login">
+    <%= form_tag '/sessions', method: :post do %>
+      <%= text_field_tag :email, nil, placeholder: 'Email' %>
+      <%= password_field_tag :password, nil, placeholder: 'Password' %>
+      <%= submit_tag "Log in" %>
+    <% end %>
+    </div>
   </div>
 
 </div>

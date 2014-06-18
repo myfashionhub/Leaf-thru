@@ -1,33 +1,36 @@
-<% if @reader.name %>
-  <h2>Customize your profile <%= @reader.name %></h2>
-<% else %>
-  <h2>Customize your profile <%= @reader.email %></h2>
-<% end %>
+<div class="wrapper">
 
-<div class="social">
-  <a href="/auth/facebook">Link your Facebook account</a>
-  <a href="/auth/twitter">Link your Twitter account</a>
-</div>
+<h3>Customize your profile</h3?
 
 <div class="preference">
-<h3>Choose your News Preferences</h3>
+<h4>Choose your News Preferences</h4>
   <%= form_for @subscription do |f| %>
     <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
-    <%= f.submit %>
+    <%= f.submit 'Update preference' %>
   <% end %>
 
-
+<div class="social">
+  <a href="/auth/facebook">Connect with Facebook</a>
+  <a href="/auth/twitter">Connect with Twitter</a>
+</div>
 
 <div class="profile">
-  <h3>Edit profile</h3>
+  <h4>Edit profile</h4>
   <%= form_for @reader do |f| %>
     <%= f.label :email, "Email:" %>
     <%= f.text_field :email %>
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %>
+    <%= f.label :image, "Profile pic:" %>
+    <%= f.text_field :image %>   
     <%= f.submit "Update profile" %>
   <% end %>
+
+  <button id='unlink-fb'>Unlink Facebook account</button>
+  <button id='unlink-tw'>Unlink Twitter account</button>
 </div>
 
 
-
+</div>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :articles, only: [:index, :create, :show, :destroy]
-  resources :reader_article_join
   resources :reader_interest_join
   resources :publications
 
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'auth/:provider'        => 'sessions#authorize'
   get 'auth/twitter/callback' => 'sessions#log_twitter'
-  get 'auth/facebook/callback'=> 'sessions#log_facebook'
+  get 'auth/facebook/callback'=> 'sessions#log_facebook' 
 
   get 'twitter' => 'readers#twitter'
   get 'facebook' => 'readers#facebook'
