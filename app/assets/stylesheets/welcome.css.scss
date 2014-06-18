@@ -2,37 +2,34 @@
 @media screen {
 }
 
-.clear {
-  width: 100%;
-  clear: both;
-  display: block;
-  height: 1px;
-}
-
 .form {
   width: 320px;
   margin: 30px auto;  
   input {
     font-size: 16px;
+    padding: 8px;
+    width: 200px;
+    display: block;    
   }
   input[type='text'], input[type='password'] {
-    width: 200px;
-    display: block;
     margin: 10px auto;
-    padding: 5px;
+    background-color: transparent;    
+    border: 0;
+  }  
+  input[type='text']:active, input[type='password']:active,
+  input[type='text']:focus, input[type='password']:focus {
+    background-color: #fff;    
   }
   input[type='submit'] {
-    width: 215px;
-    display: block;
     margin: 10px auto;
-    padding: 7px;
     color: #fff;
     background-color: #88ABC2;
     border: 0;
     border-radius: 3px;
   }
-  input[type='submit']:hover {
-    background-color: #49708A;
+  input[type='submit']:hover,
+  input[type='submit']:active {
+    background-color: transparent;
     cursor: pointer;
   }
 }

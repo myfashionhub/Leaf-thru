@@ -1,6 +1,10 @@
 <div class="wrapper">
 
-<h3>Customize your profile</h3?
+<h3>Customize your profile</h3>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 <div class="preference">
 <h4>Choose your News Preferences</h4>
@@ -8,6 +12,7 @@
     <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name, {}) %>
     <%= f.submit 'Update preference' %>
   <% end %>
+</div>
 
 <div class="social">
   <a href="/auth/facebook">Connect with Facebook</a>
@@ -28,8 +33,16 @@
     <%= f.submit "Update profile" %>
   <% end %>
 
-  <button id='unlink-fb'>Unlink Facebook account</button>
-  <button id='unlink-tw'>Unlink Twitter account</button>
+
+<script>
+  $(document).ready(function() {
+    $('#unlink-fb').click(unlinkFb);  
+    $('#unlink-tw').click(unlinkTw);
+  });  
+</script>
+
+  <button id='unlink-fb'>Disconnect from Facebook</button>
+  <button id='unlink-tw'>Disconnect from Twitter</button>
 </div>
 
 

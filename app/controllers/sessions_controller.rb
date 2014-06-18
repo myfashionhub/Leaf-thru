@@ -1,20 +1,22 @@
 class SessionsController < ApplicationController
   def new
-    #login form
   end
 
   def create
     @reader = login(params[:email].downcase, params[:password])
     if @reader
       redirect_to '/profile'
+      flash[:notice] = "Logged in as #{@reader.email}" 
     else
-      redirect_to root_path, notice: 'Log in failed. Try again'
+      flash[:alert] = 'Log in failed. Try again'
+      redirect_to root_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: "You have successfully logged out."
+    redirect_to root_path
+    flash[:notice] = "You have successfully logged out."
   end
 
   def log_twitter
@@ -27,7 +29,7 @@ class SessionsController < ApplicationController
       image:         data.info.image,
       location:      data.info.location,
       tagline:       data.info.description })
-    redirect_to '/feed'
+    redirect_to '/profile'
   end
 
   def log_facebook
@@ -37,9 +39,19 @@ class SessionsController < ApplicationController
       facebook_uid:   data.uid,
       name:   data.info.name,
       #email: data.info.email,
-      image:  data.info.image
-      })
-    redirect_to '/feed'
+      image:  data.info.image })
+    redirect_to '/profile'
+  end
+
+  def logout_fb
+    current_reader.update(facebook_token: nil, facebook_uid: nil)
+    redirect_to '/profile'
+    #flash notice
+  end
+    
+  def logout_tw
+    current_reader.update(twitter_token: nil, twitter_token_secret: nil)
+    redirect_to '/profile'
   end
 
 end
