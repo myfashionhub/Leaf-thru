@@ -1,4 +1,4 @@
-
+/* WELCOME INDEX */
 .form {
   width: 320px;
   margin: 30px auto;
@@ -52,17 +52,32 @@
 .wrapper {
   width: 90%;
   min-width: 600px;
+  max-width: 800px;
   margin: 20px auto 30px auto;
-  overflow: auto;
+  overflow: hidden;
   h3 {
     text-align: left;
-  }
-  h4 {
     font-size: 24px;
+    margin-bottom: .5em;    
   }
 }
 
-.preference input[type='submit'],
+.subscription {
+  width: 580px;
+  margin: 0 auto 1em auto;
+  line-height: 1.7em;
+  :nth-child(2n+1) {
+    margin-right: 40px;
+  } 
+  input[type='submit'] {
+    margin: .7em 0 0 0;
+  }
+  input[type='submit']:focus {
+    border: 0;
+  }  
+}
+
+.subscription input[type='submit'],
 .profile-edit input[type='submit'] {
   background-color: transparent;
   border: 0;
@@ -71,7 +86,7 @@
   color: #5687a8;
 }
 
-.preference input[type='submit']:hover,
+.subscription input[type='submit']:hover,
 .profile-edit input[type='submit']:hover {
   background-color: transparent;
   font-family: 'Hammersmith One';
@@ -80,37 +95,42 @@
 }
 
 .social {
-  width: 50%;
+  width: 42%;
+  margin: 0 0 0 5%;
   min-width: 300px;
   float: left;
   a {
-    width: 220px;
     color: #5687a8;
     text-decoration: none;
+    text-align: left;
     font-weight: bold;
     display: block;
     background-color: transparent;
     padding: 8px 10px;
-    border-radius: 3px;
-    text-align: center; 
+    border-radius: 3px; 
     margin: 10px 0; 
   }
   a:hover {
     background-color: limegreen;
     color: #fff;
   }
+  p {
+    font-family: 'Oswald';
+    color: #555;
+  }
 }
 
 .profile-edit {
   float:left;
-  width: 48%;
+  width: 43%;
   min-width: 380px;
+  margin: 0 0 0 5%;
   input[type='text'],
   input[type='password'] {
     border: 0;
     background-color: transparent;
     font-size: 17px;
-    padding: 8px 10px;
+    padding: 5px 8px;
     color: #333;
   }
   label {

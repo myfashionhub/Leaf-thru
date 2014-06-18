@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   get 'auth/:provider'        => 'sessions#authorize'
   get 'auth/twitter/callback' => 'sessions#log_twitter'
   get 'auth/facebook/callback'=> 'sessions#log_facebook' 
-  post 'logout/facebook'       => 'sessions#logout_fb'
-  post 'logout/twitter'        => 'sessions#logout_tw'
+  get 'logout/facebook'       => 'sessions#logout_fb'
+  get 'logout/twitter'        => 'sessions#logout_tw'
 
   get 'twitter' => 'readers#twitter'
   get 'facebook' => 'readers#facebook'

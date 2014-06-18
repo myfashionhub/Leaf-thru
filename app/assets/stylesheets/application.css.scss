@@ -95,20 +95,20 @@ a:hover {
 }
 
 /* NOTICE MESSAGE */
-.notice {
-  width: 100%;
+.notice, .alert {
+  width: 96%;
   margin: 20px 0;
   padding: 10px 0 10px 20px;
-  background-color: rgba(173,216,230, 0.3);
-  border: 1px solid rgba(173,216,230, 0.6);
+
   border-radius: 3px;
 }
 
+.notice {
+  background-color: rgba(173,216,230, 0.3);
+  border: 1px solid rgba(173,216,230, 0.6);
+}
+
 .alert {
-  width: 100%;
-  margin: 20px 0;
-  padding: 10px 0 10px 20px;
   background-color: rgba(253,201,122, 0.4);
   border: 1px solid rgba(253,201,122, 0.7);
-  border-radius: 3px;
 }
