@@ -45,7 +45,7 @@ function twitterFeed() {
     url     : '/twitter',
     dataType: 'json',
     success : function(data){
-      $('#loader').fadeOut(500);
+      $('#loader').hide();
       displaySocialArticle(data);
     }
   })
@@ -63,7 +63,7 @@ function displaySocialArticle(data) {
 
     $title.wrapInner($url);
     $article.append($title).append($extract).append($sharedBy).append(generateButtons());
-    $article.hide().appendTo($('.twitter')).toggle('slide');
+    $('.twitter').append($article);
   }
   $('.twitter .save-article').on('click', function(e) { 
     articleAction('.save-article', e);
@@ -81,3 +81,48 @@ function generateButtons() {
   var buttons       = $('<div>').addClass('buttons').append(saveButton).append(discardButton);
   return buttons;
 }
+;
+
+function articleAction(buttonSelector, e) {
+  if (buttonSelector === '.save-article') {
+    saveArticle(e);      
+  }
+  var article = $(e.target).parent().parent(); 
+  article.toggle('drop', 500, function(){ article.remove(); });
+}
+
+function saveArticle(e) { 
+  var article = $(e.target).parent().parent(); 
+  var title   = article.children().first().children().html();
+  var url     = article.children().first().children().attr('href');
+  var extract = $(article.children()[1]).html();
+  var source  = $(article.children()[2]);
+  var publication = undefined;
+  var shared_by   = undefined;
+  if (source.text().indexOf('Published') > -1 === false) {
+    shared_by   = source.attr('data');
+
+  } else { 
+    publication = source.attr('data');
+  }
+
+  $.ajax({
+    url: '/articles',
+    method: 'post',
+    dataType: 'json',
+    data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },    
+    success: function(data) {
+      console.log('saving');
+    }
+  })
+}
+
+function noArticle() {
+  if ($('.rss').children() === 0) {
+    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles ></a>");
+  } 
+  if ($('.twitter').children() === 0) {
+    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles ></a>");
+  }
+}
+;

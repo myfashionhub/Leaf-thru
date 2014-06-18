@@ -19,7 +19,12 @@
   a {
     color: #5687a8;
     text-decoration: none;
-  }  
+  }
+  #loader {
+    width: 120px;
+    display: block;
+    margin: 10px auto;
+  }    
 }
 
 .rss h3, .twitter h3 {
