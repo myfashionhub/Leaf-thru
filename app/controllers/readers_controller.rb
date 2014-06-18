@@ -65,12 +65,10 @@ class ReadersController < ApplicationController
     feeds = []
     subscriptions.each do |subscription|
       id = subscription.publication_id
-      if id != nil
-        publication = Publication.find(id)
-        feeds << publication.url
-      end
+      publication = Publication.find(id)
+      feeds << publication.url
     end
-    return feeds.uniq
+    return feeds
   end
 
   private
