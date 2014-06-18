@@ -1,5 +1,5 @@
 class ReadersController < ApplicationController
-  before_action :require_login, on: :profile
+  before_action :require_login, only: :profile
 
  def new
    @reader = Reader.new  #in welcome index
@@ -9,7 +9,6 @@ class ReadersController < ApplicationController
     if current_reader
       flash[:notice] = 'You must log out to create a new account'
     end
-
     @reader = Reader.create(reader_params)
     if @reader.save
       current_reader = login(params[:reader][:email], params[:reader][:password])
