@@ -3,7 +3,30 @@
   width: 90%;
   min-width: 600px;
   margin: 20px auto 0 auto;
+  h3 {
+    text-align: left;
+  }
+  h4 {
+    font-size: 20px;
+  }
 }
 
+.social {
+  a {
+    width: 230px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #88ABC2;
+    padding: 8px 10px;
+    border-radius: 3px;
+    text-align: center;
+    display: block;   
+    margin: 7px auto 0 auto; 
+  }
+  a:hover {
+    background-color: limegreen;
+    color: #fff;
+  }
+}
 
 /* FEED */

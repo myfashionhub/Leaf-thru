@@ -1,15 +1,6 @@
 <div class="wrapper">
 
-<% if @reader.name %>
-  <h3>Customize your profile, <%= @reader.name %></h3>
-<% else %>
-  <h3>Customize your profile, <%= @reader.email %></h3>
-<% end %>
-
-<div class="social">
-  <a href="/auth/facebook">Link your Facebook account</a>
-  <a href="/auth/twitter">Link your Twitter account</a>
-</div>
+<h3>Customize your profile</h3?
 
 <div class="preference">
 <h4>Choose your News Preferences</h4>
@@ -18,7 +9,10 @@
     <%= f.submit 'Update preference' %>
   <% end %>
 
-
+<div class="social">
+  <a href="/auth/facebook">Connect with Facebook</a>
+  <a href="/auth/twitter">Connect with Twitter</a>
+</div>
 
 <div class="profile">
   <h4>Edit profile</h4>
@@ -27,8 +21,15 @@
     <%= f.text_field :email %>
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %>
+    <%= f.label :image, "Profile pic:" %>
+    <%= f.text_field :image %>   
     <%= f.submit "Update profile" %>
   <% end %>
+
+  <button id='unlink-fb'>Unlink Facebook account</button>
+  <button id='unlink-tw'>Unlink Twitter account</button>
 </div>
 
 

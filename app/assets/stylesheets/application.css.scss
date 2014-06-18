@@ -58,31 +58,34 @@ h1, h2, h3 {
 }
 
 .nav {
-  width: 150px;
+  width: 180px;
   position: absolute;
   right: 10px;
   z-index: 1;
   padding: 0px;
   margin-top: 45px;
   text-align: right;
-  color: #fff;
-  background-color: rgba(73, 112, 138, .8);
+  background-color: #D0E0EB;
 }
+
 
 
 .nav li {
   display: block;
   line-height: 2em;
-  padding: 10px;
+  padding: 8px 20px 8px 10px;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
   a {
   display: block;
-  color: #fff;
+  color: #444;
   text-decoration: none;
   }
 }
 
 .nav li:hover {
-  background-color: rgba(73, 112, 138, 1);
+  background-color: #acc8dc;
 }
 
 a:hover {

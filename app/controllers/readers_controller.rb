@@ -34,7 +34,9 @@ class ReadersController < ApplicationController
   end
 
   def update
-
+    @reader = current_reader
+    @reader.update(reader_params)
+    redirect_to profile_path
   end
 
   def twitter
@@ -71,7 +73,7 @@ class ReadersController < ApplicationController
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :preferences)
+    params.require(:reader).permit(:email, :password, :preferences, :name, :image)
   end
 
 end

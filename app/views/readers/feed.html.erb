@@ -1,5 +1,9 @@
 <script>
-  $(document).on('page:load', function(){   
+  $(window).load(function() {
+    rssFeed();
+    twitterFeed();
+  })
+  $(document).on('page:load', function() {   
     rssFeed();
     twitterFeed();
     noArticle();       
