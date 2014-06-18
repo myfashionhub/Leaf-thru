@@ -16,25 +16,24 @@ function displayFeedArticle(data) {
     var $extract = $('<p>').addClass('extract').html(data.feed.entries[i].content);
     if ($url.attr('href').indexOf('nytimes') > -1) {
       $extract.html($extract.contents().first());
-    } 
+    }
     var $publisher= $('<p>').addClass('publisher').attr('data', data.feed.title).html('Published by: '+data.feed.title);
     $title.wrapInner($url);
     $article.append($title).append($extract).append($publisher).append(generateButtons());
     $('.rss').append($article);
   }
-  $('.rss .save-article').on('click', function(e) { 
+  $('.rss .save-article').on('click', function(e) {
     articleAction('.save-article', e);
   });
 
   $('.rss .discard-article').on('click', function(e) {
     articleAction('.discard-article', e);
-  });   
+  });
 }
 
 function rssFeed() {
   // var feed_urls = $('.rss-feed').attr('feed-data');
-  var feed_urls = ['http://sports.espn.go.com/espn/rss/news',
-  'http://rss.nytimes.com/services/xml/rss/nyt/World.xml'];
+  var feed_urls = feed-data;
   for (var i = 0; i < feed_urls.length; i++) {
     loadFeed(feed_urls[i]);
   }
@@ -64,13 +63,13 @@ function displaySocialArticle(data) {
     $article.append($title).append($extract).append($sharedBy).append(generateButtons());
     $('.twitter').append($article);
   }
-  $('.twitter .save-article').on('click', function(e) { 
+  $('.twitter .save-article').on('click', function(e) {
     articleAction('.save-article', e);
   });
 
   $('.twitter .discard-article').on('click', function(e) {
     articleAction('.discard-article', e);
-  });  
+  });
 }
 
 
