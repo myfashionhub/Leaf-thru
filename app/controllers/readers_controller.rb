@@ -1,5 +1,5 @@
 class ReadersController < ApplicationController
-  before_action :require_login, on: :profile
+  before_action :require_login, only: :profile
 
  def new
    @reader = Reader.new  #in welcome index
@@ -9,7 +9,6 @@ class ReadersController < ApplicationController
     if current_reader
       flash[:notice] = 'You must log out to create a new account'
     end
-
     @reader = Reader.create(reader_params)
     if @reader.save
       current_reader = login(params[:reader][:email], params[:reader][:password])
@@ -35,7 +34,9 @@ class ReadersController < ApplicationController
   end
 
   def update
-
+    @reader = current_reader
+    @reader.update(reader_params)
+    redirect_to profile_path
   end
 
   def twitter
@@ -58,23 +59,21 @@ class ReadersController < ApplicationController
 
   def facebook
     @reader = current_reader
-    #render :json => data.to_json
   end
 
   def feed
     subscriptions = current_reader.subscriptions
-    feeds = []
+    @feeds = []
     subscriptions.each do |subscription|
       id = subscription.publication_id
       publication = Publication.find(id)
-      feeds << publication.url
+      @feeds << publication.url
     end
-    return feeds
   end
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :preferences)
+    params.require(:reader).permit(:email, :password, :preferences, :name, :image)
   end
 
 end

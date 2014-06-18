@@ -1,25 +1,32 @@
 <div class="menu">
-  <div>Leafthru LOGO</div>
-  <div>
-    <%= formatted_date_time(Time.now) %></br>
-    Temperature: 72 degrees
+  <div class='logo'>
+    <a href="/">Leafthru LOGO
+    </a>
   </div>
-  <div>
+  
+  <div class='location'>
+    <big><%= formatted_date_time(Time.now) %></big></br>
+    <small>72 &deg;F, New York, NY</small> 
+  </div>
+ 
+
+  <div class='profile'>
     <% if current_reader %>
+      <% if current_reader.image %>
+        <img src="<%= current_reader.image %>" alt="profile-image" />
+      <% end %>    
       <% if current_reader.name %>
-        <p>Hi, <%= current_reader.name %></p>
+        <span>Hi, <%= current_reader.name %></span>
       <% else %>
-        <p>Hi, <%= current_reader.email %></p>
+        <span>Hi, <%= current_reader.email %></span>
       <% end %> 
     <% else %>  
-      <p>Hi, Reader</p>
-    <% end %>     
-    <p>I'm Feeling...</p>
+      <span>Hi, Reader</span>
+    <% end %>  
   </div>  
 
-  <div id='arrow'>
-    <i class="fa fa-chevron-down"></i> <br/>
-    Menu
+  <div id='arrow'>       
+    Menu &nbsp; <i class="fa fa-chevron-down"></i> 
   </div>
 
   <ul class="nav">

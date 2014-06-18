@@ -1,7 +1,7 @@
 class Reader < ActiveRecord::Base
   has_many :subscriptions
   has_many :publications, through: :subscriptions
-  has_many :readers_articles, class_name: Bookmark
+  has_many :bookmarks
   has_many :articles, through: :bookmarks
 
   authenticates_with_sorcery!

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     @reader = login(params[:email].downcase, params[:password])
     if @reader
-      redirect_to '/feed'
+      redirect_to '/profile'
     else
       redirect_to root_path, notice: 'Log in failed. Try again'
     end
