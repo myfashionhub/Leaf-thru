@@ -23,11 +23,10 @@
     <%= article.extract %>
   </p>
   
-  <form action="/articles/<%= article.id %>" method='post'>
-    <%= token_tag %>
-    <input type="hidden" name='_method' value='delete'>
-    <button class='delete'><i class="fa fa-trash-o"></i> Delete bookmark</button>
-  </form>
+  <button class='delete' data="/articles/<%= article.id %>">
+    <i class="fa fa-trash-o"></i> Delete bookmark
+  </button>
+  
   </div>
 <% end %>
 

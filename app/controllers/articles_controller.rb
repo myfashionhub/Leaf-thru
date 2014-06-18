@@ -26,10 +26,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    #Delete from join table
-    id = Bookmark.find_by(article_id: params[:id].to_s)
+    id = Bookmark.find_by(article_id: params[:id], reader_id: current_reader.id)
     Bookmark.delete(id)
-    redirect_to articles_path
+    respond_to do |format|  
+      format.json { render json: {} }
+    end
   end
 
   private

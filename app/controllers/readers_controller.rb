@@ -4,7 +4,18 @@ class ReadersController < ApplicationController
   def index
     readers = Reader.all
     @supscriptions = readers.map do |reader| 
-      
+      if reader.name 
+        reader_info = reader.name
+      else
+        reader_info = reader.email
+      end
+      if reader.image
+        reader_image = reader.image
+      else
+        reader_image = ""  
+      end  
+      publications = Subscription.where(reader_id: reader.id)    
+      {reader: reader_info}
     end
   end
 

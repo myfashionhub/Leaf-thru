@@ -9,6 +9,7 @@ $(window).load(function() {
 })  
 
 $(document).ready(function() {
+  // Drop down menu
   $('.nav').hide();
 
   $('#arrow').click(function() {
@@ -18,5 +19,10 @@ $(document).ready(function() {
   $('.nav').children().click(function() {
     $('.nav').hide();
   })
+
+  // Delete article
+  $('.delete').click(function(e) { 
+    deleteArticle(e);
+  });  
 })
 

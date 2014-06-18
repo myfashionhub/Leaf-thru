@@ -1,7 +1,0 @@
-<% @articles.each do |article| %>
-  <p>
-    <a href="<%= article[:url] %>"><%= article[:title] %></a><br/>
-    <%= article[:extract] %><br/>
-    Shared by: <a href="http://twitter.com/<%= article[:shared_by] %>">@<%= article[:shared_by] %></a>
-  </p>
-<% end %>

@@ -18,7 +18,6 @@ function saveArticle(e) {
   var shared_by   = undefined;
   if (source.text().indexOf('Published') > -1 === false) {
     shared_by   = source.attr('data');
-
   } else { 
     publication = source.attr('data');
   }
@@ -36,9 +35,23 @@ function saveArticle(e) {
 
 function noArticle() {
   if ($('.rss').children() === 0) {
-    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles ></a>");
+    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
   } 
   if ($('.twitter').children() === 0) {
-    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles ></a>");
+    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
   }
 }
+
+function deleteArticle(e) {
+  var button = $(e.target);
+  button.parent().toggle('puff');
+
+  $.ajax({
+    url: button.attr('data'),
+    method: 'delete',
+    success: function() {
+      button.parent().remove();     
+    }
+  });
+}
+
