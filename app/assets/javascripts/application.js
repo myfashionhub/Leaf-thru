@@ -5,15 +5,15 @@
 //= require_tree .
 
 $(window).load(function() {
- 
-})  
+
+})
 
 $(document).ready(function() {
   // Drop down menu
   $('.nav').hide();
 
   $('#arrow').click(function() {
-    $('.nav').toggle('blind');
+    $('.nav').toggle('show');
   })
 
   $('.nav').children().click(function() {
@@ -21,8 +21,8 @@ $(document).ready(function() {
   })
 
   // Delete article
-  $('.delete').click(function(e) { 
+  $('.delete').click(function(e) {
     deleteArticle(e);
-  });  
+  });
 })
 

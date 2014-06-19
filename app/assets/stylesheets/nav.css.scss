@@ -13,7 +13,8 @@
   color: #444;
   padding: 10px;
   > div {
-    float: left;
+    display: inline-block;
+    vertical-align: middle;
   }
   .logo {
     width: 25%;
@@ -44,20 +45,20 @@
     }
   }
   #arrow {
-    width: 100px;
-    margin: 12px 3% 0 0;
-    float: right;
+    width: 14%;
+    margin: 12px 0 0 0;
     text-align: right;
+    vertical-align: middle;
   }
 }
 
 .nav {
-  width: 180px;
+  width: 220px;
   position: absolute;
   right: 10px;
   z-index: 1;
   padding: 0px;
-  margin-top: 45px;
+  margin: -10px 0 0 0;
   text-align: right;
   background-color: #D0E0EB;
 }
