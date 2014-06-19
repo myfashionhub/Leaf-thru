@@ -2,9 +2,6 @@
 
 
 
-#arrow {
-  cursor: pointer;
-}
 
 .menu {
   width: 100%;
@@ -45,10 +42,13 @@
     }
   }
   #arrow {
-    width: 14%;
+    width: 12%;
     margin: 12px 0 0 0;
     text-align: right;
     vertical-align: middle;
+  }
+  #arrow:hover {
+    cursor: pointer;
   }
 }
 

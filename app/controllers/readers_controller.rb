@@ -13,7 +13,7 @@ class ReadersController < ApplicationController
     if @reader.save!  && passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
         current_reader = login(params[:reader][:email], params[:reader][:password])
         redirect_to '/profile'
-        flash[:notice] = 'Successfully signed up. Please log in for access.'
+        flash[:notice] = 'Successfully signed up.'
     else
       redirect_to '/profile'
       flash[:alert] = 'Sign up failed. Try again.'
