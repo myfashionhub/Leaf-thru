@@ -28,9 +28,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    alchemy-api-rb (0.2.2)
-      excon (~> 0.28.0)
-      faraday (~> 0.8.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -50,7 +47,6 @@ GEM
     diff-lcs (1.2.5)
     equalizer (0.0.9)
     erubis (2.7.0)
-    excon (0.28.0)
     execjs (2.2.0)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
@@ -209,7 +205,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alchemy-api-rb
   coffee-rails (~> 4.0.0)
   font-awesome-sass
   httparty

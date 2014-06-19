@@ -2,23 +2,19 @@
   $(window).load(function() {
     rssFeed();
     twitterFeed();
-    noArticle();       
   })
 </script>
 
-<div class="frontpage">
-
-  <div class="rss feed" >
+<div class="rss feed" >
   <h2>RSS feed</h2>
 
-    <% @feeds.each do |feed| %>
-      <div data-feed="<%= feed %>"></div>
-    <% end %>
-  </div>
+  <% @feeds.each do |feed| %>
+    <div data-feed="<%= feed %>"></div>
+  <% end %>
+</div>
 
 
-  <div class="twitter feed">
-    <h2>Social feed</h2>
-    <img src="assets/loader2.gif" alt="" id='loader' />
-  </div>
+<div class="twitter feed">
+  <h2>Social feed</h2>
+  <img src="assets/loader2.gif" alt="" id='loader' />
 </div>

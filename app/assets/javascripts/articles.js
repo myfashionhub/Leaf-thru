@@ -1,11 +1,11 @@
-//= require feed
-
 function articleAction(buttonSelector, e) {
   if (buttonSelector === '.save-article') {
     saveArticle(e);
   }
   var article = $(e.target).parent().parent();
-  article.toggle('drop', 500, function(){ article.remove(); });
+  article.toggle('drop', 500, function(){
+    article.remove();
+  });
 }
 
 function saveArticle(e) {
@@ -28,17 +28,16 @@ function saveArticle(e) {
     dataType: 'json',
     data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },
     success: function(data) {
-      console.log('saving');
+      noArticle('.twitter');
+      noArticle('.rss');
     }
   })
 }
 
-function noArticle() {
-  if ($('.rss').children().length === 0) {
-    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
-  }
-  if ($('.twitter').children().length === 0) {
-    $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
+function noArticle(feedSelector) {
+  if ($(feedSelector).find('div').length === 0) {
+    $(feedSelector).append('No more article in this feed.')
+                   .append("<a href='/articles'>Read saved articles</a>");
   }
 }
 
@@ -50,6 +49,8 @@ function deleteArticle(e) {
     method: 'delete',
     success: function() {
       button.parent().remove();
+      noArticle('.twitter');
+      noArticle('.rss'); // Check if it's the feed is empty
     }
   });
 }
