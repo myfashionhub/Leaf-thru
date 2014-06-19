@@ -34,17 +34,17 @@ function saveArticle(e) {
 }
 
 function noArticle() {
-  if ($('.rss').children() === 0) {
+  if ($('.rss').children().length === 0) {
     $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
   }
-  if ($('.twitter').children() === 0) {
+  if ($('.twitter').children().length === 0) {
     $('.twitter').append('No more article in this feed.').append("<a href='/articles'>Read saved articles</a>");
   }
 }
 
 function deleteArticle(e) {
   var button = $(e.target);
-  button.parent().toggle('puff');
+  button.parent().toggle('clip');
   $.ajax({
     url: button.attr('data'),
     method: 'delete',

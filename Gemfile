@@ -46,5 +46,4 @@ gem 'twitter'
 gem 'httparty'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 
-ruby '2.1.1'
 

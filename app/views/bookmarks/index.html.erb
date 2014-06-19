@@ -11,13 +11,13 @@
     <% end %>
     </p>
 
-    <p>You both bookmarked:
+    <p>
     <% if leafer[:shared_articles] != nil %>
       <% leafer[:shared_articles].each do |shared_article| %>
-        <%= shared_article.title %>,
+        <%= shared_article.title %>
+    </p>
       <% end %>
     <% end %>
-    </p>
   </div>
   <% end %>
 </div>
