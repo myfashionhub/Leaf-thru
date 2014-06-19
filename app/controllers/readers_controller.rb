@@ -55,7 +55,6 @@ class ReadersController < ApplicationController
     tweets    = client.home_timeline(options={count: 10})
     links     = Reader.twitter_feed(tweets)
     @articles = Article.parse(links)
-
     respond_to do |format|
       format.html
       format.json { render :json => @articles.to_json }
