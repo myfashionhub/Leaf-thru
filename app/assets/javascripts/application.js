@@ -5,7 +5,7 @@
 //= require_tree .
 
 $(window).load(function() {
-
+  $('.nav').css({ 'position': 'absolute', 'z-index': '1', 'right': '10px', 'top': '60px', 'display': 'none' });
 })
 
 $(document).ready(function() {
@@ -13,7 +13,7 @@ $(document).ready(function() {
   $('.nav').hide();
 
   $('#arrow').click(function() {
-    $('.nav').toggle('show');
+    $('.nav').toggle('blind');
   })
 
   $('.nav').children().click(function() {
