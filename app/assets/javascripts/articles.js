@@ -54,3 +54,6 @@ function deleteArticle(e) {
   });
 }
 
+function deleteComma() {
+
+}

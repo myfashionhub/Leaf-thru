@@ -3,7 +3,7 @@
 .twitter, .rss {
   width: 45%;
   float: left;
-  margin: 20px 3% 30px 2%;  
+  margin: 20px 3% 30px 2%;
 }
 
 .rss {
@@ -12,7 +12,7 @@
   }
   a:hover {
     color: #5687a8;
-  }  
+  }
 }
 
 .twitter {
@@ -24,7 +24,7 @@
     width: 120px;
     display: block;
     margin: 10px auto;
-  }    
+  }
 }
 
 .rss h3, .twitter h3 {
@@ -42,7 +42,7 @@
   }
 
   p {
-    margin: .5em 0; 
+    margin: .5em 0;
   }
 }
 
@@ -55,37 +55,9 @@
   color: #555;
 }
 
-.save-article:hover, 
+.save-article:hover,
 .discard-article:hover,
 .delete:hover {
   color: #666;
   cursor: pointer;
 }
-
-
-/* SAVED ARTICLES/BOOKMARKS */
-
-.saved-article {
-  h3 {
-  font-size: 18px;
-  }
-  a {
-    text-decoration: none;
-    color: #D1802E;
-  }
-  a:hover {
-    text-decoration: none;
-    color: #5687a8;
-  }  
-  span {
-    font-family: 'Oswald';
-    font-size: 16px;
-    font-weight: normal;
-    margin-left: 10px;
-  }
-  p {
-    margin-bottom: .6em;
-  }
-}
-
-.delete {}
