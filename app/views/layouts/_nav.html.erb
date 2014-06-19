@@ -1,7 +1,7 @@
 <div class="menu">
   <div class="logo">
   <a href="/">
-    <img src="" alt="assets/logo.png">
+    <img src="assets/logo.png" alt="">
   </a>
   </div>
 
@@ -25,12 +25,17 @@
       <span>Hi, Reader</span>
     <% end %>
     <br/>
+
+    <% if current_reader %>
+    <span>
     <a href="/feed">
       <i class="fa fa-list-ul"></i> News Feed
-    </a> |
+    </a> &nbsp;
     <a href="/articles">
       <i class="fa fa-bookmark"></i> Bookmarks
     </a>
+    </span>
+    <% end %>
   </div>
 
 
@@ -47,12 +52,12 @@
       <a href="/profile">Edit Profile/Subscriptions</a>
     </li>
     <li>
-      <a href="/about">About Leafthru</a>
-    </li>
-    <li>
       <a href="/logout">Log out</a>
     </li>
    <% end %>
+    <li>
+      <a href="/about">About Leafthru</a>
+    </li>
   </ul>
 
 </div>
