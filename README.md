@@ -20,14 +20,14 @@ Leafthru brings together your favorite news through your favorite social media c
     https://github.com/sferik/twitter
 
   * We use three omniauth gems for authentication and Sorcery for validation:
-  https://github.com/intridea/omniauth
-  https://github.com/arunagw/omniauth-twitter
-  https://github.com/mkdynamic/omniauth-facebook
-  https://github.com/NoamB/sorcery
+   https://github.com/intridea/omniauth
+   https://github.com/arunagw/omniauth-twitter
+   https://github.com/mkdynamic/omniauth-facebook
+   https://github.com/NoamB/sorcery
 
   * The front-end is built with Rails built-in SASS and JQuery gems, as well as Jquery UI and Font Awesome:
-  https://github.com/joliss/jquery-ui-rails
-  http://fortawesome.github.io/Font-Awesome/icons/
+   https://github.com/joliss/jquery-ui-rails
+   http://fortawesome.github.io/Font-Awesome/icons/
 
   * The database (`db/seeds.rb`) is seeded with a collectionn of publication RSS feed URLs for the reader to choose from.
 
