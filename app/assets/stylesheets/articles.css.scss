@@ -28,8 +28,10 @@
 
 /* BOOKMARKS */
 .leafer {
-  margin-top: .4em;
-
+  margin-top: 1.5em;
+  border: 1px solid #ccc;
+  padding: 8px;
+  background-color: rgba(255,255,255, 0.7);
   img {
     height: 50px;
     width: 50px;
