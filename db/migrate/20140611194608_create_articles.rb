@@ -1,12 +1,12 @@
 class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
-      t.string :url
-      t.string :headline
+      t.text :url
+      t.string :title
       t.string :publication
-      t.string :extract
+      t.text :extract
       t.string :date
-
+      t.string :shared_by
       t.timestamps
     end
   end
