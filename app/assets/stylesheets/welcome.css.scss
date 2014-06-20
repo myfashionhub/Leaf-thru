@@ -43,8 +43,19 @@ h3 {
 
 .form-wrapper {
   width: 300px;
-  margin: 10% auto 0 auto;
+  float: left;
+  margin: 0 3% 0 2%;
   text-align: center;
 }
 
+.intro {
+  width: 400px;
+  float: left;
+  margin: 0 3%;
+}
 
+.welcome-wrapper {
+  overflow: auto;
+  width: 800px;
+  margin: 5% auto 0 auto;
+}

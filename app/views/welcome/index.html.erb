@@ -1,3 +1,5 @@
+<div class="welcome-wrapper">
+
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
@@ -6,8 +8,29 @@
 <% end %>
 
 
+<div class="intro">
+  <h2>How it works:</h2>
+  <ul>
+    <li>
+      Sign up for an account.
+    </li>
+
+    <li>
+      Update your subscriptions and connect your account to Facebook/Twitter on the My Profile page.
+    </li>
+
+    <li>
+      View articles under <b><i class="fa fa-list-ul"></i>&nbsp;News Feed</b>. You can bookmark or discard them.
+    </li>
+
+    <li>
+      Articles you have bookmarked are under <b><i class="fa fa-bookmark"></i>&nbsp;Bookmarks</b>.
+    </li>
+</div>
+
+
 <div class="form-wrapper">
-  <h3><span id='login'>Log in</span> or <span id='signup'>Sign up</span></h3>  
+  <h3><span id='login'>Log in</span> or <span id='signup'>Sign up</span></h3>
 
   <div class="form">
     <div class="signup">
@@ -16,7 +39,7 @@
       <%= f.password_field :password, placeholder: 'Password' %>
       <%= f.submit "Sign up" %>
     <% end %>
-    </div>  
+    </div>
 
     <div class="login">
     <%= form_tag '/sessions', method: :post do %>
@@ -26,5 +49,7 @@
     <% end %>
     </div>
   </div>
+
+</div>
 
 </div>

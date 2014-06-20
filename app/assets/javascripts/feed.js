@@ -90,7 +90,6 @@ function displaySocialArticle(data) {
   }
   $('.twitter .save-article').on('click', function(e) {
     articleAction('.save-article', e);
-    noArticle('.twitter');
   });
 
   $('.twitter .discard-article').on('click', function(e) {
