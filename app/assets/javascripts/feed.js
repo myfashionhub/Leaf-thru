@@ -57,8 +57,13 @@ function twitterFeed() {
     url     : '/twitter',
     dataType: 'json',
     success : function(data){
-      $('#loader').fadeOut(500);
-      displaySocialArticle(data);
+      $('#loader').fadeOut(500).remove();
+      console.log(data);
+      if (data['msg'] === "No data") {
+        $('.twitter').append("<a href='/profile'><b>Connect your Twitter account</b></a> to get updates.");
+      } else {
+        displaySocialArticle(data);
+      }
     }
   })
 }

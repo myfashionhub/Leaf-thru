@@ -52,12 +52,19 @@ class ReadersController < ApplicationController
       config.access_token_secret = current_reader.twitter_token_secret
     end
 
-    tweets    = client.home_timeline(options={count: 10})
-    links     = Reader.twitter_feed(tweets)
-    @articles = Article.parse(links)
-    respond_to do |format|
-      format.html
-      format.json { render :json => @articles.to_json }
+    begin
+      tweets    = client.home_timeline(options={count: 10})
+      links     = Reader.twitter_feed(tweets)
+      @articles = Article.parse(links)
+      respond_to do |format|
+        format.html
+        format.json { render :json => @articles.to_json }
+      end
+    rescue
+      msg = { msg: "No data" }
+      respond_to do |format|
+        format.json { render :json => msg.to_json }
+      end
     end
   end
 

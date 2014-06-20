@@ -17,12 +17,11 @@ $(document).ready(function() {
     $('#signup').css('color', '#444');
   });
 
-  // How it works hover
   $('.works').hover(
     function() {
-      $('.tooltip').show();
+      $('.tooltip').show().css({'position': 'absolute'});
     },
-    function() {
+    function(){
       $('.tooltip').hide();
     }
   );
@@ -33,3 +32,4 @@ $(document).ready(function() {
 })
 
 
+;

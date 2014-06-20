@@ -28,16 +28,16 @@ function saveArticle(e) {
     dataType: 'json',
     data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },
     success: function(data) {
-      noArticle(e);
+      noArticle('.twitter');
+      noArticle('.rss');
     }
   })
 }
 
-function noArticle(e) {
-  var feed = $(e.target).parent().parent().parent();
-  if ($(feed).find('div').length === 0) {
-    $(feed).append('No more article in this feed.')
-           .append("<a href='/articles'>Read saved articles</a>");
+function noArticle(feedSelector) {
+  if ($(feedSelector).find('div').length === 0) {
+    $(feedSelector).append('No more article in this feed.')
+                   .append("<a href='/articles'>Read saved articles</a>");
   }
 }
 
@@ -49,6 +49,8 @@ function deleteArticle(e) {
     method: 'delete',
     success: function() {
       button.parent().remove();
+      noArticle('.twitter');
+      noArticle('.rss'); // Check if it's the feed is empty
     }
   });
 }
@@ -56,3 +58,4 @@ function deleteArticle(e) {
 function deleteComma() {
 
 }
+;

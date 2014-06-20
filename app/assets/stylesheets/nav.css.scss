@@ -1,4 +1,5 @@
 /* NAV DROP DOWN */
+@import 'main';
 
 .menu {
   width: 100%;
@@ -45,6 +46,7 @@
     margin: 12px 0 0 0;
     text-align: right;
     vertical-align: middle;
+    overflow: auto;
   }
   #arrow:hover {
     cursor: pointer;

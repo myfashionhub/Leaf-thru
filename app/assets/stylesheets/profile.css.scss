@@ -1,24 +1,11 @@
 /* PROFILE PAGE */
 
-.social, .preference {
+.profile-edit,
+.preference {
   width: 400px;
 }
-
 .social {
-  a {
-    width: 220px;
-    color: #fff;
-    text-decoration: none;
-    background-color: #88ABC2;
-    padding: 8px 10px;
-    border-radius: 3px;
-    text-align: center;
-    margin: 7px 20px;
-  }
-  a:hover {
-    background-color: limegreen;
-    color: #fff;
-  }
+  width: 350px;
 }
 
 .subscription {
@@ -54,12 +41,11 @@
 }
 
 .social {
-  width: 42%;
-  margin: 0 0 0 5%;
-  min-width: 300px;
+  margin: 0 0 0 20px;
   float: left;
   a {
     color: #5687a8;
+    width: 230px;
     text-decoration: none;
     text-align: left;
     font-weight: bold;
@@ -81,9 +67,7 @@
 
 .profile-edit {
   float:left;
-  width: 43%;
-  min-width: 380px;
-  margin: 0 0 0 5%;
+  margin: 0 0 0 20px;
   input[type='text'],
   input[type='password'] {
     border: 0;
@@ -93,17 +77,26 @@
     color: #333;
   }
   label {
-    min-width: 5em;
+    width: 5em;
   }
+  input[type='text']:hover,
+  input[type='password']:hover,
   input[type='text']:active,
   input[type='password']:active,
   input[type='text']:focus,
   input[type='password']:focus {
+    cursor: pointer;
     background-color: #fff;
     color: #5687a8 ;
   }
   input[type='submit'] {
     margin: 15px 0 0 0;
     padding: 0;
+  }
+}
+.social, .profile-edit {
+  @media (max-width: 600px) {
+    margin: 0 auto;
+    float: none;
   }
 }
