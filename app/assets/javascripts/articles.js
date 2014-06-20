@@ -43,13 +43,13 @@ function noArticle(e) {
 
 function deleteArticle(e) {
   var button = $(e.target);
-  button.parent().toggle('clip');
+  button.parent().toggle('clip', 500, function() {
+    button.parent().remove();
+  });
   $.ajax({
     url: button.attr('data'),
     method: 'delete',
-    success: function() {
-      button.parent().remove();
-    }
+    success: function() { }
   });
 }
 

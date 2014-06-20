@@ -13,9 +13,9 @@
     <% end %>
   </div>
 
+  <h3>Edit profile &amp; social networks:</h3>
 
   <div class="social">
-  <h3>Edit profile &amp; social networks:</h3>
   <% if @reader.facebook_token %>
     <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
       Disconnect from Facebook
@@ -43,7 +43,6 @@
 
 
   <div class="profile-edit">
-    <h3>&nbsp;</h3>
     <%= form_for @reader do |f| %>
       <%= f.label :email, "Email:" %>
       <%= f.text_field :email %><br/>
