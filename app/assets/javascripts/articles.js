@@ -28,10 +28,20 @@ function saveArticle(e) {
     dataType: 'json',
     data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },
     success: function(data) {
-      noArticle(e);
+      alreadySaved(data);
     }
   })
 }
+
+function alreadySaved(data) {
+  if (data['msg'] === "Already saved!") {
+    $('.notice').show().html(data['msg'])
+    setTimeout(function() {
+      $('.notice').fadeOut();
+    }, 1200);
+  }
+}
+
 
 function noArticle(e) {
   var feed = $(e.target).parent().parent().parent();

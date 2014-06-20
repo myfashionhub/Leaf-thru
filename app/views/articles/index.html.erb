@@ -5,22 +5,22 @@
   <div class="saved-article">
   <h3 class='title'>
     <a href="<%= article.url %>">
-      <%= article.title %>
+      <%= article.title.html_safe %>
     </a>
 
     <% if article.publication.nil? %>
       <span class='source'>
         Shared by <a target='_blank' href="http://twitter.com/<%= article.shared_by %>">
-        @<%= article.shared_by %></a>
+        @<%= article.shared_by.html_safe %></a>
       </span>
     <% else %>
       <span class='source'>
-        Published by <%= article.publication %>
+        Published by <%= article.publication.html_safe %>
       </span>
     <% end %>
   </h3>
   <p>
-    <%= article.extract %>
+    <%= article.extract.html_safe %>
   </p>
 
   <button class='delete' data="/articles/<%= article.id %>">

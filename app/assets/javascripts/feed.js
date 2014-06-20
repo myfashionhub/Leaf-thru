@@ -60,7 +60,8 @@ function twitterFeed() {
       $('#loader').fadeOut(500).remove();
       console.log(data);
       if (data['msg'] === "No data") {
-        $('.twitter').append("<a href='/profile'><b>Connect your Twitter account</b></a> to get updates.");
+        $('.twitter').append("<a href='/profile'><b>Connect your Twitter account</b></a> to get updates.")
+                      .hide().fadeIn();
       } else {
         displaySocialArticle(data);
       }
