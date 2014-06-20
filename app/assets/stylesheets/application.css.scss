@@ -14,13 +14,18 @@ body {
   min-height: 100%;
 }
 
+$light-blue : #D0E0EB;
+$medium-blue: #88ABC2;
+$medium-blue2: #7a99ae;
+$dark-blue  : #5687a8;
+$brown      : #D1802E;
+
 h1, h2, h3, h4 {
   font-family: 'Hammersmith One';
 }
 
 .wrapper {
   width: 90%;
-  min-width: 600px;
   max-width: 800px;
   margin: 20px auto 30px auto;
   overflow: hidden;
@@ -28,6 +33,19 @@ h1, h2, h3, h4 {
     text-align: left;
     font-size: 24px;
     margin-bottom: .5em;
+  }
+  @media (max-width: 600px) {
+    width: 95%;
+    margin: 0 2.5%;
+  }
+
+  /* About page */
+  ul {
+    line-height: 2em;
+  }
+  .center {
+    text-align: center;
+    line-height: 1.7em;
   }
 }
 

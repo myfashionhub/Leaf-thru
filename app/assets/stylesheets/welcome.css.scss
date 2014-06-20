@@ -1,7 +1,7 @@
 /* WELCOME INDEX */
 
 .form {
-  width: 320px;
+  width: 260px;
   margin: 30px auto;
   input {
     font-size: 16px;
@@ -21,41 +21,38 @@
   input[type='submit'] {
     margin: 10px auto;
     color: #fff;
-    background-color: #88ABC2;
+    background-color: $medium-blue;
     border: 0;
     border-radius: 3px;
   }
   input[type='submit']:hover,
   input[type='submit']:active {
-    background-color: #93b3c8;
+    background-color: $medium-blue2;
     cursor: pointer;
   }
 }
 
-h3 {
-  text-align: center;
-  font-size: 25px;
-}
 #signup:hover, #login:hover {
   cursor: pointer;
   color: limegreen;
 }
 
 .form-wrapper {
-  width: 300px;
-  float: left;
-  margin: 0 3% 0 2%;
+  width: 260px;
+  display: block;
+  margin: 6% auto 0 auto;
   text-align: center;
 }
 
-.intro {
+.tooltip {
   width: 400px;
-  float: left;
-  margin: 0 3%;
-}
-
-.welcome-wrapper {
-  overflow: auto;
-  width: 800px;
-  margin: 5% auto 0 auto;
+  background-color: rgba(255,255,255,.9);
+  position: absolute;
+  z-index: 1;
+  left: 15%;
+  top: 17%;
+  border-radius: 7px;
+  @media (max-width: 600px) {
+    left: 5%;
+  }
 }

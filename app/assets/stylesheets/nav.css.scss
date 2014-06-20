@@ -1,20 +1,18 @@
 /* NAV DROP DOWN */
 
-
-
-
 .menu {
   width: 100%;
-  background-color: #D0E0EB;
+  background-color: $light-blue;
   overflow: auto;
   color: #444;
   padding: 10px;
+
   > div {
     display: inline-block;
     vertical-align: middle;
   }
   .logo {
-    width: 25%;
+    width: 22%;
     img {
       width: 150px;
       height: 70px;
@@ -22,10 +20,10 @@
     }
   }
   .location {
-    width: 27%;
+    width: 23%;
   }
   .profile {
-    width: 30%;
+    width: 37%;
     img {
       width: 45px;
       float: left;
@@ -43,12 +41,32 @@
   }
   #arrow {
     width: 12%;
+    min-width: 80px;
     margin: 12px 0 0 0;
     text-align: right;
     vertical-align: middle;
   }
   #arrow:hover {
     cursor: pointer;
+  }
+}
+
+.menu {
+  @media (max-width: 600px) {
+    .location {
+      display: none;
+    }
+    .profile {
+      width: 48%;
+      float: left;
+    }
+    .logo {
+      width: 50%;
+      float: left;
+    }
+    #arrow {
+      float: left;
+    }
   }
 }
 
@@ -75,3 +93,4 @@
 .nav li:hover {
   background-color: #acc8dc;
 }
+

@@ -6,11 +6,11 @@
   }
   a {
     text-decoration: none;
-    color: #D1802E;
+    color: $brown;
   }
   a:hover {
     text-decoration: none;
-    color: #5687a8;
+    color: $dark-blue;
   }
   span {
     font-family: 'Oswald';
@@ -41,7 +41,7 @@
   h4 {
     margin: 0.5em 0;
     font-size: 1.3em;
-    color: #D1802E;
+    color: $brown;
   }
   p {
     margin: 7px 0 0 0;
