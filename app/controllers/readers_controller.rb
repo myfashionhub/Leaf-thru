@@ -56,15 +56,13 @@ class ReadersController < ApplicationController
       tweets    = client.home_timeline(options={count: 10})
       links     = Reader.twitter_feed(tweets)
       @articles = Article.parse(links)
-      respond_to do |format|
-        format.html
-        format.json { render :json => @articles.to_json }
-      end
     rescue
-      msg = { msg: "No data" }
-      respond_to do |format|
-        format.json { render :json => msg.to_json }
-      end
+      @articles = { msg: "No data" }
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @articles.to_json }
     end
   end
 
@@ -98,7 +96,7 @@ class ReadersController < ApplicationController
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :preferences, :name, :image)
+    params.require(:reader).permit(:email, :password)
   end
 
 end
