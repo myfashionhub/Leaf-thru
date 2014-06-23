@@ -6,17 +6,14 @@ class ReadersController < ApplicationController
 
   def create
     @reader = Reader.new(reader_params)
-    if current_reader
+    if Reader.find_by(email: params[:reader][:email])
       redirect_to root_path
-      flash[:alert] = 'You must log out to create a new account'
+      flash[:alert] = "Email already taken."
     end
-    if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
+    if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email]) && @reader.save
         current_reader = login(params[:reader][:email], params[:reader][:password])
-        redirect_to '/profile'
-        flash[:notice] = 'Successfully signed up.'
-    else
       redirect_to '/profile'
-      flash[:alert] = 'Sign up failed. Try again.'
+      flash[:notice] = 'Successfully signed up.'
     end
   end
 
@@ -89,7 +86,7 @@ class ReadersController < ApplicationController
     if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       return true
     else
-     flash[:notice] = "Invalid email."
+     flash[:alert] = "Invalid email."
      return false
     end
   end
