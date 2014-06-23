@@ -1,13 +1,5 @@
 /* PROFILE PAGE */
 
-.profile-edit,
-.preference {
-  width: 400px;
-}
-.social {
-  width: 350px;
-}
-
 .subscription {
   width: 580px;
   margin: 0 auto 1em auto;
@@ -40,6 +32,11 @@
   cursor: pointer;
 }
 
+.profile-edit,
+.social {
+  width: 350px;
+}
+
 .social {
   margin: 0 0 0 20px;
   float: left;
@@ -67,13 +64,13 @@
 
 .profile-edit {
   float:left;
-  margin: 0 0 0 20px;
+  margin: 0;
   input[type='text'],
   input[type='password'] {
     border: 0;
     background-color: transparent;
     font-size: 17px;
-    padding: 5px 8px;
+    padding: 3px 8px;
     color: #333;
   }
   label {
@@ -85,7 +82,6 @@
   input[type='password']:active,
   input[type='text']:focus,
   input[type='password']:focus {
-    cursor: pointer;
     background-color: #fff;
     color: #5687a8 ;
   }

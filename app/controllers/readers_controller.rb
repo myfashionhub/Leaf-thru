@@ -10,7 +10,7 @@ class ReadersController < ApplicationController
       redirect_to root_path
       flash[:alert] = 'You must log out to create a new account'
     end
-    if @reader.save!  && passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
+    if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
         current_reader = login(params[:reader][:email], params[:reader][:password])
         redirect_to '/profile'
         flash[:notice] = 'Successfully signed up.'
