@@ -12,7 +12,7 @@ publications = [
               ['Science Daily', 'http://feeds.sciencedaily.com/sciencedaily','Science and Technology'],
               ["Harper's Magazine", 'http://harpers.org/feed/','Politics & Activism'],
               ["Empower Magazine", 'http://www.empowermagazine.com/feed/','Politics & Activism'],
-              ['The Tea Party Reveiw', 'http://www.teapartyreview.com/feed/', 'Politics & Activism'],
+              ['The Tea Party Review', 'http://www.teapartyreview.com/feed/', 'Politics & Activism'],
               ['ESPN Go', 'http://sports.espn.go.com/espn/rss/news', 'Sports & Recreation'],
               ['Outside Online','http://www.outsideonline.com/feeds/all.rss', 'Sports & Recreation'],
               ['Wired Magazine', 'http://www.wired.com/feed','Finance & Business'],
@@ -35,3 +35,6 @@ publications = [
 publications.each do |publication|
   Publication.create({name: publication[0], url: publication[1], topic: publication[2]});
 end
+
+# 'Mashable', 'http://mashable.com/category/rss/', 'Science and Technology'
+# 'TechCrunch', 'http://feeds.feedburner.com/TechCrunch/', 'Science and Technology'

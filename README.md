@@ -1,15 +1,13 @@
 
 ##Leafthru
-A personalised news aggregator for busy people with style and brains.
+A personalized news aggregator for busy people with style and brains.
 
 ## Intro
-Scrambling to find relevant news in the morning?
-
-Want to know what your friends are reading during the day?
-
-Need to win that argument with your family in the evening?
+Scrambling to find relevant news in the morning? Want to know what your friends are reading during the day? Need to win that argument with your family in the evening?
 
 Leafthru brings together your favorite news through your social streams, Twitter and Facebook, as well as custom RSS feeds so that you can stay up to date and ahead of the game.
+
+![Leafthru screen shot](https://cloud.githubusercontent.com/assets/7177481/3346930/67838122-f8cf-11e3-8657-b786d98f91bf.png)
 
 ##Resources & Documentation:
   * Framework: `'rails', '4.1.1'

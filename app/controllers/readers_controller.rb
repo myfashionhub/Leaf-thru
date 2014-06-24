@@ -56,11 +56,7 @@ class ReadersController < ApplicationController
     rescue
       @articles = { msg: "No data" }
     end
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @articles.to_json }
-    end
+    render :json => @articles.to_json
   end
 
   def feed
