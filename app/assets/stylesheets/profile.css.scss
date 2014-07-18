@@ -15,8 +15,7 @@
   overflow: auto;
 }
 
-#update-sub,
-.profile-edit input[type='submit'] {
+#update-sub, #update-profile {
   margin: .5em 0;
   float: right;
   background-color: $dark-blue;
@@ -41,9 +40,8 @@
   margin: 0 0 0 20px;
   float: left;
   a {
-    color: #5687a8;
+    color: $dark-blue;
     width: 230px;
-    text-decoration: none;
     text-align: left;
     font-weight: bold;
     display: block;

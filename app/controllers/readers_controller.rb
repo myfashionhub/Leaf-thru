@@ -36,8 +36,7 @@ class ReadersController < ApplicationController
     @reader = current_reader
     # if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
       @reader.update(reader_params)
-      redirect_to profile_path
-      flash[:notice] = "You have successfully updated your profile."
+      render json: { msg: "You have successfully updated your profile." }.to_json
     # end
   end
 
@@ -89,7 +88,7 @@ class ReadersController < ApplicationController
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password)
+    params.require(:reader).permit(:email, :password, :name, :image)
   end
 
 end

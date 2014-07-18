@@ -9,6 +9,7 @@ $(window).load(function() {
 })
 
 $(document).ready(function() {
+  loginToggle();
   dropdownMenu();
   howItWorks();
 

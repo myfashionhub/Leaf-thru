@@ -29,16 +29,16 @@ function loginToggle() {
 
   $('#signup').click(function() {
     $('.signup').fadeIn('slow');
-    $('#signup').css('color', 'limegreen');
+    $('#signup').addClass('current');
+    $('#login').removeClass('current');
     $('.login').hide();
-    $('#login').css('color', '#444');
   });
 
   $('#login').click(function() {
     $('.login').fadeIn('slow');
-    $('#login').css('color', 'limegreen');
     $('.signup').hide();
-    $('#signup').css('color', '#444');
+    $('#login').addClass('current');
+    $('#signup').removeClass('current');
   });
 }
 
@@ -46,5 +46,5 @@ function notify() {
   $('.notify').fadeIn();
   setTimeout(function() {
     $('.notify').fadeOut();
-  },2000);
+  },3000);
 }
