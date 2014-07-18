@@ -1,3 +1,5 @@
+@import 'main';
+
 /* PROFILE PAGE */
 
 .subscription {
@@ -7,30 +9,28 @@
   :nth-child(2n+1) {
     margin-right: 40px;
   }
-  input[type='submit'] {
-    margin: .7em 0 0 0;
-  }
   input[type='submit']:focus {
     border: 0;
   }
+  overflow: auto;
 }
 
-.subscription input[type='submit'],
+#update-sub,
 .profile-edit input[type='submit'] {
-  background-color: transparent;
+  margin: .5em 0;
+  float: right;
+  background-color: $dark-blue;
   border: 0;
   font-size: 19px;
   font-family: 'Hammersmith One';
-  color: #5687a8;
+  color: #fff;
+  &:hover {
+    background-color: $lime-green;
+    cursor: pointer;
+  }
+  @include button-style;
 }
 
-.subscription input[type='submit']:hover,
-.profile-edit input[type='submit']:hover {
-  background-color: transparent;
-  font-family: 'Hammersmith One';
-  color: limegreen;
-  cursor: pointer;
-}
 
 .profile-edit,
 .social {
@@ -85,11 +85,8 @@
     background-color: #fff;
     color: #5687a8 ;
   }
-  input[type='submit'] {
-    margin: 15px 0 0 0;
-    padding: 0;
-  }
 }
+
 .social, .profile-edit {
   @media (max-width: 600px) {
     margin: 0 auto;

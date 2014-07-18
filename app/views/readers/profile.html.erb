@@ -9,8 +9,9 @@
   <h3>Choose your news subscriptions</h3>
     <%= form_for @subscription do |f| %>
       <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name) %>
-      <%= f.submit 'Update preference' %>
     <% end %>
+
+    <button id='update-sub'>Update subscriptions</button>
   </div>
 
   <h3>Edit profile &amp; social networks:</h3>
@@ -57,3 +58,8 @@
   </div>
 
 </div>
+
+
+<script>
+  $('#update-sub').click(updateSubscription);
+</script>

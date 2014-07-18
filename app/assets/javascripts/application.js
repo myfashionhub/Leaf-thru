@@ -9,20 +9,16 @@ $(window).load(function() {
 })
 
 $(document).ready(function() {
-  // Drop down menu
-  $('.nav').hide();
-
-  $('#arrow').click(function() {
-    $('.nav').toggle('blind');
-  })
-
-  $('.nav').children().click(function() {
-    $('.nav').hide();
-  })
+  dropdownMenu();
+  howItWorks();
 
   // Delete article
   $('.delete').click(function(e) {
     deleteArticle(e);
   });
+
+  // Profile page
+  $('.subscription label:nth-child(3n+1)').append($('<br/>'));
+  $('.notify').hide();
 })
 

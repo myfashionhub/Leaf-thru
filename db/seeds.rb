@@ -1,5 +1,3 @@
-
-
 publications = [
               ['The Guardian', 'http://feeds.theguardian.com/theguardian/world/rss', 'International News'],
               ['Al Jazeera', 'http://america.aljazeera.com/content/ajam/articles.rss', 'International News'],

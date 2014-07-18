@@ -5,3 +5,8 @@ $medium-blue2: #7a99ae;
 $dark-blue  : #5687a8;
 $brown      : #D1802E;
 $lime-green : #32CD32;
+
+@mixin button-style {
+  padding: 5px 8px;
+  border-radius: 4px;
+}

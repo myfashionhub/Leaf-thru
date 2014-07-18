@@ -57,12 +57,17 @@ a:hover {
 
 
 /* NOTICE MESSAGE */
-.notice, .alert {
+.notice, .alert, .notify {
   width: 96%;
   margin: 20px auto;
   padding: 10px 0 10px 20px;
 
   border-radius: 3px;
+}
+
+.notify {
+  background-color: rgba(173,216,230, 0.3);
+  border: 1px solid rgba(50,205,50, 0.6);
 }
 
 .notice {
