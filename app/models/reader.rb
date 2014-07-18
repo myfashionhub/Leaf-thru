@@ -10,7 +10,6 @@ class Reader < ActiveRecord::Base
   validates_presence_of :email, on: :create
   validates_uniqueness_of :email
 
-  #validates :email, email: true
   validates :password, length: {within: 0..21, wrong_length: "Password length does not match requirement"}, :on => :create
   before_save :downcase_email
 
@@ -39,6 +38,24 @@ class Reader < ActiveRecord::Base
       link[:url].include?('instagram.com') ||
       link[:url].include?('login') ||
       link[:url].include?('shop') }
+  end
+
+  def self.validate_password(password)
+    if password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
+      return true
+    else
+      flash[:notice] = "Password must be between 6 to 20 characters, contain one capital letter, and one number."
+      return false
+    end
+  end
+
+  def self.validate_email(email)
+    if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+      return true
+    else
+     flash[:alert] = "Invalid email."
+     return false
+    end
   end
 
 end

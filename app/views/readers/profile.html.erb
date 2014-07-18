@@ -14,9 +14,10 @@
     <button id='update-sub'>Update subscriptions</button>
   </div>
 
-  <h3>Edit profile &amp; social networks:</h3>
+
 
   <div class="social">
+    <h3>Social networks</h3>
   <% if @reader.facebook_token %>
     <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
       Disconnect from Facebook
@@ -43,6 +44,8 @@
   </div>
 
   <div class="profile-edit">
+    <h3>Edit profile</h3>
+
     <%= form_for @reader do |f| %>
       <%= f.label :email, "Email:" %>
       <%= f.text_field :email %><br/>

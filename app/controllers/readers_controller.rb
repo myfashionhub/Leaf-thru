@@ -10,7 +10,9 @@ class ReadersController < ApplicationController
       redirect_to root_path
       flash[:alert] = "Email already taken."
     end
-    if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email]) && @reader.save
+
+    if Reader.validate_password(params[:reader][:password]) &&
+      Reader.validate_email(params[:reader][:email]) && @reader.save
         current_reader = login(params[:reader][:email], params[:reader][:password])
       redirect_to '/profile'
       flash[:notice] = 'Successfully signed up.'
@@ -47,10 +49,10 @@ class ReadersController < ApplicationController
       config.access_token        = current_reader.twitter_token
       config.access_token_secret = current_reader.twitter_token_secret
     end
+    tweets    = client.home_timeline(options={count: 10})
+    links     = Reader.twitter_feed(tweets)
 
     begin
-      tweets    = client.home_timeline(options={count: 10})
-      links     = Reader.twitter_feed(tweets)
       @articles = Article.parse(links)
     rescue
       @articles = { msg: "No data" }
@@ -65,24 +67,6 @@ class ReadersController < ApplicationController
       id = subscription.publication_id
       publication = Publication.find(id)
       @feeds << publication.url
-    end
-  end
-
-  def passwordValidate(password)
-    if password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
-      return true
-    else
-      flash[:notice] = "Password must be between 6 to 20 characters, contain one capital letter, and one number."
-      return false
-    end
-  end
-
-  def emailValidate(email)
-    if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
-      return true
-    else
-     flash[:alert] = "Invalid email."
-     return false
     end
   end
 
