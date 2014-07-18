@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post 'sessions'=> 'sessions#create', as: 'sessions'
   get 'logout'  => 'sessions#destroy', as: 'logout'
 
-  get 'auth/:provider'        => 'sessions#authorize'
   get 'auth/twitter/callback' => 'sessions#log_twitter'
   get 'auth/facebook/callback'=> 'sessions#log_facebook'
   get 'logout/facebook'       => 'sessions#logout_fb'

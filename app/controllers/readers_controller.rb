@@ -73,7 +73,7 @@ class ReadersController < ApplicationController
     if password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
       return true
     else
-      flash[:notice] = "Password must be between 6 to 20 characters, contain one capital letter, and one number. Please check your entry and try again."
+      flash[:notice] = "Password must be between 6 to 20 characters, contain one capital letter, and one number."
       return false
     end
   end
