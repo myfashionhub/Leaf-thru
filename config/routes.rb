@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :articles, only: [:index, :create, :show, :destroy]
-  resources :publications
+  resources :publications, only: [:index]
 
   resources :subscriptions, only: [:create]
 

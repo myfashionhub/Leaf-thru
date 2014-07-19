@@ -1,7 +1,7 @@
 class CreateSubscriptions < ActiveRecord::Migration
   def change
     create_table :subscriptions do |t|
-
+      t.string :category
       t.integer :reader_id
       t.integer :publication_id
 

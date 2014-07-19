@@ -7,13 +7,19 @@
 
   <div class="subscription">
   <h3>Choose your news subscriptions</h3>
+    <div class="current-sub">
+    <% if current_reader.subscriptions.length > 0 %>
+    Currently subscribed to <%= current_reader.subscriptions.length %> news sources:
+      <ul></ul>
+    </div>
+    <% end %>
+
     <%= form_for @subscription do |f| %>
       <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name) %>
     <% end %>
 
     <button id='update-sub'>Update subscriptions</button>
   </div>
-
 
 
   <div class="social">

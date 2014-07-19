@@ -17,6 +17,21 @@ function updateSubscription() {
   })
 }
 
+function currentSubscription() {
+  $.ajax({
+    url: '/publications',
+    method: 'get',
+    dataType: 'json',
+    success: function(data) {
+      for (i = 0; i < data.length; i++) {
+        var pub = $('<li>').html(data[i].name);
+        $('.current-sub ul').append(pub);
+      }
+    }
+  });
+
+}
+
 function updateProfile() {
   var email    = $('#reader_email').val();
   var password = $('#reader_password').val();
