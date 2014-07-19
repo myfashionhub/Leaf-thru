@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :create, :show, :destroy]
   resources :publications, only: [:index]
 
-  resources :subscriptions, only: [:create]
+  resources :subscriptions, only: [:create, :index]
 
   post 'readers'=> 'readers#create'
   get 'profile' => 'readers#profile', as: 'profile'

@@ -19,6 +19,7 @@ $(document).ready(function() {
   });
 
   // Profile page
+  getPublications();
   $('.subscription label:nth-child(3n+1)').append($('<br/>'));
   $('.notify').hide();
   currentSubscription();

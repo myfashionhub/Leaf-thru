@@ -1,10 +1,16 @@
 class PublicationsController < ApplicationController
 
   def index
-    subscriptions = Subscription.where(reader_id: current_reader.id)
-    publications = subscriptions.map do |sub|
-      Publication.find(sub.publication_id)
+    publications = Publication.all
+    categories = publications.map do |pub|
+      pub.topic
     end
-    render json: publications.to_json
+    categories.uniq!
+    classified = []
+    categories.each do |cat|
+      classified.push({ cat: cat, pubs: Publication.where(topic: cat) })
+    end
+    render json: classified.to_json
   end
+
 end

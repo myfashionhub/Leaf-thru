@@ -13,7 +13,7 @@ publications = [
               ['Fox News', 'http://feeds.foxnews.com/foxnews/most-popular', 'National News'],
 
 
-              ['TechCrunch', 'http://feeds.feedburner.com/TechCrunch/', 'Science & Technology'],
+              ['TechCrunch', 'http://feeds.feedburner.com/TechCrunch/', 'Technology'],
               ['Mashable', 'http://feeds.mashable.com/Mashable','Technology'],
               ['Wired', 'http://www.wired.com/feed', 'Technology'],
               ['Gizmodo', 'http://feeds.gawker.com/gizmodo/full', 'Technology'],

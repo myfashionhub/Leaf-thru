@@ -1,3 +1,42 @@
+function getPublications() {
+  $.ajax({
+    url: '/publications',
+    method: 'get',
+    dataType: 'json',
+    success: showCategories
+  });
+}
+
+function showCategories(data) {
+  for (var i = 0; i < data.length; i++) {
+    var div      = $('<div>').addClass('category');
+    var category = $('<h4>').html(data[i].cat);
+    var pubUl    = $('<ul>');
+    for (var j = 0; j < data[i].pubs.length; j++) {
+      var pubs = data[i].pubs;
+      var pub  = $('<li>').html(pubs[j].name);
+      pub.attr('data', pubs[j].id).appendTo(pubUl);
+    }
+    div.append(category).append(pubUl);
+    $('.categories').append(div);
+  }
+  togglePublications();
+}
+
+function togglePublications() {
+  $('.categories').children().first().find('h4').addClass('current');
+  $('.category').find('ul').hide();
+
+  $('.category h4').click(function(e) {
+    $('.current').removeClass('current');
+    $(e.target).addClass('current');
+    var pubUl = $(e.target).parent().find('ul');
+    $('.publications').empty();
+    pubUl.appendTo($('.publications')).hide().toggle('fold');
+  });
+}
+
+
 function updateSubscription() {
   var checkboxes = $('input:checked');
   var pub_ids = [];
@@ -14,12 +53,12 @@ function updateSubscription() {
       $('.notify').html(data['msg']);
       notify();
     }
-  })
+  });
 }
 
 function currentSubscription() {
   $.ajax({
-    url: '/publications',
+    url: '/subscriptions',
     method: 'get',
     dataType: 'json',
     success: function(data) {

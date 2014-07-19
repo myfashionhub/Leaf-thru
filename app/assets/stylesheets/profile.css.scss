@@ -3,24 +3,58 @@
 /* PROFILE PAGE */
 
 .subscription {
-  width: 580px;
-  margin: 0 auto 1em auto;
+  width: 100%;
+  margin: 0 0 1em 0;
   line-height: 1.7em;
-  :nth-child(2n+1) {
-    margin-right: 40px;
-  }
   input[type='submit']:focus {
     border: 0;
   }
   overflow: auto;
 }
 
+.current-sub,
+.categories,
+.publications {
+  float: left;
+}
+
+.current-sub {
+  width: 30%;
+  margin: 0 3% 0 0;
+}
+
+.publications {
+  width: 30%;
+  margin: 0 4% 0 0;
+}
+
+.categories {
+  width: 25%;
+  line-height: 1em;
+  h4 {
+    margin: .5em 0;
+  }
+}
+
+.category h4 {
+  color: $medium-blue2;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+h4.current {
+  color: $lime-green;
+}
+
+#update-sub {
+  margin: .5em auto;
+}
+
 #update-sub, #update-profile {
-  margin: .5em 0;
-  float: right;
   background-color: $dark-blue;
   border: 0;
-  font-size: 19px;
+  font-size: 1em;
   font-family: 'Hammersmith One';
   color: #fff;
   &:hover {
@@ -30,6 +64,10 @@
   @include button-style;
 }
 
+#update-profile { /* positioning */
+  margin: .5em 0;
+  float: right;
+}
 
 .profile-edit,
 .social {

@@ -1,5 +1,13 @@
 class SubscriptionsController < ApplicationController
 
+  def index
+    subscriptions = Subscription.where(reader_id: current_reader.id)
+    publications = subscriptions.map do |sub|
+      Publication.find(sub.publication_id)
+    end
+    render json: publications.to_json
+  end
+
   def create
     Subscription.destroy_all(:reader_id => current_reader.id)
     #clear out all subs to prevent keeping feeds readers don't want

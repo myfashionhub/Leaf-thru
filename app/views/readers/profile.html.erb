@@ -6,19 +6,22 @@
 
 
   <div class="subscription">
-  <h3>Choose your news subscriptions</h3>
+  <h3>Customize your news subscriptions</h3>
+  <p>Drag and drop your desired publications to the left.</p>
+
     <div class="current-sub">
-    <% if current_reader.subscriptions.length > 0 %>
-    Currently subscribed to <%= current_reader.subscriptions.length %> news sources:
+      Currently subscribed to:
       <ul></ul>
+
+      <button id='update-sub'>Update subscriptions</button>
     </div>
-    <% end %>
 
-    <%= form_for @subscription do |f| %>
-      <%= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name) %>
-    <% end %>
+    <div class="publications">&nbsp;</div>
 
-    <button id='update-sub'>Update subscriptions</button>
+    <div class="categories"></div>
+<!--     <%#= form_for @subscription do |f| %>
+      <%#= collection_check_boxes(:reader, :publication_ids, Publication.all, :id, :name) %>
+    <%# end %> -->
   </div>
 
 
