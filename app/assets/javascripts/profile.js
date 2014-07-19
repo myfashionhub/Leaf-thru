@@ -24,15 +24,17 @@ function showCategories(data) {
 }
 
 function togglePublications() {
-  $('.categories').children().first().find('h4').addClass('current');
   $('.category').find('ul').hide();
+  var firstCat = $('.categories').children().first();
+  firstCat.find('h4').addClass('current');
+  firstCat.find('ul').clone().appendTo($('.publications')).show();
 
   $('.category h4').click(function(e) {
     $('.current').removeClass('current');
     $(e.target).addClass('current');
     var pubUl = $(e.target).parent().find('ul');
     $('.publications').empty();
-    pubUl.appendTo($('.publications')).hide().toggle('fold');
+    pubUl.clone().appendTo($('.publications')).hide().toggle('fold');
   });
 }
 
