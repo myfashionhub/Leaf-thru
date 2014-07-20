@@ -55,7 +55,9 @@ a:hover {
   text-decoration: none;
 }
 
-
+button {
+  outline: none;
+}
 
 /* NOTICE MESSAGE */
 .notice, .alert, .notify {

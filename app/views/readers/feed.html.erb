@@ -19,5 +19,9 @@
 
 <div class="twitter feed">
   <h2>Social feed</h2>
-  <img src="assets/loader2.gif" alt="" id='loader' />
+  <% if current_reader.twitter_token == nil %>
+    <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
+  <% else %>
+    <img src="assets/loader2.gif" alt="" id='loader' />
+  <% end %>
 </div>
