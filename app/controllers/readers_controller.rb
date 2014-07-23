@@ -52,11 +52,7 @@ class ReadersController < ApplicationController
     tweets    = client.home_timeline(options={count: 10})
     links     = Reader.twitter_feed(tweets)
 
-    begin
-      @articles = Article.parse(links)
-    rescue
-      @articles = { msg: "No data" }
-    end
+    @articles = Article.parse(links)
     render :json => @articles.to_json
   end
 

@@ -28,9 +28,7 @@ class ArticlesController < ApplicationController
   def destroy
     id = Bookmark.find_by(article_id: params[:id], reader_id: current_reader.id)
     Bookmark.delete(id)
-    respond_to do |format|
-      format.json { render json: {} }
-    end
+    render json: { msg: 'Bookmark deleted'}.to_json
   end
 
   private

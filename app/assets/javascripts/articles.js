@@ -35,11 +35,13 @@ function saveArticle(e) {
 
 function alreadySaved(data) {
   if (data['msg'] === "Already saved!") {
-    $('.notice').show().html(data['msg'])
-    setTimeout(function() {
-      $('.notice').fadeOut();
-    }, 1200);
+    $('.notice').show().html(data['msg']);
+  } else {
+    $('.notice').show().html('Successfully save article');
   }
+  setTimeout(function() {
+    $('.notice').fadeOut();
+  }, 3000);
 }
 
 

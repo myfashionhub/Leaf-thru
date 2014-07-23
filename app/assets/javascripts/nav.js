@@ -46,5 +46,13 @@ function notify() {
   $('.notify').fadeIn();
   setTimeout(function() {
     $('.notify').fadeOut();
-  },3000);
+  }, 3000);
+}
+
+function hideNotice() {
+  if ($('.notice').html() != '') {
+    setTimeout(function() {
+      $('.notice').fadeOut();
+    }, 3000);
+  }
 }

@@ -23,5 +23,7 @@ $(document).ready(function() {
   $('.subscription label:nth-child(3n+1)').append($('<br/>'));
   $('.notify').hide();
   currentSubscription();
+
+  hideNotice();
 })
 
