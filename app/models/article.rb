@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
 
   def self.parse(links)
     hydra = Typhoeus::Hydra.new
-    responses = links.map do |link|
+    requests = links.map do |link|
       apikey      = ENV['ALCHEMY_KEY']
       url         = link[:url]
       query       = "?apikey=#{apikey}&url=#{url}&outputMode=json"
@@ -17,15 +17,18 @@ class Article < ActiveRecord::Base
       text_request  = Typhoeus::Request.new(text_query, followlocation: true)
       hydra.queue(title_request)
       hydra.queue(text_request)
-      hydra.run
 
-      { title: JSON.parse(title_request.response.response_body)['title'],
-        text: JSON.parse(text_request.response.response_body)['text'] }
+      { link: link, title_request: title_request, text_request: text_request }
     end
+    hydra.run
 
-    articles = responses.map do |response|
-      title = response[:title]
-      text  = response[:text]
+    articles = requests.map do |response|
+      link = response[:link]
+      title_request = response[:title_request]
+      text_request = response[:text_request]
+
+      title = JSON.parse(title_request.response.response_body)
+      text  = JSON.parse(text_request.response.response_body)['text']
 
       if text.nil? == false
         text_end = text.index(/\n/).to_i
