@@ -43,3 +43,4 @@ gem 'omniauth-facebook'
 
 gem 'twitter'
 gem 'httparty'
+gem 'typhoeus'

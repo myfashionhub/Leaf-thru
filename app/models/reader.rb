@@ -34,6 +34,7 @@ class Reader < ActiveRecord::Base
       link[:url].include?('pinterest.com') ||
       link[:url].include?('pin.it') ||
       link[:url].include?('vimeo.com') ||
+      link[:url].include?('vine.co') ||
       link[:url].include?('twitpic.com') ||
       link[:url].include?('instagram.com') ||
       link[:url].include?('login') ||

@@ -49,7 +49,7 @@ class ReadersController < ApplicationController
       config.access_token        = current_reader.twitter_token
       config.access_token_secret = current_reader.twitter_token_secret
     end
-    tweets    = client.home_timeline(options={count: 10})
+    tweets    = client.home_timeline(options={count: 15})
     links     = Reader.twitter_feed(tweets)
 
     @articles = Article.parse(links)
@@ -57,6 +57,7 @@ class ReadersController < ApplicationController
   end
 
   def feed
+    # Rss feeds
     subscriptions = current_reader.subscriptions
     @feeds = []
     subscriptions.each do |subscription|
