@@ -12,6 +12,7 @@ body {
   margin: 0;
   color: #444;
   font-family: 'Helvetica';
+  font-size: 16px;
   background-color: #f5f5f5;
   min-height: 100%;
 }
@@ -28,7 +29,7 @@ h1, h2, h3, h4 {
   overflow: hidden;
   h3 {
     text-align: left;
-    font-size: 24px;
+    font-size: 1.5em;
     margin-bottom: .5em;
   }
   @media (max-width: 600px) {

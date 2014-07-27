@@ -10,17 +10,17 @@ function loadFeed(url) {
   var feed = new google.feeds.Feed(url);
   feed.setNumEntries(3);
   feed.load(function(data){
-    displayFeedArticle(data);
+    displayRssArticle(data);
   });
 }
 
-function displayFeedArticle(data) {
+function displayRssArticle(data) {
   for (var i = 0; i < data.feed.entries.length; i++) {
     var entry    = data.feed.entries[i];
     var $article = $('<div>').addClass('article');
     var $date    = $('<div>').addClass('date')
                              .append(new Date(entry.publishedDate));
-    var $url     = $('<a>').attr('href', entry.link);
+    var $url     = $('<a>').attr('href', entry.link).attr('target', '_blank');
     var $title   = $('<h3>').addClass('title')
                             .html(entry.title);
     var $extract = $('<p>').addClass('extract')
@@ -76,7 +76,7 @@ function displaySocialArticle(data) {
     var $article = $('<div>').addClass('article');
     var $title   = $('<h3>').addClass('title')
                             .html(data[i].title);
-    var $url     = $('<a>').attr('href', data[i].url);
+    var $url     = $('<a>').attr('href', data[i].url).attr('target', '_blank');
     var $extract = $('<p>').addClass('extract')
                            .html(data[i].extract);
     var $sharedBy= $('<p>').addClass('shared-by')

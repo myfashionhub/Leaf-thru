@@ -46,8 +46,6 @@ class Article < ActiveRecord::Base
       article[:url].empty? || article[:extract].length <= 80 ||
       article[:title].empty?
     }
-      # title = HTTParty.get(get_title)
-      # text  = HTTParty.get(get_text)['text']
   end
 
 
