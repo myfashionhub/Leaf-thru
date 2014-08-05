@@ -14,7 +14,7 @@ function showCategories(data) {
     var pubUl    = $('<ul>');
     for (var j = 0; j < data[i].pubs.length; j++) {
       var pubs = data[i].pubs;
-      var pub  = $('<li>').html(pubs[j].name);
+      var pub  = $('<li>').html(pubs[j].name + "<i class='fa fa-plus'></i>");
       pub.attr('data', pubs[j].id).appendTo(pubUl);
     }
     div.append(category).append(pubUl);
@@ -27,15 +27,15 @@ function togglePublications() {
   $('.category').find('ul').hide();
   var firstCat = $('.categories').children().first();
   firstCat.find('h4').addClass('current');
-  firstCat.find('ul').clone().appendTo($('.publications')).show();
+  firstCat.find('ul').clone().appendTo($('.publications div')).show();
   subscriptionBuilder();
 
   $('.category h4').click(function(e) {
     $('.current').removeClass('current');
     $(e.target).addClass('current');
     var pubUl = $(e.target).parent().find('ul');
-    $('.publications').empty();
-    pubUl.clone().appendTo($('.publications')).hide().toggle('fold');
+    $('.publications div').empty();
+    pubUl.clone().appendTo($('.publications div')).hide().toggle('fold');
     subscriptionBuilder();
   });
   subscriptionBuilder();
@@ -71,7 +71,7 @@ function currentSubscription() {
         var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
         $(pub).append('<i class="fa fa-times"></i>');
         $('.current-sub ul').append(pub);
-        $('i').click(function(e) {
+        $('.current-sub i').click(function(e) {
           $(e.target).parent().remove();
         });
       }
@@ -109,10 +109,18 @@ function subscriptionBuilder() {
       removeSubscription();
     }
   });
+
+  $('.publications i').click(function(e) {
+    var pubLi = $(e.target).parent();
+    pubLi.find('i').remove();
+    pubLi.append('<i class="fa fa-times"></i>');
+    pubLi.appendTo($('.current-sub ul'));
+    removeSubscription();
+  });
 }
 
 function removeSubscription() {
-  $('i').click(function(e) {
+  $('.current-sub i').click(function(e) {
     var pubLi = $(e.target).parent();
     pubLi.remove();
   });
