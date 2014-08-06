@@ -3,7 +3,7 @@ class CreatePublications < ActiveRecord::Migration
     create_table :publications do |t|
       t.string :name
       t.string :url
-      t.string :category
+      t.string :topic
 
       t.timestamps
     end
