@@ -1,5 +1,5 @@
 class CreateReaders < ActiveRecord::Migration
-  def change
+  def up
     create_table :readers do |t|
       t.string :name
       t.string :email_validate
@@ -20,5 +20,9 @@ class CreateReaders < ActiveRecord::Migration
     end
     add_index :readers, :email, unique: true
 
+  end
+
+  def down
+    drop_table :readers
   end
 end

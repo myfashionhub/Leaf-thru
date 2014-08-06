@@ -1,5 +1,5 @@
 class CreateArticles < ActiveRecord::Migration
-  def change
+  def up
     create_table :articles do |t|
       t.text :url
       t.string :title
@@ -9,5 +9,9 @@ class CreateArticles < ActiveRecord::Migration
       t.string :shared_by
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :articles
   end
 end

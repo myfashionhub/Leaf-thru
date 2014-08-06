@@ -79,7 +79,7 @@ publications = [
             ]
 
 publications.each do |publication|
-  Publication.create({name: publication[0], url: publication[1], topic: publication[2]});
+  Publication.create({name: publication[0], url: publication[1], category: publication[2]});
 end
 
 
