@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718224243) do
+ActiveRecord::Schema.define(version: 20140617202407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
+    t.text     "url"
     t.string   "title"
     t.string   "publication"
+    t.text     "extract"
     t.string   "date"
+    t.string   "shared_by"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "shared_by"
-    t.text     "extract"
-    t.text     "url"
   end
 
   create_table "bookmarks", force: true do |t|
@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 20140718224243) do
     t.integer "article_id"
     t.integer "match_score"
     t.integer "reader_ranking"
-  end
-
-  create_table "interests", force: true do |t|
-    t.string   "topic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "url1"
-    t.string   "url2"
-    t.string   "url3"
   end
 
   create_table "publications", force: true do |t|
@@ -51,28 +42,23 @@ ActiveRecord::Schema.define(version: 20140718224243) do
     t.datetime "updated_at"
   end
 
-  create_table "reader_interest_joins", force: true do |t|
-    t.string   "reader_id"
-    t.string   "interest_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "readers", force: true do |t|
+    t.string   "name"
+    t.string   "email_validate"
+    t.string   "password"
+    t.string   "location"
+    t.string   "twitter_token"
+    t.string   "twitter_token_secret"
+    t.string   "twitter_handle"
+    t.string   "facebook_token"
+    t.string   "facebook_uid"
+    t.string   "tagline"
+    t.string   "image"
     t.string   "email",                null: false
     t.string   "crypted_password",     null: false
     t.string   "salt",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "location"
-    t.string   "twitter_token"
-    t.string   "twitter_token_secret"
-    t.string   "facebook_token"
-    t.string   "name"
-    t.string   "image"
-    t.string   "tagline"
-    t.string   "twitter_handle"
-    t.string   "facebook_uid"
   end
 
   add_index "readers", ["email"], name: "index_readers_on_email", unique: true, using: :btree
@@ -82,7 +68,6 @@ ActiveRecord::Schema.define(version: 20140718224243) do
     t.integer  "publication_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
   end
 
 end

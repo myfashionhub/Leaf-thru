@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
   def create
     Subscription.destroy_all(:reader_id => current_reader.id)
     #clear out all subs to prevent keeping feeds readers don't want
-    pub_ids = params[:pub_ids]
+    pub_ids = params[:pub_ids].uniq
     pub_ids.each do |pub_id|
       Subscription.create({
        reader_id: current_reader.id,

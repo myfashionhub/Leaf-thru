@@ -44,6 +44,11 @@
   p {
     margin: .5em 0;
   }
+
+  .extract img {
+    max-width: 90%;
+    height: auto;
+  }
 }
 
 .save-article, .discard-article,

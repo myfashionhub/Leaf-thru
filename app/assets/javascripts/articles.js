@@ -1,15 +1,14 @@
 function articleAction(buttonSelector, e) {
-  if (buttonSelector === '.save-article') {
-    saveArticle(e);
-  }
   var article = $(e.target).parent().parent();
+  if (buttonSelector === '.save-article') {
+    saveArticle(article);
+  }
   article.toggle('drop', 500, function(){
     article.remove();
   });
 }
 
-function saveArticle(e) {
-  var article = $(e.target).parent().parent();
+function saveArticle(article) {
   var title   = article.children().first().children().html();
   var url     = article.children().first().children().attr('href');
   var extract = $(article.children()[1]).html();
