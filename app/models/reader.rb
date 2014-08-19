@@ -60,12 +60,3 @@ class Reader < ActiveRecord::Base
   end
 
 end
-
-=begin
-blacklist: youtu.be, youtube.com, pin.it, pinterest.com, ow.ly,
-=end
-
-=begin
-whitelist: slate.com, slate.me, wsj.com, bit.ly, vogue.cm, esqm.ag, esquire.com, vogue.com, on.mash, nytimes.com, nyti.ms, read.bi
-
-=end

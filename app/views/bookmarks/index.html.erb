@@ -5,14 +5,16 @@
   <div class="leafer">
   <img src="<%= leafer[:reader_image] %>" />
   <h4><%= leafer[:reader_info] %></h4>
-    <p><b>Subscribes to:</b>
+    <p class="shared-pubs">
+    <b>Subscribes to:</b>
     <% leafer[:publications].each do |publication| %>
       <%= publication.name %>,
     <% end %>
     </p>
 
     <% if leafer[:shared_articles] != nil %>
-    <p><b>You both bookmarked:</b>
+    <p class="shared-bookmarks">
+      <b>You both bookmarked:</b>
       <% leafer[:shared_articles].each do |shared_article| %>
         <%= shared_article.title %>,
       <% end %>

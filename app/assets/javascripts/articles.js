@@ -67,7 +67,3 @@ function deleteArticle(e) {
     success: function() { }
   });
 }
-
-function deleteComma() {
-
-}
