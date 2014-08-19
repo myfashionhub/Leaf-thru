@@ -1,10 +1,14 @@
-function articleAction(buttonSelector, e) {
-  var article = $(e.target).parent().parent();
-  if (buttonSelector === '.save-article') {
-    saveArticle(article);
-  }
-  article.toggle('drop', 500, function(){
-    article.remove();
+function articleAction() {
+  $('.article button').click(function(e) {
+    var article     = $(e.target).parent().parent();
+    var buttonClass = $(e.target).attr('class');
+
+    if (buttonClass === 'save-article') {
+      saveArticle(article);
+    }
+    article.toggle('drop', 500, function(){
+      article.remove();
+    });
   });
 }
 

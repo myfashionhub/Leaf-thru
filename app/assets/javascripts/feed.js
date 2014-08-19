@@ -42,13 +42,7 @@ function displayRssArticle(data) {
     $('.rss').append($article);
   }
 
-  $('.rss .save-article').on('click', function(e) {
-    articleAction('.save-article', e);
-  });
-
-  $('.rss .discard-article').on('click', function(e) {
-    articleAction('.discard-article', e);
-  });
+  articleAction();
 }
 
 
@@ -96,13 +90,8 @@ function displaySocialArticle(data) {
             .appendTo($('.twitter'))
             .toggle('slide');
   }
-  $('.twitter .save-article').on('click', function(e) {
-    articleAction('.save-article', e);
-  });
 
-  $('.twitter .discard-article').on('click', function(e) {
-    articleAction('.discard-article', e);
-  });
+  articleAction();
 }
 
 

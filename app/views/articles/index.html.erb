@@ -1,7 +1,7 @@
 <div class="wrapper">
 <h2>My Bookmarks</h2>
 
-<% @articles.each do |article| %>
+<% @articles.reverse.each do |article| %>
   <div class="saved-article">
   <h3 class='title'>
     <a href="<%= article.url %>" target='_blank'>
