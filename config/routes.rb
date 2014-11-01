@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'readers'=> 'readers#create'
   get 'profile' => 'readers#profile', as: 'profile'
   post 'profile' => 'readers#update'
+  get 'subscription' => 'readers#subscription'
   get 'profile/edit' => 'readers#edit', as: 'reader'
   patch 'profile/edit'=> 'readers#update'
 

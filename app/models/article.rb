@@ -12,5 +12,4 @@ class Article < ActiveRecord::Base
     Alchemy.filter_articles(articles)
   end
 
-
 end

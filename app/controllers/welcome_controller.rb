@@ -1,10 +1,9 @@
 class WelcomeController < ApplicationController
   def index
-    @reader = Reader.new  
+    @reader = Reader.new
   end
 
   def about
-
   end
 
 end

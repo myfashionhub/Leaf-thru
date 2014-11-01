@@ -25,6 +25,9 @@ class ReadersController < ApplicationController
 
   def profile
     @reader = current_reader
+  end
+
+  def subscription
     @publications = Publication.all
     @subscription = Subscription.new
   end

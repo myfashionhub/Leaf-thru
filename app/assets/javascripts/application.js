@@ -5,7 +5,13 @@
 //= require_tree .
 
 $(window).load(function() {
-  $('.nav').css({ 'position': 'absolute', 'z-index': '1', 'right': '10px', 'top': '60px', 'display': 'none' });
+  $('.nav').css({
+    'position': 'absolute',
+    'z-index': '1',
+    'right': '10px',
+    'top': '60px',
+    'display': 'none'
+  });
 })
 
 $(document).ready(function() {
@@ -20,10 +26,11 @@ $(document).ready(function() {
 
   // Profile page
   getPublications();
-  $('.subscription label:nth-child(3n+1)').append($('<br/>'));
   $('.notify').hide();
   currentSubscription();
+  $('#update-sub').click(updateSubscription);
+  $('#update-profile').click(updateProfile);
 
-  hideNotice();
+  hideNotice(); // For pages with erb notice
 })
 
