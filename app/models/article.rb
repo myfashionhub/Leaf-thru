@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   validates :url, uniqueness: true
 
   def self.parse(links)
+    # Queue up parse article requests
     hydra = Typhoeus::Hydra.new
     requests = links.map do |link|
       apikey      = ENV['ALCHEMY_KEY']
@@ -22,19 +23,17 @@ class Article < ActiveRecord::Base
     end
     hydra.run
 
+    # Obtain results from hydra
     articles = requests.map do |response|
       link = response[:link]
       title_request = response[:title_request]
       text_request = response[:text_request]
-
       title = JSON.parse(title_request.response.response_body)
       text  = JSON.parse(text_request.response.response_body)['text']
 
-      if text.nil? == false
+      if !text.nil?
         text_end = text.index(/\n/).to_i
         text_end = text.index('.').to_i + 1 if text_end <= 60
-      else
-        text_end = 0
       end
       { title:     title['title'],
         url:       title['url'],

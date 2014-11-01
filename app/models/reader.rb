@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/twitter"
+
 class Reader < ActiveRecord::Base
   has_many :subscriptions
   has_many :publications, through: :subscriptions
@@ -18,27 +20,9 @@ class Reader < ActiveRecord::Base
     self.email.downcase!
   end
 
-  def self.twitter_feed(tweets)
-    links = tweets.map do |tweet|
-      url    = tweet.urls[0]
-      if url.nil? == false
-        url       = url.attrs[:expanded_url]
-        shared_by = tweet.user.screen_name
-        { url: url, shared_by: shared_by }
-      end
-    end
-    links.compact.delete_if { |link| #regex domain is in?
-      link[:url].empty? ||
-      link[:url].include?('youtu.be') ||
-      link[:url].include?('youtube.com') ||
-      link[:url].include?('pinterest.com') ||
-      link[:url].include?('pin.it') ||
-      link[:url].include?('vimeo.com') ||
-      link[:url].include?('vine.co') ||
-      link[:url].include?('twitpic.com') ||
-      link[:url].include?('instagram.com') ||
-      link[:url].include?('login') ||
-      link[:url].include?('shop') }
+  def self.get_links(tweets)
+    links = Twitter.collect_links(tweets)
+    Twitter.filter_sources(links)
   end
 
   def self.validate_password(password)

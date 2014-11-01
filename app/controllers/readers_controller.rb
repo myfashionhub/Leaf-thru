@@ -43,14 +43,16 @@ class ReadersController < ApplicationController
   end
 
   def twitter
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_KEY']
-      config.consumer_secret     = ENV['TWITTER_SECRET']
-      config.access_token        = current_reader.twitter_token
-      config.access_token_secret = current_reader.twitter_token_secret
-    end
-    tweets    = client.home_timeline(options={count: 15})
-    links     = Reader.twitter_feed(tweets)
+    # client = Twitter::REST::Client.new do |config|
+    #   config.consumer_key        = ENV['TWITTER_KEY']
+    #   config.consumer_secret     = ENV['TWITTER_SECRET']
+    #   config.access_token        = current_reader.twitter_token
+    #   config.access_token_secret = current_reader.twitter_token_secret
+    # end
+    # tweets    = client.home_timeline(options={count: 15})
+    tweets    = Twitter.get_feed(current_reader.twitter_token,
+                current_reader.twitter_token_secret)
+    links     = Reader.get_links(tweets)
 
     @articles = Article.parse(links)
     render :json => @articles.to_json
