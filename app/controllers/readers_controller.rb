@@ -41,21 +41,18 @@ class ReadersController < ApplicationController
   end
 
   def twitter_feed
-    @articles = Reader.twitter_feed(
+    articles = Reader.twitter_feed(
                   current_reader.twitter_token,
                   current_reader.twitter_token_secret
                 )
-    render :json => @articles.to_json
+    puts articles
+    render json: articles.to_json
   end
 
   def rss_feed
     subscriptions = current_reader.subscriptions
-    @feeds = []
-    subscriptions.each do |subscription|
-      id = subscription.publication_id
-      publication = Publication.find(id)
-      @feeds << publication.url
-    end
+    articles = Reader.rss_feed(subscriptions)
+    render json: articles.to_json
   end
 
   def feed

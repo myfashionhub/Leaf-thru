@@ -1,4 +1,5 @@
 require "#{Rails.root}/lib/twitter"
+require "#{Rails.root}/lib/google_feed"
 
 class Reader < ActiveRecord::Base
   has_many :subscriptions
@@ -27,7 +28,14 @@ class Reader < ActiveRecord::Base
     articles = Article.parse(links)
   end
 
-  def self.rss_feed
+  def self.rss_feed(subscriptions)
+    feed_urls = subscriptions.map do |subscription|
+      id = subscription.publication_id
+      publication = Publication.find(id)
+      publication.url
+    end
+    puts feed_urls
+    articles = GoogleFeed.fetch_articles(feed_urls)
   end
 
   # Helper methods
