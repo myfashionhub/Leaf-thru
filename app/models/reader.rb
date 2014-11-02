@@ -12,17 +12,27 @@ class Reader < ActiveRecord::Base
   validates_presence_of :email, on: :create
   validates_uniqueness_of :email
 
-  validates :password, length: {within: 0..21, wrong_length: "Password length does not match requirement"}, :on => :create
+  validates :password,
+            length: {
+              within: 6..20,
+              wrong_length: "Password must be between 6-20 characters"
+            },
+            :on => :create
   before_save :downcase_email
 
-
-  def downcase_email
-    self.email.downcase!
+  def self.twitter_feed(token, token_secret)
+    tweets = Twitter.get_feed(token, token_secret)
+    links = Twitter.collect_links(tweets)
+    links = Twitter.filter_sources(links)
+    articles = Article.parse(links)
   end
 
-  def self.get_links(tweets)
-    links = Twitter.collect_links(tweets)
-    Twitter.filter_sources(links)
+  def self.rss_feed
+  end
+
+  # Helper methods
+  def downcase_email
+    self.email.downcase!
   end
 
   def self.validate_password(password)

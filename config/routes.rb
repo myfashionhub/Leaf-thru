@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get 'logout/twitter'        => 'sessions#logout_tw'
 
   get 'about'   => 'welcome#about'
-  get 'twitter' => 'readers#twitter'
+  get 'twitter' => 'readers#twitter_feed'
+  get 'rss'     => 'readers#rss_feed'
   get 'feed'    => 'readers#feed'
   get 'leafers' => 'bookmarks#index'
 end

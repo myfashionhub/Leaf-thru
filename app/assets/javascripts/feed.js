@@ -61,6 +61,9 @@ function twitterFeed() {
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(textStatus, errorThrown);
+      $('#loader').fadeOut(500).remove();
+      $('.twitter').append('<p>Unable to obtain articles at this time.</p>')
+                   .hide().fadeIn();
     }
   });
 }

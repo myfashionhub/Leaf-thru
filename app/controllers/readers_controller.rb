@@ -32,11 +32,6 @@ class ReadersController < ApplicationController
     @subscription = Subscription.new
   end
 
-  # def edit
-  #   @reader = current_reader
-  #   @publications = Publication.all
-  # end
-
   def update
     @reader = current_reader
     # if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
@@ -45,19 +40,15 @@ class ReadersController < ApplicationController
     # end
   end
 
-  def twitter
-    tweets    = Twitter.get_feed(
+  def twitter_feed
+    @articles = Reader.twitter_feed(
                   current_reader.twitter_token,
                   current_reader.twitter_token_secret
                 )
-    links     = Reader.get_links(tweets)
-
-    @articles = Article.parse(links)
     render :json => @articles.to_json
   end
 
-  def feed
-    # Rss feeds
+  def rss_feed
     subscriptions = current_reader.subscriptions
     @feeds = []
     subscriptions.each do |subscription|
@@ -65,6 +56,9 @@ class ReadersController < ApplicationController
       publication = Publication.find(id)
       @feeds << publication.url
     end
+  end
+
+  def feed
   end
 
   private

@@ -10,6 +10,7 @@ class Article < ActiveRecord::Base
     requests = Alchemy.get_articles(links)
     articles = Alchemy.parse_responses(requests)
     Alchemy.filter_articles(articles)
+    # {msg: 'Unable to obtain articles at this time.'}.to_json
   end
 
 end

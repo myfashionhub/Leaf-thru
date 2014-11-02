@@ -10,31 +10,31 @@
     width: 200px;
     display: block;
   }
+
   input[type='text'], input[type='password'] {
     margin: 10px auto;
     background-color: transparent;
     border: 0;
   }
-  input[type='text']:hover, input[type='password']:hover,
-  input[type='text']:active, input[type='password']:active,
-  input[type='text']:focus, input[type='password']:focus {
+
+  input:hover, input:active, input:focus {
     background-color: #fff;
   }
+
   input[type='submit'] {
     margin: 10px auto;
     color: #fff;
     background-color: $medium-blue;
     border: 0;
     border-radius: 3px;
-  }
-  input[type='submit']:hover,
-  input[type='submit']:active {
-    background-color: $medium-blue2;
-    cursor: pointer;
+    &:hover, &:active {
+      background-color: $medium-blue2;
+      cursor: pointer;
+    }
   }
 }
 
-.current {
+.form-wrapper .current {
   color: $lime-green;
 }
 

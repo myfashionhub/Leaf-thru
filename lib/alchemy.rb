@@ -38,7 +38,7 @@ module Alchemy
         text_end = text.index('.').to_i + 1 if text_end <= 60
       end
 
-      artilces = {
+      articles = {
           title:     title['title'],
           url:       title['url'],
           extract:   text[0, text_end],
