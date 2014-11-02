@@ -1,3 +1,21 @@
+function currentSubscription() {
+  $.ajax({
+    url: '/subscriptions',
+    method: 'get',
+    dataType: 'json',
+    success: function(data) {
+      for (i = 0; i < data.length; i++) {
+        var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
+        $(pub).append('<i class="fa fa-times"></i>');
+        $('.current-sub ul').append(pub);
+        $('.current-sub i').click(function(e) {
+          $(e.target).parent().remove();
+        });
+      }
+    }
+  });
+}
+
 function getPublications() {
   $.ajax({
     url: '/publications',
@@ -41,7 +59,6 @@ function togglePublications() {
   subscriptionBuilder();
 }
 
-
 function updateSubscription() {
   var pubs    = $('.current-sub li');
   var pub_ids = [];
@@ -61,27 +78,10 @@ function updateSubscription() {
   });
 }
 
-function currentSubscription() {
-  $.ajax({
-    url: '/subscriptions',
-    method: 'get',
-    dataType: 'json',
-    success: function(data) {
-      for (i = 0; i < data.length; i++) {
-        var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
-        $(pub).append('<i class="fa fa-times"></i>');
-        $('.current-sub ul').append(pub);
-        $('.current-sub i').click(function(e) {
-          $(e.target).parent().remove();
-        });
-      }
-    }
-  });
-}
-
 function updateProfile() {
   var email    = $('#reader_email').val();
   var password = $('#reader_password').val();
+  // var new_password = $('#reader_new_password').val();
   var name     = $('#reader_name').val();
   var image    = $('#reader_image').val();
 
@@ -89,7 +89,12 @@ function updateProfile() {
     url: '/profile',
     method: 'post',
     dataType: 'json',
-    data: { reader: { email: email, password: password, name: name, image: image } },
+    data: { reader: { email: email,
+                      password: password,
+                      name: name,
+                      image: image
+                    }
+          },
     success: function(data) {
       $('.notify').html(data['msg']);
       notify();

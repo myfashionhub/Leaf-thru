@@ -99,23 +99,23 @@ h4.current { color: $lime-green; }
 
 .profile-edit,
 .social {
-  width: 350px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .social {
-  margin: 0 0 0 20px;
-  float: left;
   a {
     color: $dark-blue;
-    width: 230px;
-    text-align: left;
+    width: 14em;
+    text-align: center;
     font-weight: bold;
     display: block;
     background-color: transparent;
     padding: 8px 10px;
     border-radius: 3px;
-    margin: 10px 0;
+    margin: 10px auto;
   }
+
   a:hover {
     background-color: limegreen;
     color: #fff;
@@ -127,28 +127,27 @@ h4.current { color: $lime-green; }
 }
 
 .profile-edit {
-  float:left;
-  margin: 0;
-  input[type='text'],
-  input[type='password'] {
+  input {
     border: 0;
     background-color: transparent;
     font-size: 1.1em;
     padding: 3px 8px;
     color: #333;
+
+    &:hover, &:active, &:focus {
+      background-color: #fff;
+      color: #5687a8;
+    }
   }
+
   label {
     width: 5em;
   }
-  input[type='text']:hover,
-  input[type='password']:hover,
-  input[type='text']:active,
-  input[type='password']:active,
-  input[type='text']:focus,
-  input[type='password']:focus {
-    background-color: #fff;
-    color: #5687a8 ;
+
+  form {
+    padding-left: 25px;
   }
+
 }
 
 .social, .profile-edit {
@@ -157,3 +156,5 @@ h4.current { color: $lime-green; }
     float: none;
   }
 }
+
+/* SUBSCRIPTION PAGE */

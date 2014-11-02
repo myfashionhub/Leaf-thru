@@ -32,10 +32,10 @@ class ReadersController < ApplicationController
     @subscription = Subscription.new
   end
 
-  def edit
-    @reader = current_reader
-    @publications = Publication.all
-  end
+  # def edit
+  #   @reader = current_reader
+  #   @publications = Publication.all
+  # end
 
   def update
     @reader = current_reader
@@ -46,8 +46,10 @@ class ReadersController < ApplicationController
   end
 
   def twitter
-    tweets    = Twitter.get_feed(current_reader.twitter_token,
-                current_reader.twitter_token_secret)
+    tweets    = Twitter.get_feed(
+                  current_reader.twitter_token,
+                  current_reader.twitter_token_secret
+                )
     links     = Reader.get_links(tweets)
 
     @articles = Article.parse(links)

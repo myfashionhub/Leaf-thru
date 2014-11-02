@@ -6,29 +6,27 @@
 
   <div class="social">
     <h3>Social networks</h3>
-  <% if @reader.facebook_token %>
-    <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
-      Disconnect from Facebook
-    </a>
-  <% else %>
-    <a href="/auth/facebook">
-      <i class="fa fa-facebook"></i> Connect with Facebook
-    </a>
-  <% end %>
-  <% if @reader.twitter_token %>
-    <a href='/logout/twitter' id='unlink-tw'>
-      <i class="fa fa-twitter"></i>
-      Disconnect from Twitter
-    </a>
-  <% else %>
-    <a href="/auth/twitter">
-      <i class="fa fa-twitter"></i>
-      Connect with Twitter
-    </a>
-  <% end %>
-
-  <p>* Connect with Facebook/Twitter to get<br/>
-  articles shared by your social network.</p>
+    <p>* Connect with Facebook/Twitter to get articles shared by your social network.</p>
+    <% if @reader.facebook_token %>
+      <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
+        Disconnect from Facebook
+      </a>
+    <% else %>
+      <a href="/auth/facebook">
+        <i class="fa fa-facebook"></i> Connect with Facebook
+      </a>
+    <% end %>
+    <% if @reader.twitter_token %>
+      <a href='/logout/twitter' id='unlink-tw'>
+        <i class="fa fa-twitter"></i>
+        Disconnect from Twitter
+      </a>
+    <% else %>
+      <a href="/auth/twitter">
+        <i class="fa fa-twitter"></i>
+        Connect with Twitter
+      </a>
+    <% end %>
   </div>
 
   <div class="profile-edit">
@@ -49,8 +47,3 @@
 
 </div>
 
-
-<script>
-  $('#update-sub').click(updateSubscription);
-  $('#update-profile').click(updateProfile);
-</script>
