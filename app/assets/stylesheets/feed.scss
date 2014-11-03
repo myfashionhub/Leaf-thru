@@ -1,5 +1,6 @@
-/* FEED */
+@import 'main';
 
+/* FEED */
 .twitter, .rss {
   width: 45%;
   float: left;
@@ -22,10 +23,20 @@
   }
 }
 
-.rss h3, .twitter h3 {
-  font-size: 1.3em;
+.feed {
+  h3 {
+    font-size: 1.3em;
+  }
+
   a {
     text-decoration: none;
+  }
+
+  .fa-refresh {
+    color: $dark-blue;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

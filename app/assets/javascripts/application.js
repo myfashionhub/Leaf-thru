@@ -15,9 +15,17 @@ $(window).load(function() {
 })
 
 $(document).ready(function() {
+  // Navigation
   loginToggle();
   dropdownMenu();
   howItWorks();
+
+  // News feed
+  $('.feed .fa-refresh').click(function(e) {
+    var feed = $(e.target).parent().parent();
+    console.log(feed);
+    refreshFeed(feed.attr('class'))
+  });
 
   // Delete article
   $('.delete').click(function(e) {

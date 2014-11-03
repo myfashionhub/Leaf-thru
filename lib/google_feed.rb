@@ -10,6 +10,11 @@ module GoogleFeed
     feed_urls.each do |feed_url|
       feed = GoogleAjax::Feed.load(URI::encode(feed_url), {num: 10})
       publisher = feed[:description]
+      if publisher.include?('Mashable')
+        publisher = 'Mashable'
+      elsif publisher.include?('TechCrunch')
+        publisher = 'TechCrunch'
+      end
 
       feed[:entries].each do |entry|
         if entry[:content].length > 500

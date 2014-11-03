@@ -4,8 +4,10 @@ function loadRssFeeds() {
     type: 'GET',
     dataType: 'json',
     success: function(data) {
-      $('#loader').fadeOut(500).remove();
-      displayRssArticle(data);
+      $('.rss .content').children().fadeOut('slow').remove();
+      setTimeout(function() {
+        displayRssArticle(data);
+      }, 300);
     }
   });
 }
@@ -19,7 +21,7 @@ function displayRssArticle(entries) {
     var $article = $('<div>').addClass('article');
     var $date    = $('<div>').addClass('date')
                              .append(new Date(entry.date_published));
-    var $url     = $('<a>').attr('href', entry.link).attr('target', '_blank');
+    var $url     = $('<a>').attr('href', entry.url).attr('target', '_blank');
     var $title   = $('<h3>').addClass('title')
                             .html(entry.title);
     var $extract = $('<p>').addClass('extract')
@@ -28,8 +30,8 @@ function displayRssArticle(entries) {
     $article.append($title)
             .append($extract)
             .append($publisher)
-            .append(generateButtons());
-    ($article).hide().appendTo($('.rss')).fadeIn();
+            .append(addActionButtons());
+    ($article).hide().appendTo($('.rss .content')).fadeIn();
   }
 
   articleAction();
@@ -41,18 +43,20 @@ function twitterFeed() {
     url     : '/twitter',
     dataType: 'json',
     success : function(data){
-      $('#loader').fadeOut(500).remove();
-      if (data['msg'] === "No data") {
-        $('.twitter').append("<a href='/profile'><b>Connect your Twitter account</b></a> to get updates.")
-                      .hide().fadeIn();
-      } else {
-        displaySocialArticle(data);
-      }
+      $('.twitter .content').children().fadeOut('slow').remove();
+      setTimeout(function() {
+        if (data['msg'] === "No data") {
+          var msg = "<a href='/profile'><b>Connect your Twitter account</b></a> to get updates.";
+          $('.twitter .content').append(msg).hide().fadeIn();
+        } else {
+          displaySocialArticle(data);
+        }
+      }, 300);
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(errorThrown);
-      $('#loader').fadeOut(500).remove();
-      $('.twitter').append('<p>Unable to obtain articles at this time.</p>')
+      $('.twitter .content').children().fadeOut('slow').remove();
+      $('.twitter .content').append('<p>Unable to obtain articles at this time.</p>')
                    .hide().fadeIn();
     }
   });
@@ -78,9 +82,9 @@ function displaySocialArticle(data) {
     $article.append($title)
             .append($extract)
             .append($sharedBy)
-            .append(generateButtons());
+            .append(addActionButtons());
     $article.hide()
-            .appendTo($('.twitter'))
+            .appendTo($('.twitter .content'))
             .toggle('slide');
   }
 
@@ -88,7 +92,7 @@ function displaySocialArticle(data) {
 }
 
 
-function generateButtons() {
+function addActionButtons() {
   var saveButton    = $('<button>').addClass('save-article')
                                    .html('<i class="fa fa-bookmark-o"></i> Bookmark');
   var discardButton = $('<button>').addClass('discard-article')
@@ -97,4 +101,12 @@ function generateButtons() {
                                 .append(saveButton)
                                 .append(discardButton);
   return buttons;
+}
+
+function refreshFeed(feedName) {
+  if (feedName.indexOf('rss') > -1) {
+    loadRssFeeds();
+  } else if (feedName.indexOf('twitter') > -1) {
+    twitterFeed();
+  }
 }

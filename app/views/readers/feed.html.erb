@@ -9,16 +9,22 @@
 <div class="notice"></div>
 
 <div class="rss feed" >
-  <h2>RSS feed</h2>
-  <img src="assets/loader2.gif" alt="" id='loader' />
+  <h2>RSS feed <i class="fa fa-refresh"></i></h2>
+
+  <div class="content">
+    <img src="assets/loader2.gif" alt="" id='loader' />
+  </div>
 </div>
 
 
 <div class="twitter feed">
-  <h2>Social feed</h2>
+  <h2>Social feed <i class="fa fa-refresh"></i></h2>
+
+  <div class="content">
   <% if current_reader.twitter_token == nil %>
     <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
   <% else %>
     <img src="assets/loader2.gif" alt="" id='loader' />
   <% end %>
+  </div>
 </div>
