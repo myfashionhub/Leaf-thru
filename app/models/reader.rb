@@ -34,7 +34,6 @@ class Reader < ActiveRecord::Base
       publication = Publication.find(id)
       publication.url
     end
-    puts feed_urls
     articles = GoogleFeed.fetch_articles(feed_urls)
   end
 

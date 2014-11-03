@@ -45,7 +45,6 @@ class ReadersController < ApplicationController
                   current_reader.twitter_token,
                   current_reader.twitter_token_secret
                 )
-    puts articles
     render json: articles.to_json
   end
 
