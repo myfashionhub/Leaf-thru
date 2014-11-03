@@ -38,10 +38,10 @@ module Alchemy
           text_end = text.index(/\n/).to_i
           text_end = text.index('.').to_i + 1 if text_end <= 60
         end
-        puts title
+
         title     = title['title']
-        url       = title['url'] || ''
-        extract   = text[0, text_end],
+        url       = title['url'] || link
+        extract   = text[0, text_end]
         shared_by = link[:shared_by]
       rescue
         title = ''
@@ -58,9 +58,8 @@ module Alchemy
 
   def self.filter_articles(articles)
     articles.delete_if do |article|
-      puts article
-      article[:url].empty? || article[:title].empty? ||
-      article[:extract].length <= 80
+      article[:url].empty? || article[:title].empty? #||
+      #article[:extract].length <= 80
     end
   end
 
