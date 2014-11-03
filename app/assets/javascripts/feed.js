@@ -4,6 +4,7 @@ function loadRssFeeds() {
     type: 'GET',
     dataType: 'json',
     success: function(data) {
+      $('#loader').fadeOut(500).remove();
       displayRssArticle(data);
     }
   });
@@ -12,29 +13,23 @@ function loadRssFeeds() {
 function displayRssArticle(entries) {
   for (var i = 0; i < entries.length; i++) {
     var entry    = entries[i];
+    var $publisher = $('<p>').addClass('publisher')
+                            .attr('data', entry.publisher)
+                            .html('Published by: '+ entry.publisher);
     var $article = $('<div>').addClass('article');
     var $date    = $('<div>').addClass('date')
-                             .append(new Date(entry.publishedDate));
+                             .append(new Date(entry.date_published));
     var $url     = $('<a>').attr('href', entry.link).attr('target', '_blank');
     var $title   = $('<h3>').addClass('title')
                             .html(entry.title);
     var $extract = $('<p>').addClass('extract')
-                           .html(entry.content);
-
-    if ($url.attr('href').indexOf('nytimes') > -1 ||
-        $url.attr('href').indexOf('guardian') > -1) {
-      $extract.html(entry.content_snippet);
-    }
-
-    var $publisher = $('<p>').addClass('publisher')
-                            .attr('data', entry.publisher)
-                            .html('Published by: '+ entry.publisher);
+                           .html(entry.extract);
     $title.wrapInner($url);
     $article.append($title)
             .append($extract)
             .append($publisher)
             .append(generateButtons());
-    ($article).hide().appendTo$('.rss').fadeIn();
+    ($article).hide().appendTo($('.rss')).fadeIn();
   }
 
   articleAction();

@@ -12,7 +12,6 @@ module GoogleFeed
       publisher = feed[:description]
 
       feed[:entries].each do |entry|
-        # handler for Huffpost, whose extract is too long
         if entry[:content].length > 500
           extract = entry[:content_snippet]
         else

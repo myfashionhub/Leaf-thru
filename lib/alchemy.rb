@@ -58,8 +58,9 @@ module Alchemy
 
   def self.filter_articles(articles)
     articles.delete_if do |article|
-      article[:url].empty? || article[:title].empty? #||
-      #article[:extract].length <= 80
+      puts article[:url].include?('http')
+      article[:url].empty? || article[:title].empty?
+      #|| article[:extract].length <= 80
     end
   end
 
