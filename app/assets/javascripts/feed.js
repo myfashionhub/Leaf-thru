@@ -101,9 +101,12 @@ function addActionButtons() {
 }
 
 function refreshFeed(feedName) {
+  console.log()
   if (feedName.indexOf('rss') > -1) {
+    $('.rss .content').html($('#loader').clone());
     loadRssFeeds();
   } else if (feedName.indexOf('twitter') > -1) {
+    $('.twitter .content').html($('#loader').clone());
     twitterFeed();
   }
 }
