@@ -58,8 +58,6 @@ module Alchemy
       article[:url].empty? || article[:title].empty? || 
       article[:extract].length <= 30
     end
-
-    return articles
   end
 
 end

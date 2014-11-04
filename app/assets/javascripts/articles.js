@@ -31,22 +31,13 @@ function saveArticle(article) {
     dataType: 'json',
     data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },
     success: function(data) {
-      alreadySaved(data);
+      $('.notice').show().html(data['msg']);
+      setTimeout(function() {
+        $('.notice').fadeOut();
+      }, 2000);      
     }
   })
 }
-
-function alreadySaved(data) {
-  if (data['msg'] === "Already saved!") {
-    $('.notice').show().html(data['msg']);
-  } else {
-    $('.notice').show().html('Successfully save article');
-  }
-  setTimeout(function() {
-    $('.notice').fadeOut();
-  }, 3000);
-}
-
 
 function noArticle(e) {
   var feed = $(e.target).parent().parent().parent();

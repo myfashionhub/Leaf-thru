@@ -8,17 +8,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.create(article_params)
-    if article.save
+    article = Article.find_or_create_by(article_params)
+    
+    if Bookmark.exists?(article_id: article.id.to_s, reader_id: current_reader.id.to_s)
+      msg = { msg: 'Already saved!' }
+    else  
       Bookmark.create(reader_id: current_reader.id, article_id: article.id)
-    else
-      article = Article.find_by(url: params[:article][:url])
-      if Bookmark.exists?(article_id: article.id.to_s, reader_id: current_reader.id.to_s)
-        msg = { msg: 'Already saved!' }
-      else
-        Bookmark.create(reader_id: current_reader.id, article_id: article.id)
-      end
+      msg = { msg: 'Article bookmarked!' }
     end
+
     render :json => msg.to_json
   end
 
@@ -28,7 +26,7 @@ class ArticlesController < ApplicationController
   def destroy
     id = Bookmark.find_by(article_id: params[:id], reader_id: current_reader.id)
     Bookmark.delete(id)
-    render json: { msg: 'Bookmark deleted'}.to_json
+    render json: { msg: 'Bookmark deleted' }.to_json
   end
 
   private
