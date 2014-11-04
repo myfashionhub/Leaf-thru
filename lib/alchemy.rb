@@ -38,7 +38,8 @@ module Alchemy
           text_end = text.index(/\n/).to_i
           text_end = text.index('.').to_i + 1 if text_end <= 60
         end
-
+        puts "url looks like #{url}"
+        
         title     = title['title']
         url       = title['url'] || link
         extract   = text[0, text_end]
