@@ -43,17 +43,19 @@ function twitterFeed() {
     url     : '/twitter',
     dataType: 'json',
     success : function(data){
-      console.log(data)
-      $('.twitter .content').children().fadeOut('slow').remove();
-      setTimeout(function() {
-          displaySocialArticle(data);
-      }, 300);
+      if (data.length === 0) {
+        errorLoadingFeed('.twitter .content', 'Unable to obtain articles at this time.');        
+      } else {
+        $('.twitter .content').children().fadeOut('slow').remove();
+        setTimeout(function() {
+            displaySocialArticle(data);
+        }, 300);
+      }
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(errorThrown);
       if ($('.twitter .content').children().first().hasClass('no-twitter') === false) {
-        $('.twitter .content').children().fadeOut('slow').remove();
-        $('.twitter .content').append('<p>Unable to obtain articles at this time.</p>').hide().fadeIn();
+        errorLoadingFeed('.twitter .content', 'Unable to obtain articles at this time.');
       }               
     }
   });
@@ -108,4 +110,9 @@ function refreshFeed(feedName) {
     $('.twitter .content').html($('#loader').clone());
     twitterFeed();
   }
+}
+
+function errorLoadingFeed(parentDiv, msg) {
+  $(parentDiv).children().fadeOut('slow').remove();
+  $(parentDiv).append('<p>'+msg+'</p>').hide().fadeIn();  
 }
