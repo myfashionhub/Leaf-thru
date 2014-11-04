@@ -1,13 +1,13 @@
 module Twitter
   def self.get_feed(token, token_secret)
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_KEY']
-      config.consumer_secret     = ENV['TWITTER_SECRET']
+      config.consumer_key        = ENV['LT_TWITTER_KEY']
+      config.consumer_secret     = ENV['LT_TWITTER_SECRET']
       config.access_token        = token
       config.access_token_secret = token_secret
     end
 
-    tweets = client.home_timeline(options={count: 15})
+    tweets = client.home_timeline(options={count: 15, include_entities: true})
   end
 
   def self.collect_links(tweets)
