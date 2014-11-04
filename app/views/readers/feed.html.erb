@@ -22,7 +22,9 @@
 
   <div class="content">
   <% if current_reader.twitter_token == nil %>
-    <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
+    <p class='no-twitter'>
+      <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
+    </p>
   <% else %>
     <img src="assets/loader2.gif" alt="" id='loader' />
   <% end %>

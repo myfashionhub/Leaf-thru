@@ -45,19 +45,16 @@ function twitterFeed() {
     success : function(data){
       $('.twitter .content').children().fadeOut('slow').remove();
       setTimeout(function() {
-        if (data['msg'] === "No data") {
-          var msg = "<a href='/profile'><b>Connect your Twitter account</b></a> to get updates.";
-          $('.twitter .content').append(msg).hide().fadeIn();
-        } else {
           displaySocialArticle(data);
-        }
       }, 300);
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(errorThrown);
-      $('.twitter .content').children().fadeOut('slow').remove();
-      $('.twitter .content').append('<p>Unable to obtain articles at this time.</p>')
-                   .hide().fadeIn();
+      if ($('.twitter .content').children().first().hasClass('no-twitter') === false) {
+        $('.twitter .content').children().fadeOut('slow').remove();
+        $('.twitter .content').append('<p>Unable to obtain articles at this time.</p>')
+                     .hide().fadeIn();
+      }               
     }
   });
 }
