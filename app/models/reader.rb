@@ -43,10 +43,11 @@ class Reader < ActiveRecord::Base
   end
 
   def self.validate_password(password)
-    if password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
+    if password.length >= 6 && password.length <= 20
+      #password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
       return true
     else
-      flash[:notice] = "Password must be between 6 to 20 characters, contain one capital letter, and one number."
+      flash[:notice] = "Password must be between 6 to 20 characters."
       return false
     end
   end

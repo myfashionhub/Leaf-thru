@@ -30,39 +30,36 @@ module Alchemy
       link = response[:link]
       title_request = response[:title_request]
       text_request = response[:text_request]
-      begin
-        title = JSON.parse(title_request.response.response_body)
-        text  = JSON.parse(text_request.response.response_body)['text']
 
-        if !text.nil?
-          text_end = text.index(/\n/).to_i
-          text_end = text.index('.').to_i + 1 if text_end <= 60
-        end
-        puts "url looks like #{url}"
-        
-        title     = title['title']
-        url       = title['url'] || link
+      title = JSON.parse(title_request.response.response_body)
+      text  = JSON.parse(text_request.response.response_body)['text']
+
+      if !text.nil?
+        text_end = text.index(/\n/).to_i
+        text_end = text.index('.').to_i + 1 if text_end <= 60
         extract   = text[0, text_end]
-        shared_by = link[:shared_by]
-      rescue
-        title = ''
-        url = ''
-        extract = ''
-        shared_by = ''
+      else
+        extract = ''  
       end
+
+      title     = title['title'] || ''
+      url       = title['url'] || link[:url]       
+      shared_by = link[:shared_by]
 
     { title: title, url: url,
       extract: extract, shared_by: shared_by
     }
     end
+
   end
 
   def self.filter_articles(articles)
     articles.delete_if do |article|
-      article[:url].empty? || article[:title].empty?
-      #|| article[:extract].length <= 80
+      article[:url].empty? || article[:title].empty? || 
+      article[:extract].length <= 30
     end
-    puts articles
+
+    return articles
   end
 
 end

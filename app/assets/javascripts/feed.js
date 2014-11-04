@@ -43,6 +43,7 @@ function twitterFeed() {
     url     : '/twitter',
     dataType: 'json',
     success : function(data){
+      console.log(data)
       $('.twitter .content').children().fadeOut('slow').remove();
       setTimeout(function() {
           displaySocialArticle(data);
@@ -52,8 +53,7 @@ function twitterFeed() {
       console.log(errorThrown);
       if ($('.twitter .content').children().first().hasClass('no-twitter') === false) {
         $('.twitter .content').children().fadeOut('slow').remove();
-        $('.twitter .content').append('<p>Unable to obtain articles at this time.</p>')
-                     .hide().fadeIn();
+        $('.twitter .content').append('<p>Unable to obtain articles at this time.</p>').hide().fadeIn();
       }               
     }
   });
@@ -90,18 +90,17 @@ function displaySocialArticle(data) {
 
 
 function addActionButtons() {
-  var saveButton    = $('<button>').addClass('save-article')
-                                   .html('<i class="fa fa-bookmark-o"></i> Bookmark');
-  var discardButton = $('<button>').addClass('discard-article')
-                                   .html('<i class="fa fa-trash-o"></i> Not interested');
-  var buttons       = $('<div>').addClass('buttons')
-                                .append(saveButton)
-                                .append(discardButton);
+  var saveButton    = $('<button>').addClass('save-article');
+  saveButton.html('<i class="fa fa-bookmark-o"></i> Bookmark');
+  var discardButton = $('<button>').addClass('discard-article');
+  discardButton.html('<i class="fa fa-trash-o"></i> Not interested');
+  
+  var buttons = $('<div>').addClass('buttons')
+  buttons.append(saveButton).append(discardButton);
   return buttons;
 }
 
 function refreshFeed(feedName) {
-  console.log()
   if (feedName.indexOf('rss') > -1) {
     $('.rss .content').html($('#loader').clone());
     loadRssFeeds();
