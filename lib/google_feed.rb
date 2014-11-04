@@ -8,7 +8,7 @@ module GoogleFeed
     articles = []
 
     feed_urls.each do |feed_url|
-      feed = GoogleAjax::Feed.load(URI::encode(feed_url), {num: 10})
+      feed = GoogleAjax::Feed.load(URI::encode(feed_url), {num: 5})
       publisher = feed[:description]
       if publisher.include?('Mashable')
         publisher = 'Mashable'

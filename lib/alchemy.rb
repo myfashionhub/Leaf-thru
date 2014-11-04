@@ -4,7 +4,7 @@ module Alchemy
     # Queue up parse article requests
     hydra = Typhoeus::Hydra.new
     requests = links.map do |link|
-      apikey      = ENV['ALCHEMY_KEY']
+      apikey      = ENV['LT_ALCHEMY_KEY']
       url         = link[:url]
       query       = "?apikey=#{apikey}&url=#{url}&outputMode=json"
       title_query = "http://access.alchemyapi.com/calls/url/URLGetTitle"+query
@@ -61,6 +61,7 @@ module Alchemy
       article[:url].empty? || article[:title].empty?
       #|| article[:extract].length <= 80
     end
+    puts articles
   end
 
 end
