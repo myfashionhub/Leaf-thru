@@ -26,19 +26,14 @@ function howItWorks() {
 function loginToggle() {
   $('.signup').hide();
   $('#login').addClass('current');
+  
+  $('.form-wrapper span').click(function(e) {
+    $('.current').removeClass('current');
+    $(e.target).addClass('current');
+    var action = $(e.target).attr('id');
 
-  $('#signup').click(function() {
-    $('.signup').fadeIn('slow');
-    $('#signup').addClass('current');
-    $('#login').removeClass('current');
-    $('.login').hide();
-  });
-
-  $('#login').click(function() {
-    $('.login').fadeIn('slow');
-    $('.signup').hide();
-    $('#login').addClass('current');
-    $('#signup').removeClass('current');
+    $('.form div').hide();
+    $('.'+action).fadeIn('slow');
   });
 }
 
