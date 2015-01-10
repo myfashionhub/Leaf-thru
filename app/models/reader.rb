@@ -47,8 +47,9 @@ class Reader < ActiveRecord::Base
       #password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
       return true
     else
-      flash[:notice] = "Password must be between 6 to 20 characters."
-      return false
+      msg = "Password must be between 6 to 20 characters."
+      status = 'error'
+      return { msg: msg, status: status }
     end
   end
 
@@ -56,8 +57,9 @@ class Reader < ActiveRecord::Base
     if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       return true
     else
-     flash[:alert] = "Invalid email."
-     return false
+     msg = "Invalid email."
+     status = 'error'
+     return { msg: msg, status: status }
     end
   end
 

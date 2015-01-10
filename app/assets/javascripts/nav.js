@@ -38,7 +38,7 @@ function loginToggle() {
 }
 
 function notify(msg, status) {
-  var div;
+  var div; console.log('notify')
   if (status === 'success') {
     div = $('.notify');
   } else if (status === 'error') {

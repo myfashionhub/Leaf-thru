@@ -10,14 +10,20 @@ function signup(e) {
   $.ajax({
     url: '/readers',
     type: 'POST',
-    data: { reader: {email: email, password: password} },
+    data: {reader: {email: email, password: password}},
     dateType: 'json',
     success: function(response) {
-      notify(response.msg, response.status)
-      console.log(response)
+      if (response.status === 'error') {
+        notify(response.msg, 'error')
+      } else {
+        window.location.replace('/subscription');
+        $(window).load(function() {
+          notify(response.msg, 'success');
+        });
+      }
     },
     error: function(response) {
-      console.log(response)
+      //console.log(response)
     }
   });
 }
