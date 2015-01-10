@@ -26,7 +26,7 @@ function howItWorks() {
 function loginToggle() {
   $('.signup').hide();
   $('#login').addClass('current');
-  
+
   $('.form-wrapper span').click(function(e) {
     $('.current').removeClass('current');
     $(e.target).addClass('current');
@@ -37,10 +37,17 @@ function loginToggle() {
   });
 }
 
-function notify() {
-  $('.notify').fadeIn();
+function notify(msg, status) {
+  var div;
+  if (status === 'success') {
+    div = $('.notify');
+  } else if (status === 'error') {
+    div = $('.alert');
+  }
+
+  div.html(msg).fadeIn();
   setTimeout(function() {
-    $('.notify').fadeOut();
+    div.fadeOut();
   }, 3000);
 }
 

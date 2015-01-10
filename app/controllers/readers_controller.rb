@@ -5,18 +5,20 @@ class ReadersController < ApplicationController
   end
 
   def create
+    puts params
+    puts reader_params
     @reader = Reader.new(reader_params)
     if Reader.find_by(email: params[:reader][:email])
-      redirect_to root_path
-      flash[:alert] = "Email already taken."
-    end
-
-    if Reader.validate_password(params[:reader][:password]) &&
+       msg = "Email already taken."
+       status = 'error'
+    elsif Reader.validate_password(params[:reader][:password]) &&
       Reader.validate_email(params[:reader][:email]) && @reader.save
         current_reader = login(params[:reader][:email], params[:reader][:password])
-      redirect_to '/profile'
-      flash[:notice] = 'Successfully signed up.'
+      msg = 'Successfully signed up.'
+      status = 'success'
     end
+
+    render json: { msg: msg, status: status }
   end
 
   def destroy

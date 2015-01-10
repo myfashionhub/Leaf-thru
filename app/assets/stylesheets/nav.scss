@@ -74,6 +74,11 @@
 
 .nav {
   width: 220px;
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  top: 60px;
+  display: none;
   padding: 0px;
   text-align: right;
   background-color: #D0E0EB;

@@ -72,8 +72,7 @@ function updateSubscription() {
     dataType: 'json',
     data: { pub_ids: pub_ids },
     success: function(data) {
-      $('.notify').html(data['msg']);
-      notify();
+      notify(data['msg'], 'success');
     }
   });
 }
@@ -96,8 +95,7 @@ function updateProfile() {
                     }
           },
     success: function(data) {
-      $('.notify').html(data['msg']);
-      notify();
+      notify(data['msg'], 'success');
     }
   })
 }
