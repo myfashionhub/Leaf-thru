@@ -13,7 +13,6 @@ $(document).ready(function() {
   // News feed
   $('.feed .fa-refresh').click(function(e) {
     var feed = $(e.target).parent().parent();
-    console.log(feed);
     refreshFeed(feed.attr('class'))
   });
 
@@ -24,7 +23,6 @@ $(document).ready(function() {
 
   // Profile page
   getPublications();
-  currentSubscription();
   $('#update-sub').click(updateSubscription);
   $('#update-profile').click(updateProfile);
 

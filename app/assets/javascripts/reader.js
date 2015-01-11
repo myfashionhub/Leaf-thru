@@ -27,9 +27,31 @@ function signup(e) {
 }
 
 function getLocation() {
+  var latitude, longitude;
   if (navigator.geolocation != undefined) {
-    navigator.geolocation.getCurrentPosition(function(data) {
-      console.log(data)
-    });
+    navigator.geolocation.getCurrentPosition(
+      updateLocation,
+      function(error) { console.log(error) },
+      { timeout: 5000 }
+    );
   }
+}
+
+function updateLocation(data) {
+  console.log(data.coords)
+  latitude = data.coords.latitude;
+  longitude = data.coords.longitude;
+
+  $.ajax({
+    url: '/location',
+    type: 'POST',
+    data: { 'latitude': latitude, 'longitude': longitude },
+    dateType: 'json',
+    success: function(response) {
+      console.log(response)
+    },
+    error: function(response) {
+      //console.log(response)
+    }
+  });
 }

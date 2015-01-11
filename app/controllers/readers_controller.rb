@@ -6,6 +6,9 @@ class ReadersController < ApplicationController
 
   def create
     info = Reader.create_reader(reader_params)
+    if (info[:status] === 'success')
+      current_reader = login(email, password)
+    end
     render json: {msg: info[:msg], status: info[:status]}
   end
 
@@ -28,6 +31,10 @@ class ReadersController < ApplicationController
       @reader.update(reader_params)
       render json: { msg: "You have successfully updated your profile." }.to_json
     # end
+  end
+
+  def update_location
+    Reader.update_location(params)
   end
 
   def twitter_feed

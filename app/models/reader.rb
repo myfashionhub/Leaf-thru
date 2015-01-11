@@ -20,6 +20,36 @@ class Reader < ActiveRecord::Base
             },
             :on => :create
 
+  def self.create_reader(reader_params)
+    reader  = Reader.new(reader_params)
+    email    = reader_params[:email].downcase
+    password = reader_params[:password]
+
+    if Reader.find_by(email: email)
+      msg = "Email already taken."
+      status = 'error'
+      { msg: msg, status: status }
+    elsif Reader.validate_email(email) &&
+      Reader.validate_password(password) && reader.save
+      msg = 'Successfully signed up.'
+      status = 'success'
+      { msg: msg, status: status }
+    elsif Reader.validate_email(email) != true
+      Reader.validate_email(email)
+    elsif Reader.validate_password(password) != true
+      Reader.validate_password(password)
+    end
+  end
+
+  def self.update_location(params)
+    latitude  = params['latitude']
+    longitude = params['longitude']
+    puts Geocoder.search(
+      latitude: latitude.to_i,
+      longitude: longitude.to_i
+    )
+  end
+
   def self.twitter_feed(token, token_secret)
     tweets = Twitter.get_feed(token, token_secret)
     links = Twitter.collect_links(tweets)
@@ -37,28 +67,6 @@ class Reader < ActiveRecord::Base
   end
 
   # Helper methods
-  def self.create_reader(reader_params)
-    reader  = Reader.new(reader_params)
-    email    = reader_params[:email].downcase
-    password = reader_params[:password]
-
-    if Reader.find_by(email: email)
-      msg = "Email already taken."
-      status = 'error'
-      { msg: msg, status: status }
-    elsif Reader.validate_email(email) &&
-      Reader.validate_password(password) && reader.save
-        current_reader = login(email, password)
-      msg = 'Successfully signed up.'
-      status = 'success'
-      { msg: msg, status: status }
-    elsif Reader.validate_email(email) != true
-      Reader.validate_email(email)
-    elsif Reader.validate_password(password) != true
-      Reader.validate_password(password)
-    end
-  end
-
   def self.validate_password(password)
     if password.length >= 6 && password.length <= 20
       #password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
