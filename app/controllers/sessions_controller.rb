@@ -44,17 +44,19 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have successfully connected your Facebook account."
   end
 
-  def connect_pocket
-    code = PocketApi.connect
-    render json: code.to_json
+  def request_pocket
+    PocketApi.request
+    redirect_url = PocketApi.redirect
+    redirect_to redirect_url
   end
 
-  def log_pocket
-    data = PocketApi.log
-    current_reader.update(
-      pocket_token: data[:access_token],
-      pocket_username: data[:username]
-    )
+  def authorize_pocket
+    response = PocketApi.authorize
+    puts response
+    # current_reader.update(
+    #   pocket_token: data[:access_token],
+    #   pocket_username: data[:username]
+    # )
   end
 
   def logout_fb
