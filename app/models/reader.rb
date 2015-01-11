@@ -19,7 +19,6 @@ class Reader < ActiveRecord::Base
               wrong_length: "Password must be between 6-20 characters"
             },
             :on => :create
-  before_save :downcase_email
 
   def self.twitter_feed(token, token_secret)
     tweets = Twitter.get_feed(token, token_secret)
@@ -38,8 +37,26 @@ class Reader < ActiveRecord::Base
   end
 
   # Helper methods
-  def downcase_email
-    self.email.downcase!
+  def self.create_reader(reader_params)
+    reader  = Reader.new(reader_params)
+    email    = reader_params[:email].downcase
+    password = reader_params[:password]
+
+    if Reader.find_by(email: email)
+      msg = "Email already taken."
+      status = 'error'
+      { msg: msg, status: status }
+    elsif Reader.validate_email(email) &&
+      Reader.validate_password(password) && reader.save
+        current_reader = login(email, password)
+      msg = 'Successfully signed up.'
+      status = 'success'
+      { msg: msg, status: status }
+    elsif Reader.validate_email(email) != true
+      Reader.validate_email(email)
+    elsif Reader.validate_password(password) != true
+      Reader.validate_password(password)
+    end
   end
 
   def self.validate_password(password)

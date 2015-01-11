@@ -5,29 +5,8 @@ class ReadersController < ApplicationController
   end
 
   def create
-    @reader  = Reader.new(reader_params)
-    email    = params[:reader][:email]
-    password = params[:reader][:password]
-
-    if Reader.find_by(email: email)
-       msg = "Email already taken."
-       status = 'error'
-    elsif Reader.validate_email(email) &&
-      Reader.validate_password(password) && @reader.save
-        current_reader = login(email, password)
-      msg = 'Successfully signed up.'
-      status = 'success'
-    elsif Reader.validate_email(email) != true
-      info = Reader.validate_email(email)
-      msg    = info[:msg]
-      status = info[:status]
-    elsif Reader.validate_password(password) != true
-      info = Reader.validate_password(password)
-      msg    = info[:msg]
-      status = info[:status]
-    end
-
-    render json: { msg: msg, status: status }
+    info = Reader.create_reader(reader_params)
+    render json: {msg: info[:msg], status: info[:status]}
   end
 
   def destroy
