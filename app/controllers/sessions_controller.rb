@@ -45,8 +45,8 @@ class SessionsController < ApplicationController
   end
 
   def connect_pocket
-    url = PocketApi.connect
-    redirect_to url
+    code = PocketApi.connect
+    render json: code.to_json
   end
 
   def log_pocket
