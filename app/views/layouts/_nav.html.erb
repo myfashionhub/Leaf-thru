@@ -8,7 +8,7 @@
   <div class='location'>
     <big><%= formatted_date_time(Time.now) %></big></br>
     <small>
-    <% if current_reader.location %>
+    <% if current_reader && current_reader.location %>
       <%= current_reader.location %>
     <% end %>
     </small>

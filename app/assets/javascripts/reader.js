@@ -18,6 +18,7 @@ function signup(e) {
         notify(response.msg, 'error')
       } else {
         window.location.replace('/subscription');
+        updateLocation();
       }
     },
     error: function(response) {
@@ -42,7 +43,7 @@ function getLocation() {
   }
 }
 
-function updateLocation(latitude, longitude) {
+function updateLocation() {
   $.ajax({
     url: '/location',
     type: 'GET',
