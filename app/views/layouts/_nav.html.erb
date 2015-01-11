@@ -7,7 +7,11 @@
 
   <div class='location'>
     <big><%= formatted_date_time(Time.now) %></big></br>
-    <small>72 &deg;F, New York, NY</small>
+    <small>
+    <% if current_reader.location %>
+      <%= current_reader.location %>
+    <% end %>
+    </small>
   </div>
 
 

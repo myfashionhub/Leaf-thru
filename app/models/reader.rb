@@ -44,9 +44,9 @@ class Reader < ActiveRecord::Base
   def self.update_location(ip, id)
     geo = GeoIP.new("#{Rails.root}/db/GeoLiteCity.dat").city(ip)
     reader = Reader.find(id)
-    puts geo
     location = "#{geo.city_name}, #{geo.region_name}"
     reader.update(location: location)
+    location
   end
 
   def self.twitter_feed(token, token_secret)

@@ -35,8 +35,8 @@ class ReadersController < ApplicationController
 
   def update_location
     reader_id = current_reader.id
-    result = Reader.update_location(remote_ip, reader_id)
-    render json: { result: result }
+    location = Reader.update_location(remote_ip, reader_id)
+    render json: { ip: remote_ip, location: location }
   end
 
   def twitter_feed
