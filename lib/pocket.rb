@@ -4,7 +4,8 @@ module PocketApi
                 :access_token, :username
 
   def self.request
-    @callback_url = 'http://leafthru.nessanguyen.com/auth/pocket/callback'
+    # 'http://leafthru.nessanguyen.com/auth/pocket/callback'
+    @callback_url = 'http://127.0.0.1:3000/auth/pocket/callback'
     @consumer_key = ENV['LT_POCKET_KEY']
     url = 'https://getpocket.com/v3/oauth/request'
 

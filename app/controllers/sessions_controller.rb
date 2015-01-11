@@ -46,8 +46,7 @@ class SessionsController < ApplicationController
 
   def request_pocket
     PocketApi.request
-    redirect_url = PocketApi.redirect
-    redirect_to redirect_url
+    @pocket_url = PocketApi.redirect
   end
 
   def authorize_pocket
