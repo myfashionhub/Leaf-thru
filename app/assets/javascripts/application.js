@@ -28,6 +28,5 @@ $(document).ready(function() {
   $('#update-sub').click(updateSubscription);
   $('#update-profile').click(updateProfile);
 
-  hideNotice(); // For pages with erb notice
-})
+});
 

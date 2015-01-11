@@ -38,7 +38,7 @@ function loginToggle() {
 }
 
 function notify(msg, status) {
-  var div; console.log('notify')
+  var div;
   if (status === 'success') {
     div = $('.notify');
   } else if (status === 'error') {
@@ -49,12 +49,4 @@ function notify(msg, status) {
   setTimeout(function() {
     div.fadeOut();
   }, 3000);
-}
-
-function hideNotice() {
-  if ($('.notice').html() != '') {
-    setTimeout(function() {
-      $('.notice').fadeOut();
-    }, 3000);
-  }
 }
