@@ -57,7 +57,7 @@ GEM
     ffi (1.9.3)
     font-awesome-sass (4.1.0)
       sass (~> 3.2)
-    geocoder (1.2.4)
+    geoip (1.4.0)
     googleajax (1.0.1)
       json (>= 1.0.0)
     hashie (2.1.2)
@@ -222,7 +222,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   font-awesome-sass
-  geocoder
+  geoip
   googleajax
   httparty
   jbuilder (~> 2.0)

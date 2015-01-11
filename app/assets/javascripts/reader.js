@@ -1,6 +1,6 @@
 $(function() {
   $('.signup form').submit(signup);
-  getLocation();
+  //getLocation();
 });
 
 function signup(e) {
@@ -30,23 +30,22 @@ function getLocation() {
   var latitude, longitude;
   if (navigator.geolocation != undefined) {
     navigator.geolocation.getCurrentPosition(
-      updateLocation,
+      function(data) {
+        console.log(data.coords)
+        latitude = data.coords.latitude;
+        longitude = data.coords.longitude;
+        updateLocation(latitude, longitude);
+      },
       function(error) { console.log(error) },
       { timeout: 5000 }
     );
   }
 }
 
-function updateLocation(data) {
-  console.log(data.coords)
-  latitude = data.coords.latitude;
-  longitude = data.coords.longitude;
-
+function updateLocation(latitude, longitude) {
   $.ajax({
     url: '/location',
-    type: 'POST',
-    data: { 'latitude': latitude, 'longitude': longitude },
-    dateType: 'json',
+    type: 'GET',
     success: function(response) {
       console.log(response)
     },

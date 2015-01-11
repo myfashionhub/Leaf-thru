@@ -1,5 +1,4 @@
 module Alchemy
-
   def self.get_articles(links)
     # Queue up parse article requests
     hydra = Typhoeus::Hydra.new
@@ -39,11 +38,11 @@ module Alchemy
         text_end = text.index('.').to_i + 1 if text_end <= 60
         extract   = text[0, text_end]
       else
-        extract = ''  
+        extract = ''
       end
 
       title     = title['title'] || ''
-      url       = title['url'] || link[:url]       
+      url       = title['url'] || link[:url]
       shared_by = link[:shared_by]
 
     { title: title, url: url,
@@ -55,7 +54,7 @@ module Alchemy
 
   def self.filter_articles(articles)
     articles.delete_if do |article|
-      article[:url].empty? || article[:title].empty? || 
+      article[:url].empty? || article[:title].empty? ||
       article[:extract].length <= 30
     end
   end

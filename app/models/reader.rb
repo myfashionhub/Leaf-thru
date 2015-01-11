@@ -41,13 +41,12 @@ class Reader < ActiveRecord::Base
     end
   end
 
-  def self.update_location(params)
-    latitude  = params['latitude']
-    longitude = params['longitude']
-    puts Geocoder.search(
-      latitude: latitude.to_i,
-      longitude: longitude.to_i
-    )
+  def self.update_location(ip, id)
+    geo = GeoIP.new("#{Rails.root}/db/GeoLiteCity.dat").city(ip)
+    reader = Reader.find(id)
+    puts geo
+    location = "#{geo.city_name}, #{geo.region_name}"
+    reader.update(location: location)
   end
 
   def self.twitter_feed(token, token_secret)

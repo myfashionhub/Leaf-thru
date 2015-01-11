@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   get 'profile' => 'readers#profile', as: 'reader'
   post 'profile' => 'readers#update'
   get 'subscription' => 'readers#subscription'
-  post 'location' => 'readers#update_location'
+  get 'location' => 'readers#update_location'
 
   post 'sessions'=> 'sessions#create', as: 'sessions'
   get 'logout'  => 'sessions#destroy', as: 'logout'
 
   get 'auth/twitter/callback' => 'sessions#log_twitter'
   get 'auth/facebook/callback'=> 'sessions#log_facebook'
+  get 'auth/pocket/callback'=> 'sessions#log_pocket'
   get 'logout/facebook'       => 'sessions#logout_fb'
   get 'logout/twitter'        => 'sessions#logout_tw'
 

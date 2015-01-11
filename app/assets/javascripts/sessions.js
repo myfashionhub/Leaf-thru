@@ -13,6 +13,7 @@ function login(e) {
     dateType: 'json',
     success: function(response) {
       if (response.status === 'success') {
+        getLocation();
         window.location.replace('/profile');
       } else if (response.status === 'error') {
         notify(response.msg, 'error');

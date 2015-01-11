@@ -4,19 +4,8 @@ class SessionsController < ApplicationController
 
   def create
     reader = login(params[:email].downcase, params[:password])
-    if reader == nil
-      status = 'error'
-      if Reader.find_by(email: params[:email]) == nil
-        msg = 'There\'s no record of this email.'
-      else
-        msg = 'Password is incorrect.'
-      end
-    else
-      current_reader = reader
-      msg    = ''
-      status = 'success'
-    end
-    render json: { msg: msg, status: status }
+    info = Session.create_new(reader)
+    render json: {msg: info[:msg], status: info[:status]}
   end
 
   def destroy
@@ -34,7 +23,8 @@ class SessionsController < ApplicationController
       name:          data.info.name,
       image:         data.info.image,
       location:      data.info.location,
-      tagline:       data.info.description })
+      tagline:       data.info.description
+    })
     redirect_to '/profile'
     flash[:notice] = "You have successfully connected your Twitter account."
   end
@@ -46,9 +36,26 @@ class SessionsController < ApplicationController
       facebook_uid:   data.uid,
       name:   data.info.name,
       #email: data.info.email,
-      image:  data.info.image })
+      image:  data.info.image
+    })
     redirect_to '/profile'
     flash[:notice] = "You have successfully connected your Facebook account."
+  end
+
+  def pocket_connect
+    Pocket::Client.new
+    Pocket.configure do |config|
+      config.consumer_key = ENV['LT_POCKET_KEY']
+    end
+    session[:code] = Pocket.get_code(:redirect_uri => '/oauth/pocket/callback')
+    new_url = Pocket.authorize_url(:code => session[:code], :redirect_uri => CALLBACK_URL)
+    puts "new_url: #{new_url}"
+    puts "session: #{session}"
+    redirect new_url
+  end
+
+  def log_pocket
+    data = request.env['omniauth.auth']
   end
 
   def logout_fb
