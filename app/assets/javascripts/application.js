@@ -21,10 +21,5 @@ $(document).ready(function() {
     deleteArticle(e);
   });
 
-  // Profile page
-  getPublications();
-  $('#update-sub').click(updateSubscription);
-  $('#update-profile').click(updateProfile);
-
 });
 

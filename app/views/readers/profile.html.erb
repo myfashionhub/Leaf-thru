@@ -24,6 +24,17 @@
         Connect with Twitter
       </a>
     <% end %>
+    <% if @reader.pocket_token %>
+      <a href='/logout/pocket' id='unlink-pk'>
+        <i class="fa fa-book"></i>
+        Disconnect from Pocket
+      </a>
+    <% else %>
+      <a href="/auth/pocket">
+        <i class="fa fa-book"></i>
+        Connect with Pocket
+      </a>
+    <% end %>
   </div>
 
   <div class="profile-edit">
@@ -42,9 +53,3 @@
     <button id='update-profile'>Update profile</button>
   </div>
 </div>
-
-<script>
-  $(window).load(function() {
-    currentSubscription();
-  });
-</script>

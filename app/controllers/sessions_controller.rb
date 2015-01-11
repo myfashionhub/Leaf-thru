@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/pocket"
+
 class SessionsController < ApplicationController
   def new
   end
@@ -42,20 +44,17 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have successfully connected your Facebook account."
   end
 
-  def pocket_connect
-    Pocket::Client.new
-    Pocket.configure do |config|
-      config.consumer_key = ENV['LT_POCKET_KEY']
-    end
-    session[:code] = Pocket.get_code(:redirect_uri => '/oauth/pocket/callback')
-    new_url = Pocket.authorize_url(:code => session[:code], :redirect_uri => CALLBACK_URL)
-    puts "new_url: #{new_url}"
-    puts "session: #{session}"
-    redirect new_url
+  def connect_pocket
+    url = PocketApi.connect
+    redirect_to url
   end
 
   def log_pocket
-    data = request.env['omniauth.auth']
+    data = PocketApi.log
+    current_reader.update(
+      pocket_token: data[:access_token],
+      pocket_username: data[:username]
+    )
   end
 
   def logout_fb

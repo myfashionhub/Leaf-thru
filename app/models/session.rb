@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/pocket"
-
 class Session < ActiveRecord::Base
   def self.create_new(reader)
     if reader == nil
@@ -16,4 +14,5 @@ class Session < ActiveRecord::Base
     end
     { msg: msg, status: status }
   end
+
 end

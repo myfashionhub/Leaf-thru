@@ -20,10 +20,18 @@
     </div>
 
   </div>  <!-- subscription -->
+</div> <!-- end wrapper -->
+
 
 <script>
   // Style categories into columns
   $('.subscription label:nth-child(3n+1)').append($('<br/>'));
-</script>
 
-</div>
+  $(window).load(function() {
+    currentSubscription();
+    getPublications();
+
+    $('#update-sub').click(updateSubscription);
+    $('#update-profile').click(updateProfile);
+  });
+</script>
