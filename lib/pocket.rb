@@ -1,11 +1,13 @@
+require 'cgi'
+
 module PocketApi
   attr_accessor :consumer_key, :headers,
                 :callback_url, :request_token,
                 :access_token, :username
 
   def self.request
-    # 'http://127.0.0.1:3000/auth/pocket/callback'
-    @callback_url = 'http://leafthru.nessanguyen.com/auth/pocket/callback'
+    #@callback_url = 'http://leafthru.nessanguyen.com/auth/pocket/callback'
+    @callback_url = 'http://127.0.0.1:3000/auth/pocket/callback'
     @consumer_key = ENV['LT_POCKET_KEY']
     url = 'https://getpocket.com/v3/oauth/request'
 
@@ -20,17 +22,19 @@ module PocketApi
     }
 
     response = HTTParty.post(url, body: body, headers: @headers)
+    puts response['code']
     @request_token = response['code']
   end
 
   def self.redirect
     url = 'https://getpocket.com/auth/authorize?'
-    query = 'request_token='+@request_token+'&redirect_uri='+@callback_url
+    query = 'request_token='+ @request_token +
+    '&redirect_uri='+ @callback_url
     return url+query
   end
 
   def self.authorize
-    url = 'https://getpocket.com/auth/authorize?'
+    url = 'https://getpocket.com/auth/authorize'
     body = {
       'consumer_key' => @consumer_key,
       'code' => @request_token

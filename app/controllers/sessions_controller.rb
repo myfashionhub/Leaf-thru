@@ -47,6 +47,7 @@ class SessionsController < ApplicationController
   def request_pocket
     PocketApi.request
     @pocket_url = PocketApi.redirect
+    redirect_to @pocket_url
   end
 
   def authorize_pocket
@@ -56,6 +57,7 @@ class SessionsController < ApplicationController
     #   pocket_token: data[:access_token],
     #   pocket_username: data[:username]
     # )
+    redirect_to '/profile'
   end
 
   def logout_fb

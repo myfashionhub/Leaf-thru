@@ -24,4 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def hostname
+    request.host_with_port
+  end
 end
