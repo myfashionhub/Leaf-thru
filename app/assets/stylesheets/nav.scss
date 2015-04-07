@@ -31,9 +31,6 @@
       float: left;
       margin: 0 10px 0 0;
     }
-    span {
-      line-height: 1.4em;
-    }
     a {
       font-weight: bold;
     }
@@ -100,28 +97,35 @@
   background-color: #acc8dc;
 }
 
-/* How it works tooltip */
-.about {
-  position: relative;
-  a {
-    display: block;
-    padding: .4em 0 .7em 0;
+/* Reader profile */
+.profile {
+  .actions {
+    margin-top: .5em;
   }
-}
 
-.about .how-it-works {
-  width: 22em;
-  @include top-left(2em,0);
-  z-index: 1;
-  margin: 0; 
-  padding: 10px 5px 10px 25px;
-  background-color: rgba(255,255,255,.9);
-  border: 1px solid #ccc;
-  display: none;
-}
+  /* How it works tooltip */
+  .about {
+    position: relative;
+    a {
+      display: block;
+      padding: .4em 0 .7em 0;
+    }
+  } 
 
-.profile .about:hover {
-  .how-it-works {
-    display: block;
+  .about .how-it-works {
+    width: 22em;
+    @include top-left(2em,0);
+    z-index: 1;
+    margin: 0; 
+    padding: 10px 5px 10px 25px;
+    background-color: rgba(255,255,255,.9);
+    border: 1px solid #ccc;
+    display: none;
+  } 
+
+  .about:hover {
+    .how-it-works {
+      display: block;
+    }
   }
 }

@@ -24,24 +24,20 @@
       <% else %>
         <div class='greetings'>Hi, <%= current_reader.email %></div>
       <% end %>
+      <div class='actions'>
+        <a href="/feed">
+          <i class="fa fa-list-ul"></i>&nbsp;Latest News
+        </a> &nbsp;
+        <a href="/articles">
+          <i class="fa fa-bookmark"></i>&nbsp;Read Now
+        </a>
+      </div>      
     <% else %>
       <div class='greetings'>Hi, Reader</div>
       <div class='about'>
         <a href="/about">How it works</a>
         <%= render 'welcome/how_it_works' %>
       </div>
-    <% end %>
-    <br/>
-
-    <% if current_reader %>
-    <span>
-    <a href="/feed">
-      <i class="fa fa-list-ul"></i>&nbsp;Latest News
-    </a> &nbsp;
-    <a href="/articles">
-      <i class="fa fa-bookmark"></i>&nbsp;Read Now
-    </a>
-    </span>
     <% end %>
   </div>
 
@@ -64,13 +60,17 @@
     <li>
       <a href="/logout">Log out</a>
     </li>
-   <% end %>
+    <li>
+      <a href="/about">About Leafthru</a>
+    </li>
+   <% else %>
     <li>
       <a href="/">Sign Up/Log in</a>
     </li>
     <li>
       <a href="/about">About Leafthru</a>
     </li>
+    <% end %>
   </ul>
 
 
