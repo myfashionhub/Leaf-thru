@@ -28,6 +28,13 @@ $lime-green : #32CD32;
   left: $left;
 }
 
+@mixin form-style($label-width) {
+  label {
+    width: $label-width;
+    display: inline-block;
+  }
+}
+
 %spaced {
   line-height: 1.7em;
 }

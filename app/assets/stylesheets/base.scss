@@ -19,12 +19,18 @@ a {
   }
 }
 
-button {
+button, input {
   outline: none;
 }
 
 ul {
   line-height: 1.7em;
+}
+
+input {
+  padding: 3px 8px;
+  border: 1px solid transparent;
+  background-color: #fff; 
 }
 
 /* Styling classes */

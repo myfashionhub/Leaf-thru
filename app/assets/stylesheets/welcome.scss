@@ -13,12 +13,12 @@
 
   input[type='text'], input[type='password'] {
     margin: 10px auto;
-    background-color: transparent;
-    border: 0;
+    background-color: #fff;
+    border: 1px solid transparent;
   }
 
   input:hover, input:active, input:focus {
-    background-color: #fff;
+    border: 1px inset #e0e0e0;
   }
 
   input[type='submit'] {

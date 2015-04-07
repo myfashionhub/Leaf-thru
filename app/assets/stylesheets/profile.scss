@@ -127,27 +127,19 @@ h4.current { color: $lime-green; }
 }
 
 .profile-edit {
-  input {
-    border: 0;
-    background-color: transparent;
-    font-size: 1.1em;
-    padding: 3px 8px;
-    color: #333;
-
-    &:hover, &:active, &:focus {
-      background-color: #fff;
-      color: #5687a8;
+  form {
+    @include form-style(7em);
+    padding-left: 25px;
+    input {
+      width: 17em;
+      margin: 3px 0;
+      color: #666;
+      &:hover, &:active, &:focus {
+        color: #333;
+        border: 1px inset #e0e0e0;
+      }      
     }
   }
-
-  label {
-    width: 5em;
-  }
-
-  form {
-    padding-left: 25px;
-  }
-
 }
 
 .social, .profile-edit {
