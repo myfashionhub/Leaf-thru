@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     reader = login(params[:email].downcase, params[:password])
-    info = Session.create_new(reader)
+    info = Session.create_new(reader, params)
     render json: {msg: info[:msg], status: info[:status]}
   end
 

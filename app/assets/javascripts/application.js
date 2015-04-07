@@ -9,6 +9,9 @@ $(document).ready(function() {
   loginToggle();
   dropdownMenu();
 
+  // Log in
+  $('.login form').submit(login);
+
   // News feed
   $('.feed .fa-refresh').click(function(e) {
     var feed = $(e.target).parent().parent();

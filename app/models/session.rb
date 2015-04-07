@@ -1,5 +1,5 @@
 class Session < ActiveRecord::Base
-  def self.create_new(reader)
+  def self.create_new(reader, params)
     if reader == nil
       status = 'error'
       if Reader.find_by(email: params[:email]) == nil

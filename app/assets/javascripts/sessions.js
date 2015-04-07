@@ -1,7 +1,3 @@
-$(function() {
-  $('.login form').submit(login);
-});
-
 function login(e) {
   e.preventDefault();
   var email = $('.login #email').val(),
