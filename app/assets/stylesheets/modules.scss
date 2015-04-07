@@ -1,0 +1,25 @@
+@import 'main';
+
+/* NOTICE MESSAGE */
+.alert, .notify {
+  display: none;
+  width: 96%;
+  margin: 20px auto;
+  padding: 10px 0 10px 20px;
+  border-radius: 3px;
+}
+
+.notify {
+  background-color: rgba(173,216,230, 0.3);
+  border: 1px solid rgba(50,205,50, 0.6);
+}
+
+.notice {
+  background-color: rgba(173,216,230, 0.3);
+  border: 1px solid rgba(173,216,230, 0.6);
+}
+
+.alert {
+  background-color: rgba(253,201,122, 0.4);
+  border: 1px solid rgba(253,201,122, 0.7);
+}

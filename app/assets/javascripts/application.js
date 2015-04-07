@@ -8,7 +8,6 @@ $(document).ready(function() {
   // Navigation
   loginToggle();
   dropdownMenu();
-  howItWorks();
 
   // News feed
   $('.feed .fa-refresh').click(function(e) {

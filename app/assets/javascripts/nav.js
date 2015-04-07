@@ -10,19 +10,6 @@ function dropdownMenu() {
   });
 }
 
-function howItWorks() {
-  $('.tooltip').hide();
-
-  $('.works').hover(
-    function() {
-      $('.tooltip').show();
-    },
-    function() {
-      $('.tooltip').hide();
-    }
-  );
-}
-
 function loginToggle() {
   $('.signup').hide();
   $('#login').addClass('current');

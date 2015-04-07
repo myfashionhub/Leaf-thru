@@ -7,19 +7,13 @@
 
 @import 'main';
 
+/* MAIN LAYOUT */
+
 body {
   overflow: auto;
   margin: 0;
-  color: #444;
-  font-family: 'Helvetica';
-  font-size: 16px;
   background-color: #f5f5f5;
   min-height: 100%;
-}
-
-
-h1, h2, h3, h4, h5 {
-  font-family: 'Hammersmith One';
 }
 
 .wrapper {
@@ -36,55 +30,4 @@ h1, h2, h3, h4, h5 {
     width: 95%;
     margin: 0 2.5%;
   }
-
-  /* About page */
-  ul {
-    line-height: 2em;
-  }
-  .center {
-    text-align: center;
-    line-height: 1.7em;
-  }
-}
-
-a {
-  text-decoration: none;
-  color: $dark-blue;
-}
-a:hover {
-  color: limegreen;
-  text-decoration: none;
-}
-
-button {
-  outline: none;
-}
-
-/* NOTICE MESSAGE */
-.alert, .notify {
-  display: none;
-  width: 96%;
-  margin: 20px auto;
-  padding: 10px 0 10px 20px;
-  border-radius: 3px;
-}
-
-.notify {
-  background-color: rgba(173,216,230, 0.3);
-  border: 1px solid rgba(50,205,50, 0.6);
-}
-
-.notice {
-  background-color: rgba(173,216,230, 0.3);
-  border: 1px solid rgba(173,216,230, 0.6);
-}
-
-.alert {
-  background-color: rgba(253,201,122, 0.4);
-  border: 1px solid rgba(253,201,122, 0.7);
-}
-
-/* Functional class */
-.hide {
-  display: none;
 }

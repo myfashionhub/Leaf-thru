@@ -1,0 +1,42 @@
+@import 'main';
+
+body {
+  color: #444;
+  font-family: 'Helvetica';
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Hammersmith One';
+}
+
+a {
+  text-decoration: none;
+  color: $dark-blue;
+  &:hover {
+    color: limegreen;
+    text-decoration: none;    
+  }
+}
+
+button {
+  outline: none;
+}
+
+ul {
+  line-height: 1.7em;
+}
+
+/* Styling classes */
+.spaced {
+  line-height: 1.7em;
+}
+.center {
+  text-align: center;
+}
+
+
+/* State class */
+.hide {
+  display: none;
+}

@@ -40,7 +40,7 @@
 
 #signup:hover, #login:hover {
   cursor: pointer;
-  color: limegreen;
+  color: $lime-green;
 }
 
 .form-wrapper {
@@ -48,17 +48,4 @@
   display: block;
   margin: 6% auto 0 auto;
   text-align: center;
-}
-
-.tooltip {
-  width: 400px;
-  background-color: rgba(255,255,255,.9);
-  position: absolute;
-  z-index: 1;
-  left: 25%;
-  top: 13%;
-  border-radius: 7px;
-  @media (max-width: 600px) {
-    left: 5%;
-  }
 }

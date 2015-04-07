@@ -15,3 +15,15 @@ $lime-green : #32CD32;
     cursor: pointer;
   }
 }
+
+@mixin top-right($top,$right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin top-left($top,$left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}

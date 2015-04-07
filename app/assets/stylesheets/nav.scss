@@ -1,10 +1,10 @@
-/* NAV DROP DOWN */
+/* MENU BAR AND NAVIGATION */
 @import 'main';
 
 .menu {
   width: 100%;
   background-color: $light-blue;
-  overflow: auto;
+  overflow: visible;
   color: #444;
   padding: 10px;
 
@@ -72,12 +72,11 @@
   }
 }
 
+/* Drop down nav */
 .nav {
   width: 220px;
-  position: absolute;
+  @include top-right(60px,10px);
   z-index: 1;
-  right: 10px;
-  top: 60px;
   display: none;
   padding: 0px;
   text-align: right;
@@ -87,13 +86,12 @@
 .nav li {
   display: block;
   padding: 8px 20px 8px 10px;
-  border-top: 1px solid #fff;
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border: 1px solid #fff;
+  border-bottom: none;
   a {
-  display: block;
-  color: #444;
-  text-decoration: none;
+    display: block;
+    color: #444;
+    text-decoration: none;
   }
 }
 
@@ -101,3 +99,24 @@
   background-color: #acc8dc;
 }
 
+/* How it works tooltip */
+.about {
+  position: relative;
+}
+
+.about .how-it-works {
+  width: 22em;
+  @include top-left(1.3em,0);
+  z-index: 1;
+  margin: 0; 
+  padding: 10px 5px 10px 25px;
+  background-color: rgba(255,255,255,.9);
+  border: 1px solid #ccc;
+  display: none;
+}
+
+.profile .about:hover {
+  .how-it-works {
+    display: block;
+  }
+}
