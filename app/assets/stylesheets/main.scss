@@ -16,6 +16,13 @@ $lime-green : #32CD32;
   }
 }
 
+@mixin link-colors($color,$color-hover) {
+  color: $color;
+  &:hover {
+    color: $color-hover;
+  }
+}
+
 @mixin top-right($top,$right) {
   position: absolute;
   top: $top;
@@ -37,4 +44,11 @@ $lime-green : #32CD32;
 
 %spaced {
   line-height: 1.7em;
+}
+
+%active-display {
+  display: none;
+  &.active {
+    display: block;
+  }
 }

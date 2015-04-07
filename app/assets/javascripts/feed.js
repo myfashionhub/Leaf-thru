@@ -4,10 +4,14 @@ function loadRssFeeds() {
     type: 'GET',
     dataType: 'json',
     success: function(data) {
-      $('.rss .content').children().fadeOut('slow').remove();
-      setTimeout(function() {
-        displayRssArticle(data);
-      }, 300);
+      $('.rss .loader').removeClass('active');
+      if (data.length === 0) {
+        $('.no-rss').addClass('active');
+      } else {
+        setTimeout(function() {
+          displayRssArticle(data);
+        }, 300);
+      }
     }
   });
 }
@@ -104,10 +108,10 @@ function addActionButtons() {
 
 function refreshFeed(feedName) {
   if (feedName.indexOf('rss') > -1) {
-    $('.rss .content').html($('#loader').clone());
+    $('.rss .loader').addClass('active');
     loadRssFeeds();
   } else if (feedName.indexOf('twitter') > -1) {
-    $('.twitter .content').html($('#loader').clone());
+    $('.twitter .loader').addClass('active');
     twitterFeed();
   }
 }

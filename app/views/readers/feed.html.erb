@@ -1,6 +1,7 @@
 <script>
   $(document).ready(function() {
     $('.notice').css({'position': 'absolute', 'top': '75px'}).hide();
+    $('.loader').addClass('active');
     loadRssFeeds();
     twitterFeed();
   })
@@ -15,7 +16,11 @@
   <h2>RSS feed <i class="fa fa-refresh"></i></h2>
 
   <div class="content">
-    <img src="assets/loader2.gif" alt="" id='loader' />
+    <p class='no-rss'>
+      <a href='/subscription'><b>Subscribe to RSS feeds</b></a> to get updates.
+    </p>
+  
+    <img src="assets/loader2.gif" alt="" class='loader' />
   </div>
 </div>
 
@@ -29,7 +34,7 @@
       <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
     </p>
   <% else %>
-    <img src="assets/loader2.gif" alt="" id='loader' />
+    <img src="assets/loader2.gif" alt="" class='loader' />
   <% end %>
   </div>
 </div>

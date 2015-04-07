@@ -9,10 +9,10 @@
 
 .rss {
   a {
-    color: limegreen;
+    @include link-colors(limegreen,#5687a8);
   }
-  a:hover {
-    color: #5687a8;
+  .no-rss {
+    @extend %active-display;
   }
 }
 
@@ -40,10 +40,10 @@
   }
 }
 
-#loader {
+.loader {
   width: 120px;
-  display: block;
   margin: 10px auto;
+  @extend %active-display;
 }
 
 .article {
