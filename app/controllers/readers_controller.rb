@@ -7,9 +7,9 @@ class ReadersController < ApplicationController
   def create
     info = Reader.create_reader(reader_params)
     if (info[:status] === 'success')
-      current_reader = login(email, password)
+      current_reader = login(reader_params['email'], reader_params['password'])
     end
-    render json: {msg: info[:msg], status: info[:status]}
+    render json: { msg: info[:msg], status: info[:status] }
   end
 
   def destroy
