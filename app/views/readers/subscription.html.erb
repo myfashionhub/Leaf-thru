@@ -1,37 +1,9 @@
 <div class="wrapper">
   <%= render 'layouts/message' %>
 
-  <div class="subscription">
-    <h3>Customize your news subscriptions</h3>
-    <p>Choose a category to view publications. Drag and drop or click on the <i class="fa fa-times"></i> to add publication to Your Subscriptions.</p>
+  <%= render 'rss_subs' %>
 
-    <div class="categories"></div>
+  <%= render 'social_accounts' %>
 
-    <div class="current-sub">
-      <h4>Your subscriptions:</h4>
-      <ul></ul>
-
-      <button id='update-sub'>Update subscriptions</button>
-    </div>
-
-    <div class="publications">
-      <h4>Publications in this category:</h4>
-      <div></div>
-    </div>
-
-  </div>  <!-- subscription -->
-</div> <!-- end wrapper -->
-
-
-<script>
-  // Style categories into columns
-  $('.subscription label:nth-child(3n+1)').append($('<br/>'));
-
-  $(window).load(function() {
-    currentSubscription();
-    getPublications();
-
-    $('#update-sub').click(updateSubscription);
-    $('#update-profile').click(updateProfile);
-  });
-</script>
+  <%= render 'profile_edit' %>
+</div> 

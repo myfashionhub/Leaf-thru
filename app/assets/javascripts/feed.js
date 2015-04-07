@@ -113,3 +113,10 @@ function refreshFeed(feedName) {
     twitterFeed();
   }
 }
+
+function fixImageLinks() {
+  var images = $('img');
+  for (var i=0; i < images.length; i++) {
+    images[0]
+  }
+}

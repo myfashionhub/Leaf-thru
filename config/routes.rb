@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   resources :subscriptions, only: [:create, :index]
 
   post 'readers'=> 'readers#create'
-  get 'profile' => 'readers#profile', as: 'reader'
   post 'profile' => 'readers#update'
-  get 'subscription' => 'readers#subscription'
+  get 'subscription' => 'readers#subscription', as: 'reader'
   get 'location' => 'readers#update_location'
 
   post 'sessions'=> 'sessions#create', as: 'sessions'

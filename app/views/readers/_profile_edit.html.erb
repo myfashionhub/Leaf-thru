@@ -1,0 +1,16 @@
+<div class="profile-edit">
+  <h3>Edit profile</h3>  
+
+  <%= form_for @reader do |f| %>
+    <%= f.label :email, "Email:" %>
+    <%= f.text_field :email %><br/>
+    <%= f.label :password, "Password:" %>
+    <%= f.password_field :password %> <br/>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name %> <br/>
+    <%= f.label :image, "Profile pic:" %>
+    <%= f.text_field :image %><br/>
+  <% end %>
+  
+  <button id='update-profile'>Update profile</button>
+</div>
