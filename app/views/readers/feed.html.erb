@@ -2,15 +2,26 @@
   $(document).ready(function() {
     $('.notice').css({'position': 'absolute', 'top': '75px'}).hide();
     $('.loader').addClass('active');
-    loadRssFeeds();
-    twitterFeed();
-  })
+
+    <% if current_reader.twitter_token == nil %>
+      $('.no-twitter').addClass('active');
+      $('.twitter .loader').removeClass('active');
+      $('.twitter .fa-refresh').addClass('hide');
+    <% else %>
+      twitterFeed();
+    <% end %>
+
+    <% if current_reader.subscriptions.length == 0 %>
+      $('.no-rss').addClass('active');
+      $('.rss .loader').removeClass('active'); 
+      $('.rss .fa-refresh').addClass('hide');   
+    <% else %>
+      loadRssFeeds();
+    <% end %>
+  });
 </script>
 
 <div class="notice"></div>
-<div class="hide">
-  <img src="assets/loader2.gif" alt="" id='loader'/>
-</div>
 
 <div class="rss feed" >
   <h2>RSS feed <i class="fa fa-refresh"></i></h2>
@@ -21,6 +32,8 @@
     </p>
   
     <img src="assets/loader2.gif" alt="" class='loader' />
+
+    <p class='error'>Unable to fetch RSS feed.</p>
   </div>
 </div>
 
@@ -29,12 +42,12 @@
   <h2>Social feed <i class="fa fa-refresh"></i></h2>
 
   <div class="content">
-  <% if current_reader.twitter_token == nil %>
     <p class='no-twitter'>
       <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
     </p>
-  <% else %>
+
     <img src="assets/loader2.gif" alt="" class='loader' />
-  <% end %>
+
+    <p class='error'>Unable to fetch articles at this time.</p>
   </div>
 </div>

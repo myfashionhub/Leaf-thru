@@ -4,7 +4,7 @@ function loadRssFeeds() {
     type: 'GET',
     dataType: 'json',
     success: function(data) {
-      $('.rss .loader').removeClass('active');
+      $('.rss .active').removeClass('active');
       if (data.length === 0) {
         $('.no-rss').addClass('active');
       } else {
@@ -46,11 +46,11 @@ function twitterFeed() {
   $.ajax({
     url     : '/twitter',
     dataType: 'json',
-    success : function(data){
+    success : function(data) {
+      $('.twitter .active').removeClass('active');
       if (data.length === 0) {
-        errorLoadingFeed('.twitter .content', 'Unable to obtain articles at this time.');        
+        $('.twitter .error').addClass('active');        
       } else {
-        $('.twitter .content').children().fadeOut('slow').remove();
         setTimeout(function() {
             displaySocialArticle(data);
         }, 300);
@@ -58,9 +58,7 @@ function twitterFeed() {
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(errorThrown);
-      if ($('.twitter .content').children().first().hasClass('no-twitter') === false) {
-        errorLoadingFeed('.twitter .content', 'Unable to obtain articles at this time.');
-      }               
+      $('.twitter .error').addClass('active');
     }
   });
 }
@@ -114,9 +112,4 @@ function refreshFeed(feedName) {
     $('.twitter .loader').addClass('active');
     twitterFeed();
   }
-}
-
-function errorLoadingFeed(parentDiv, msg) {
-  $(parentDiv).children().fadeOut('slow').remove();
-  $(parentDiv).append('<p>'+msg+'</p>').hide().fadeIn();  
 }

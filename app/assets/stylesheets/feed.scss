@@ -1,28 +1,6 @@
 @import 'main';
 
 /* FEED */
-.twitter, .rss {
-  width: 45%;
-  float: left;
-  margin: 20px 3% 30px 2%;
-}
-
-.rss {
-  a {
-    @include link-colors(limegreen,#5687a8);
-  }
-  .no-rss {
-    @extend %active-display;
-  }
-}
-
-.twitter {
-  a {
-    color: #5687a8;
-    text-decoration: none;
-  }
-}
-
 .feed {
   h3 {
     font-size: 1.3em;
@@ -40,10 +18,32 @@
   }
 }
 
+.twitter, .rss {
+  width: 45%;
+  float: left;
+  margin: 20px 3% 30px 2%;
+}
+
+.rss {
+  a {
+    @include link-colors(limegreen,#5687a8);
+  }
+}
+
+.twitter {
+  a {
+    color: #5687a8;
+    text-decoration: none;
+  }
+}
+
+.no-twitter, .no-rss, .loader, .error {
+  @extend %active-display;
+}
+
 .loader {
   width: 120px;
   margin: 10px auto;
-  @extend %active-display;
 }
 
 .article {
