@@ -18,22 +18,29 @@
   }
 }
 
-.twitter, .rss {
-  width: 45%;
-  float: left;
-  margin: 20px 3% 30px 2%;
-}
+.feed {
+  &.twitter, &.rss {
+    width: 48%;
+    float: left;
+    margin: 20px 0 30px 2%;
+  }  
 
-.rss {
-  a {
-    @include link-colors(limegreen,#5687a8);
+  &.rss {
+    a {
+      @include link-colors(limegreen,#5687a8);
+    }
+  } 
+
+  &.twitter {
+    a {
+      color: #5687a8;
+      text-decoration: none;
+    }
   }
-}
-
-.twitter {
-  a {
-    color: #5687a8;
-    text-decoration: none;
+  .content {
+    height: 80vh;
+    overflow: auto;
+    padding-right: 5px;
   }
 }
 
