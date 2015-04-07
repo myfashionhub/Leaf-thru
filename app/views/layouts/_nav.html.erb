@@ -20,16 +20,16 @@
         <img src="<%= current_reader.image %>" alt="profile-image" />
       <% end %>
       <% if current_reader.name %>
-        <span>Hi, <%= current_reader.name %></span>
+        <div class='greetings'>Hi, <%= current_reader.name %></div>
       <% else %>
-        <span>Hi, <%= current_reader.email %></span>
+        <div class='greetings'>Hi, <%= current_reader.email %></div>
       <% end %>
     <% else %>
-      <span>Hi, Reader</span><br/>
-      <span class='about'>
+      <div class='greetings'>Hi, Reader</div>
+      <div class='about'>
         <a href="/about">How it works</a>
         <%= render 'welcome/how_it_works' %>
-      </span>
+      </div>
     <% end %>
     <br/>
 
@@ -65,6 +65,9 @@
       <a href="/logout">Log out</a>
     </li>
    <% end %>
+    <li>
+      <a href="/">Sign Up/Log in</a>
+    </li>
     <li>
       <a href="/about">About Leafthru</a>
     </li>
