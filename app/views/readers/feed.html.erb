@@ -13,8 +13,8 @@
 
     <% if current_reader.subscriptions.length == 0 %>
       $('.no-rss').addClass('active');
-      $('.rss .loader').removeClass('active'); 
-      $('.rss .fa-refresh').addClass('hide');   
+      $('.rss .loader').removeClass('active');
+      $('.rss .fa-refresh').addClass('hide');
     <% else %>
       loadRssFeeds();
     <% end %>
@@ -28,9 +28,9 @@
 
   <div class="content">
     <p class='no-rss'>
-      <a href='/subscription'><b>Subscribe to RSS feeds</b></a> to get updates.
+      <a href='/subscription#rss'><b>Subscribe to RSS feeds</b></a> to get updates.
     </p>
-  
+
     <img src="assets/loader2.gif" alt="" class='loader' />
 
     <p class='error'>Unable to fetch RSS feed.</p>
@@ -43,7 +43,7 @@
 
   <div class="content">
     <p class='no-twitter'>
-      <a href='/profile'><b>Connect your Twitter account</b></a> to get updates.
+      <a href='/subscription#social'><b>Connect your Twitter account</b></a> to get updates.
     </p>
 
     <img src="assets/loader2.gif" alt="" class='loader' />
