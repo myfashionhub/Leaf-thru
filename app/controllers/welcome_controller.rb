@@ -1,6 +1,10 @@
 class WelcomeController < ApplicationController
   def index
-    @reader = Reader.new
+    if current_user 
+      redirect_to '/feed'
+    else   
+      @reader = Reader.new
+    end  
   end
 
   def about
