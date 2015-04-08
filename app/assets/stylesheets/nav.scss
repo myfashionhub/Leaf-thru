@@ -71,30 +71,31 @@
 }
 
 /* Drop down nav */
-.nav {
-  width: 220px;
-  @include top-right(60px,10px);
-  z-index: 1;
-  display: none;
-  padding: 0px;
-  text-align: right;
-  background-color: #D0E0EB;
-}
-
-.nav li {
-  display: block;
-  padding: 8px 20px 8px 10px;
-  border: 1px solid #fff;
-  border-bottom: none;
-  a {
-    display: block;
-    color: #444;
-    text-decoration: none;
+.menu {
+  .nav {
+    width: 220px;
+    @include top-right(60px,10px);
+    z-index: 1;
+    background-color: #D0E0EB;
+    padding: 0px;
+    text-align: right;
+    display: none;
   }
-}
 
-.nav li:hover {
-  background-color: #acc8dc;
+  .nav li {
+    display: block;
+    padding: 8px 20px 8px 10px;
+    border: 1px solid #fff;
+    border-bottom: none;
+    a {
+      display: block;
+      color: #444;
+      text-decoration: none;
+    }
+    &:hover {
+      background-color: #acc8dc;
+    }
+  }
 }
 
 /* Reader profile */
@@ -110,18 +111,18 @@
       display: block;
       padding: .4em 0 .7em 0;
     }
-  } 
+  }
 
   .about .how-it-works {
     width: 22em;
     @include top-left(2em,0);
     z-index: 1;
-    margin: 0; 
+    margin: 0;
     padding: 10px 5px 10px 25px;
     background-color: rgba(255,255,255,.9);
     border: 1px solid #ccc;
     display: none;
-  } 
+  }
 
   .about:hover {
     .how-it-works {
