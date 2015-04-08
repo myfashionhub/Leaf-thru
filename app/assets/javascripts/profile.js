@@ -137,7 +137,7 @@ function profileTab() {
         social : 'social',
         edit   : 'profile-edit'
       };
-
+  if (hash === '') { hash = '#rss'; }
   $('.profile .nav a').filter(function() {
     return $(this).attr('href') === hash;
   }).addClass('current');
