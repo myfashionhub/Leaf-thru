@@ -16,7 +16,7 @@ class ReadersController < ApplicationController
     @reader = Reader.find(current_reader.id)
   end
 
-  def subscription
+  def profile
     @reader = current_reader
     @publications = Publication.all
     @subscription = Subscription.new

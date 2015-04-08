@@ -10,7 +10,7 @@ function login(e) {
     success: function(response) {
       if (response.status === 'success') {
         updateLocation();
-        window.location.replace('/subscription#rss');
+        window.location.replace('/profile#rss');
       } else if (response.status === 'error') {
         notify(response.msg, 'error');
       }

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post 'readers'=> 'readers#create'
   post 'profile' => 'readers#update'
-  get 'subscription' => 'readers#subscription', as: 'reader'
+  get 'profile' => 'readers#profile', as: 'reader'
   get 'location' => 'readers#update_location'
 
   post 'sessions'=> 'sessions#create', as: 'sessions'
