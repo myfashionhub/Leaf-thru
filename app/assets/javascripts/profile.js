@@ -128,3 +128,26 @@ function removeSubscription() {
     pubLi.remove();
   });
 }
+
+function profileTab() {
+  $('.profile section').hide();
+  var hash = window.location.hash,
+      dict = {
+        rss    : 'subscription',
+        social : 'social',
+        edit   : 'profile-edit'
+      };
+
+  $('.profile .nav a').filter(function() {
+    return $(this).attr('href') === hash;
+  }).addClass('current');
+
+  var hash = hash.replace('#','');
+  $('.profile .'+dict[hash]).show();
+
+  $('.profile .nav').click(function(e) {
+    $('.profile .nav .current').removeClass('current');
+    $(e.target).addClass('current');
+    setTimeout(function() { profileTab(); }, 300);
+  });
+}

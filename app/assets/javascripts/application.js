@@ -12,6 +12,9 @@ $(document).ready(function() {
   // Log in
   $('.login form').submit(login);
 
+  // Profile page
+  profileTab();
+
   // News feed
   $('.feed .fa-refresh').click(function(e) {
     var feed = $(e.target).parent().parent();
