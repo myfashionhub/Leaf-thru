@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       location:      data.info.location,
       tagline:       data.info.description
     })
-    redirect_to '/profile#social'
+    redirect_to '/feed'
     flash[:notice] = "You have successfully connected your Twitter account."
   end
 
