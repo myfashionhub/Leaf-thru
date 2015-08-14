@@ -1,31 +1,33 @@
 <section class="subscription">
   <h3>Customize your news subscriptions</h3>
-  <p>Choose a category to view publications. Drag and drop or click on the <i class="fa fa-times"></i> to add publication to Your Subscriptions.</p>
+  
+  <p>Choose a category to view publications. Click on <i class="fa fa-plus"></i> to add and <i class="fa fa-times"></i> to remove publication in your subscriptions.</p>
 
-  <div class="categories"></div>
+  <div class="categories-wrapper">
+    <h4>All categories</h4>
+    <ul class="categories"></ul>
+  </div>
+
+  <div class="publications">
+    <h4>Publications</h4>
+    <div></div>
+  </div>
+
 
   <div class="current-sub">
-    <h4>Your subscriptions:</h4>
+    <h4>Your subscriptions</h4>
     <ul></ul>
 
     <button id='update-sub'>Update subscriptions</button>
   </div>
 
-  <div class="publications">
-    <h4>Publications in this category:</h4>
-    <div></div>
-  </div>
-
 </section>
 
 <script>
-  // Style categories into columns
-  $('.subscription label:nth-child(3n+1)').append($('<br/>'));
-
   $(window).load(function() {
     currentSubscription();
     getPublications();
-
+    $('nav li a').first().addClass('current');
     $('#update-sub').click(updateSubscription);
     $('#update-profile').click(updateProfile);
   });

@@ -26,21 +26,27 @@
   margin: 0 0 1em 0;
   line-height: 1.7em;
   overflow: auto;
+
   input[type='submit']:focus {
     border: 0;
   }
+  
   ul {
     list-style-type: none;
   }
+
+  h4 { font-size: 1.2em; }
 }
 
+.categories-wrapper,
 .current-sub,
 .publications {
+  width: 30%;
   float: left;
   h4 {
     margin: 0;
-    font-size: 1em;
     color: #444;
+    text-align: center;
   }
   ul {
     margin: .2em 0 2em 0;
@@ -48,11 +54,8 @@
 }
 
 .current-sub {
-  width: 40%;
-  margin: 0 3% 0 7%;
-  min-height: 315px;
   ul {
-    height: 100%;
+    min-height: 250px;
   }
   .fa-times {
     margin: 0 0 0 .3em;
@@ -61,8 +64,7 @@
 }
 
 .publications {
-  width: 40%;
-  margin: 0 4% 0 0;
+  margin-right: 3%;  
   .ui-draggable {
     @include hover;
   }
@@ -71,28 +73,30 @@
   }
 }
 
-.categories {
-  width: 75%;
-  min-width: 600px;
+
+.categories-wrapper {
+  margin-right: 3%;  
+}
+.categories { /* Category list */
+  width: 100%;
   overflow: auto;
   margin: 0 auto 1.6em auto;
+
   .category {
-    float: left;
-    width: 12em;
-  }
-  h4 {
-    color: $medium-blue2;
-    font-size: 1.1em;
-    margin: 0;
-    width: 11em;
-    &:hover {
-      cursor: pointer;
-      color: $lime-green;
+    h4 {
+      text-align: left;
+      color: $medium-blue2;
+      font-size: 1.1em;
+      margin: 0;
+      &:hover, &.current {
+        cursor: pointer;
+        color: $lime-green;
+      }
     }
   }
 }
 
-h4.current { color: $lime-green; }
+
 
 #update-sub {
   margin: .5em auto;
