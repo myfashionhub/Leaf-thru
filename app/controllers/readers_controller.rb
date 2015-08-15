@@ -51,6 +51,7 @@ class ReadersController < ApplicationController
   end
 
   def feed
+    @reader = current_reader
   end
 
   private
