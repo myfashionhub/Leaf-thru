@@ -17,7 +17,7 @@ function signup(e) {
       if (response.status === 'error') {
         notify(response.msg, 'error')
       } else {
-        window.location.replace('/profile');
+        window.location.replace('/feed');
         updateLocation();
       }
     },

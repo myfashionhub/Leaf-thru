@@ -67,7 +67,11 @@ class SessionsController < ApplicationController
   end
 
   def logout_tw
-    current_reader.update(twitter_token: nil, twitter_token_secret: nil, twitter_handle: nil)
+    current_reader.update(
+      twitter_token: nil, 
+      twitter_token_secret: nil, 
+      twitter_handle: nil
+    )
     redirect_to '/profile#social'
     flash[:notice] = "You have disconnected your Twitter account."
   end

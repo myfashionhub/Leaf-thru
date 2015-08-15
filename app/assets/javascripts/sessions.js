@@ -2,6 +2,7 @@ function login(e) {
   e.preventDefault();
   var email = $('.login #email').val(),
       password = $('.login #password').val();
+
   $.ajax({
     url: '/sessions',
     type: 'POST',
@@ -10,7 +11,7 @@ function login(e) {
     success: function(response) {
       if (response.status === 'success') {
         updateLocation();
-        window.location.replace('/profile#rss');
+        window.location.replace('/feed');
       } else if (response.status === 'error') {
         notify(response.msg, 'error');
       }
