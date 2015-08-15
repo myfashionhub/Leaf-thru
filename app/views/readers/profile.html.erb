@@ -1,16 +1,8 @@
-<div class="wrapper profile">
-  <ul class='nav'>
-    <li>
-      <a href="#rss">RSS subscriptions</a>
-    </li>
-    <li>
-      <a href="#social">Social accounts</a>
-    </li>
-    <li>
-      <a href="#edit">Edit profile</a>
-    </li>
-  </ul>
-
+<div class="dialog profile">
+  <div class="close">
+    <i class="fa fa-times"></i>
+  </div>
+  
   <%= render 'layouts/message' %>
 
   <%= render 'rss_subs' %>
@@ -18,4 +10,7 @@
   <%= render 'social_accounts' %>
 
   <%= render 'profile_edit' %>
+
 </div>
+
+<div class="overlay"></div>

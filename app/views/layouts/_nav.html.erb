@@ -24,6 +24,7 @@
       <% else %>
         <div class='greetings'>Hi, <%= current_reader.email %></div>
       <% end %>
+
       <div class='actions'>
         <a href="/feed">
           <i class="fa fa-list-ul"></i>&nbsp;Latest News
@@ -31,7 +32,8 @@
         <a href="/articles">
           <i class="fa fa-bookmark"></i>&nbsp;Read Now
         </a>
-      </div>      
+      </div>
+            
     <% else %>
       <div class='greetings'>Hi, Reader</div>
       <div class='about'>
@@ -49,8 +51,11 @@
   <ul class="nav">
   <% if current_reader %>
     <li>
-      <a href="/profile">Edit Profile/Subscriptions</a>
-    </li>  
+      <a href="#rss">Customize feed</a>
+    </li>
+    <li>
+      <a href="#social">Connect social</a>
+    </li>
     <li>
         <a href="/leafers">What friends are reading</a>
     </li>
