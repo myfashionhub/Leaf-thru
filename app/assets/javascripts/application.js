@@ -12,9 +12,6 @@ $(document).ready(function() {
   // Log in
   $('.login form').submit(login);
 
-  // Profile page
-  profileTab();
-
   // News feed
   $('.feed .fa-refresh').click(function(e) {
     var feed = $(e.target).parent().parent();
@@ -25,6 +22,8 @@ $(document).ready(function() {
   $('.delete').click(function(e) {
     deleteArticle(e);
   });
+
+  var profileDialog = new Dialog($('.dialog.profile'));
 
 });
 
