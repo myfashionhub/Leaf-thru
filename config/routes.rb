@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create, :index]
 
-  post 'readers'=> 'readers#create'
+  resources :readers, only: [:create, :update]
   post 'profile' => 'readers#update'
-  get 'profile' => 'readers#profile', as: 'reader'
+  get 'profile' => 'readers#profile'
   get 'location' => 'readers#update_location'
 
   post 'sessions'=> 'sessions#create', as: 'sessions'
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get 'logout/twitter'        => 'sessions#logout_tw'
 
   get 'about'   => 'welcome#about'
-  get 'twitter' => 'readers#twitter_feed'
-  get 'rss'     => 'readers#rss_feed'
+  get 'twitter' => 'readers#twitter_feed' # debug purposes
+  get 'rss'     => 'readers#rss_feed' #
   get 'feed'    => 'readers#feed'
   get 'leafers' => 'bookmarks#index'
 end
