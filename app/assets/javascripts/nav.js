@@ -23,8 +23,8 @@ function loginToggle() {
 }
 
 
-var Dialog = function(selector) {
-  this.element = selector;
+var Dialog = function(element) {
+  this.element = element;
 
   this.init = function() {
     var that = this;
@@ -33,25 +33,24 @@ var Dialog = function(selector) {
       that.close();
     });
 
-    $('a.profile').click(function(e) {
+    $('.profile-link').click(function(e) {
       that.showSection(e);
     });
   };
 
   this.open = function() {
-    $('.dialog.profile').addClass('active');
+    this.element.addClass('active');
     $('.overlay').addClass('active');
   };
 
   this.close = function() {
-    console.log(this.element)
     this.element.removeClass('active');
     $('.overlay').removeClass('active');
   };
 
   this.showSection = function(e) {
     var that = this;
-    var section = $(e.target).parent().attr('class').replace('profile ','') + '-edit';
+    var section = $(e.target).parent().attr('data-section') + '-edit';
     $('.'+section).addClass('current');
 
     this.open();

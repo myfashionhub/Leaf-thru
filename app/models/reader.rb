@@ -22,6 +22,8 @@ class Reader < ActiveRecord::Base
 
   def self.create_reader(reader_params)
     reader  = Reader.new(reader_params)
+    reader.image ||= 'assets/profile.svg'
+
     email    = reader_params[:email].downcase
     password = reader_params[:password]
 
@@ -29,13 +31,16 @@ class Reader < ActiveRecord::Base
       msg = "Email already taken."
       status = 'error'
       { msg: msg, status: status }
+
     elsif Reader.validate_email(email) &&
       Reader.validate_password(password) && reader.save
       msg = 'Successfully signed up.'
       status = 'success'
       { msg: msg, status: status }
+    
     elsif Reader.validate_email(email) != true
       Reader.validate_email(email)
+      
     elsif Reader.validate_password(password) != true
       Reader.validate_password(password)
     end
