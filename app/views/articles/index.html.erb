@@ -1,33 +1,40 @@
 <div class="wrapper">
 <h2>My Bookmarks</h2>
 
-<% @articles.reverse.each do |article| %>
-  <div class="saved-article">
-  <h3 class='title'>
-    <a href="<%= article.url %>" target='_blank'>
-      <%= article.title.html_safe %>
-    </a>
+<% if @articles.length > 0 %>
 
-    <% if article.publication.nil? %>
-      <span class='source'>
-        Shared by <a target='_blank' href="http://twitter.com/<%= article.shared_by %>">
-        @<%= article.shared_by.html_safe %></a>
-      </span>
-    <% else %>
-      <span class='source'>
-        Published by <%= article.publication.html_safe %>
-      </span>
-    <% end %>
-  </h3>
-  <p>
-    <%= article.extract.html_safe %>
-  </p>
+  <% @articles.reverse.each do |article| %>
+    <div class="saved-article">
+    <h3 class='title'>
+      <a href="<%= article.url %>" target='_blank'>
+        <%= article.title.html_safe %>
+      </a>  
 
-  <button class='delete' data="/articles/<%= article.id %>">
-    <i class="fa fa-trash-o"></i> Delete bookmark
-  </button>
+      <% if article.publication.nil? %>
+        <span class='source'>
+          Shared by <a target='_blank' href="http://twitter.com/<%= article.shared_by %>">
+          @<%= article.shared_by.html_safe %></a>
+        </span>
+      <% else %>
+        <span class='source'>
+          Published by <%= article.publication.html_safe %>
+        </span>
+      <% end %>
+    </h3>
+    <p>
+      <%= article.extract.html_safe %>
+    </p>  
 
-  </div>
+    <button class='delete' data="/articles/<%= article.id %>">
+      <i class="fa fa-trash-o"></i> Delete bookmark
+    </button>  
+
+    </div>
+  <% end %>
+
+<% else %>
+  <p>You have no bookmark yet! <a href="/feed">Visit the feed</a>.</p>
+
 <% end %>
 
 </div>

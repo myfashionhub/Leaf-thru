@@ -1,7 +1,7 @@
 <section class="profile-edit">
   <h3>Edit profile</h3>
 
-  <%= form_for @reader do |f| %>
+  <%= form_for current_reader do |f| %>
     <%= f.label :email, "Email:" %>
     <%= f.text_field :email %><br/>
     <%= f.label :password, "Password:" %>

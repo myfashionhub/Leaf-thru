@@ -27,10 +27,10 @@
 
       <div class='actions'>
         <a href="/feed">
-          <i class="fa fa-list-ul"></i>&nbsp;Latest News
+          <i class="fa fa-star"></i>&nbsp;Latest news
         </a> &nbsp;
         <a href="/articles">
-          <i class="fa fa-bookmark"></i>&nbsp;Read Now
+          <i class="fa fa-bookmark"></i>&nbsp;Bookmarked
         </a>
       </div>
             
@@ -51,10 +51,10 @@
   <ul class="nav">
   <% if current_reader %>
     <li>
-      <a href="#rss">Customize feed</a>
+      <a data-section='rss' class='profile-link'>Customize feed</a>
     </li>
     <li>
-      <a href="#social">Connect social</a>
+      <a data-section='social' class='profile-link'>Connect social</a>
     </li>
     <li>
         <a href="/leafers">What friends are reading</a>

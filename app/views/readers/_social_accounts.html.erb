@@ -1,35 +1,37 @@
-  <section class="social">
+  <section class="social-edit">
     <h3>Social networks</h3>
     <p>* Connect with Facebook/Twitter to get articles shared by your social network.</p>
-    <% if @reader.facebook_token %>
-      <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
-        Disconnect from Facebook
-      </a>
-    <% else %>
-      <a href="/auth/facebook">
-        <i class="fa fa-facebook"></i> Connect with Facebook
-      </a>
-    <% end %>
-    <% if @reader.twitter_token %>
-      <a href='/logout/twitter' id='unlink-tw'>
-        <i class="fa fa-twitter"></i>
-        Disconnect from Twitter
-      </a>
-    <% else %>
-      <a href="/auth/twitter">
-        <i class="fa fa-twitter"></i>
-        Connect with Twitter
-      </a>
-    <% end %>
-    <% if @reader.pocket_token %>
-      <a href='/logout/pocket' id='unlink-pk'>
-        <i class="fa fa-book"></i>
-        Disconnect from Pocket
-      </a>
-    <% else %>
-      <a href="/auth/pocket">
-        <i class="fa fa-book"></i>
-        Connect with Pocket
-      </a>
+    <% if current_reader %>
+      <% if current_reader.facebook_token %>
+        <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
+          Disconnect from Facebook
+        </a>
+      <% else %>
+        <a href="/auth/facebook">
+          <i class="fa fa-facebook"></i> Connect with Facebook
+        </a>
+      <% end %>
+      <% if current_reader.twitter_token %>
+        <a href='/logout/twitter' id='unlink-tw'>
+          <i class="fa fa-twitter"></i>
+          Disconnect from Twitter
+        </a>
+      <% else %>
+        <a href="/auth/twitter">
+          <i class="fa fa-twitter"></i>
+          Connect with Twitter
+        </a>
+      <% end %>
+      <% if current_reader.pocket_token %>
+        <a href='/logout/pocket' id='unlink-pk'>
+          <i class="fa fa-book"></i>
+          Disconnect from Pocket
+        </a>
+      <% else %>
+        <a href="/auth/pocket">
+          <i class="fa fa-book"></i>
+          Connect with Pocket
+        </a>
+      <% end %>
     <% end %>
   </section>
