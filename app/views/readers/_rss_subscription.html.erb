@@ -24,11 +24,5 @@
 </section>
 
 <script>
-  $(window).load(function() {
-    currentSubscription();
-    getPublications();
-    $('nav li a').first().addClass('current');
-    $('#update-sub').click(updateSubscription);
-    $('#update-profile').click(updateProfile);
-  });
+  var subscriptions = new Subscriptions();
 </script>

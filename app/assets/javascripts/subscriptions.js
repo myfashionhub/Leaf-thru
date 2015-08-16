@@ -1,130 +1,140 @@
-function currentSubscription() {
-  $.ajax({
-    url: '/subscriptions',
-    method: 'get',
-    dataType: 'json',
-    success: function(data) {
-      for (i = 0; i < data.length; i++) {
-        var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
-        $(pub).append('<i class="fa fa-times"></i>');
-        $('.current-sub ul').append(pub);
-        $('.current-sub i').click(function(e) {
-          $(e.target).parent().remove();
-        });
+var Subscriptions = function() {
+  this.init = function() {
+    var that = this;
+    this.getReaderSubscriptions();
+    this.getAllPublications();
+
+    $('nav li a').first().addClass('current');
+    $('#update-sub').click(function() {
+      that.update();
+    });
+  };
+
+  this.getReaderSubscriptions = function() {
+    console.log('get current')
+    $.ajax({
+      url: '/subscriptions',
+      method: 'get',
+      dataType: 'json',
+      success: function(data) {
+        for (i = 0; i < data.length; i++) {
+          var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
+          $(pub).append('<i class="fa fa-times"></i>');
+          
+          $('.current-sub ul').append(pub);
+          $('.current-sub i').click(function(e) {
+            $(e.target).parent().remove();
+          });
+        }
       }
-    }
-  });
-}
+    });
+  };
 
-function getPublications() {
-  $.ajax({
-    url: '/publications',
-    method: 'get',
-    dataType: 'json',
-    success: showCategories
-  });
-}
 
-function showCategories(data) {
-  for (var i = 0; i < data.length; i++) {
-    var div      = $('<div>').addClass('category');
-    var category = $('<h4>').html(data[i].cat);
-    var pubUl    = $('<ul>');
-    for (var j = 0; j < data[i].pubs.length; j++) {
-      var pubs = data[i].pubs;
-      var pub  = $('<li>').html(pubs[j].name + "<i class='fa fa-plus'></i>");
-      pub.attr('data', pubs[j].id).appendTo(pubUl);
-    }
-    div.append(category).append(pubUl);
-    $('.categories').append(div);
-  }
-  togglePublications();
-}
+  this.getAllPublications = function() {
+    var that = this;
 
-function togglePublications() {
-  $('.category').find('ul').hide();
-  var firstCat = $('.categories').children().first();
-  firstCat.find('h4').addClass('current');
-  firstCat.find('ul').clone().appendTo($('.publications div')).show();
-  subscriptionBuilder();
+    $.ajax({
+      url: '/publications',
+      method: 'get',
+      dataType: 'json',
+      success: function(data) {
+        that.populateCategories(data);
+      }  
+    });
+  };
 
-  $('.category h4').click(function(e) {
-    $('.current').removeClass('current');
-    $(e.target).addClass('current');
-    var pubUl = $(e.target).parent().find('ul');
+
+  this.toggleCategory = function() {
+    var that = this,
+        firstCat = $('.categories').children().first();
+
+    $('.category').find('ul').hide();
     $('.publications div').empty();
-    pubUl.clone().appendTo($('.publications div')).hide().toggle('fold');
-    subscriptionBuilder();
-  });
-  subscriptionBuilder();
-}
+    
+    firstCat.find('h4').addClass('current');
+    firstCat.find('ul').clone().appendTo($('.publications div')).show();
+    this.subscriptionBuilder();  
 
-function updateSubscription() {
-  var pubs    = $('.current-sub li');
-  var pub_ids = [];
-  for (var i = 0; i < pubs.length; i++) {
-    pub_ids.push($(pubs[i]).attr('data'));
-  }
+    $('.category h4').click(function(e) {
+      $('.current').removeClass('current');
+      $(e.target).addClass('current');
+      var pubUl = $(e.target).parent().find('ul');
+      $('.publications div').empty();
+      pubUl.clone().appendTo($('.publications div')).hide().toggle('fold');
+      that.subscriptionBuilder();
+    });
+    
+    this.subscriptionBuilder();
+  };
 
-  $.ajax({
-    url: '/subscriptions',
-    method: 'post',
-    dataType: 'json',
-    data: { pub_ids: pub_ids },
-    success: function(data) {
-      notify(data['msg'], 'success');
+  this.populateCategories = function(data) {
+    var that = this;
+    $('ul.categories').empty();
+
+    for (var i = 0; i < data.length; i++) {
+      var div      = $('<div>').addClass('category');
+      var category = $('<h4>').html(data[i].cat);
+      var pubUl    = $('<ul>');
+      for (var j = 0; j < data[i].pubs.length; j++) {
+        var pubs = data[i].pubs;
+        var pub  = $('<li>').html(pubs[j].name + "<i class='fa fa-plus'></i>");
+        pub.attr('data', pubs[j].id).appendTo(pubUl);
+      }
+      div.append(category).append(pubUl);
+      $('ul.categories').append(div);
     }
-  });
-}
 
-function updateProfile() {
-  var email    = $('#reader_email').val();
-  var password = $('#reader_password').val();
-  // var new_password = $('#reader_new_password').val();
-  var name     = $('#reader_name').val();
-  var image    = $('#reader_image').val();
+    this.toggleCategory();
+  };
 
-  $.ajax({
-    url: '/profile',
-    method: 'post',
-    dataType: 'json',
-    data: { reader: { email: email,
-                      password: password,
-                      name: name,
-                      image: image
-                    }
-          },
-    success: function(data) {
-      notify(data['msg'], 'success');
-    }
-  })
-}
+  this.subscriptionBuilder = function() {
+    var that = this,
+        pubs = $('.publications li');
+    pubs.draggable({ cursor: 'move', helper: 'clone' });  
 
-function subscriptionBuilder() {
-  var pubs = $('.publications li');
-  pubs.draggable({ cursor: 'move', helper: 'clone' });
+    $('.current-sub').droppable({
+      drop: function(e, dropped) {
+        var pubLi = dropped.draggable;
+        $(pubLi).append('<i class="fa fa-times"></i>');
+        $(pubLi).appendTo($('.current-sub ul'));
+        that.removeSubscription();
+      }
+    });  
 
-  $('.current-sub').droppable({
-    drop: function(e, dropped) {
-      var pubLi = dropped.draggable;
-      $(pubLi).append('<i class="fa fa-times"></i>');
-      $(pubLi).appendTo($('.current-sub ul'));
-      removeSubscription();
-    }
-  });
+    $('.publications i').click(function(e) {
+      var pubLi = $(e.target).parent();
+      pubLi.find('i').remove();
+      pubLi.append('<i class="fa fa-times"></i>');
+      pubLi.appendTo($('.current-sub ul'));
+      that.removeSubscription();
+    });
+  };
 
-  $('.publications i').click(function(e) {
-    var pubLi = $(e.target).parent();
-    pubLi.find('i').remove();
-    pubLi.append('<i class="fa fa-times"></i>');
-    pubLi.appendTo($('.current-sub ul'));
-    removeSubscription();
-  });
-}
+  this.removeSubscription = function() {
+    $('.current-sub i').click(function(e) {
+      var pubLi = $(e.target).parent();
+      pubLi.remove();
+    });
+  };
 
-function removeSubscription() {
-  $('.current-sub i').click(function(e) {
-    var pubLi = $(e.target).parent();
-    pubLi.remove();
-  });
+  this.update = function() {
+    var pubs    = $('.current-sub li');
+    var pub_ids = [];
+    for (var i = 0; i < pubs.length; i++) {
+      pub_ids.push($(pubs[i]).attr('data'));
+    }  
+
+    $.ajax({
+      url: '/subscriptions',
+      method: 'post',
+      dataType: 'json',
+      data: { pub_ids: pub_ids },
+      success: function(data) {
+        notify(data['msg'], 'success');
+      }
+    });
+  };
+
+  this.init();
 }

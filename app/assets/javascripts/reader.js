@@ -55,3 +55,28 @@ function updateLocation() {
     }
   });
 }
+
+$('#update-profile').click(updateProfile);
+
+function updateProfile() {
+  var email    = $('#reader_email').val();
+  var password = $('#reader_password').val();
+  // var new_password = $('#reader_new_password').val();
+  var name     = $('#reader_name').val();
+  var image    = $('#reader_image').val();
+
+  $.ajax({
+    url: '/profile',
+    method: 'post',
+    dataType: 'json',
+    data: { reader: { email: email,
+                      password: password,
+                      name: name,
+                      image: image
+                    }
+          },
+    success: function(data) {
+      notify(data['msg'], 'success');
+    }
+  })
+}
