@@ -49,6 +49,15 @@
   cursor: pointer;
 }
 
+.profile {
+  section {
+    display: none;
+    &.current {
+      display: block;
+    }
+  }
+}
+
 /* RSS subscription tab */
 .rss-edit {
   width: 100%;

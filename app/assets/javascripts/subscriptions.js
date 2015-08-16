@@ -1,11 +1,15 @@
 var Subscriptions = function() {
+
   this.init = function() {
     var that = this;
+    
     this.getReaderSubscriptions();
     this.getAllPublications();
 
     $('nav li a').first().addClass('current');
-    $('#update-sub').click(function() {
+
+    $('#update-sub').on('click', function() {
+      console.log('updating sub')
       that.update();
     });
   };
@@ -18,6 +22,8 @@ var Subscriptions = function() {
       dataType: 'json',
       success: function(data) {
         for (i = 0; i < data.length; i++) {
+          $('.current-sub ul').empty();
+
           var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
           $(pub).append('<i class="fa fa-times"></i>');
           
