@@ -1,10 +1,10 @@
 function dropdownMenu() {
   $('.menu #arrow').click(function() {
-    $('.menu .nav').toggle('blind')
+    $('.menu .nav').toggle('blind');
   });
 
-  $('.menu .nav').children().click(function() {
-    $('.menu .nav').removeClass('active');
+  $('.menu .nav a').click(function() {
+    $('.menu .nav').toggle('blind');
   });
 }
 

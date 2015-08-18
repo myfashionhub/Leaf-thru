@@ -159,12 +159,12 @@
 }
 
 .profile-edit,
-.social {
+.social-edit {
   width: 70%;
   margin: 0 auto;
 }
 
-.social {
+.social-edit {
   a {
     color: $dark-blue;
     width: 14em;
@@ -203,7 +203,7 @@
   }
 }
 
-.social, .profile-edit {
+.social-edit, .profile-edit {
   @media (max-width: 600px) {
     margin: 0 auto;
     float: none;

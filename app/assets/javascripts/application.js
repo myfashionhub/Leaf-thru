@@ -23,7 +23,7 @@ $(document).ready(function() {
     deleteArticle(e);
   });
 
-  var profileDialog = new Dialog($('.dialog.profile'));
+  window.profileDialog = new Dialog($('.dialog.profile'));
 
 });
 

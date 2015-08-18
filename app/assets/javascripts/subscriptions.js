@@ -2,28 +2,26 @@ var Subscriptions = function() {
 
   this.init = function() {
     var that = this;
-    
+
     this.getReaderSubscriptions();
     this.getAllPublications();
 
     $('nav li a').first().addClass('current');
 
     $('#update-sub').on('click', function() {
-      console.log('updating sub')
-      that.update();
+      that.updateSubscriptions();
     });
   };
 
   this.getReaderSubscriptions = function() {
-    console.log('get current')
     $.ajax({
       url: '/subscriptions',
       method: 'get',
       dataType: 'json',
       success: function(data) {
-        for (i = 0; i < data.length; i++) {
-          $('.current-sub ul').empty();
+        $('.current-sub ul').empty();
 
+        for (i = 0; i < data.length; i++) {
           var pub = $('<li>').html(data[i].name).attr('data', data[i].id);
           $(pub).append('<i class="fa fa-times"></i>');
           
@@ -63,7 +61,7 @@ var Subscriptions = function() {
     this.subscriptionBuilder();  
 
     $('.category h4').click(function(e) {
-      $('.current').removeClass('current');
+      $('.category h4.current').removeClass('current');
       $(e.target).addClass('current');
       var pubUl = $(e.target).parent().find('ul');
       $('.publications div').empty();
@@ -124,9 +122,10 @@ var Subscriptions = function() {
     });
   };
 
-  this.update = function() {
-    var pubs    = $('.current-sub li');
-    var pub_ids = [];
+  this.updateSubscriptions = function() {
+    var that = this;
+    var pubs    = $('.current-sub li'),
+        pub_ids = [];
     for (var i = 0; i < pubs.length; i++) {
       pub_ids.push($(pubs[i]).attr('data'));
     }  
@@ -138,6 +137,13 @@ var Subscriptions = function() {
       data: { pub_ids: pub_ids },
       success: function(data) {
         notify(data['msg'], 'success');
+        
+        setTimeout(function() {
+          window.profileDialog.close();
+        }, 2000);
+        setTimeout(function() {
+          refreshFeed('rss')
+        }, 2500);
       }
     });
   };
