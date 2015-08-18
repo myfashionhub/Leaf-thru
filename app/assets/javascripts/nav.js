@@ -51,6 +51,7 @@ var Dialog = function(element) {
   this.showSection = function(e) {
     var that = this;
     var section = $(e.target).attr('data-section');
+    $('section.current').removeClass('current');
     $('.'+section+'-edit').addClass('current');
 
     this.open();

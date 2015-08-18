@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
       #email: data.info.email,
       image:  data.info.image
     })
-    redirect_to '/profile#social'
+    redirect_to '/feed'
     flash[:notice] = "You have successfully connected your Facebook account."
   end
 
@@ -57,12 +57,12 @@ class SessionsController < ApplicationController
     #   pocket_token: data[:access_token],
     #   pocket_username: data[:username]
     # )
-    redirect_to '/profile'
+    redirect_to '/feed'
   end
 
   def logout_fb
     current_reader.update(facebook_token: nil, facebook_uid: nil)
-    redirect_to '/profile#social'
+    redirect_to '/feed'
     flash[:notice] = "You have disconnected your Facebook account."
   end
 
@@ -72,7 +72,7 @@ class SessionsController < ApplicationController
       twitter_token_secret: nil, 
       twitter_handle: nil
     )
-    redirect_to '/profile#social'
+    redirect_to '/feed'
     flash[:notice] = "You have disconnected your Twitter account."
   end
 
