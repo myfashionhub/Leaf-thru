@@ -60,6 +60,26 @@ var Dialog = function(element) {
   this.init();
 };
 
+var Navigation = function() {
+  this.init = function() {
+    this.detectPage();
+  };
+
+  this.detectPage = function() {
+    var pathname = window.location.pathname;
+    if (pathname === '/feed') {
+      $('.profile .actions .feed').addClass('current');
+    } else if (pathname === '/articles') {
+      $('.profile .actions .bookmarks').addClass('current');
+    }
+
+  }
+
+  this.init();
+
+};
+
+
 // HELPERS
 function notify(msg, status) {
   var div;

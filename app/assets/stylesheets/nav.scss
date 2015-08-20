@@ -31,12 +31,6 @@
       float: left;
       margin: 0 10px 0 0;
     }
-    a {
-      font-weight: bold;
-    }
-    a:hover {
-      color: $lime-green;
-    }
   }
   #arrow {
     width: 12%;
@@ -102,6 +96,14 @@
 .profile {
   .actions {
     margin-top: .5em;
+    font-weight: normal;
+    a {
+      font-weight: bold;
+      .fa-star { visibility: hidden; }
+    }
+    a.current, a:hover {
+      .fa-star { visibility: visible; }
+    }
   }
 
   /* How it works tooltip */

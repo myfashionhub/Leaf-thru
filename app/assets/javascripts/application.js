@@ -24,6 +24,5 @@ $(document).ready(function() {
   });
 
   window.profileDialog = new Dialog($('.dialog.profile'));
-
 });
 
