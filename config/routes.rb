@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :readers, only: [:create, :update]
   post 'profile' => 'readers#update'
   get 'profile' => 'readers#profile'
-  get 'location' => 'readers#update_location'
 
   post 'sessions'=> 'sessions#create', as: 'sessions'
   get 'logout'  => 'sessions#destroy', as: 'logout'

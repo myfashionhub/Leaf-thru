@@ -46,11 +46,15 @@ class Reader < ActiveRecord::Base
     end
   end
 
-  def self.update_location(ip, id)
+  def update_location(ip)
+    location = ''
     geo = GeoIP.new("#{Rails.root}/db/GeoLiteCity.dat").city(ip)
-    reader = Reader.find(id)
-    location = "#{geo.city_name}, #{geo.region_name}"
-    reader.update(location: location)
+
+    if geo.present?
+      location = "#{geo.city_name}, #{geo.region_name}"
+      self.update(location: location)
+    end
+
     location
   end
 

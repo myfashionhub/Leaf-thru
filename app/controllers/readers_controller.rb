@@ -23,18 +23,17 @@ class ReadersController < ApplicationController
   end
 
   def update
-    @reader = current_reader
-    # if passwordValidate(params[:reader][:password]) && emailValidate(params[:reader][:email])
-      @reader.update(reader_params)
+    reader = current_reader
+
+    if reader_params[:update_location] == 'true'
+      location = reader.update_location(remote_ip)
+      render json: { location: location }
+    else
+      reader.update(reader_params)
       render json: { msg: "You have successfully updated your profile." }.to_json
-    # end
+    end
   end
 
-  def update_location
-    reader_id = current_reader.id
-    location = Reader.update_location(remote_ip, reader_id)
-    render json: { ip: remote_ip, location: location }
-  end
 
   def twitter_feed
     articles = Reader.twitter_feed(
@@ -56,7 +55,9 @@ class ReadersController < ApplicationController
 
   private
   def reader_params
-    params.require(:reader).permit(:email, :password, :name, :image)
+    params.require(:reader).permit(
+      :email, :password, :name, :image, :update_location
+    )
   end
 
 end

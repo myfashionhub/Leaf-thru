@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def remote_ip
     if request.remote_ip == '127.0.0.1'
-      '184.153.102.108'
+      '74.66.83.223'
     else
       request.remote_ip
     end
