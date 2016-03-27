@@ -5,11 +5,12 @@ class ReadersController < ApplicationController
   end
 
   def create
-    info = Reader.create_reader(reader_params)
-    if (info[:status] === 'success')
+    result = Reader.create_with_params(reader_params)
+
+    if result[:status] == 'success'
       current_reader = login(reader_params['email'], reader_params['password'])
     end
-    render json: { msg: info[:msg], status: info[:status] }
+    render json: result
   end
 
   def destroy
@@ -19,7 +20,6 @@ class ReadersController < ApplicationController
   def profile
     @reader = current_reader
     @publications = Publication.all
-    @subscription = Subscription.new
   end
 
   def update

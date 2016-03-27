@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   get 'auth/twitter/callback' => 'sessions#log_twitter'
   get 'auth/facebook/callback'=> 'sessions#log_facebook'
-  get 'auth/pocket' => 'sessions#request_pocket'
-  get 'auth/pocket/callback'=> 'sessions#authorize_pocket'
+  get 'auth/pocket'           => 'sessions#request_pocket'
+  get 'auth/pocket/callback'  => 'sessions#authorize_pocket'
   get 'logout/facebook'       => 'sessions#logout_fb'
   get 'logout/twitter'        => 'sessions#logout_tw'
 

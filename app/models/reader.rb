@@ -13,36 +13,27 @@ class Reader < ActiveRecord::Base
   validates_presence_of :email, on: :create
   validates_uniqueness_of :email
 
+  validate  :valid_email
   validates :password,
             length: {
               within: 6..20,
               wrong_length: "Password must be between 6-20 characters"
-            },
-            :on => :create
+            }
 
-  def self.create_reader(reader_params)
+  def self.create_with_params(reader_params)
     reader  = Reader.new(reader_params)
     reader.image ||= 'assets/profile.svg'
 
     email    = reader_params[:email].downcase
     password = reader_params[:password]
 
-    if Reader.find_by(email: email)
-      msg = "Email already taken."
-      status = 'error'
-      { msg: msg, status: status }
-
-    elsif Reader.validate_email(email) &&
-      Reader.validate_password(password) && reader.save
-      msg = 'Successfully signed up.'
-      status = 'success'
-      { msg: msg, status: status }
-    
-    elsif Reader.validate_email(email) != true
-      Reader.validate_email(email)
-      
-    elsif Reader.validate_password(password) != true
-      Reader.validate_password(password)
+    if reader.save
+      {
+        msg: 'Successfully signed up.', status: 'success',
+        reader: reader.to_json
+      }
+    else
+      { msg: reader.errors.first.join(' '), status: 'error' }
     end
   end
 
@@ -74,25 +65,15 @@ class Reader < ActiveRecord::Base
     articles = GoogleFeed.fetch_articles(feed_urls)
   end
 
-  # Helper methods
-  def self.validate_password(password)
-    if password.length >= 6 && password.length <= 20
-      #password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)
-      return true
-    else
-      msg = "Password must be between 6 to 20 characters."
-      status = 'error'
-      return { msg: msg, status: status }
-    end
-  end
 
-  def self.validate_email(email)
-    if email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
-      return true
+  private
+  def valid_email
+        binding.pry
+    if self.email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+      true
     else
-     msg = "Invalid email."
-     status = 'error'
-     return { msg: msg, status: status }
+      self.errors.add(:email, 'is not valid')
+      false
     end
   end
 
