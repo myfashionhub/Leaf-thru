@@ -1,6 +1,6 @@
 function loadRssFeeds() {
   $.ajax({
-    url: '/rss',
+    url: '/feeds/rss',
     type: 'GET',
     dataType: 'json',
     success: function(data) {
@@ -44,7 +44,7 @@ function displayRssArticle(entries) {
 
 function twitterFeed() {
   $.ajax({
-    url     : '/twitter',
+    url     : '/feeds/twitter',
     dataType: 'json',
     success : function(data) {
       $('.twitter .active').removeClass('active');

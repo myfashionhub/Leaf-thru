@@ -31,6 +31,8 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:url, :title, :publication, :shared_by, :extract, :date)
+    params.require(:article).permit(
+      :url, :title, :publication, :shared_by, :extract, :date
+    )
   end
 end

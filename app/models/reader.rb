@@ -1,6 +1,3 @@
-require "#{Rails.root}/lib/twitter"
-require "#{Rails.root}/lib/google_feed"
-
 class Reader < ActiveRecord::Base
   has_many :subscriptions
   has_many :publications, through: :subscriptions
@@ -47,22 +44,6 @@ class Reader < ActiveRecord::Base
     end
 
     location
-  end
-
-  def self.twitter_feed(token, token_secret)
-    tweets = Twitter.get_feed(token, token_secret)
-    links = Twitter.collect_links(tweets)
-    links = Twitter.filter_sources(links)
-    articles = Article.parse(links)
-  end
-
-  def self.rss_feed(subscriptions)
-    feed_urls = subscriptions.map do |subscription|
-      id = subscription.publication_id
-      publication = Publication.find(id)
-      publication.url
-    end
-    articles = GoogleFeed.fetch_articles(feed_urls)
   end
 
 

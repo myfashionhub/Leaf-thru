@@ -13,11 +13,7 @@ class ReadersController < ApplicationController
     render json: result
   end
 
-  def destroy
-    @reader = Reader.find(current_reader.id)
-  end
-
-  def profile
+  def show
     @reader = current_reader
     @publications = Publication.all
   end
@@ -34,24 +30,6 @@ class ReadersController < ApplicationController
     end
   end
 
-
-  def twitter_feed
-    articles = Reader.twitter_feed(
-                  current_reader.twitter_token,
-                  current_reader.twitter_token_secret
-                )
-    render json: articles.to_json
-  end
-
-  def rss_feed
-    subscriptions = current_reader.subscriptions
-    articles = Reader.rss_feed(subscriptions)
-    render json: articles.to_json
-  end
-
-  def feed
-    @reader = current_reader
-  end
 
   private
   def reader_params
