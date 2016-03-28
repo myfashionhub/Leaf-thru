@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :articles, only: [:index, :create, :show, :destroy]
-  resources :publications, only: [:index]
-
-  resources :subscriptions, only: [:create, :index]
 
   resources :readers, only: [:create, :update]
-  post 'profile' => 'readers#update'
-  get 'profile' => 'readers#profile'
+  post 'profile'      => 'readers#update'
+  get 'profile'       => 'readers#show'
 
-  post 'sessions'=> 'sessions#create', as: 'sessions'
-  get 'logout'  => 'sessions#destroy', as: 'logout'
+  get '/feed'           => 'feeds#index'
+  get '/feeds/twitter'  => 'feeds#twitter'
+  get '/feeds/rss'      => 'feeds#rss'
+
+  resources :articles,     only: [:index, :create, :show, :destroy]
+  resources :publications, only: [:index]
+  resources :subscriptions, only: [:create, :index]
+
+  get 'leafers'         => 'bookmarks#index'
+  post 'sessions'       => 'sessions#create', as: 'sessions'
+  get 'logout'          => 'sessions#destroy', as: 'logout'
+  get 'about'           => 'welcome#about'
 
   get 'auth/twitter/callback' => 'sessions#log_twitter'
   get 'auth/facebook/callback'=> 'sessions#log_facebook'
@@ -19,10 +25,5 @@ Rails.application.routes.draw do
   get 'logout/facebook'       => 'sessions#logout_fb'
   get 'logout/twitter'        => 'sessions#logout_tw'
 
-  get 'about'   => 'welcome#about'
-  get 'twitter' => 'readers#twitter_feed' # debug purposes
-  get 'rss'     => 'readers#rss_feed' #
-  get 'feed'    => 'readers#feed'
-  get 'leafers' => 'bookmarks#index'
 end
 
