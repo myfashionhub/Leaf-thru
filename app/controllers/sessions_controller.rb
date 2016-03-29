@@ -45,14 +45,12 @@ class SessionsController < ApplicationController
   end
 
   def request_pocket
-    PocketApi.request
-    @pocket_url = PocketApi.redirect
-    redirect_to @pocket_url
+    redirect_url = pocket_api.request_token
+    redirect_to redirect_url
   end
 
   def authorize_pocket
-    response = PocketApi.authorize
-    puts response
+    response = pocket_api.authorize
     # current_reader.update(
     #   pocket_token: data[:access_token],
     #   pocket_username: data[:username]
@@ -74,6 +72,11 @@ class SessionsController < ApplicationController
     )
     redirect_to '/feed'
     flash[:notice] = "You have disconnected your Twitter account."
+  end
+
+  private
+  def pocket_api
+    @pocket_api ||= Pocket::Api.new(request.protocol+request.host_with_port)
   end
 
 end
