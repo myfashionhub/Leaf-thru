@@ -9,19 +9,12 @@ module GoogleFeed
 
     feed_urls.each do |feed_url|
       feed = GoogleAjax::Feed.load(URI::encode(feed_url), {num: 5})
-      publisher = feed[:description]
-      if publisher.include?('Mashable')
-        publisher = 'Mashable'
-      elsif publisher.include?('TechCrunch')
-        publisher = 'TechCrunch'
-      end
+      publisher = sanitize_publisher(feed[:description])
 
-      feed[:entries].each do |entry|
-        if entry[:content].length > 500
-          extract = entry[:content_snippet]
-        else
-          extract = entry[:content]
-        end
+      feed[:entries].map do |entry|
+        extract = entry[:content].length > 500 ?
+                    entry[:content_snippet] : entry[:content]
+
         articles.push({
           publisher: publisher,
           title: entry[:title],
@@ -32,7 +25,17 @@ module GoogleFeed
       end
     end
 
-    return articles
+    articles
+  end
+
+  def self.sanitize_publisher(publisher)
+    if publisher.include?('Mashable')
+      'Mashable'
+    elsif publisher.include?('TechCrunch')
+      'TechCrunch'
+    else
+      publisher
+    end
   end
 
 end
