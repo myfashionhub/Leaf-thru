@@ -8,7 +8,7 @@ class ReadersController < ApplicationController
     result = Reader.create_with_params(reader_params)
 
     if result[:status] == 'success'
-      current_reader = login(reader_params['email'], reader_params['password'])
+      current_reader = login(reader_params[:email], reader_params[:password])
     end
     render json: result
   end

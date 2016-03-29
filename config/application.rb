@@ -15,8 +15,9 @@ Bundler.require(*Rails.groups)
 
 module Leafthru
   class Application < Rails::Application
-  config.assets.precompile += %w( welcome.js )
-  config.assets.precompile += %w( articles.js )
-  config.assets.precompile += %w(*.svg)
+    config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
+    config.assets.precompile += %w( welcome.js )
+    config.assets.precompile += %w( articles.js )
+    config.assets.precompile += %w(*.svg)
   end
 end

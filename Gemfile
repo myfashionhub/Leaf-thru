@@ -7,7 +7,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -29,8 +28,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'twitter'
-gem 'httparty'
+gem 'googleajax'
 gem 'typhoeus'
 gem 'pocket-ruby', '~> 0.0.5'
-gem 'googleajax'
 gem 'geoip'

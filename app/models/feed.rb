@@ -1,7 +1,4 @@
 require "#{Rails.root}/lib/twitter"
-require "#{Rails.root}/lib/google_feed"
-require "#{Rails.root}/lib/alchemy"
-
 
 class Feed < ActiveRecord::Base
 

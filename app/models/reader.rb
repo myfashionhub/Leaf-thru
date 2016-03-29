@@ -18,11 +18,8 @@ class Reader < ActiveRecord::Base
             }
 
   def self.create_with_params(reader_params)
-    reader  = Reader.new(reader_params)
+    reader = Reader.new(reader_params)
     reader.image ||= 'assets/profile.svg'
-
-    email    = reader_params[:email].downcase
-    password = reader_params[:password]
 
     if reader.save
       {
