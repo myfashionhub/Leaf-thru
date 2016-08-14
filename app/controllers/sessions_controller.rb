@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path
-    flash[:notice] = "You have successfully logged out."
   end
 
   def log_twitter
@@ -28,7 +27,6 @@ class SessionsController < ApplicationController
       tagline:       data.info.description
     })
     redirect_to '/feed'
-    flash[:notice] = "You have successfully connected your Twitter account."
   end
 
   def log_facebook
@@ -41,7 +39,6 @@ class SessionsController < ApplicationController
       image:  data.info.image
     })
     redirect_to '/feed'
-    flash[:notice] = "You have successfully connected your Facebook account."
   end
 
   def request_pocket
@@ -61,7 +58,6 @@ class SessionsController < ApplicationController
   def logout_fb
     current_reader.update(facebook_token: nil, facebook_uid: nil)
     redirect_to '/feed'
-    flash[:notice] = "You have disconnected your Facebook account."
   end
 
   def logout_tw
@@ -71,7 +67,6 @@ class SessionsController < ApplicationController
       twitter_handle: nil
     )
     redirect_to '/feed'
-    flash[:notice] = "You have disconnected your Twitter account."
   end
 
   private
