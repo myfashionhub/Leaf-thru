@@ -6,16 +6,12 @@ class Reader < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
-  validates_presence_of :password, on: :create
-  validates_presence_of :email, on: :create
+  validates_presence_of   :password, on: :create
+  validates_presence_of   :email, on: :create
   validates_uniqueness_of :email
 
   validate  :valid_email
-  validates :password,
-            length: {
-              within: 6..20,
-              wrong_length: "Password must be between 6-20 characters"
-            }
+  validate  :valid_password
 
   def self.create_with_params(reader_params)
     reader = Reader.new(reader_params)
@@ -52,6 +48,20 @@ class Reader < ActiveRecord::Base
       self.errors.add(:email, 'is not valid')
       false
     end
+  end
+
+  def valid_password
+    if self.password_changed?
+      if self.password.length < 6
+        self.errors.add(:password, 'is too short')
+        false
+      elsif self.password.length > 20
+        self.errors.add(:password, 'is too long')
+        false
+      end
+      true
+    end
+    true
   end
 
 end
