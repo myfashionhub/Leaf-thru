@@ -41,12 +41,11 @@ function updateLocation() {
   });
 }
 
-$('#update-profile').click(updateProfile);
+function updateProfile(e) {
+  e.preventDefault();
 
-function updateProfile() {
   var email    = $('#reader_email').val();
   var password = $('#reader_password').val();
-  // var new_password = $('#reader_new_password').val();
   var name     = $('#reader_name').val();
   var image    = $('#reader_image').val();
 

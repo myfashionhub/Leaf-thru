@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :readers, only: [:create, :update]
-  post '/readers/:id' => 'readers#update'
+  post '/profile'     => 'readers#update'
   get 'profile'       => 'readers#show'
 
   get '/feed'           => 'feeds#index'
