@@ -35,7 +35,7 @@ function displayRssArticle(entries) {
             .append($extract)
             .append($publisher)
             .append(addActionButtons());
-    ($article).hide().appendTo($('.rss .content')).fadeIn();
+    ($article).hide().prependTo($('.rss .content')).fadeIn();
   }
 
   articleAction();
@@ -85,7 +85,7 @@ function displaySocialArticle(data) {
             .append($sharedBy)
             .append(addActionButtons());
     $article.hide()
-            .appendTo($('.twitter .content'))
+            .prependTo($('.twitter .content'))
             .toggle('slide');
   }
 
