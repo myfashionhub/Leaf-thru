@@ -1,7 +1,7 @@
 module Alchemy
 
   def self.get_articles(links)
-    alchemy_url = "http://access.alchemyapi.com/calls/url"
+    alchemy_url = "https://access.alchemyapi.com/calls/url"
     api_key     = ENV['LT_ALCHEMY_KEY']
     hydra = Typhoeus::Hydra.new
 
