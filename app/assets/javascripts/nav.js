@@ -1,5 +1,5 @@
 function dropdownMenu() {
-  $('.menu #arrow').click(function() {
+  $('.menu #expand').click(function() {
     $('.menu .nav').toggle('blind');
   });
 

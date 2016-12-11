@@ -4,30 +4,3 @@
  *= require_self
  *= require font-awesome
  */
-
-@import 'main';
-
-/* MAIN LAYOUT */
-
-body {
-  overflow: auto;
-  margin: 0;
-  background-color: #f5f5f5;
-  min-height: 100%;
-}
-
-.wrapper {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto 30px auto;
-  overflow: hidden;
-  h3 {
-    text-align: left;
-    font-size: 1.5em;
-    margin-bottom: .5em;
-  }
-  @media (max-width: 600px) {
-    width: 95%;
-    margin: 0 2.5%;
-  }
-}

@@ -30,7 +30,7 @@
           Latest news <i class="fa fa-star"></i>
         </a> &nbsp;
         <a href="/articles" class='bookmarks'>
-          Bookmarked <i class="fa fa-star"></i>
+          Reading list <i class="fa fa-star"></i>
         </a>
       </div>
             
@@ -44,12 +44,23 @@
   </div>
 
 
-  <div id='arrow'>
-    Menu &nbsp; <i class="fa fa-chevron-down"></i>
+  <div id='expand'>
+    <span class="arrow">
+      Menu &nbsp; <i class="fa fa-chevron-down"></i>
+    </span>
+    <span class="hamburger">
+      <i class="fa fa-bars"></i>
+    </span>
   </div>
 
   <ul class="nav">
   <% if current_reader %>
+    <li class='action'>
+      <a href="/feed" class='feed'>Latest news</a>
+    </li>
+    <li class='action'>
+      <a href="/articles" class='bookmarks'>Reading list</a>
+    </li>
     <li>
       <a data-section='rss' class='profile-link'>Customize feed</a>
     </li>
