@@ -97,7 +97,7 @@ function addActionButtons() {
   var saveButton    = $('<button>').addClass('save-article');
   saveButton.html('<i class="fa fa-bookmark-o"></i> Bookmark');
   var discardButton = $('<button>').addClass('discard-article');
-  discardButton.html('<i class="fa fa-trash-o"></i> Not interested');
+  discardButton.html('<i class="fa fa-trash-o"></i> Skip');
   
   var buttons = $('<div>').addClass('buttons')
   buttons.append(saveButton).append(discardButton);
@@ -114,9 +114,29 @@ function refreshFeed(feedName) {
   }
 }
 
-function fixImageLinks() {
-  var images = $('img');
-  for (var i=0; i < images.length; i++) {
-    images[0]
-  }
+
+function Feed() {
+  this.init = function() {
+    this.activeFeed();
+  };
+
+  this.activeFeed = function() {
+    var activateFeed = function(tabName) {
+      $('.tabs .' + tabName).addClass('active');
+      $('.feed.' + tabName).addClass('active');
+    };
+
+    activateFeed('rss');
+    $('.tabs li').click(function(e) {
+      $('.tabs .active').removeClass('active');
+      $('.feed.active').removeClass('active');
+      tabName = $(e.target).attr('class');
+      activateFeed(tabName);
+    });
+
+    // $('.tabs .refresh').click(function() {
+    // });
+  };
+
+  this.init();
 }

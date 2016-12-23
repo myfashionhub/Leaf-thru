@@ -2,7 +2,7 @@
 
 /* Elements */
 body {
-  color: #444;
+  color: $text-gray;
   font-family: 'Helvetica';
   font-size: 16px;
 }
@@ -58,7 +58,7 @@ input {
 body {
   overflow: auto;
   margin: 0;
-  background-color: #f5f5f5;
+  background-color: $body-gray;
   min-height: 100%;
 }
 

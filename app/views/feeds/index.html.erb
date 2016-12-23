@@ -3,6 +3,8 @@
     $('.notice').css({'position': 'absolute', 'top': '75px'}).hide();
     $('.loader').addClass('active');
 
+    var feed = new Feed();
+
     <% if current_reader.twitter_token == nil %>
       $('.no-twitter').addClass('active');
       $('.twitter .loader').removeClass('active');
@@ -23,7 +25,14 @@
 
 <div class="notice"></div>
 
-<div class="rss feed" >
+<ul class="tabs">
+  <li class="rss">RSS</li>
+  <li class="twitter">Twitter</li>
+
+  <a href="" class="refresh"><i class="fa fa-refresh"></i></a>
+</ul>
+
+<div class="rss feed">
   <h2>RSS feed <i class="fa fa-refresh"></i></h2>
 
   <div class="no-content">

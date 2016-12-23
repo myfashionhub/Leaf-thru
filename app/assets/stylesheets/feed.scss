@@ -19,11 +19,9 @@
 }
 
 .feed {
-  &.twitter, &.rss {
-    width: 48%;
-    float: left;
-    margin: 20px 0 30px 2%;
-  }  
+  width: 48%;
+  float: left;
+  margin: 20px 0 30px 2%;
 
   &.rss {
     a {
@@ -84,4 +82,47 @@
 .delete:hover {
   color: #666;
   cursor: pointer;
+}
+
+.tabs {
+  display: none;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 600px) {
+  .tabs {
+    display: block;
+  }
+  .feed {
+    display: none;
+    width: 100%;
+    &.active {
+      display: block;
+    }
+
+    h2 {
+      display: none;
+    }
+    .article {
+      margin-bottom: 1em;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .tabs {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 1em;
+    li {
+      display: inline-block;
+      padding: 0 .6em;
+      margin-right: 8px;
+      border-bottom: 1px solid $text-gray;
+      &.active {
+        border-bottom: 2px solid $text-gray;
+      }
+    }
+  }
 }
