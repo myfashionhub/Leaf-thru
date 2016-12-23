@@ -62,21 +62,27 @@ var Dialog = function(element) {
 
 var Navigation = function() {
   this.init = function() {
+    this.map = {
+      // path: className
+      'feed': 'feed',
+      'articles': 'bookmarks',
+      'leafers': 'network',
+      'about': 'about'
+    };
     this.detectPage();
   };
 
   this.detectPage = function() {
-    var pathname = window.location.pathname;
-    if (pathname === '/feed') {
+    var pathname = window.location.pathname.replace('/', '');
+    if (pathname === 'feed') {
       $('.profile .actions .feed').addClass('current');
-    } else if (pathname === '/articles') {
+    } else if (pathname === 'articles') {
       $('.profile .actions .bookmarks').addClass('current');
     }
-
-  }
+    $('.nav .' + this.map[pathname]).parent().addClass('current');
+  };
 
   this.init();
-
 };
 
 

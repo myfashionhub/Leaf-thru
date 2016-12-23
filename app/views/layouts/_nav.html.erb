@@ -57,9 +57,11 @@
   <% if current_reader %>
     <li class='action'>
       <a href="/feed" class='feed'>Latest news</a>
+      <i class="fa fa-check"></i>
     </li>
     <li class='action'>
       <a href="/articles" class='bookmarks'>Reading list</a>
+      <i class="fa fa-check"></i>
     </li>
     <li>
       <a data-section='rss' class='profile-link'>Customize feed</a>
@@ -68,20 +70,23 @@
       <a data-section='social' class='profile-link'>Connect social</a>
     </li>
     <li>
-        <a href="/leafers">What friends are reading</a>
+      <a href="/leafers" class="network">What friends are reading</a>
+      <i class="fa fa-check"></i>
     </li>
     <li>
       <a href="/logout">Log out</a>
     </li>
     <li>
-      <a href="/about">About Leafthru</a>
+      <a href="/about" class="about">About Leafthru</a>
+      <i class="fa fa-check"></i>
     </li>
    <% else %>
     <li>
       <a href="/">Sign Up/Log in</a>
     </li>
     <li>
-      <a href="/about">About Leafthru</a>
+      <a href="/about" class="about">About Leafthru</a>
+      <i class="fa fa-check"></i>
     </li>
     <% end %>
   </ul>
