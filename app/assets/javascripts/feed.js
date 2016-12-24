@@ -17,6 +17,8 @@ function loadRssFeeds() {
 }
 
 function displayRssArticle(entries) {
+  $('.feed.rss .content').empty();
+
   for (var i = 0; i < entries.length; i++) {
     var entry    = entries[i];
     var $publisher = $('<p>').addClass('publisher')
@@ -64,6 +66,8 @@ function twitterFeed() {
 }
 
 function displaySocialArticle(data) {
+  $('.feed.rss .twitter').empty();
+
   for (var i = 0; i < data.length; i++) {
     var $article = $('<div>').addClass('article');
     var $title   = $('<h3>').addClass('title')
