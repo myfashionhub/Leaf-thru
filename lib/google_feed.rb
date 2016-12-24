@@ -9,14 +9,13 @@ module GoogleFeed
 
     feed_urls.each do |feed_url|
       feed = GoogleAjax::Feed.load(URI::encode(feed_url), {num: 5})
-      publisher = sanitize_publisher(feed[:description])
 
       feed[:entries].map do |entry|
         extract = entry[:content].length > 500 ?
                     entry[:content_snippet] : entry[:content]
 
         articles.push({
-          publisher: publisher,
+          publisher: feed[:title] || feed[:description],
           title: entry[:title],
           url: entry[:link],
           date_published: entry[:published_date],
@@ -26,16 +25,6 @@ module GoogleFeed
     end
 
     articles
-  end
-
-  def self.sanitize_publisher(publisher)
-    if publisher.include?('Mashable')
-      'Mashable'
-    elsif publisher.include?('TechCrunch')
-      'TechCrunch'
-    else
-      publisher
-    end
   end
 
 end

@@ -12,7 +12,7 @@ class Feed < ActiveRecord::Base
     feed_urls = subscriptions.map do |subscription|
       subscription.publication.url
     end
-    articles = GoogleFeed.fetch_articles(feed_urls)
+    GoogleFeed.fetch_articles(feed_urls)
   end
 
 end
