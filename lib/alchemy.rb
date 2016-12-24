@@ -35,10 +35,10 @@ module Alchemy
       text  = JSON.parse(res[:text_request].response.response_body)
 
       title     = title['title']
-      url       = title['url'] || link[:url]
+      url       = title.present? ? title['url'] : link[:url]
       extract   = get_extract(text['text'])
 
-      if url.empty? || title.empty? || extract.length <= 30
+      if url.empty? || title.nil? || title.empty? || extract.length <= 30
         nil
       else
         {
