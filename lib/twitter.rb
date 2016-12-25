@@ -14,7 +14,7 @@ module Twitter
     def get_timeline
       tweets = client.home_timeline(options={count: 15, include_entities: true})
       links  = collect_links(tweets)
-      article_links = filter_sources(links)
+      filter_sources(links)
     end
 
     def collect_links(tweets)

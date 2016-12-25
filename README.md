@@ -40,46 +40,24 @@ publications = [
 ```
 
   * Twitter feed: Getting articles from an user's Twitter timeline is a two-step process.
-```ruby
-  # app/models/feed.rb
-  def self.twitter(token, token_secret)
-    article_links = Twitter::Feed.new(token, token_secret).get_timeline
-    articles = Alchemy.get_articles(article_links)
-  end
-```      
-
   - First, twitter client gets posts from user's timeline. Loop through the posts and retain the URLs, excluding those containing media (e.g. Pinterest, YouTube).
   ```ruby
     # lib/twitter.rb
     def get_timeline
       tweets = client.home_timeline(options={count: 15, include_entities: true})
       links  = collect_links(tweets)
-      article_links = filter_sources(links)
+      filter_sources(links)
     end
   ```      
 
-  - The article links are fed through the Alchemy API, which parses out the article's title and summary. These requests are made in parallel using Hydra to speed up the process.
-  ```ruby
-    # lib/alchemy.rb
-    def self.get_articles(links)
-      hydra = Typhoeus::Hydra.new
-
-      requests = links.map do |link|
-        # Building title & text requests
-        hydra.queue(title_request)
-        hydra.queue(text_request)        
-        {
-          link: link,
-          title_request: title_request,
-          text_request: text_request
-        }        
-      end
-      hydra.run
-
-      articles = self.parse_responses(requests)
-      self.filter_articles(articles)
-    end
-  ```
+  - The article links are fed through the Alchemy API, which parses out the article's title and extract ([Alchemy API combined call endpoint](http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call)). These requests are made in parallel using Hydra:
+```ruby
+  # lib/alchemy.rb
+  query = "#{alchemy_url}?apikey=#{api_key}&url=#{url}" +
+    "&outputMode=json&extract=title&showSourceText=1&sourceText=cleaned"
+  request = Typhoeus::Request.new(query, followlocation: true)
+  hydra.queue(request)
+```
 
   * RSS feed: Google Feed API takes URLs of XML feeds and returns article objects.   
 ```ruby
@@ -88,12 +66,22 @@ publications = [
     feed_urls = subscriptions.map do |subscription|
       subscription.publication.url
     end
-    articles = GoogleFeed.fetch_articles(feed_urls)
+    GoogleFeed.fetch_articles(feed_urls)
+  end
+```
+
+  * Articles are cached for 2 hours:
+```ruby
+  # feeds_controller.rb
+  articles = Rails.cache.fetch(
+    "/#{current_reader.id}/rss", expires_in: 2.hours
+  ) do
+    Feed.rss(current_reader.subscriptions)
   end
 ```
 
 ### Future features:
-- Use a rake task to collect articles from Twitter at interval and cache this response.
+- Use a rake task to collect articles from Twitter at intervals.
 
 - Integrate with Pocket so bookmarked articles can be imported into the app and accessed offline.
 
