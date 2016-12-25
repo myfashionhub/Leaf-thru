@@ -3,7 +3,7 @@
 /* Elements */
 body {
   color: $text-gray;
-  font-family: 'Helvetica';
+  font-family: $body-font;
   font-size: 16px;
 }
 
@@ -12,7 +12,7 @@ body, html, div {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Hammersmith One';
+  font-family: $title-font;
 }
 
 a {

@@ -20,9 +20,6 @@ class ArticlesController < ApplicationController
     render :json => msg.to_json
   end
 
-  def show
-  end
-
   def destroy
     id = Bookmark.find_by(article_id: params[:id], reader_id: current_reader.id)
     Bookmark.delete(id)

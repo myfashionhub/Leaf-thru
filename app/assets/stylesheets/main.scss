@@ -8,6 +8,9 @@ $lime-green : #32CD32;
 $body-gray: #f5f5f5;
 $text-gray: #444;
 
+$title-font: 'Hammersmith One';
+$body-font: 'Helvetica';
+
 @mixin button-style {
   padding: 5px 8px;
   border-radius: 4px;

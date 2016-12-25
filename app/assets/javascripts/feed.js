@@ -21,18 +21,15 @@ function displayRssArticle(entries) {
 
   for (var i = 0; i < entries.length; i++) {
     var entry    = entries[i];
-    var $publisher = $('<p>').addClass('publisher')
-                            .attr('data', entry.publisher)
-                            .html('Published by: '+ entry.publisher);
+    var $publisher = $('<p>').addClass('publisher').attr('data', entry.publisher)
+                       .html('Published by ' + entry.publisher);
     var $article = $('<div>').addClass('article');
     var $date    = $('<div>').addClass('date')
                              .append(new Date(entry.date_published));
-    var $url     = $('<a>').attr('href', entry.url).attr('target', '_blank');
-    var $title   = $('<h3>').addClass('title')
-                            .html(entry.title);
+    var $title   = $('<a>').attr('href', entry.url).attr('target', '_blank')
+                     .addClass('title').html(entry.title);
     var $extract = $('<p>').addClass('extract')
                            .html(entry.extract);
-    $title.wrapInner($url);
     $article.append($title)
             .append($extract)
             .append($publisher)
@@ -70,19 +67,15 @@ function displaySocialArticle(data) {
 
   for (var i = 0; i < data.length; i++) {
     var $article = $('<div>').addClass('article');
-    var $title   = $('<h3>').addClass('title')
-                            .html(data[i].title);
-    var $url     = $('<a>').attr('href', data[i].url).attr('target', '_blank');
+    var $title   = $('<a>').attr('href', data[i].url).attr('target', '_blank')
+                     .addClass('title').html(data[i].title);
     var $extract = $('<p>').addClass('extract')
                            .html(data[i].extract);
-    var $sharedBy= $('<p>').addClass('shared-by')
-                           .attr('data', data[i].shared_by)
-                           .html('Shared by: ');
-    var sharer   = "@"+data[i].shared_by;
-    var sharerUrl= $('<a>').attr('href', 'http://twitter.com/'
-                            +data[i].shared_by);
+    var $sharedBy = $('<p>').addClass('shared-by').attr('data', data[i].shared_by)
+                      .html('Shared by ');
+    var sharer    = "@" + data[i].shared_by;
+    var sharerUrl = $('<a>').attr('href', 'http://twitter.com/' + data[i].shared_by);
     sharerUrl.html(sharer).appendTo($sharedBy);
-    $title.wrapInner($url);
 
     $article.append($title)
             .append($extract)
@@ -104,7 +97,7 @@ function addActionButtons() {
   discardButton.html('<i class="fa fa-trash-o"></i> Skip');
   
   var buttons = $('<div>').addClass('buttons')
-  buttons.append(saveButton).append(discardButton);
+  buttons.append(discardButton).append(saveButton);
   return buttons;
 }
 

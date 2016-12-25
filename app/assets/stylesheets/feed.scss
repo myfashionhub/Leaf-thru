@@ -2,11 +2,9 @@
 
 /* FEED */
 div.feed {
-  h3 {
+  a.title {
     font-size: 1.3em;
-  }
-
-  a {
+    font-family: $title-font;
     text-decoration: none;
   }
 
@@ -69,22 +67,32 @@ div.feed {
     max-width: 90%;
     height: auto;
   }
+  .shared-by, .publisher {
+    float: left;
+    max-width: 40%;
+    margin: 4px 0 0 0;
+    line-height: 1.1em; /* Same as action button */
+  }
 }
 
-.save-article, .discard-article,
-.delete {
-  font-size: 1.1em;
-  font-family: 'Hammersmith One';
-  background-color: transparent;
-  border: 0;
-  color: #555;
-}
+.article .buttons, .saved-article {
+  overflow: hidden; /* Clear float children */
+  button {
+    cursor: pointer;
+    font-size: 1.1em;
+    font-family: $title-font;
+    background-color: transparent;
+    border: 0;
+    color: #555;
+    &:hover {
+      color: #888;
+    }
+  }
 
-.save-article:hover,
-.discard-article:hover,
-.delete:hover {
-  color: #666;
-  cursor: pointer;
+  .save-article, .discard-article, .delete {
+    float: right;
+    margin-right: 1em;
+  }
 }
 
 .tabs {
@@ -96,7 +104,7 @@ div.feed {
   .tabs {
     display: block;
   }
-  .feed {
+  div.feed {
     display: none;
     width: 100%;
     &.active {

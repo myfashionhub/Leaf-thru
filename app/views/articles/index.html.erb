@@ -7,7 +7,7 @@
     <div class="saved-article">
     <h3 class='title'>
       <a href="<%= article.url %>" target='_blank'>
-        <%= article.title.html_safe %>
+        <%= (article.title || '').html_safe %>
       </a>  
 
       <% if article.publication.nil? %>

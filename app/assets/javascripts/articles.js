@@ -13,27 +13,33 @@ function articleAction() {
 }
 
 function saveArticle(article) {
-  var title   = article.children().first().children().html();
-  var url     = article.children().first().children().attr('href');
+  var title   = article.find('.title').html();
+  var url     = article.find('.title').attr('href');
   var extract = $(article.children()[1]).html();
-  var source  = $(article.children()[2]);
-  var publication = undefined;
-  var shared_by   = undefined;
-  if (source.text().indexOf('Published') > -1 === false) {
-    shared_by   = source.attr('data');
-  } else {
-    publication = source.attr('data');
+  var publisher = article.find('.publisher').attr('data');
+  var sharedBy  = article.find('.shared-by').attr('data');
+
+  var article = {
+    title: title,
+    url: url,
+    extract: extract
+  };
+  if (publisher) {
+    article.publication = publisher;
+  }
+  else {
+    article.shared_by = sharedBy;
   }
 
   $.ajax({
     url: '/articles',
     method: 'post',
     dataType: 'json',
-    data: { article: {title: title, url: url, extract: extract, publication: publication, shared_by: shared_by} },
+    data: {article: article},
     success: function(data) {
-      $('.notice').show().html(data['msg']);
+      $('.notify').show().html(data['msg']);
       setTimeout(function() {
-        $('.notice').fadeOut();
+        $('.notify').fadeOut();
       }, 2000);      
     }
   })
