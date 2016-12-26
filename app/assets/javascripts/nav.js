@@ -66,6 +66,7 @@ var Navigation = function() {
       // path: className
       'feed': 'feed',
       'articles': 'bookmarks',
+      'customize': 'customize',
       'leafers': 'network',
       'about': 'about'
     };
@@ -85,6 +86,29 @@ var Navigation = function() {
   this.init();
 };
 
+function TabMenu(defaultTab) {
+  this.init = function() {
+    this.activateTab(defaultTab);
+    this.changeTab();
+  };
+
+  this.activateTab = function(tabName) {
+    $('.tabs .' + tabName).addClass('active');
+    $('.feed.' + tabName).addClass('active');
+  };
+
+  this.changeTab = function() {
+    var that = this;
+    $('.tabs li').click(function(e) {
+      $('.tabs .active').removeClass('active');
+      $('.feed.active').removeClass('active');
+      tabName = $(e.target).attr('class');
+      that.activateTab(tabName);
+    });
+  };
+
+  this.init();
+}
 
 // HELPERS
 function notify(msg, status) {

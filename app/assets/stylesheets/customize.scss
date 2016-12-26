@@ -1,6 +1,9 @@
 @import 'main';
 
-.profile {
+.customize {
+  .tabs {
+    display: block;
+  }
   section {
     display: none;
     &.current {

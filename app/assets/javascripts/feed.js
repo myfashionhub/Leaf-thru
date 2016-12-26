@@ -110,30 +110,3 @@ function refreshFeed(feedName) {
     twitterFeed();
   }
 }
-
-
-function Feed() {
-  this.init = function() {
-    this.activeFeed();
-  };
-
-  this.activeFeed = function() {
-    var activateFeed = function(tabName) {
-      $('.tabs .' + tabName).addClass('active');
-      $('.feed.' + tabName).addClass('active');
-    };
-
-    activateFeed('rss');
-    $('.tabs li').click(function(e) {
-      $('.tabs .active').removeClass('active');
-      $('.feed.active').removeClass('active');
-      tabName = $(e.target).attr('class');
-      activateFeed(tabName);
-    });
-
-    // $('.tabs .refresh').click(function() {
-    // });
-  };
-
-  this.init();
-}
