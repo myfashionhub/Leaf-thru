@@ -81,6 +81,9 @@ body {
 
 /* MOBILE STYLE */
 @media (max-width: 600px) {
+  body, html, div {
+    box-sizing: content-box;
+  }
   body {
     font-size: 13px;
   }

@@ -11,15 +11,19 @@ module GoogleFeed
       feed = GoogleAjax::Feed.load(URI::encode(feed_url), {num: 5})
 
       feed[:entries].map do |entry|
-        extract = entry[:content].length > 500 ?
-                    entry[:content_snippet] : entry[:content]
+        extract = nil
+        if entry[:content].is_a?(String) && entry[:content].length < 500
+          extract = entry[:content]
+        else
+          extract = entry[:content_snippet]
+        end
 
         articles.push({
           publisher: feed[:title] || feed[:description],
           title: entry[:title],
           url: entry[:link],
           date_published: entry[:published_date],
-          extract: extract
+          extract: extract.strip
         })
       end
     end
