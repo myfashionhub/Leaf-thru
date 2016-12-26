@@ -1,16 +1,5 @@
-<div class="wrapper customize">
+<div class="wrapper">
   <%= render 'layouts/message' %>
 
-  <ul class="tabs">
-    <li class="rss">RSS subscriptions</li>
-    <li class="social">Social accounts</li>
-  </ul>
-
   <%= render 'readers/rss_subscription' %>
-
-  <%= render 'readers/social_accounts' %>
 </div>
-
-<script type="text/javascript">
-  var tabMenu = new TabMenu('rss', 'edit');
-</script>

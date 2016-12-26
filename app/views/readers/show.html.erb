@@ -1,21 +1,27 @@
 <%= render 'layouts/message' %>
 
-<section class="profile-edit">
-  <h2>Edit profile</h2>
+<div class="wrapper account">
 
-  <%= form_for current_reader do |f| %>
-    <%= f.label :email, "Email:" %>
-    <%= f.text_field :email %><br/>
-    <%= f.label :password, "Password:" %>
-    <%= f.password_field :password %> <br/>
-    <%= f.label :name, "Name:" %>
-    <%= f.text_field :name %> <br/>
-    <%= f.label :image, "Profile pic:" %>
-    <%= f.text_field :image %><br/>
-  <% end %>
+  <section class="account edit">
+    <h2>Account</h2>
 
-  <button id='update-profile'>Update profile</button>
-</section>
+    <%= form_for current_reader do |f| %>
+      <%= f.label :email, "Email:" %>
+      <%= f.text_field :email %><br/>
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password %> <br/>
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name %> <br/>
+      <%= f.label :image, "Profile pic:" %>
+      <%= f.text_field :image %><br/>
+    <% end %>
+
+    <button id='update-profile'>Update profile</button>
+  </section>
+
+  <%= render 'readers/social_accounts' %>
+
+</div>
 
 <script type="text/javascript">
   $('#update-profile').click(updateProfile);

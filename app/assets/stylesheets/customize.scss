@@ -112,8 +112,9 @@
   float: right;
 }
 
-.profile-edit,
+.account.edit,
 .social.edit {
+  overflow: hidden; /* Clear float children */
   width: 70%;
   margin: 0 auto;
 }
@@ -137,7 +138,7 @@
   }
 }
 
-.profile-edit {
+.account.edit {
   form {
     @include form-style(7em);
     padding-left: 25px;
@@ -153,7 +154,7 @@
   }
 }
 
-.social.edit, .profile-edit {
+.social.edit, .account.edit {
   @media (max-width: 600px) {
     margin: 0 auto;
     float: none;
