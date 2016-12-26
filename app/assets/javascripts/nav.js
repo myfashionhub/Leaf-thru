@@ -68,6 +68,7 @@ var Navigation = function() {
       'articles': 'bookmarks',
       'customize': 'customize',
       'leafers': 'network',
+      'profile': 'account',
       'about': 'about'
     };
     this.detectPage();
