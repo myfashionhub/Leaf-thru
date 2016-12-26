@@ -92,9 +92,9 @@ function displaySocialArticle(data) {
 
 function addActionButtons() {
   var saveButton    = $('<button>').addClass('save-article');
-  saveButton.html('<i class="fa fa-bookmark-o"></i> Bookmark');
+  saveButton.html('<i class="fa fa-bookmark-o"></i> <span>Bookmark<span/>');
   var discardButton = $('<button>').addClass('discard-article');
-  discardButton.html('<i class="fa fa-trash-o"></i> Skip');
+  discardButton.html('<i class="fa fa-trash-o"></i> <span>Skip</span>');
   
   var buttons = $('<div>').addClass('buttons')
   buttons.append(discardButton).append(saveButton);

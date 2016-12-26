@@ -140,8 +140,6 @@
       float: left;
     }
     .profile {
-      // float: right;
-      // width: 45px;
       display: none;
       .greetings {
         display: none;
@@ -152,7 +150,7 @@
     }
     #expand {
       float: right;
-      margin-top: 3px;
+      margin: 13px 10px 0 0;
       font-size: 2em;
       .arrow {
         display: none;
@@ -165,7 +163,7 @@
 
   .menu .nav {
     width: 100%;
-    top: 58px;
+    top: 70px;
     right: 0;
     margin-top: 0;
     li.action {
