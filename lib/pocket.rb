@@ -12,41 +12,48 @@ module Pocket
       @consumer_key = ENV['LT_POCKET_KEY']
     end
 
-    def request_token
+    def request_pocket(reader)
+      # Step 2: get request_token from Pocket
       url  = 'https://getpocket.com/v3/oauth/request'
       body = {
         'consumer_key' => consumer_key,
         'redirect_uri' => callback_url
-      }.to_json
+      }
 
       redirect_url = ''
       begin
         response = post_request(url, body)
+        @request_token = JSON.parse(response.body)['code']
 
-        request_token = JSON.parse(response.body)['code']
-        redirect_url = 'https://getpocket.com/auth/authorize?'
-                       'request_token='+ request_token +
-                       '&redirect_uri='+ callback_url
+        # Save request_token on reader bc it can't be persisted through the steps
+        reader.update(pocket_token: request_token)
+        redirect_url = "https://getpocket.com/auth/authorize?" +
+                       "request_token=#{request_token}" +
+                       "&redirect_uri=#{callback_url}"
       rescue => error
         Rails.logger.error(error)
       end
 
+      # Step 3: redirect back to Pocket
       redirect_url
     end
 
 
-    def authorize
-      url = 'https://getpocket.com/auth/authorize'
+    def authorize(request_token)
+      # Step 5: convert request token to access token
+      url = 'https://getpocket.com/v3/oauth/authorize'
       body = {
         'consumer_key' => consumer_key,
         'code' => request_token
       }
+
       response = post_request(url, body)
+      JSON.parse(response.body)
     end
 
     def add
-      client = Pocket.client(:access_token => session[:access_token])
-      info = client.add :url => 'http://getpocket.com'
+      client = Pocket.client(access_token: session[:access_token])
+      info = client.add(url: 'http://getpocket.com')
     end
 
     private
@@ -60,7 +67,7 @@ module Pocket
     def post_request(url, body)
       uri  = URI.parse(url)
       req  = Net::HTTP::Post.new(uri.path, headers)
-      req.body = body
+      req.body = body.to_json
 
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true

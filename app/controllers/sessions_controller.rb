@@ -23,7 +23,8 @@ class SessionsController < ApplicationController
     elsif params[:service] == 'facebook'
       Session.update_with_facebook(current_reader, data)
     elsif params[:service] == 'pocket'
-      data = pocket_api.authorize
+      # Step 4: receive callback
+      data = pocket_api.authorize(current_reader.pocket_token)
       Session.update_with_pocket(current_reader, data)
     end
 
@@ -32,8 +33,14 @@ class SessionsController < ApplicationController
   end
 
   def request_pocket
-    redirect_url = pocket_api.request_token
-    redirect_to redirect_url
+    # Step 2: request token from Pocket
+    redirect_url = pocket_api.request_pocket(current_reader)
+
+    if redirect_url.present?
+      redirect_to redirect_url
+    else
+      render json: {msg: 'Error connecting with Pocket.'}
+    end
   end
 
   def unauthorize
@@ -43,7 +50,9 @@ class SessionsController < ApplicationController
         twitter_token_secret: nil
       )
     elsif params[:service] == 'facebook'
-      current_reader.update(facebook_token: nil, facebook_uid: nil)
+      current_reader.update(facebook_token: nil)
+    elsif params[:service] == 'pocket'
+      current_reader.update(pocket_token: nil)
     end
 
     render json: {
@@ -55,5 +64,4 @@ class SessionsController < ApplicationController
   def pocket_api
     @pocket_api ||= Pocket::Api.new(request.protocol + request.host_with_port)
   end
-
 end

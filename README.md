@@ -83,6 +83,6 @@ publications = [
 ### Future features:
 - Use a rake task to collect articles from Twitter at intervals.
 
-- Integrate with Pocket so bookmarked articles can be imported into the app and accessed offline.
+- Integrate with [Pocket](https://getpocket.com/developer/docs/authentication) so bookmarked articles can be imported into the app and accessed offline.
 
 - Get articles from user's Facebook feed.

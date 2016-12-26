@@ -38,9 +38,14 @@ class Session < ActiveRecord::Base
   end
 
   def self.update_with_pocket(reader, data)
-    # reader.update(
-    #   pocket_token: data[:access_token],
-    #   pocket_username: data[:username]
-    # )
+    if data['access_token']
+      reader.update(
+        pocket_token: data['access_token'],
+        pocket_username: data['username']
+      )
+    else
+      # Remove request_token that was saved
+      reader.update(pocket_token: nil)
+    end
   end
 end
