@@ -2,7 +2,7 @@
   $(document).ready(function() {
     $('.loader').addClass('active');
 
-    var tabMenu = new TabMenu('rss');
+    var tabMenu = new TabMenu('rss', 'feed');
 
     <% if current_reader.twitter_token == nil %>
       $('.no-twitter').addClass('active');

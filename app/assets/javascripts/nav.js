@@ -86,7 +86,8 @@ var Navigation = function() {
   this.init();
 };
 
-function TabMenu(defaultTab) {
+
+function TabMenu(defaultTab, contentClass) {
   this.init = function() {
     this.activateTab(defaultTab);
     this.changeTab();
@@ -94,14 +95,14 @@ function TabMenu(defaultTab) {
 
   this.activateTab = function(tabName) {
     $('.tabs .' + tabName).addClass('active');
-    $('.feed.' + tabName).addClass('active');
+    $('.' + contentClass + '.' + tabName).addClass('active');
   };
 
   this.changeTab = function() {
     var that = this;
     $('.tabs li').click(function(e) {
       $('.tabs .active').removeClass('active');
-      $('.feed.active').removeClass('active');
+      $('.' + contentClass + '.active').removeClass('active');
       tabName = $(e.target).attr('class');
       that.activateTab(tabName);
     });
