@@ -2,16 +2,26 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.1'
 gem 'pg'
+
+# Frontend
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'jquery-ui-rails'
+gem 'font-awesome-sass'
 
-gem 'spring'
-gem 'rails_12factor', group: :production
+# Authentication
+gem 'sorcery'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+# Third-party
+gem 'geoip'
+gem 'googleajax'
+gem 'pocket-ruby', '~> 0.0.5'
+gem 'twitter'
+gem 'typhoeus'
 
 group :development, :test do
   gem 'pry'
@@ -19,16 +29,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'
 end
 
-gem 'jquery-ui-rails'
-gem 'font-awesome-sass'
-
-gem 'sorcery'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-
-gem 'twitter'
-gem 'googleajax'
-gem 'typhoeus'
-gem 'pocket-ruby', '~> 0.0.5'
-gem 'geoip'
+gem 'spring', group: :development
+gem 'rails_12factor', group: :production
