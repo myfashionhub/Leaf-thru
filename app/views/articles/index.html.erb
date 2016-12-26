@@ -5,35 +5,30 @@
 
   <% @articles.reverse.each do |article| %>
     <div class="saved-article">
-    <h3 class='title'>
-      <a href="<%= article.url %>" target='_blank'>
+      <a href="<%= article.url %>" target="_blank" class="title">
         <%= (article.title || '').html_safe %>
-      </a>  
+      </a>
+      <p class="extract">
+        <%= article.extract.html_safe %>
+      </p>
 
+      
+      <p class="source">
       <% if article.publication.nil? %>
-        <span class='source'>
-          Shared by <a target='_blank' href="http://twitter.com/<%= article.shared_by %>">
-          @<%= article.shared_by.html_safe %></a>
-        </span>
+          Shared by @<%= article.shared_by.html_safe %>
       <% else %>
-        <span class='source'>
-          Published by <%= article.publication.html_safe %>
-        </span>
+        Published by <%= article.publication.html_safe %>
       <% end %>
-    </h3>
-    <p>
-      <%= article.extract.html_safe %>
-    </p>  
+      </p>
 
-    <button class='delete' data="/articles/<%= article.id %>">
-      <i class="fa fa-trash-o"></i> Delete bookmark
-    </button>  
-
+      <button class="delete" data="/articles/<%= article.id %>">
+        <i class="fa fa-trash-o"></i> Delete bookmark
+      </button>
     </div>
   <% end %>
 
 <% else %>
-  <p>You have no bookmark yet! <a href="/feed">Visit the feed</a>.</p>
+  <p>You have no bookmark yet! <a href="/feed">Check out the feed</a>.</p>
 
 <% end %>
 

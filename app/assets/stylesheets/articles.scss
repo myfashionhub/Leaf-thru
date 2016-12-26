@@ -2,10 +2,10 @@
 @import 'main';
 
 .saved-article {
-  h3 {
-  font-size: 1.2em;
-  }
-  a {
+  margin-bottom: 1em;
+  > a {
+    font-family: $title-font;
+    font-size: 1.2em;
     text-decoration: none;
     color: $brown;
   }
@@ -13,14 +13,15 @@
     text-decoration: none;
     color: $dark-blue;
   }
-  span {
-    font-family: 'Oswald';
-    font-size: 1em;
-    font-weight: normal;
-    margin-left: 10px;
+  .extract {
+    margin: .6em 0;
   }
-  p {
-    margin-bottom: .6em;
+  .source {
+    display: inline-block;
+    margin: 3px 0 0 0;
+  }
+  button {
+    float: right;
   }
 }
 
