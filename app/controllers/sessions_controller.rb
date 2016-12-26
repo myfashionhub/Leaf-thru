@@ -62,6 +62,6 @@ class SessionsController < ApplicationController
 
   private
   def pocket_api
-    @pocket_api ||= Pocket::Api.new(request.protocol + request.host_with_port)
+    @pocket_api ||= PocketApi::Oauth.new(request.protocol + request.host_with_port)
   end
 end

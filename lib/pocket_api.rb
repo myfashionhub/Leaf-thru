@@ -1,8 +1,8 @@
 require 'net/http'
 
-module Pocket
+module PocketApi
 
-  class Api
+  class Oauth
     attr_reader :consumer_key,
                 :callback_url, :request_token,
                 :access_token, :username
@@ -49,11 +49,6 @@ module Pocket
 
       response = post_request(url, body)
       JSON.parse(response.body)
-    end
-
-    def add
-      client = Pocket.client(access_token: session[:access_token])
-      info = client.add(url: 'http://getpocket.com')
     end
 
     private
