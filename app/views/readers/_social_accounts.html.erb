@@ -3,7 +3,7 @@
     <p>* Connect with Facebook/Twitter to get articles shared by your social network.</p>
     <% if current_reader %>
       <% if current_reader.facebook_token %>
-        <a href='/logout/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
+        <a href='/disconnect/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
           Disconnect from Facebook
         </a>
       <% else %>
@@ -12,7 +12,7 @@
         </a>
       <% end %>
       <% if current_reader.twitter_token %>
-        <a href='/logout/twitter' id='unlink-tw'>
+        <a href='/disconnect/twitter' id='unlink-tw'>
           <i class="fa fa-twitter"></i>
           Disconnect from Twitter
         </a>
@@ -23,7 +23,7 @@
         </a>
       <% end %>
       <% if current_reader.pocket_token %>
-        <a href='/logout/pocket' id='unlink-pk'>
+        <a href='/disconnect/pocket' id='unlink-pk'>
           <i class="fa fa-book"></i>
           Disconnect from Pocket
         </a>
