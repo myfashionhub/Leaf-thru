@@ -13,6 +13,10 @@ class ReadersController < ApplicationController
     render json: result
   end
 
+  def customize
+    # Render template
+  end
+
   def show
     @reader = current_reader
     @publications = Publication.all

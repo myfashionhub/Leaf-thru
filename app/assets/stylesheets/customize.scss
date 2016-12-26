@@ -1,54 +1,5 @@
 @import 'main';
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  background-color: rgba(0,0,0,.8);
-  display: none;
-
-  &.active {
-    display: block;
-  }
-}
-
-/* PROFILE DIALOG */
-.dialog {
-  width: 85%;
-  height: 85%;
-  position: absolute;
-  top: 7%;
-  left: 7%;
-  z-index: 3;
-  padding: 2em 3em;
-  box-sizing: border-box;
-  background-color: #fff;
-  border: 1px solid #888;
-  
-  display: none;
-  &.active {
-    display: block;
-  }  
-}
-
-.dialog {
-  .close {
-    font-size: 2em;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-  }
-}
-
-
-.profile-link {
-  cursor: pointer;
-}
-
 .profile {
   section {
     display: none;
