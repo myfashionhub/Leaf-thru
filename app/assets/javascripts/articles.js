@@ -1,11 +1,12 @@
 function articleAction() {
   $('.article button').click(function(e) {
-    var article     = $(e.target).parent().parent();
-    var buttonClass = $(e.target).attr('class');
+    var buttonClass = $(e.target).parent().attr('class');
+    var article = $(e.target).parent().parent().parent();
 
     if (buttonClass === 'save-article') {
       saveArticle(article);
     }
+
     article.toggle('drop', 500, function(){
       article.remove();
     });
@@ -54,13 +55,24 @@ function noArticle(e) {
 }
 
 function deleteArticle(e) {
-  var button = $(e.target);
+  var button;
+  if ($(e.target).attr('name') !== 'button') {
+    button = $(e.target).parent();
+  } else {
+    button = $(e.target);
+  }
   button.parent().toggle('clip', 500, function() {
     button.parent().remove();
   });
+
   $.ajax({
     url: button.attr('data'),
     method: 'delete',
-    success: function() { }
+    success: function(data) {
+      $('.notify').show().html(data['msg']);
+      setTimeout(function() {
+        $('.notify').fadeOut();
+      }, 2000);
+    }
   });
 }
