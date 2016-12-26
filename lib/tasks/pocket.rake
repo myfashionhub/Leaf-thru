@@ -18,8 +18,9 @@ namespace :pocket do
         response = client.add(url: article.url) if article.url.present?
 
         if response['status'] == 1
-          article_url = response['item']['normal_url']
-          puts "Successfully save to Pocket #{article_url}"
+          item = response['item']
+          bookmark.update(pocket_id: item['item_id'])
+          puts "Successfully save to Pocket #{item['normal_url']}"
         end
       end
     end

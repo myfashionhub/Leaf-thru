@@ -27,9 +27,10 @@ class Bookmark < ActiveRecord::Base
         ) != nil
       end
 
-      { reader_info: reader_info, 
+      {
+        reader_info: reader_info,
         reader_image: reader.image, 
-        publications: publications.compact, 
+        publications: publications.compact,
         shared_articles: shared_articles
       }
     end
