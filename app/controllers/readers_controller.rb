@@ -17,9 +17,8 @@ class ReadersController < ApplicationController
     # Render template
   end
 
-  def show
-    @reader = current_reader
-    @publications = Publication.all
+  def profile
+    # Render template
   end
 
   def update

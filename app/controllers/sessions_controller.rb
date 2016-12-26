@@ -27,7 +27,8 @@ class SessionsController < ApplicationController
       Session.update_with_pocket(current_reader, data)
     end
 
-    redirect_to '/feed'
+    flash[:notice] = "You have successfully connected your #{params[:service].capitalize} account."
+    redirect_to '/profile'
   end
 
   def request_pocket
@@ -44,7 +45,10 @@ class SessionsController < ApplicationController
     elsif params[:service] == 'facebook'
       current_reader.update(facebook_token: nil, facebook_uid: nil)
     end
-    redirect_to '/feed'
+
+    render json: {
+      msg: "You have successfully disconnected your #{params[:service].capitalize} account."
+    }
   end
 
   private

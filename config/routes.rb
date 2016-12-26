@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :readers, only: [:create, :update]
   get '/customize'     => 'readers#customize'
   post '/profile'      => 'readers#update'
-  get '/profile'       => 'readers#show'
+  get '/profile'       => 'readers#profile'
   resources :articles,     only: [:index, :create, :show, :destroy]
   resources :publications, only: [:index]
   resources :subscriptions, only: [:create, :index]

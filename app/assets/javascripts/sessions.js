@@ -21,3 +21,32 @@ function login(e) {
     }
   });
 }
+
+function Session() {
+  var that = this;
+
+  this.init = function() {
+    $('.social .disconnect').click(function(e) {
+      e.preventDefault();
+      var service = $(e.target).attr('data-service');
+      that.disconnect(service);
+    });
+  };
+
+  this.disconnect = function(service) {
+    $.ajax({
+      url: '/disconnect/' + service,
+      type: 'GET',
+      success: function(response) {
+        $('.notify').show().html(response['msg']);
+        setTimeout(function() {
+          $('.notify').fadeOut();
+          location.reload();
+        }, 2000);
+      },
+      error: function(error) {}
+    });
+  };
+
+  this.init();
+}

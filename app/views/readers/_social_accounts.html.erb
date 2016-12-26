@@ -1,9 +1,12 @@
+<%= flash[:notice] %>
+
   <section class="social edit">
     <h3>Social profiles</h3>
     <p>* Connect with Facebook/Twitter to get articles shared by your social network.</p>
     <% if current_reader %>
       <% if current_reader.facebook_token %>
-        <a href='/disconnect/facebook' id='unlink-fb'><i class="fa fa-facebook"></i>
+        <a href='' class="disconnect" data-service="facebook">
+          <i class="fa fa-facebook"></i>
           Disconnect from Facebook
         </a>
       <% else %>
@@ -11,8 +14,9 @@
           <i class="fa fa-facebook"></i> Connect with Facebook
         </a>
       <% end %>
+
       <% if current_reader.twitter_token %>
-        <a href='/disconnect/twitter' id='unlink-tw'>
+        <a href='' class="disconnect" data-service="twitter">
           <i class="fa fa-twitter"></i>
           Disconnect from Twitter
         </a>
@@ -22,8 +26,9 @@
           Connect with Twitter
         </a>
       <% end %>
+
       <% if current_reader.pocket_token %>
-        <a href='/disconnect/pocket' id='unlink-pk'>
+        <a href='' class="disconnect" data-service="pocket">
           <i class="fa fa-book"></i>
           Disconnect from Pocket
         </a>
@@ -35,3 +40,7 @@
       <% end %>
     <% end %>
   </section>
+
+<script type="text/javascript">
+  var session = new Session();
+</script>
