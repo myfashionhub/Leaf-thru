@@ -1,6 +1,6 @@
 class Bookmark < ActiveRecord::Base
-  belongs_to :readers
-  belongs_to :articles
+  belongs_to :reader
+  belongs_to :article
 
   def self.retrieve_subscription_info(readers, current_reader)
     readers.map do |reader|
