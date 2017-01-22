@@ -9,10 +9,12 @@ class Feed < ActiveRecord::Base
   end
 
   def self.rss(subscriptions)
-    feed_urls = subscriptions.map do |subscription|
-      subscription.publication.url
-    end
-    GoogleFeed.fetch_articles(feed_urls)
+    # feed_urls = subscriptions.map do |subscription|
+    #   subscription.publication.url
+    # end
+
+    # Deprecated
+    # GoogleFeed.fetch_articles(feed_urls)
   end
 
 end

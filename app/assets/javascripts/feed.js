@@ -1,4 +1,9 @@
 function loadRssFeeds() {
+  $('.rss .active').removeClass('active');
+  $('.feed.rss .content').html('Coming soon.');
+  return;
+
+  // Endpoint is temporarily deprecated
   $.ajax({
     url: '/feeds/rss',
     type: 'GET',
@@ -104,7 +109,7 @@ function addActionButtons() {
 function refreshFeed(feedName) {
   if (feedName.indexOf('rss') > -1) {
     $('.rss .loader').addClass('active');
-    loadRssFeeds();
+    // loadRssFeeds();
   } else if (feedName.indexOf('twitter') > -1) {
     $('.twitter .loader').addClass('active');
     twitterFeed();
