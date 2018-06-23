@@ -50,14 +50,7 @@ publications = [
     end
   ```      
 
-  - The article links are fed through the Alchemy API, which parses out the article's title and extract ([Alchemy API combined call endpoint](http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call)). These requests are made in parallel using Hydra:
-```ruby
-  # lib/alchemy.rb
-  query = "#{alchemy_url}?apikey=#{api_key}&url=#{url}" +
-    "&outputMode=json&extract=title&showSourceText=1&sourceText=cleaned"
-  request = Typhoeus::Request.new(query, followlocation: true)
-  hydra.queue(request)
-```
+  - The article links are fed through the Watson NPL API ([credentials](https://console.bluemix.net/dashboard/apps)) [analyze endpoint](https://www.ibm.com/watson/developercloud/natural-language-understanding/api/v1/), which parses out the article's title and summary. These requests are made in parallel using [Hydra](https://github.com/typhoeus/typhoeus) (`lib/alchemy.rb`).
 
   * RSS feed: Google Feed API takes URLs of XML feeds and returns article objects.   
 ```ruby
@@ -80,9 +73,9 @@ publications = [
   end
 ```
 
+- If the user authenticates with [Pocket](https://getpocket.com), bookmarking an article also saves the item to their Pocket account. ([Developer docs](https://getpocket.com/developer/docs/authentication)).
+
 ### Future features:
 - Use a rake task to collect articles from Twitter at intervals.
-
-- Integrate with [Pocket](https://getpocket.com/developer/docs/authentication) so bookmarked articles can be imported into the app and accessed offline.
 
 - Get articles from user's Facebook feed.
