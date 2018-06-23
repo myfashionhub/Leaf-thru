@@ -1,4 +1,4 @@
-require 'pocket'
+require 'pocket-ruby'
 
 namespace :pocket do
   task :save_to_pocket => :environment do

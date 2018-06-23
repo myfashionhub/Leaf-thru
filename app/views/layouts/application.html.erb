@@ -2,13 +2,19 @@
 <html>
 <head>
   <title>Leafthru</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'profile.svg' %>
   <meta name="viewport" content="width=device-width" />
 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href='http://fonts.googleapis.com/css?family=Oswald|Hammersmith+One' rel='stylesheet' type='text/css'>
+
+  <!-- jQuery & jQuery UI -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %> <!-- Load after jQuery -->
 </head>
 
 

@@ -1,4 +1,4 @@
-require 'pocket'
+require 'pocket-ruby'
 
 class ArticlesController < ApplicationController
   def index
