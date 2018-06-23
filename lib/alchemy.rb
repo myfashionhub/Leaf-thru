@@ -4,51 +4,79 @@ require 'uri'
 module Alchemy
 
   def self.get_articles(links)
-    alchemy_url = "https://gateway-a.watsonplatform.net/calls/url/URLGetCombinedData"
-    api_key     = ENV['LT_ALCHEMY_KEY']
+    alchemy_url = "https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?"
+    auth = 'Basic ' + Base64.strict_encode64("#{ENV['LT_WATSON_USER']}:#{ENV['LT_WATSON_PW']}")
+
     hydra = Typhoeus::Hydra.new
 
+    # links: {url: url, shared_by: shared_by}
     requests = links.map do |link|
-      # Attempt to get redirect URL of short links
-      url = Net::HTTP.get_response( URI(link[:url]) )['location']
+      request = build_request(link[:url], alchemy_url, auth)
 
-      query = "#{alchemy_url}?apikey=#{api_key}&url=#{url}" +
-        "&outputMode=json&extract=title&showSourceText=1&sourceText=cleaned"
-      request = Typhoeus::Request.new(query, followlocation: true)
-      hydra.queue(request)
-
-      {
-        link: link,
-        request: request
-      }
+      if request.present?
+        hydra.queue(request)
+        {
+          shared_by: link[:shared_by],
+          request: request,
+        }
+      else
+        nil
+      end
     end
 
     hydra.run # Execute all queued requests
-    parse_responses(requests)
+    parse_responses(requests.compact)
+  end
+
+  def self.build_request(article_url, alchemy_url, auth)
+    # Attemp to get redirect URL of short links
+    # If article_url isn't a short link, it's likely to be
+    # a Twitter status URL. Skip it if this is the case.
+    url = Net::HTTP.get_response(URI(article_url))['location']
+    return nil if url.nil?
+
+    params = {
+      'url' => url,
+      'language' => 'en',
+      'features' => 'metadata',
+      'clean' => true,
+      'return_analyzed_text' => true,
+      'limit_text_characters' => 300,
+      'version' => '2018-03-16'
+    }
+    query_url = alchemy_url
+    params.each do |key, value|
+      query_url += "#{key}=#{value}&"
+    end
+
+    Typhoeus::Request.new(
+      query_url,
+      followlocation: true,
+      headers: {Authorization: auth}
+    )
   end
 
   def self.parse_responses(requests)
-    articles = requests.map do |res|
-      status = res[:request].response.options[:response_code]
+    articles = requests.map do |resp|
+      status = resp[:request].response.options[:response_code]
       return nil if status != 200
 
       begin
-        response = JSON.parse(res[:request].response.response_body)
-      rescue # In case response body isn't JSON
+        body = JSON.parse(resp[:request].response.response_body)
+      rescue
         return nil
       end
 
-      title   = response['title']
-      extract = get_extract(response['text'])
-
-      if !title.present? || extract.length <= 30
+      metadata = body['metadata']
+      extract = sanitize_extract(body['analyzed_text'])
+      if !metadata['title'].present? || extract.length <= 30
         nil
       else
         {
-          title: title,
-          url: res[:link][:url],
+          title: metadata['title'],
+          url: body['retrieved_url'],
           extract: extract,
-          shared_by: res[:link][:shared_by]
+          shared_by: resp[:shared_by]
         }
       end
     end
@@ -56,22 +84,17 @@ module Alchemy
     articles.compact
   end
 
-  def self.get_extract(text)
-    extract = ''
-    return extract if !text.present?
+  def self.sanitize_extract(text)
+    return '' if !text.present?
 
-    # Get first paragraph or some sentences, limit 250 characters
-    text.strip!
-    text_end = text.index(/\n/).to_i
-    if text_end <= 250
-      extract = text[0, text_end]
-    else
-      text.gsub('\n', ' ').split('. ').each do |sentence|
-        sentence = sentence + '. '
-        extract += sentence if (extract + sentence).length <= 250
-      end
+    text = text.gsub(/(\\n|\\t|\\r)/, '').strip
+
+    last_char = text[text.size - 1]
+    if last_char != '.'
+      # Replace the last word (in case it is cut off or punctuation with ellipses
+      text = text.gsub(/(\s\w+|\W|\s)$/, '...')
     end
 
-    extract
+    text
   end
 end
