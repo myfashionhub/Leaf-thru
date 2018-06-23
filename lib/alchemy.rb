@@ -92,7 +92,10 @@ module Alchemy
     last_char = text[text.size - 1]
     if last_char != '.'
       # Replace the last word (in case it is cut off or punctuation with ellipses
-      text = text.gsub(/(\s\w+|\W|\s)$/, '...')
+      index = text.size - 50
+      text_end = text[index, text.size - 1]
+      text_end = text_end.gsub(/((\s|\W)\w+|\W|\s)$/, '...')
+      text = text[0, index] + text_end
     end
 
     text
