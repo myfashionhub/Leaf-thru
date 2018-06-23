@@ -1,4 +1,4 @@
-function dropdownMenu() {
+function initDropdownMenu() {
   $('.menu #expand').click(function() {
     $('.menu .nav').toggle('blind');
   });

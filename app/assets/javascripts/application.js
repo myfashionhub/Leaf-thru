@@ -1,16 +1,19 @@
-//= require jquery
-//= require jquery_ujs
-//= require jquery.ui.all
 //= require_self
 //= require_tree .
 
+// This waits for jQuery to load
 $(document).ready(function() {
   // Navigation
   loginToggle();
-  dropdownMenu();
+  initDropdownMenu();
 
-  // Log in
+  // Add event listeners to forms
   $('.login form').submit(login);
+  $('.signup form').submit(signup);
+
+  $('.delete').click(function(e) {
+    deleteArticle(e);
+  });
 
   // News feed
   $('.feed .fa-refresh').click(function(e) {
@@ -18,11 +21,5 @@ $(document).ready(function() {
     refreshFeed(feed.attr('class'))
   });
 
-  // Delete article
-  $('.delete').click(function(e) {
-    deleteArticle(e);
-  });
-
   window.profileDialog = new Dialog($('.dialog.profile'));
 });
-

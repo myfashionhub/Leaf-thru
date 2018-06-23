@@ -133,6 +133,9 @@ var Subscriptions = function() {
     $.ajax({
       url: '/subscriptions',
       method: 'post',
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
       dataType: 'json',
       data: { pub_ids: pub_ids },
       success: function(data) {

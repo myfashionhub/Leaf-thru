@@ -35,6 +35,9 @@ function saveArticle(article) {
   $.ajax({
     url: '/articles',
     method: 'post',
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    },
     dataType: 'json',
     data: {article: article},
     success: function(data) {
@@ -68,6 +71,9 @@ function deleteArticle(e) {
   $.ajax({
     url: button.attr('data'),
     method: 'delete',
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    },
     success: function(data) {
       $('.notify').show().html(data['msg']);
       setTimeout(function() {

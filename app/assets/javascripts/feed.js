@@ -94,7 +94,6 @@ function displaySocialArticle(data) {
   articleAction();
 }
 
-
 function addActionButtons() {
   var saveButton    = $('<button>').addClass('save-article');
   saveButton.html('<i class="fa fa-bookmark-o"></i> <span>Bookmark<span/>');

@@ -6,8 +6,10 @@ function login(e) {
   $.ajax({
     url: '/sessions',
     type: 'POST',
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    },
     data: { email: email, password: password },
-    dateType: 'json',
     success: function(response) {
       if (response.status === 'success') {
         updateLocation();

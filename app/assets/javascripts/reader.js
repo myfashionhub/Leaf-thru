@@ -1,7 +1,3 @@
-$(function() {
-  $('.signup form').submit(signup);
-});
-
 function signup(e) {
   e.preventDefault();
   var email = $('.signup #reader_email').val(),
@@ -10,6 +6,9 @@ function signup(e) {
   $.ajax({
     url: '/readers',
     type: 'POST',
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    },
     data: {reader: {email: email, password: password}},
     dateType: 'json',
     success: function(response) {
@@ -26,11 +25,13 @@ function signup(e) {
   });
 }
 
-
 function updateLocation() {
   $.ajax({
     url: '/profile',
     type: 'POST',
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    },
     data: { 'reader': { 'update_location': true } },
     success: function(response) {
       $('.location small').html(response);
@@ -52,6 +53,9 @@ function updateProfile(e) {
   $.ajax({
     url: '/profile',
     method: 'post',
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    },
     dataType: 'json',
     data: { reader: { email: email,
                       password: password,
