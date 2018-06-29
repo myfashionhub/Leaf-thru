@@ -17,9 +17,9 @@ div.feed {
 }
 
 div.feed {
-  width: 48%;
-  float: left;
-  margin: 20px 0 30px 2%;
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto 30px auto;
 
   &.rss {
     a {
@@ -36,9 +36,8 @@ div.feed {
       }
     }
   }
+
   .content {
-    height: 80vh;
-    overflow: auto;
     padding-right: 5px;
   }
 }
