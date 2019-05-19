@@ -1,7 +1,6 @@
 require 'net/http'
 
 module PocketApi
-
   class Oauth
     attr_reader :consumer_key,
                 :callback_url, :request_token,
@@ -69,5 +68,4 @@ module PocketApi
       http.request(req)
     end
   end
-
 end
