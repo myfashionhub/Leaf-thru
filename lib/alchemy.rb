@@ -2,7 +2,6 @@ require 'net/http'
 require 'uri'
 
 module Alchemy
-
   def self.get_articles(links)
     alchemy_url = "https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?"
     auth = 'Basic ' + Base64.strict_encode64("#{ENV['LT_WATSON_USER']}:#{ENV['LT_WATSON_PW']}")

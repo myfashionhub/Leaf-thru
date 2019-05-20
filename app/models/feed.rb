@@ -1,7 +1,7 @@
+require "#{Rails.root}/lib/alchemy"
 require "#{Rails.root}/lib/twitter"
 
 class Feed < ActiveRecord::Base
-
   def self.twitter(reader_id, token, token_secret)
     article_links = Rails.cache.fetch(
       "/#{reader_id}/twitter/urls", expires_in: 2.hours
@@ -21,5 +21,4 @@ class Feed < ActiveRecord::Base
     # Deprecated
     # GoogleFeed.fetch_articles(feed_urls)
   end
-
 end
