@@ -3,14 +3,13 @@ require 'uri'
 
 module Alchemy
   def self.get_articles(links)
-    alchemy_url = "https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?"
-    auth = 'Basic ' + Base64.strict_encode64("#{ENV['LT_WATSON_USER']}:#{ENV['LT_WATSON_PW']}")
-
+    alchemy_url = "https://apikey:#{ENV['LT_WATSON_API_KEY']}@gateway-wdc.watsonplatform.net/" +
+      "natural-language-understanding/api/v1/analyze?"
     hydra = Typhoeus::Hydra.new
 
     # links: {url: url, shared_by: shared_by}
     requests = links.map do |link|
-      request = build_request(link[:url], alchemy_url, auth)
+      request = build_request(link[:url], alchemy_url)
 
       if request.present?
         hydra.queue(request)
@@ -27,7 +26,7 @@ module Alchemy
     parse_responses(requests.compact)
   end
 
-  def self.build_request(article_url, alchemy_url, auth)
+  def self.build_request(article_url, alchemy_url)
     # Attemp to get redirect URL of short links
     # If article_url isn't a short link, it's likely to be
     # a Twitter status URL. Skip it if this is the case.
@@ -48,11 +47,7 @@ module Alchemy
       query_url += "#{key}=#{value}&"
     end
 
-    Typhoeus::Request.new(
-      query_url,
-      followlocation: true,
-      headers: {Authorization: auth}
-    )
+    Typhoeus::Request.new(query_url, followlocation: true)
   end
 
   def self.parse_responses(requests)
