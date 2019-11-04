@@ -11,40 +11,16 @@
     <% else %>
       twitterFeed();
     <% end %>
-
-    <% if current_reader.subscriptions.length == 0 %>
-      $('.no-rss').addClass('active');
-      $('.rss .loader').removeClass('active');
-      $('.rss .fa-refresh').addClass('hide');
-    <% else %>
-      loadRssFeeds();
-    <% end %>
   });
 </script>
 
 <div class="notify"></div>
 
 <ul class="tabs">
-  <li class="rss">RSS</li>
   <li class="twitter">Twitter</li>
 
   <a href="" class="refresh"><i class="fa fa-refresh"></i></a>
 </ul>
-
-<!-- <div class="rss feed">
-  <h2>RSS feed <i class="fa fa-refresh"></i></h2>
-
-  <div class="no-content">
-    <p class='no-rss'>
-      <b><a data-section='rss' class='profile-link'>Subscribe to RSS feeds</a></b> to get updates.
-    </p>
-    <img src="assets/loader2.gif" alt="" class='loader' />
-    <p class='error'>Unable to fetch RSS feed.</p>
-  </div>
-
-  <div class="content"></div>
-</div> -->
-
 
 <div class="twitter feed">
   <h2>Social feed <i class="fa fa-refresh"></i></h2>

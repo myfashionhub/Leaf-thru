@@ -18,15 +18,4 @@ class FeedsController < ApplicationController
 
     render json: articles.to_json
   end
-
-  def rss
-    articles = Rails.cache.fetch(
-      "/#{current_reader.id}/rss", expires_in: 2.hours
-    ) do
-      Feed.rss(current_reader.subscriptions)
-    end
-
-    render json: articles.to_json
-  end
-
 end

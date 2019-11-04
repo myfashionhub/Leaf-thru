@@ -66,7 +66,6 @@ var Navigation = function() {
       // path: className
       'feed': 'feed',
       'articles': 'bookmarks',
-      'customize': 'customize',
       'leafers': 'network',
       'profile': 'account',
       'about': 'about'

@@ -12,89 +12,7 @@
   }
 }
 
-/* RSS subscription tab */
-.rss.edit {
-  width: 100%;
-  margin: 0 0 1em 0;
-  line-height: 1.7em;
-  overflow: auto;
-
-  input[type='submit']:focus {
-    border: 0;
-  }
-  
-  ul {
-    list-style-type: none;
-  }
-
-  h4 { font-size: 1.2em; }
-}
-
-.categories-wrapper,
-.current-sub,
-.publications {
-  width: 30%;
-  float: left;
-  h4 {
-    margin: 0;
-    color: #444;
-    text-align: center;
-  }
-  ul {
-    margin: .2em 0 2em 0;
-  }
-}
-
-.current-sub {
-  ul {
-    min-height: 210px;
-  }
-  .fa-times {
-    margin: 0 0 0 .3em;
-    @include hover;
-  }
-}
-
-.publications {
-  margin-right: 3%;  
-  .ui-draggable {
-    @include hover;
-  }
-  i {
-    margin-left: .5em;
-  }
-}
-
-
-.categories-wrapper {
-  margin-right: 3%;  
-}
-.categories { /* Category list */
-  width: 100%;
-  overflow: auto;
-  margin: 0 auto 1.6em auto;
-
-  .category {
-    h4 {
-      text-align: left;
-      color: $medium-blue2;
-      font-size: 1.1em;
-      margin: 0;
-      &:hover, &.current {
-        cursor: pointer;
-        color: $lime-green;
-      }
-    }
-  }
-}
-
-
-
-#update-sub {
-  margin: .5em auto;
-}
-
-#update-sub, #update-profile {
+#update-profile {
   background-color: $dark-blue;
   border: 0;
   font-size: 1em;
@@ -149,12 +67,13 @@
       &:hover, &:active, &:focus {
         color: #333;
         border: 1px inset #e0e0e0;
-      }      
+      }
     }
   }
 }
 
-.social.edit, .account.edit {
+.social.edit,
+.account.edit {
   @media (max-width: 600px) {
     margin: 0 auto;
     float: none;

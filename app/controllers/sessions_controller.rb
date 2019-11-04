@@ -20,8 +20,6 @@ class SessionsController < ApplicationController
 
     if params[:service] == 'twitter'
       Session.update_with_twitter(current_reader, data)
-    elsif params[:service] == 'facebook'
-      Session.update_with_facebook(current_reader, data)
     elsif params[:service] == 'pocket'
       # Step 4: receive callback
       data = pocket_api.authorize(current_reader.pocket_token)
@@ -49,8 +47,6 @@ class SessionsController < ApplicationController
         twitter_token: nil,
         twitter_token_secret: nil
       )
-    elsif params[:service] == 'facebook'
-      current_reader.update(facebook_token: nil)
     elsif params[:service] == 'pocket'
       current_reader.update(pocket_token: nil)
     end

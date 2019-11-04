@@ -12,13 +12,4 @@ class Feed < ActiveRecord::Base
     articles = Alchemy.get_articles(article_links)
     articles && articles.length > 0 ? articles : []
   end
-
-  def self.rss(subscriptions)
-    # feed_urls = subscriptions.map do |subscription|
-    #   subscription.publication.url
-    # end
-
-    # Deprecated
-    # GoogleFeed.fetch_articles(feed_urls)
-  end
 end
