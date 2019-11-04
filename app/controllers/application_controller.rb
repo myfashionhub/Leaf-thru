@@ -1,8 +1,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_reader, :formatted_date_time,
-                :remote_ip
+  helper_method :current_reader, :format_date, :remote_ip
 
   def current_reader
     current_user
@@ -12,8 +11,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def formatted_date_time(object)
-    object.strftime("%B %d, %Y")
+  def format_date(object)
+    object.strftime("%B %-d, %Y")
   end
 
   def remote_ip

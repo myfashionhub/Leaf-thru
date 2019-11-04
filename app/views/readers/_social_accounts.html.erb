@@ -2,19 +2,13 @@
 
   <section class="social edit">
     <h3>Social profiles</h3>
-    <p>* Connect with Facebook/Twitter to get articles shared by your social network.</p>
+    <p>
+      Connect with Twitter to get articles shared by your network.
+    </p>
+    <p>
+      Connect with Pocket to access your bookmarks offline.
+    </p>
     <% if current_reader %>
-      <% if current_reader.facebook_token %>
-        <a href='' class="disconnect" data-service="facebook">
-          <i class="fa fa-facebook"></i>
-          Disconnect from Facebook
-        </a>
-      <% else %>
-        <a href="/auth/facebook">
-          <i class="fa fa-facebook"></i> Connect with Facebook
-        </a>
-      <% end %>
-
       <% if current_reader.twitter_token %>
         <a href='' class="disconnect" data-service="twitter">
           <i class="fa fa-twitter"></i>
