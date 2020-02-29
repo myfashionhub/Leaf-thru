@@ -3,7 +3,7 @@ ruby '2.5.5'
 
 gem 'rails', '5.1.0'
 gem 'pg', '~> 0.18'  # 1.0.0 not compatible with Rails version
-gem 'rake', '< 11.0' # Prevent error starting rails server
+gem 'rake', '< 13.0' # Prevent error starting rails server
 
 # Frontend
 gem 'sass-rails', '5.0.7'
