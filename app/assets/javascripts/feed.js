@@ -76,15 +76,12 @@ function displaySocialArticle(data) {
                      .addClass('title').html(data[i].title);
     var $extract = $('<p>').addClass('extract')
                            .html(data[i].extract);
-    var $sharedBy = $('<p>').addClass('shared-by').attr('data', data[i].shared_by)
-                      .html('Shared by ');
-    var sharer    = "@" + data[i].shared_by;
-    var sharerUrl = $('<a>').attr('href', 'http://twitter.com/' + data[i].shared_by);
-    sharerUrl.html(sharer).appendTo($sharedBy);
+    var $author  = $('<p>').addClass('shared-by').attr('data', data[i].author)
+                      .html(`Authored by ${data[i].author}`);
 
     $article.append($title)
             .append($extract)
-            .append($sharedBy)
+            .append($author)
             .append(addActionButtons());
     $article.hide()
             .prependTo($('.twitter .content'))

@@ -14,12 +14,9 @@
         <%= article.extract.html_safe %>
       </p>
 
-      
       <p class="source">
-      <% if article.publication.nil? %>
-          Shared by @<%= article.shared_by.html_safe %>
-      <% else %>
-        Published by <%= article.publication.html_safe %>
+      <% if article.shared_by.present? %>
+          Authored by <%= article.shared_by.html_safe %>
       <% end %>
       </p>
 

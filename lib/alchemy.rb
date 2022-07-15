@@ -3,79 +3,64 @@ require 'uri'
 
 module Alchemy
   def self.get_articles(links)
-    alchemy_url = "https://apikey:#{ENV['LT_WATSON_API_KEY']}@gateway-wdc.watsonplatform.net/" +
-      "natural-language-understanding/api/v1/analyze?"
-    hydra = Typhoeus::Hydra.new
+    alchemy_url = "https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/" +
+      "instances/#{ENV['LT_WATSON_API_INSTANCE']}/v1/analyze"
 
     # links: {url: url, shared_by: shared_by}
-    requests = links.map do |link|
-      request = build_request(link[:url], alchemy_url)
-
-      if request.present?
-        hydra.queue(request)
-        {
-          shared_by: link[:shared_by],
-          request: request,
-        }
-      else
-        nil
+    articles = links.map do |link|
+      Rails.cache.fetch(
+        link, expires_in: 2.hours
+      ) do
+        resp = self.make_request(link[:url], alchemy_url)
+        self.parse_response(resp)
       end
     end
 
-    hydra.run # Execute all queued requests
-    parse_responses(requests.compact)
+    articles.compact
   end
 
-  def self.build_request(article_url, alchemy_url)
-    # Attemp to get redirect URL of short links
-    # If article_url isn't a short link, it's likely to be
-    # a Twitter status URL. Skip it if this is the case.
-    url = Net::HTTP.get_response(URI(article_url))['location']
-    return nil if url.nil?
-
+  def self.make_request(article_url, alchemy_url)
     params = {
-      'url' => url,
+      'url' => article_url,
       'language' => 'en',
       'features' => 'metadata',
       'clean' => true,
       'return_analyzed_text' => true,
       'limit_text_characters' => 300,
-      'version' => '2018-03-16'
+      'version' => '2022-04-07'
     }
-    query_url = alchemy_url
+    query_string = '?'
     params.each do |key, value|
-      query_url += "#{key}=#{value}&"
+      query_string += "#{key}=#{value}&"
     end
 
-    Typhoeus::Request.new(query_url, followlocation: true)
+    uri = URI(alchemy_url)
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+
+    request = Net::HTTP::Get.new(uri.path.concat(query_string))
+    request.basic_auth("apikey", ENV['LT_WATSON_API_KEY'])
+
+    resp = https.request(request)
+    JSON.parse(resp.body)
   end
 
-  def self.parse_responses(requests)
-    articles = requests.map do |resp|
-      status = resp[:request].response.options[:response_code]
-      return nil if status != 200
+  def self.parse_response(body)
+    return nil if body['error']
 
-      begin
-        body = JSON.parse(resp[:request].response.response_body)
-      rescue
-        return nil
-      end
+    metadata = body['metadata']
+    extract = sanitize_extract(body['analyzed_text'])
 
-      metadata = body['metadata']
-      extract = sanitize_extract(body['analyzed_text'])
-      if !metadata['title'].present? || extract.length <= 30
-        nil
-      else
-        {
-          title: metadata['title'],
-          url: body['retrieved_url'],
-          extract: extract,
-          shared_by: resp[:shared_by]
-        }
-      end
+    if metadata['title'].empty? || extract.length <= 30
+      nil
+    else
+      {
+        title: metadata['title'],
+        url: body['retrieved_url'],
+        extract: extract,
+        author: metadata['authors'].map { |a| a['name'] }.join(', ')
+      }
     end
-
-    articles.compact
   end
 
   def self.sanitize_extract(text)

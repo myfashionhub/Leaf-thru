@@ -6,15 +6,7 @@ class FeedsController < ApplicationController
   end
 
   def twitter
-    articles = Rails.cache.fetch(
-      "/#{current_reader.id}/twitter/articles", expires_in: 2.hours
-    ) do
-      articles = Feed.twitter(
-        current_reader.id,
-        current_reader.twitter_token,
-        current_reader.twitter_token_secret
-      )
-    end
+    articles = Feed.twitter(current_reader.id, current_reader.twitter_handle)
 
     render json: articles.to_json
   end
