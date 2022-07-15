@@ -22,22 +22,22 @@ class ReadersController < ApplicationController
   end
 
   def update
-    reader = current_reader
+    reader = current_user
 
     if reader_params[:update_location] == 'true'
       location = reader.update_location(remote_ip)
-      render json: { location: location }
     else
       reader.update(reader_params)
-      render json: { msg: "You have successfully updated your profile." }.to_json
     end
+
+    redirect_to '/feed'
   end
 
 
   private
   def reader_params
     params.require(:reader).permit(
-      :email, :password, :name, :image, :update_location
+      :email, :password, :name, :image, :update_location, :twitter_handle
     )
   end
 

@@ -20,8 +20,5 @@ Rails.application.routes.draw do
   get 'auth/pocket'            => 'sessions#request_pocket'
   get 'auth/:service/callback' => 'sessions#authorize'
   get 'disconnect/:service'    => 'sessions#unauthorize'
-
-  # Inactive
-  get 'leafers'         => 'bookmarks#index'
 end
 
