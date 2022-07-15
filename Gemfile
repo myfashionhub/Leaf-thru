@@ -12,9 +12,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Authentication
 gem 'sorcery'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 
 # Third-party
 gem 'geoip'
