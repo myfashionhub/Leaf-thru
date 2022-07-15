@@ -3,4 +3,11 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+module PatchForRakeLastComment
+  def last_comment
+    last_description
+  end
+end
+Rake::Application.send :include, PatchForRakeLastComment
+
 Rails.application.load_tasks

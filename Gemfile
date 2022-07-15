@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
-ruby '2.5.5'
+ruby '3.1.2'
 
-gem 'rails', '5.1.0'
-gem 'pg', '~> 0.18'  # 1.0.0 not compatible with Rails version
-gem 'rake', '< 11.0' # Prevent error starting rails server
+gem 'rails', '7.0.3.1'
+gem 'pg'
+gem 'puma' # server
+gem 'rake'
 
 # Frontend
-gem 'sass-rails', '5.0.7'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 
 # Authentication
