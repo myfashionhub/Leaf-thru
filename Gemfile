@@ -17,7 +17,6 @@ gem 'sorcery'
 gem 'geoip'
 gem 'googleajax'
 gem 'pocket-ruby', '~> 0.0.5'
-gem 'twitter'
 gem 'typhoeus'
 
 group :development, :test do
