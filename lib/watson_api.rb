@@ -1,22 +1,30 @@
 require 'net/http'
+require 'thread'
 require 'uri'
 
-module Alchemy
+module WatsonApi
   def self.get_articles(links)
-    alchemy_url = "https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/" +
+    watson_url = "https://api.us-east.natural-language-understanding.watson.cloud.ibm.com/" +
       "instances/#{ENV['LT_WATSON_API_INSTANCE']}/v1/analyze"
 
     # links: {url: url, shared_by: shared_by}
-    articles = links.map do |link|
-      Rails.cache.fetch(
-        link, expires_in: 2.hours
+    cache_key = links.map { |link| link[:url] }.sort.join('&')
+    cached_articles =  Rails.cache.fetch(
+        cache_key, expires_in: 2.hours
       ) do
-        resp = self.make_request(link[:url], alchemy_url)
-        self.parse_response(resp)
-      end
-    end
+      threads = []
+      articles = []
 
-    articles.compact
+      links.each do |link|
+        threads << Thread.new(link[:url], articles) do |article_url, articles|
+          resp = self.make_request(article_url, watson_url)
+          articles << self.parse_response(resp)
+        end
+      end
+
+      threads.each(&:join)
+      articles.compact
+    end
   end
 
   def self.make_request(article_url, alchemy_url)
@@ -26,7 +34,7 @@ module Alchemy
       'features' => 'metadata',
       'clean' => true,
       'return_analyzed_text' => true,
-      'limit_text_characters' => 300,
+      'limit_text_characters' => 500,
       'version' => '2022-04-07'
     }
     query_string = '?'
@@ -39,7 +47,7 @@ module Alchemy
     https.use_ssl = true
 
     request = Net::HTTP::Get.new(uri.path.concat(query_string))
-    request.basic_auth("apikey", ENV['LT_WATSON_API_KEY'])
+    request.basic_auth('apikey', ENV['LT_WATSON_API_KEY'])
 
     resp = https.request(request)
     JSON.parse(resp.body)
