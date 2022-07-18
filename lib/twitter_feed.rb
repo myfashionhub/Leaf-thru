@@ -30,12 +30,16 @@ module TwitterFeed
   end
 
   def self.get_timeline(username, num_results=NUM_RESULTS)
-    results = self.search_twitter_api(
+    results = Rails.cache.fetch(
+        username, expires_in: 2.hours
+      ) do
+      resp = self.search_twitter_api(
       'https://api.twitter.com/1.1/statuses/user_timeline.json',
       "?screen_name=#{username}&count=#{num_results}"
-    )
-    links = self.collect_links(results)
-    self.filter_sources(links)
+      )
+      links = self.collect_links(resp)
+      self.filter_sources(links)
+    end
   end
 
   def self.collect_links(tweets)
