@@ -38,10 +38,12 @@
 }
 
 .social.edit {
-  a {
+  a,
+  button {
     color: $dark-blue;
     width: 14em;
     text-align: center;
+    font-size: 1em;
     font-weight: bold;
     display: block;
     background-color: transparent;
@@ -50,9 +52,15 @@
     margin: 10px auto;
   }
 
-  a:hover {
+  button {
+    border: none;
+  }
+
+  a:hover,
+  button:hover {
     background-color: limegreen;
     color: #fff;
+    cursor: pointer;
   }
 }
 

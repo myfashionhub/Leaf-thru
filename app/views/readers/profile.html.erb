@@ -1,9 +1,51 @@
 <%= render 'layouts/message' %>
 
 <div class="wrapper account">
-  <%= render 'readers/social_accounts' %>
+  <section class="social edit">
+    <h3>Accounts</h3>
+
+    <% if current_reader %>
+      <% if current_reader.twitter_handle.nil? %>
+      <p class="no-twitter">
+        <p>Enter your Twitter handle to get updates:</p>
+        <form method="POST" action="/profile">
+          <%= csrf_meta_tags %>
+          <input name="reader[twitter_handle]" placeholder="E.g. theposter" />
+          <button>Update</button>
+        </form>
+      </p>
+      <% else %>
+        <p>
+          Your articles are fetched from @<%= current_reader.twitter_handle %>.
+        </p>
+        <form method="POST" action="/profile/remove">
+          <%= csrf_meta_tags %>
+          <input name="twitter_handle" type="hidden" />
+          <button>Disconnect from Twitter</button>
+        </form>
+      <% end %>
+
+      <% if current_reader.pocket_token %>
+        <p>
+          Your bookmarks are saved to <%= current_reader.pocket_username %>.
+        </p>
+        <a href='' class="disconnect" data-service="pocket">
+          <i class="fa fa-book"></i>
+          Disconnect from Pocket
+        </a>
+      <% else %>
+        <p>
+          Connect with Pocket to access your bookmarks offline.
+        </p>
+        <a href="/auth/pocket">
+          <i class="fa fa-book"></i>
+          Connect with Pocket
+        </a>
+      <% end %>
+    <% end %>
+  </section>
 </div>
 
 <script type="text/javascript">
-  $('#update-profile').click(updateProfile);
+  var session = new Session();
 </script>

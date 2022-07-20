@@ -1,16 +1,7 @@
 <script>
   $(document).ready(function() {
     $('.loader').addClass('active');
-
-    var tabMenu = new TabMenu('rss', 'feed');
-
-    <% if current_reader.twitter_handle == nil %>
-      $('.no-twitter').addClass('active');
-      $('.twitter .loader').removeClass('active');
-      $('.twitter .fa-refresh').addClass('hide');
-    <% else %>
-      twitterFeed();
-    <% end %>
+    twitterFeed();
   });
 </script>
 
@@ -25,18 +16,14 @@
 <div class="twitter feed">
   <h2>Social feed <i class="fa fa-refresh"></i></h2>
 
+  <% if current_reader.twitter_handle == nil %>
+    <p><a href="/profile">Add Twitter handle</a> to get updates.</p>
+  <% else %>
+    <div class="content"></div>
+  <% end %>
+
   <div class="no-content">
-    <p class="no-twitter">
-      <p>Enter your Twitter handle to get updates:</p>
-      <form method="POST" action="/profile">
-        <%= csrf_meta_tags %>
-        <input name="reader[twitter_handle]" placeholder="E.g. theposter" />
-        <button>Submit</button>
-      </form>
-    </p>
     <img src="assets/loader2.gif" alt="" class='loader' />
     <p class='error'></p>
   </div>
-
-  <div class="content"></div>
 </div>

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   # Reader information
   resources :readers, only: [:create, :update]
-  post '/profile'      => 'readers#update'
-  get '/profile'       => 'readers#profile'
+  post '/profile'        => 'readers#update'
+  post '/profile/remove' => 'readers#remove'
+  get '/profile'         => 'readers#profile'
   resources :articles,     only: [:index, :create, :show, :destroy]
 
   # Feed

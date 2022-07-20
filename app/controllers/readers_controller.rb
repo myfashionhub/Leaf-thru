@@ -39,6 +39,13 @@ class ReadersController < ApplicationController
     redirect_to '/feed'
   end
 
+  def remove
+    if params[:twitter_handle]
+      current_user.update(twitter_handle: nil)
+    end
+
+    redirect_to '/feed'
+  end
 
   private
   def reader_params
