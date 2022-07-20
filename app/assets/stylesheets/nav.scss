@@ -12,25 +12,24 @@
     vertical-align: middle;
   }
   .logo {
-    width: 22%;
+    width: 25%;
     img {
       width: 130px;
       height: auto;
       border: 0;
     }
   }
-  .location {
-    width: 23%;
-  }
+
   .profile {
-    width: 37%;
-    height: 2.2em;
+    width: 50%;
     img {
       width: 45px;
       float: left;
       margin: 0 10px 0 0;
     }
   }
+
+  /* Dropdown menu toggle */
   #expand {
     width: 12%;
     min-width: 80px;
@@ -92,36 +91,6 @@
     font-weight: normal;
     a {
       font-weight: bold;
-      .fa-star { visibility: hidden; }
-    }
-    a.current, a:hover {
-      .fa-star { visibility: visible; }
-    }
-  }
-
-  /* How it works tooltip */
-  .about {
-    position: relative;
-    a {
-      display: block;
-      padding: .4em 0 .7em 0;
-    }
-  }
-
-  .about .how-it-works {
-    width: 22em;
-    @include top-left(2em,0);
-    z-index: 1;
-    margin: 0;
-    padding: 10px 5px 10px 25px;
-    background-color: rgba(255,255,255,.9);
-    border: 1px solid #ccc;
-    display: none;
-  }
-
-  .about:hover {
-    .how-it-works {
-      display: block;
     }
   }
 }
@@ -132,9 +101,6 @@
   .menu {
     padding: 7px 10px 5px 10px;
     overflow: hidden;
-    .location {
-      display: none;
-    }
     .logo {
       width: 80px;
       float: left;

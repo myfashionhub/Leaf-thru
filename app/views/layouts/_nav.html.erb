@@ -5,20 +5,8 @@
   </a>
   </div>
 
-  <div class='location'>
-    <big><%= format_date(Time.now) %></big></br>
-
-    <% if current_reader && current_reader.location %>
-      <small><%= current_reader.location %></small>
-    <% end %>
-  </div>
-
-
   <div class='profile'>
     <% if current_reader %>
-      <% if current_reader.image %>
-        <img src="<%= current_reader.image %>" alt="profile-image" />
-      <% end %>
       <% if current_reader.name %>
         <div class='greetings'>Hi, <%= current_reader.name %></div>
       <% else %>
@@ -27,22 +15,19 @@
 
       <div class='actions'>
         <a href="/feed" class='feed'>
-          Latest news <i class="fa fa-star"></i>
+          <i class="fa fa-list-ul"></i> Latest news
         </a> &nbsp;
         <a href="/articles" class='bookmarks'>
-          Reading list <i class="fa fa-star"></i>
+          <i class="fa fa-bookmark"></i> Bookmarks
         </a>
       </div>
-
     <% else %>
       <div class='greetings'>Hi, Reader</div>
       <div class='about'>
         <a href="/about">How it works</a>
-        <%= render 'welcome/how_it_works' %>
       </div>
     <% end %>
   </div>
-
 
   <div id='expand'>
     <span class="arrow">
@@ -53,16 +38,9 @@
     </span>
   </div>
 
+  <!-- Dropdown nav -->
   <ul class="nav">
   <% if current_reader %>
-    <li class='action'>
-      <a href="/feed" class='feed'>Latest news</a>
-      <i class="fa fa-check"></i>
-    </li>
-    <li class='action'>
-      <a href="/articles" class='bookmarks'>Reading list</a>
-      <i class="fa fa-check"></i>
-    </li>
     <li>
       <a href="/profile" class="account">Manage Account</a>
       <i class="fa fa-check"></i>
