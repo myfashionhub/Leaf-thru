@@ -6,7 +6,8 @@ class FeedsController < ApplicationController
   end
 
   def twitter
-    articles = Feed.twitter(current_reader.id, current_reader.twitter_handle)
+    article_links = TwitterApi.get_timeline(current_reader.twitter_handle)
+    articles = WatsonApi.get_articles(article_links)
 
     render json: articles.to_json
   end

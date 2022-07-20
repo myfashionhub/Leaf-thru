@@ -1,4 +1,4 @@
-module TwitterFeed
+module TwitterApi
   NUM_RESULTS = 20
 
   def self.token
@@ -27,6 +27,15 @@ module TwitterFeed
 
     resp = https.request(request)
     JSON.parse(resp.body)
+  end
+
+  def self.get_profile(username)
+    result = self.search_twitter_api(
+      'https://api.twitter.com/1.1/users/show.json',
+      "?screen_name=#{username}"
+    )
+    puts result
+    result
   end
 
   def self.get_timeline(username, num_results=NUM_RESULTS)
