@@ -30,12 +30,10 @@ module TwitterApi
   end
 
   def self.get_profile(username)
-    result = self.search_twitter_api(
+    self.search_twitter_api(
       'https://api.twitter.com/1.1/users/show.json',
       "?screen_name=#{username}"
     )
-    puts result
-    result
   end
 
   def self.get_timeline(username, num_results=NUM_RESULTS)
@@ -46,6 +44,11 @@ module TwitterApi
       'https://api.twitter.com/1.1/statuses/user_timeline.json',
       "?screen_name=#{username}&count=#{num_results}"
       )
+
+      if resp&.try('errors').present? || resp&.try('error').present?
+        return []
+      end
+
       links = self.collect_links(resp)
       self.filter_sources(links)
     end

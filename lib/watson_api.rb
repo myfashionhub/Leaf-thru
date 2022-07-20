@@ -9,6 +9,10 @@ module WatsonApi
 
     # links: {url: url, shared_by: shared_by}
     cache_key = links.map { |link| link[:url] }.sort.join('&')
+    if cache_key.empty?
+      return []
+    end
+
     cached_articles =  Rails.cache.fetch(
         cache_key, expires_in: 2.hours
       ) do

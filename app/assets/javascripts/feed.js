@@ -1,59 +1,12 @@
-function loadRssFeeds() {
-  $('.rss .active').removeClass('active');
-  $('.feed.rss .content').html('Coming soon.');
-  return;
-
-  // Endpoint is temporarily deprecated
-  $.ajax({
-    url: '/feeds/rss',
-    type: 'GET',
-    dataType: 'json',
-    success: function(data) {
-      $('.rss .active').removeClass('active');
-      if (data.length === 0) {
-        $('.no-rss').addClass('active');
-      } else {
-        setTimeout(function() {
-          displayRssArticle(data);
-        }, 300);
-      }
-    }
-  });
-}
-
-function displayRssArticle(entries) {
-  $('.feed.rss .content').empty();
-
-  for (var i = 0; i < entries.length; i++) {
-    var entry    = entries[i];
-    var $publisher = $('<p>').addClass('publisher').attr('data', entry.publisher)
-                       .html('Published by ' + entry.publisher);
-    var $article = $('<div>').addClass('article');
-    var $date    = $('<div>').addClass('date')
-                             .append(new Date(entry.date_published));
-    var $title   = $('<a>').attr('href', entry.url).attr('target', '_blank')
-                     .addClass('title').html(entry.title);
-    var $extract = $('<p>').addClass('extract')
-                           .html(entry.extract);
-    $article.append($title)
-            .append($extract)
-            .append($publisher)
-            .append(addActionButtons());
-    ($article).hide().prependTo($('.rss .content')).fadeIn();
-  }
-
-  articleAction();
-}
-
-
 function twitterFeed() {
   $.ajax({
     url     : '/feeds/twitter',
     dataType: 'json',
     success : function(data) {
       $('.twitter .active').removeClass('active');
-      if (data.length === 0) {
-        $('.twitter .error').addClass('active');        
+
+      if (data.message) {
+        $('.twitter .error').html(data.message).addClass('active');
       } else {
         setTimeout(function() {
             displaySocialArticle(data);

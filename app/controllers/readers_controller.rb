@@ -22,12 +22,18 @@ class ReadersController < ApplicationController
   end
 
   def update
-    reader = current_user
+    twitter_handle = reader_params[:twitter_handle]
+    resp = TwitterApi.get_profile(twitter_handle)
 
-    if reader_params[:update_location] == 'true'
-      location = reader.update_location(remote_ip)
+    if resp&.try('errors').present?
+      flash[:notice] = resp['errors'][0]['message']
     else
-      reader.update(reader_params)
+      current_user.update({
+        twitter_handle: twitter_handle,
+        image: resp['profile_image_url'],
+        location: resp['location'],
+        tagline: resp['description'],
+      })
     end
 
     redirect_to '/feed'

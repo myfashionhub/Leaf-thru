@@ -6,9 +6,24 @@ class FeedsController < ApplicationController
   end
 
   def twitter
-    article_links = TwitterApi.get_timeline(current_reader.twitter_handle)
-    articles = WatsonApi.get_articles(article_links)
+    if current_reader.twitter_handle.nil?
+      render json: []
+      return
+    end
 
-    render json: articles.to_json
+    article_links = TwitterApi.get_timeline(current_reader.twitter_handle)
+
+    message = "No article found for @#{current_reader.twitter_handle}."
+    if article_links.size == 0
+      render json: { message: message }
+      return
+    end
+
+    articles = WatsonApi.get_articles(article_links)
+    if articles.size == 0
+      render json: { message: message }
+    else
+      render json: articles.to_json
+    end
   end
 end
